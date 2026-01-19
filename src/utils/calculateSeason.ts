@@ -1,37 +1,42 @@
-// Esta es una versión simplificada de la lógica de flujo estacional
-// Inputs esperados: temperatura (cálido/frío), valor (claro/oscuro), croma (suave/brillante)
-
-interface UserAnswers {
+export interface UserAnswers {
     undertone: 'warm' | 'cool' | 'neutral';
     contrast: 'high' | 'medium' | 'low';
     hairColor: 'dark' | 'light';
 }
 
 export function determineSeason(answers: UserAnswers): string {
-    // Lógica básica para mapear respuestas a los IDs del JSON
+    const { undertone, contrast, hairColor } = answers;
 
-    if (answers.undertone === 'cool') {
-        if (answers.contrast === 'high' && answers.hairColor === 'dark') {
-            return 'invierno-profundo'; // ID del JSON
+    // --- LOGICA DE PROCESAMIENTO (Árbol de Decisión) ---
+
+    // 1. RAMA FRÍA (Cool)
+    if (undertone === 'cool') {
+        // High Contrast + Dark Hair = INVIERNO (Winter)
+        if (contrast === 'high' || hairColor === 'dark') {
+            return 'invierno-profundo';
         }
-        if (answers.contrast === 'low' && answers.hairColor === 'light') {
-            return 'verano-suave';
-        }
-        // Default cool -> Invierno Verdadero (slug: invierno-frio)
-        return 'invierno-frio';
+
+        // Low Contrast + Light Hair = VERANO (Summer)
+        return 'verano-suave';
     }
 
-    if (answers.undertone === 'warm') {
-        if (answers.contrast === 'medium') {
-            return 'otono-calido'; // "Otoño Verdadero" en JSON
+    // 2. RAMA CÁLIDA (Warm)
+    if (undertone === 'warm') {
+        // Medium/Low Contrast + Light Hair = PRIMAVERA (Spring)
+        // Spring is clear, warm, and light.
+        if (hairColor === 'light' || contrast === 'low') {
+            return 'primavera-calida';
         }
-        if (answers.hairColor === 'light') {
-            return 'primavera-calida'; // "Primavera Verdadera" en JSON
-        }
-        // Default warm -> Otoño Verdadero (slug: otono-calido)
+
+        // Higher Contrast + Darker features = OTOÑO (Autumn)
         return 'otono-calido';
     }
 
-    // Fallback por defecto
-    return 'invierno-profundo';
+    // 3. RAMA NEUTRA (Neutral Fallback)
+    // Si la persona no está segura (Neutral), usamos el contraste como guía principal.
+    if (contrast === 'high') return 'invierno-profundo'; // Deep Winter flows into autumn but is high contrast
+    if (contrast === 'low') return 'verano-suave'; // Soft Summer flows into autumn
+    if (hairColor === 'light') return 'primavera-calida';
+
+    return 'otono-calido'; // Safe bet for medium contrast/neutral
 }

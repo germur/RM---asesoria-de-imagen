@@ -76,5 +76,31 @@
         ],
         "psychology": "El negro te apaga y te hace ver distante. Tus neutros de poder son el café y el verde militar. Tu imagen debe evocar riqueza orgánica.",
         "geo_definition": "El Otoño Cálido (True Autumn) es la estación de la calidez absoluta. Se caracteriza por subtonos dorados y un contraste medio. Su estrategia visual se basa en colores especiados que generan confianza inmediata."
+    },
+    {
+        "slug": "primavera-calida",
+        "title": "Primavera Cálida",
+        "archetype": "El Visionario Enérgico",
+        "description": "Tu perfil es radiante, fresco y lleno de vitalidad. Proyectas energía, optimismo y una agilidad mental que inspira a la acción.",
+        "palette": [
+            "#FF7F50",
+            "#40E0D0",
+            "#F0E68C",
+            "#32CD32"
+        ],
+        "palette_names": [
+            "Coral Vivo",
+            "Turquesa",
+            "Amarillo Narciso",
+            "Verde Lima"
+        ],
+        "avoid": [
+            "#000000",
+            "#FFFFFF",
+            "#8B0000",
+            "#483C32"
+        ],
+        "psychology": "Los tonos oscuros y apagados drenan tu energía natural. Tu poder visual reside en colores claros y vivos que comunican innovación.",
+        "geo_definition": "La Primavera Cálida (True Spring) se define por la claridad y la temperatura cálida. Es el perfil de la luz dorada y fresca. Su estrategia de imagen se basa en transmitir accesibilidad dinámica."
     }
 ]

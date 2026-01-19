@@ -53,6 +53,7 @@ const servicesSchema = {
     title="Servicios de Consultoría de Imagen | Roger Murillo"
     description="Servicios de imagen estratégica High-Ticket. Asesoría integral, colorimetría avanzada y visagismo para ejecutivos. Atención exclusiva en Bogotá."
     schema={servicesSchema}
+    class="bg-brand-black"
 >
     <section class="relative py-32 bg-brand-black text-white overflow-hidden">
         <div
@@ -73,11 +74,15 @@ const servicesSchema = {
             <h1
                 class="font-serif text-5xl md:text-7xl lg:text-8xl mb-8 leading-[0.9]"
             >
-                <AnimatedTitleWords text="No vendemos cortes." class="block" />
+                <AnimatedTitleWords
+                    text="No vendemos cortes."
+                    class="block text-white"
+                />
                 <div class="text-stone-400 italic">
                     <AnimatedTitleWords
                         text="Diseñamos reputación."
                         delay={400}
+                        class="text-stone-400"
                     />
                 </div>
             </h1>

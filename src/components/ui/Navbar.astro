@@ -54,6 +54,21 @@ const navItems = [
         type: "simple"
     },
 ];
+
+const { theme = 'dark' } = Astro.props;
+
+const isDark = theme === 'dark';
+const textColorClass = isDark 
+    ? "text-white group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black" 
+    : "text-brand-black";
+
+const logoClass = isDark
+    ? "brightness-0 invert group-[.scrolled]/header:invert-0 group-hover/header:invert-0"
+    : "brightness-0 invert-0";
+
+const mobileMenuBtnClass = isDark
+    ? "text-white group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black"
+    : "text-brand-black";
 ---
 
 <header
@@ -65,7 +80,7 @@ const navItems = [
             <img
                 src="/logo_rmai.webp"
                 alt="Roger Murillo Asesoría de Imagen"
-                class="h-8 md:h-14 w-auto object-contain brightness-0 invert group-[.scrolled]/header:invert-0 group-hover/header:invert-0 transition-all duration-500"
+                class={`h-8 md:h-14 w-auto object-contain transition-all duration-500 ${logoClass}`}
             />
         </a>
 
@@ -76,7 +91,7 @@ const navItems = [
                     <div class="relative group h-20 flex items-center">
                         <a
                             href={item.href}
-                            class="text-xs font-bold uppercase tracking-widest py-2 relative text-white group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black hover:text-brand-primary transition-colors duration-500 flex items-center gap-1"
+                            class={`text-xs font-bold uppercase tracking-widest py-2 relative hover:text-brand-primary transition-colors duration-500 flex items-center gap-1 ${textColorClass}`}
                         >
                             {item.label}
                             {item.type !== 'simple' && <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-300" />}
@@ -125,7 +140,7 @@ const navItems = [
 
                         {/* SIMPLE DROPDOWN: SERVICIOS */}
                         {item.type === 'dropdown' && (
-                           <div class="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 py-2 shadow-2xl rounded-sm">
+                            <div class="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 py-2 shadow-2xl rounded-sm">
                                 {item.items?.map(subItem => (
                                     <a
                                         href={subItem.href}
@@ -145,14 +160,18 @@ const navItems = [
         <div class="flex items-center gap-4 relative z-50">
             <a
                 href="/contacto"
-                class="hidden md:block bg-brand-primary text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black border border-transparent hover:border-brand-black transition-colors shadow-lg shadow-brand-primary/20 rounded-sm"
+                class={`hidden md:block px-6 py-3 text-xs font-bold uppercase tracking-widest border transition-colors shadow-lg rounded-sm ${
+                    isDark 
+                    ? "bg-brand-primary text-white hover:bg-white hover:text-brand-black border-transparent hover:border-brand-black shadow-brand-primary/20" 
+                    : "bg-brand-black text-white hover:bg-brand-primary hover:border-brand-primary"
+                }`}
             >
                 Agendar Cita
             </a>
 
             <button
                 id="mobile-menu-btn"
-                class="md:hidden text-white group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black focus:outline-none p-2 transition-colors duration-500"
+                class={`md:hidden focus:outline-none p-2 transition-colors duration-500 ${mobileMenuBtnClass}`}
                 aria-label="Abrir menú"
             >
                 <svg
@@ -296,13 +315,19 @@ const navItems = [
             const content = btn.nextElementSibling;
             const icon = btn.querySelector('svg');
             
+            if (!content || !icon) return;
+
             // Toggle Logic
             if (content.classList.contains('hidden')) {
                  // Close others (optional)
                  accordionBtns.forEach(otherBtn => {
                     if(otherBtn !== btn) {
-                        otherBtn.nextElementSibling.classList.add('hidden');
-                        otherBtn.querySelector('svg').style.transform = 'rotate(0deg)';
+                        const otherContent = otherBtn.nextElementSibling;
+                        const otherIcon = otherBtn.querySelector('svg');
+                        if (otherContent && otherIcon) {
+                            otherContent.classList.add('hidden');
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
                     }
                  });
 

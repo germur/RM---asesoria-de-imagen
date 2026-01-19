@@ -11,9 +11,16 @@ interface Props {
     description: string;
     class?: string;
     schema?: string;
+    navbarTheme?: "light" | "dark";
 }
 
-const { title, description, class: className, schema } = Astro.props;
+const {
+    title,
+    description,
+    class: className,
+    schema,
+    navbarTheme = "dark",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -31,11 +38,11 @@ const { title, description, class: className, schema } = Astro.props;
     </head>
     <body
         class={cn(
-            "min-h-screen bg-luxury-black text-luxury-sand font-sans antialiased flex flex-col",
+            "min-h-screen bg-brand-white text-brand-black font-sans antialiased flex flex-col",
             className,
         )}
     >
-        <Navbar />
+        <Navbar theme={navbarTheme} />
 
         <Breadcrumbs />
 

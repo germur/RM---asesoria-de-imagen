@@ -40,7 +40,8 @@ const schema = {
 <MainLayout
     title={`Tu Perfil: ${season.title} | Roger Murillo`}
     description={season.description}
-    schema={schema}
+    schema={JSON.stringify(schema)}
+    class="bg-brand-black"
 >
     <section
         class="pt-32 pb-20 bg-brand-black text-white text-center relative overflow-hidden"
@@ -54,7 +55,9 @@ const schema = {
                 Informe Confidencial
             </span>
 
-            <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">
+            <h1
+                class="font-serif text-5xl md:text-7xl mb-6 leading-tight text-white"
+            >
                 {season.title}
             </h1>
 
