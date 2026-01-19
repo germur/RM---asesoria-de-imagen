@@ -1,0 +1,111 @@
+[
+    {
+        "id": "diamante",
+        "name": "Rostro Diamante",
+        "slug": "diamante",
+        "description": "Pómulos prominentes, frente y barbilla estrechas. Una joya geométrica que requiere suavizar ángulos.",
+        "seo_intro": "El rostro diamante es el más deseado en fotografía, pero el más difícil de equilibrar en el día a día.",
+        "categories": [
+            {
+                "type": "cortes-pelo",
+                "title": "Cortes de Pelo para Rostro Diamante",
+                "advice": "Necesitas volumen en la frente y la barbilla, pero pegado en los pómulos.",
+                "dos": [
+                    "Flequillo lateral",
+                    "Largo medio (Bob)",
+                    "Capas texturizadas"
+                ],
+                "donts": [
+                    "Rapado total a los lados",
+                    "Volumen excesivo en las orejas"
+                ],
+                "cta_copy": "¿No estás seguro de tu corte? Diseñemos tu arquitectura capilar."
+            },
+            {
+                "type": "lentes",
+                "title": "Lentes y Gafas para Rostro Diamante",
+                "advice": "El objetivo es contrastar tus pómulos marcados con curvas suaves.",
+                "dos": [
+                    "Monturas ovaladas",
+                    "Cat-eye suave",
+                    "Sin montura (Rimless)"
+                ],
+                "donts": [
+                    "Monturas cuadradas muy rígidas",
+                    "Gafas demasiado pequeñas"
+                ],
+                "cta_copy": "Tus lentes son el marco de tu mirada. Elígelos con estrategia."
+            },
+            {
+                "type": "barba",
+                "title": "Diseño de Barba para Rostro Diamante",
+                "advice": "La barba debe rellenar el hueco de la barbilla estrecha sin ensanchar más los pómulos.",
+                "dos": [
+                    "Barba completa corta",
+                    "Perilla (Goatee) ancha",
+                    "Barba de 3 días"
+                ],
+                "donts": [
+                    "Patillas largas",
+                    "Barba muy afilada en punta"
+                ],
+                "cta_copy": "La barba es el maquillaje del hombre. Aprende a usarla a tu favor."
+            }
+        ]
+    },
+    {
+        "id": "cuadrado",
+        "name": "Rostro Cuadrado",
+        "slug": "cuadrado",
+        "description": "Mandíbula fuerte y frente ancha. Transmites autoridad, fuerza y estabilidad.",
+        "seo_intro": "El rostro cuadrado es el arquetipo de la masculinidad clásica y la fuerza femenina. El objetivo no es esconderlo, sino armonizarlo.",
+        "categories": [
+            {
+                "type": "cortes-pelo",
+                "title": "Cortes de Cabello para Rostro Cuadrado",
+                "advice": "Busca altura en la coronilla para alargar visualmente la cara.",
+                "dos": [
+                    "Undercut con volumen arriba",
+                    "Tupé (Pompadour)",
+                    "Ondas suaves (Mujer)"
+                ],
+                "donts": [
+                    "Flequillo recto y pesado",
+                    "Corte militar plano"
+                ],
+                "cta_copy": "Tu corte define tu autoridad. Encuentra el estilo de líder."
+            },
+            {
+                "type": "lentes",
+                "title": "Lentes Ideales para Cara Cuadrada",
+                "advice": "La regla es opuestos: cara angular requiere lentes curvos.",
+                "dos": [
+                    "Redondos",
+                    "Aviador",
+                    "Ovalados"
+                ],
+                "donts": [
+                    "Cuadrados",
+                    "Rectangulares",
+                    "Geométricos duros"
+                ],
+                "cta_copy": "Los lentes correctos suavizan tu expresión y proyectan confianza."
+            },
+            {
+                "type": "barba",
+                "title": "Estilos de Barba para Cara Cuadrada",
+                "advice": "No marques más la mandíbula. Alarga el mentón.",
+                "dos": [
+                    "Barba circular",
+                    "Candado real",
+                    "Barba degradada en mejillas"
+                ],
+                "donts": [
+                    "Barba cuadrada completa",
+                    "Patillas muy anchas"
+                ],
+                "cta_copy": "Perfecciona tu geometría facial con nuestra asesoría de visagismo."
+            }
+        ]
+    }
+]

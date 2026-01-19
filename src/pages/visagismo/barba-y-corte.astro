@@ -1,0 +1,65 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import visagismoData from "../../data/visagismo.json";
+
+const seoData = {
+    title: "Visagismo para Hombres: Guía de Barba y Corte | Roger Murillo",
+    description:
+        "No es solo pelo, es arquitectura facial. Aprende a elegir tu barba y corte según la forma de tu cara (Cuadrada, Redonda, Diamante).",
+    h1: "Arquitectura Masculina: Barba y Corte Estratégico",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-20 px-6 max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-serif text-primary mb-6">{seoData.h1}</h1>
+            <p class="text-xl text-muted-foreground">
+                La mayoría de los hombres usan el corte que les hacía su mamá o
+                el que está de moda. Un hombre con estrategia usa el corte que
+                equilibra sus facciones.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+                visagismoData.map((rostro) => (
+                    <a
+                        href={`/guia-estilo/visagismo/${rostro.slug}/barba`}
+                        class="group block bg-white border border-gray-100 p-8 hover:border-black transition-colors rounded-xl shadow-sm"
+                    >
+                        <h3 class="text-xl font-serif text-primary mb-2 group-hover:text-[#d4af37] transition-colors">
+                            {rostro.name}
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-4 line-clamp-2">
+                            {rostro.description}
+                        </p>
+                        <span class="text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                            Ver Estilos de Barba <span class="text-lg">→</span>
+                        </span>
+                    </a>
+                ))
+            }
+        </div>
+
+        <div
+            class="mt-20 bg-[#0f0d0b] text-white p-10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+            <div>
+                <h3 class="text-2xl font-serif text-[#d4af37]">
+                    ¿No sabes qué cara tienes?
+                </h3>
+                <p class="text-gray-400">
+                    Usa nuestra herramienta de análisis facial antes de elegir
+                    tu corte.
+                </p>
+            </div>
+            <a
+                href="/herramientas/calculadora-rostro"
+                class="bg-white text-black px-8 py-4 rounded font-bold hover:bg-gray-200 transition"
+            >
+                Usar Calculadora de Rostro
+            </a>
+        </div>
+    </section>
+</MainLayout>

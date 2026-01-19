@@ -1,0 +1,55 @@
+---
+import matrix from "../../../../data/maes_matrix.json";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+
+export async function getStaticPaths() {
+    const paths = [];
+    matrix.profiles.forEach((profile) => {
+        matrix.goals.forEach((goal) => {
+            paths.push({
+                params: { perfil: profile.slug, objetivo: goal.slug },
+                props: { profile, goal },
+            });
+        });
+    });
+    return paths;
+}
+
+const { profile, goal } = Astro.props;
+const seoTitle = `Estilo para ${profile.name}: Cómo ${goal.name} | Roger Murillo`;
+---
+
+<MainLayout
+    title={seoTitle}
+    description={`Estrategia de imagen para ${profile.name} que busca ${goal.name}.`}
+>
+    <article class="max-w-3xl mx-auto py-24 px-6">
+        <span class="text-xs font-bold text-[#d4af37] uppercase tracking-widest"
+            >Estrategia MAES</span
+        >
+        <h1 class="text-5xl font-serif text-[#0a0a0a] mt-6 mb-8 leading-tight">
+            {goal.name} siendo {profile.name}
+        </h1>
+        <p class="text-xl text-gray-600 mb-12 font-light">
+            {profile.pain} Tu imagen debe ser coherente con tu mensaje.
+        </p>
+
+        <div class="bg-[#fafaf9] border-l-4 border-[#d4af37] p-8 my-12">
+            <h3 class="font-serif text-2xl mb-4">La Clave Estratégica</h3>
+            <p class="text-lg text-gray-800">{goal.focus}</p>
+            <p class="mt-4 text-gray-600 italic">💡 Tip experto: {goal.tip}</p>
+        </div>
+
+        <div class="mt-16 text-center">
+            <p class="mb-4 text-sm uppercase tracking-wide text-gray-500">
+                ¿Dudas con tu paleta?
+            </p>
+            <a href="/herramientas/test-colorimetria-online">
+                <Button className="bg-black text-white hover:bg-gray-800"
+                    >Hacer Test de Colorimetría Online</Button
+                >
+            </a>
+        </div>
+    </article>
+</MainLayout>

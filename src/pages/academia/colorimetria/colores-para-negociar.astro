@@ -1,0 +1,127 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import { PlayCircle, Lock } from "lucide-react";
+
+const seoData = {
+    title: "Psicología del Color para Negociaciones Difíciles | Roger Murillo",
+    description:
+        "Aprende qué colores usar para cerrar tratos. El mito del traje negro vs. la autoridad del azul marino. Estrategia de imagen para ejecutivos.",
+    h1: "Psicología del Color para Negociaciones: Por qué el Negro te está costando Dinero",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <article class="max-w-4xl mx-auto py-20 px-6">
+        <header class="mb-12">
+            <span
+                class="text-[#d4af37] font-bold text-xs uppercase tracking-widest"
+                >Academia / Colorimetría Ejecutiva</span
+            >
+            <h1
+                class="text-4xl md:text-6xl font-serif text-[#0c0a09] mt-4 mb-6 leading-tight"
+            >
+                {seoData.h1}
+            </h1>
+        </header>
+
+        <div class="prose prose-stone prose-lg mb-16">
+            <p class="lead text-xl text-stone-600">
+                Existe una creencia errónea en el mundo corporativo: "Si quiero
+                verme poderoso, uso negro". La ciencia de la colorimetría dice
+                lo contrario. En una mesa de negociación, el negro crea
+                barreras, mientras que el azul marino construye puentes de
+                autoridad.
+            </p>
+
+            <h3>El Mito del Negro</h3>
+            <p>
+                El negro puro absorbe la luz. En términos semióticos, comunica
+                luto, misterio o barrera. Si eres el líder que necesita
+                intimidar, funciona. Pero si necesitas <strong>negociar</strong
+                >, persuadir y generar confianza, el negro puede ser percibido
+                inconscientemente como defensivo.
+            </p>
+
+            <h3>El Azul Marino: Autoridad Accesible</h3>
+            <p>
+                Los estudios de psicología del color demuestran que el azul
+                marino (Navy Blue) es el color que genera mayores niveles de
+                confianza y credibilidad en el sector financiero y legal. Es el
+                color de la lógica, la calma y la estructura.
+            </p>
+
+            <div
+                class="my-12 not-prose grid md:grid-cols-2 gap-4 bg-stone-100 p-4 rounded-lg border border-stone-200"
+            >
+                <div class="relative">
+                    <span
+                        class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded"
+                        >ANTES (Incorrecto)</span
+                    >
+                    <img
+                        src="/images/wrong-suit-brown.jpg"
+                        alt="Traje Café Mal Ajustado"
+                        class="w-full h-64 object-cover rounded grayscale opacity-80"
+                    />
+                    <p class="text-xs text-center mt-2 text-stone-500">
+                        Traje Café: Percibido como anticuado y pasivo.
+                    </p>
+                </div>
+                <div class="relative">
+                    <span
+                        class="absolute top-2 left-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded"
+                        >DESPUÉS (Estratégico)</span
+                    >
+                    <img
+                        src="/images/correct-suit-navy.jpg"
+                        alt="Traje Azul Marino Poder"
+                        class="w-full h-64 object-cover rounded shadow-lg"
+                    />
+                    <p
+                        class="text-xs text-center mt-2 text-stone-900 font-bold"
+                    >
+                        Azul Marino: Autoridad, confianza y modernidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="bg-[#0c0a09] rounded-2xl p-10 text-white relative overflow-hidden shadow-2xl"
+        >
+            <div class="absolute top-0 right-0 p-10 opacity-5">
+                <Lock size={150} />
+            </div>
+
+            <div class="relative z-10 max-w-lg">
+                <span
+                    class="text-[#d4af37] font-bold tracking-widest text-xs uppercase mb-2 block"
+                    >Producto Digital</span
+                >
+                <h3 class="text-3xl font-serif mb-4">
+                    Domina tu Paleta Cromática Completa
+                </h3>
+                <p class="text-stone-300 mb-8">
+                    ¿No puedes venir a una consultoría presencial? Aprende a tu
+                    ritmo. Accede a mi curso grabado de "Colorimetría Ejecutiva"
+                    y descubre los 5 colores que debes tener en tu armario para
+                    cada ocasión.
+                </p>
+                <div class="flex items-center gap-4">
+                    <Button
+                        size="lg"
+                        class="bg-[#d4af37] text-black hover:bg-white"
+                    >
+                        Comprar Curso • $47 USD
+                    </Button>
+                    <span
+                        class="text-sm text-stone-400 flex items-center gap-2"
+                    >
+                        <PlayCircle size={16} /> Acceso Inmediato
+                    </span>
+                </div>
+            </div>
+        </div>
+    </article>
+</MainLayout>

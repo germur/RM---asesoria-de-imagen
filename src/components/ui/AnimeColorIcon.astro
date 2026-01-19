@@ -1,0 +1,85 @@
+---
+// src/components/ui/AnimeColorIcon.astro
+interface Props {
+    initialColor?: string;
+    hoverColor?: string; // Hex, RGB, HSL
+    duration?: number;
+    class?: string;
+}
+
+const {
+    initialColor = "currentColor",
+    hoverColor = "#C41230",
+    duration = 800,
+    class: className,
+} = Astro.props;
+const uniqueId = `anime-icon-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div
+    id={uniqueId}
+    class={`inline-flex items-center justify-center anime-icon-wrapper ${className}`}
+    data-hover-color={hoverColor}
+    data-initial-color={initialColor}
+    data-duration={duration}
+>
+    <slot />
+</div>
+
+<script>
+    import anime from "animejs";
+
+    function initAnimeIcons() {
+        const wrappers = document.querySelectorAll(".anime-icon-wrapper");
+
+        wrappers.forEach((wrapper) => {
+            // Find the SVG or Path inside
+            const target =
+                wrapper.querySelector("svg") || wrapper.querySelector("path");
+            if (!target) return;
+
+            const hoverColor = wrapper.getAttribute("data-hover-color");
+            const initialColor = wrapper.getAttribute("data-initial-color"); // Note: 'currentColor' might not animate well without computation
+            const duration = parseInt(
+                wrapper.getAttribute("data-duration") || "800",
+            );
+
+            // Use a parent group or the wrapper itself as trigger reference if needed
+            // But typically, we want the Hover on the PARENT button to trigger this.
+            // So we look for a .group parent.
+            const groupParent = wrapper.closest(".group");
+            const trigger = groupParent || wrapper;
+
+            trigger.addEventListener("mouseenter", () => {
+                anime({
+                    targets: target,
+                    color: hoverColor, // For text/currentColor
+                    fill: hoverColor, // For SVG fills
+                    stroke: hoverColor, // For SVG strokes
+                    easing: "easeOutQuad",
+                    duration: duration,
+                });
+            });
+
+            trigger.addEventListener("mouseleave", () => {
+                // Reset (handling 'currentColor' is tricky in JS, so we might need computed style)
+                // For now, let's assume we revert to the initial color or inherited color.
+                anime({
+                    targets: target,
+                    color:
+                        initialColor === "currentColor" ? "#FFF" : initialColor, // Fallback for demo
+                    fill:
+                        initialColor === "currentColor" ? "#FFF" : initialColor,
+                    stroke:
+                        initialColor === "currentColor" ? "#FFF" : initialColor,
+                    easing: "easeOutQuad",
+                    duration: duration,
+                });
+            });
+        });
+    }
+
+    // Run on load and View Transitions
+    document.addEventListener("astro:page-load", initAnimeIcons);
+    document.addEventListener("DOMContentLoaded", initAnimeIcons);
+</script>

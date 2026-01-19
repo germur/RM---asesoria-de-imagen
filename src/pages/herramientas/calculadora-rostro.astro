@@ -1,0 +1,83 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import FaceShapeCalculator from "@/components/tools/FaceShapeCalculator"; // Componente React
+import { Button } from "@/components/ui/button";
+
+const seoData = {
+    title: "Calculadora de Visagismo Online | ¿Qué tipo de rostro tengo?",
+    description:
+        "No es magia, son matemáticas. Mide tus proporciones faciales y descubre la geometría exacta de tu rostro para elegir el corte, barba y gafas perfectas.",
+    h1: "Calculadora de Visagismo: La Geometría de tu Rostro",
+};
+
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Calculadora de Tipo de Rostro Roger Murillo",
+    applicationCategory: "LifestyleApplication",
+    featureList:
+        "Análisis de rostro, Recomendación de corte, Recomendación de gafas",
+});
+---
+
+<MainLayout
+    title={seoData.title}
+    description={seoData.description}
+    schema={schema}
+>
+    <section class="py-20 px-6 bg-[#0c0a09] text-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-serif mb-6">{seoData.h1}</h1>
+            <p class="text-xl text-stone-300 font-light max-w-2xl mx-auto">
+                Toma una cinta métrica. Vamos a decodificar tus facciones para
+                que dejes de copiar cortes que no te favorecen.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-[#fafaf9] -mt-10">
+        <div
+            class="max-w-5xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-xl border border-stone-200"
+        >
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-serif text-[#0c0a09] mb-6">
+                        Introduce tus medidas
+                    </h3>
+                    <FaceShapeCalculator client:visible />
+                </div>
+
+                <div
+                    class="bg-stone-50 p-8 rounded-lg border border-dashed border-stone-300 flex items-center justify-center"
+                >
+                    <div class="text-center">
+                        <p class="text-stone-400 text-sm mb-4">
+                            El diagrama de tu rostro aparecerá aquí
+                        </p>
+                        <div
+                            class="w-48 h-64 border-2 border-stone-200 rounded-full mx-auto relative"
+                        >
+                            <div
+                                class="absolute inset-0 flex items-center justify-center text-stone-200 font-serif text-6xl"
+                            >
+                                ?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 text-center">
+        <p class="text-stone-500 mb-4">¿Ya tienes tu resultado?</p>
+        <a href="/servicios/visagismo-corte/">
+            <Button
+                variant="link"
+                className="text-[#0c0a09] font-bold text-lg decoration-[#d4af37]"
+            >
+                Agenda tu Diseño de Corte Profesional →
+            </Button>
+        </a>
+    </section>
+</MainLayout>

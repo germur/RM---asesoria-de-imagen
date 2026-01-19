@@ -1,0 +1,55 @@
+{
+    "profiles": [
+        {
+            "slug": "abogado",
+            "name": "Abogado",
+            "pain": "En la corte, la duda no es una opción."
+        },
+        {
+            "slug": "ceo-tech",
+            "name": "CEO de Tecnología",
+            "pain": "Liderar sin parecer un banquero tradicional."
+        },
+        {
+            "slug": "agente-inmobiliario",
+            "name": "Agente Inmobiliario",
+            "pain": "Tu imagen es la primera propiedad que vendes."
+        },
+        {
+            "slug": "medico-especialista",
+            "name": "Médico Especialista",
+            "pain": "Autoridad clínica con cercanía humana."
+        },
+        {
+            "slug": "consultor-financiero",
+            "name": "Consultor Financiero",
+            "pain": "Generar confianza absoluta con tu presencia."
+        }
+    ],
+    "goals": [
+        {
+            "slug": "proyectar-autoridad",
+            "name": "Proyectar Autoridad",
+            "focus": "Estructura, colores oscuros y líneas rectas.",
+            "tip": "Usa una tercera prenda estructurada (blazer) incluso en climas cálidos."
+        },
+        {
+            "slug": "generar-confianza",
+            "name": "Generar Confianza",
+            "focus": "Tonos azules, tejidos suaves y accesibilidad.",
+            "tip": "Evita el contraste alto (blanco/negro) cerca del rostro."
+        },
+        {
+            "slug": "verse-mas-joven",
+            "name": "Verse más Joven",
+            "focus": "Actualización de cortes y eliminación de rigidez.",
+            "tip": "Incorpora zapatillas de cuero minimalistas con traje."
+        },
+        {
+            "slug": "liderazgo-femenino",
+            "name": "Potenciar Liderazgo Femenino",
+            "focus": "Fuerza sin perder identidad.",
+            "tip": "Usa colores sólidos y evita estampados florales pequeños."
+        }
+    ]
+}

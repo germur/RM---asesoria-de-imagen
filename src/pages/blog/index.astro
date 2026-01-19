@@ -1,0 +1,67 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const seoTitle = "Blog de Imagen y Estilo Ejecutivo | Roger Murillo";
+const seoDesc =
+    "Artículos sobre visagismo, colorimetría y estrategia de imagen para líderes.";
+---
+
+<MainLayout title={seoTitle} description={seoDesc}>
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4"
+            >
+                Journal
+            </h1>
+            <p class="text-xl text-gray-600">Estrategia, Estilo y Semiótica.</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                posts.map((post) => (
+                    <a href={`/blog/${post.slug}/`} class="group">
+                        <article class="bg-white border border-stone-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                            <div class="aspect-video overflow-hidden bg-stone-100 relative">
+                                {post.data.heroImage ? (
+                                    <img
+                                        src={post.data.heroImage}
+                                        alt=""
+                                        class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                ) : (
+                                    <div class="w-full h-full flex items-center justify-center text-stone-300 bg-stone-50">
+                                        No Image
+                                    </div>
+                                )}
+                            </div>
+                            <div class="p-6">
+                                <h2 class="text-xl font-serif font-bold text-gray-900 group-hover:text-[#d4af37] transition-colors mb-2">
+                                    {post.data.title}
+                                </h2>
+                                <p class="text-gray-600 text-sm line-clamp-2">
+                                    {post.data.description}
+                                </p>
+                                <div class="mt-4 text-xs text-gray-400">
+                                    {post.data.pubDate.toLocaleDateString(
+                                        "es-co",
+                                        {
+                                            year: "numeric",
+                                            month: "short",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+</MainLayout>

@@ -1,0 +1,32 @@
+# -----------------------------------------------------------
+# ESTRATEGIA MAES: MAPA DE REDIRECCIONES 301 (PERMANENTES)
+# -----------------------------------------------------------
+
+# 1. LAS JOYAS (Tráfico de Alta Autoridad -> High Ticket)
+# La antigua URL de servicios generales ahora va directo a la Consultoría Premium
+/asesoria-de-imagen/           /servicios/asesoria-integral  301
+
+# La antigua academia se consolida en el nuevo Hub de Educación
+/rmai-academia/                /academia                     301
+/curso-revoluciona-tu-imagen/  /academia                     301
+
+# El libro (Lead Magnet) mantiene su relevancia
+/libro/                        /libro                        301
+
+# 2. EL LASTRE (Tráfico de Peluquería -> Servicios Técnicos)
+# Quien busque "corte" llega a "Visagismo" (Filtro de precio y calidad)
+/peluqueria/arquitectura-de-corte/  /servicios/visagismo-corte  301
+/peluqueria/maquillaje/             /servicios                  301
+/peluqueria/peinado/                /servicios                  301
+
+# Quien busque "color/balayage" llega a "Colorimetría y Salud"
+/peluqueria/diseno-de-color/        /servicios/color-capilar    301
+/peluqueria/reparacion-capilar/     /servicios/color-capilar    301
+/blog/balayage-tendencias/          /servicios/color-capilar    301
+
+# Redirección genérica de seguridad para cualquier otra URL vieja de peluquería
+/peluqueria/*                       /servicios                  301
+
+# 3. GESTIÓN DE ERRORES (SPA Fallback & 404)
+# Si una ruta no existe, mostrar la página de error personalizada que diseñamos
+/*                                  /404                        404

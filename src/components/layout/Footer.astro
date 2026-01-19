@@ -1,0 +1,79 @@
+---
+const today = new Date();
+---
+
+<footer class="border-t border-white/10 bg-luxury-black py-12 md:py-16">
+    <div class="container mx-auto px-4 sm:px-8">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+            <div class="md:col-span-2">
+                <a
+                    href="/"
+                    class="text-2xl font-serif font-bold text-luxury-gold tracking-wide"
+                >
+                    Roger Murillo
+                </a>
+                <p class="mt-4 text-sm text-luxury-sand/60 max-w-xs">
+                    Consultoría de imagen estratégica para líderes que buscan
+                    proyectar autoridad y confianza.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-serif font-semibold text-luxury-sand mb-4">
+                    Navegación
+                </h3>
+                <ul class="space-y-2 text-sm text-luxury-sand/60">
+                    <li>
+                        <a
+                            href="/servicios"
+                            class="hover:text-luxury-gold transition-colors"
+                            >Servicios</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/herramientas"
+                            class="hover:text-luxury-gold transition-colors"
+                            >Herramientas</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/blog"
+                            class="hover:text-luxury-gold transition-colors"
+                            >Blog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-serif font-semibold text-luxury-sand mb-4">
+                    Legal
+                </h3>
+                <ul class="space-y-2 text-sm text-luxury-sand/60">
+                    <li>
+                        <a
+                            href="/privacidad"
+                            class="hover:text-luxury-gold transition-colors"
+                            >Privacidad</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/terminos"
+                            class="hover:text-luxury-gold transition-colors"
+                            >Términos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-luxury-sand/40"
+        >
+            <p>
+                &copy; {today.getFullYear()} Roger Murillo. Todos los derechos reservados.
+            </p>
+            <div class="mt-4 md:mt-0 flex gap-4">
+                <!-- Social Icons Placeholder -->
+            </div>
+        </div>
+    </div>
+</footer>

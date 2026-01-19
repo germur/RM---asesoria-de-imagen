@@ -1,0 +1,237 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, AlertCircle } from "lucide-react";
+
+const seoData = {
+    title: "Visagismo para Hombres: Guía Definitiva de Tipos de Rostro",
+    description:
+        "Descubre qué corte de pelo te queda bien según tu tipo de rostro. Guía técnica de visagismo: Rostro Redondo, Cuadrado, Diamante y Ovalado.",
+    h1: "Visagismo para Hombres: La Geometría del Corte Perfecto",
+};
+
+// Schema Article para Blog Posting
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: seoData.h1,
+    author: { "@type": "Person", name: "Roger Murillo" },
+    publisher: { "@type": "Organization", name: "Roger Murillo Consultoría" },
+});
+---
+
+<MainLayout
+    title={seoData.title}
+    description={seoData.description}
+    schema={schema}
+>
+    <article class="max-w-4xl mx-auto py-20 px-6">
+        <header class="text-center mb-12">
+            <span
+                class="text-[#d4af37] font-bold text-xs uppercase tracking-widest"
+                >Academia / Visagismo</span
+            >
+            <h1
+                class="text-4xl md:text-5xl font-serif text-[#0c0a09] mt-4 mb-6 leading-tight"
+            >
+                {seoData.h1}
+            </h1>
+            <div
+                class="flex items-center justify-center gap-4 text-sm text-stone-500"
+            >
+                <span>Por Roger Murillo</span>
+                <span>•</span>
+                <span>Lectura: 8 min</span>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-8 prose prose-stone prose-lg">
+                <div
+                    class="bg-[#fafaf9] border-l-4 border-[#d4af37] p-6 mb-10 not-prose rounded-r-lg"
+                >
+                    <h3 class="font-serif text-xl mb-2 text-[#0c0a09]">
+                        ¿Qué es el Visagismo?
+                    </h3>
+                    <p class="text-stone-700 leading-relaxed">
+                        El <strong>visagismo</strong> es la disciplina técnica que
+                        estudia las proporciones y líneas del rostro para equilibrar
+                        las facciones mediante el diseño estratégico del corte de
+                        cabello, la barba y los accesorios (como gafas). A diferencia
+                        de la "moda", el visagismo busca la armonía geométrica, no
+                        la tendencia.
+                    </p>
+                </div>
+
+                <p>
+                    Elegir un corte de cabello basándose solo en una foto de
+                    Pinterest es el error número uno del hombre moderno. Lo que
+                    le queda bien a David Beckham (Rostro Diamante) puede ser un
+                    desastre para ti si tienes un Rostro Redondo.
+                </p>
+
+                <h2 class="font-serif text-3xl mt-12 mb-6">
+                    Tabla Técnica: Cortes por Tipo de Rostro
+                </h2>
+                <div class="overflow-x-auto not-prose mb-12">
+                    <table
+                        class="w-full text-left border-collapse bg-white shadow-sm rounded-lg overflow-hidden"
+                    >
+                        <thead class="bg-[#0c0a09] text-white">
+                            <tr>
+                                <th class="p-4 font-serif font-normal"
+                                    >Tipo de Rostro</th
+                                >
+                                <th class="p-4 font-serif font-normal"
+                                    >Objetivo Visual</th
+                                >
+                                <th class="p-4 font-serif font-normal"
+                                    >Cortes Recomendados</th
+                                >
+                                <th
+                                    class="p-4 font-serif font-normal text-red-300"
+                                    >Evitar</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody
+                            class="text-sm text-stone-600 divide-y divide-stone-100"
+                        >
+                            <tr>
+                                <td class="p-4 font-bold text-[#0c0a09]"
+                                    >Redondo</td
+                                >
+                                <td class="p-4">Alargar y definir ángulos.</td>
+                                <td class="p-4"
+                                    >Pompadour, Laterales muy cortos (Fade),
+                                    Flequillo elevado.</td
+                                >
+                                <td class="p-4 bg-red-50/50"
+                                    >Flequillos rectos, volumen lateral.</td
+                                >
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-[#0c0a09]"
+                                    >Cuadrado</td
+                                >
+                                <td class="p-4"
+                                    >Suavizar la mandíbula o potenciarla.</td
+                                >
+                                <td class="p-4"
+                                    >Corte militar (Buzz cut), Undercut, Raya
+                                    lateral clásica.</td
+                                >
+                                <td class="p-4 bg-red-50/50"
+                                    >Capas desordenadas que oculten la
+                                    estructura.</td
+                                >
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-[#0c0a09]"
+                                    >Diamante</td
+                                >
+                                <td class="p-4">Equilibrar pómulos anchos.</td>
+                                <td class="p-4"
+                                    >Flequillos con textura, Cortes tijera (más
+                                    largos).</td
+                                >
+                                <td class="p-4 bg-red-50/50"
+                                    >Rapados extremos (exponen orejas).</td
+                                >
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-[#0c0a09]"
+                                    >Ovalado</td
+                                >
+                                <td class="p-4"
+                                    >Mantener la simetría natural.</td
+                                >
+                                <td class="p-4"
+                                    >Versatilidad total. Casi cualquier estilo
+                                    funciona.</td
+                                >
+                                <td class="p-4 bg-red-50/50"
+                                    >Flequillos muy largos que cubran la frente.</td
+                                >
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="font-serif text-3xl mt-12 mb-6">
+                    La importancia de la Barba
+                </h2>
+                <p>
+                    La barba es el maquillaje del hombre. Con el visagismo,
+                    usamos la barba para crear una mandíbula donde no la hay
+                    (rostros redondos) o para suavizar un mentón demasiado
+                    agresivo.
+                </p>
+
+                <div
+                    class="mt-16 pt-8 border-t border-stone-200 not-prose flex gap-6 items-start"
+                >
+                    <div
+                        class="w-16 h-16 bg-stone-200 rounded-full overflow-hidden flex-shrink-0"
+                    >
+                        <img
+                            src="/images/roger-profile.jpg"
+                            alt="Roger Murillo"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-[#0c0a09]">
+                            Sobre el Autor: Roger Murillo
+                        </h4>
+                        <p class="text-sm text-stone-500 mt-1">
+                            Consultor de imagen con más de 20 años de
+                            experiencia. Certificado en Visagismo y Colorimetría
+                            Internacional. Ha transformado la imagen de más de
+                            5.000 ejecutivos en Bogotá y Medellín.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="lg:col-span-4 space-y-8">
+                <div
+                    class="bg-[#0c0a09] text-white p-8 rounded-xl sticky top-24"
+                >
+                    <h3 class="font-serif text-2xl mb-4 text-[#d4af37]">
+                        ¿No sabes cuál es tu rostro?
+                    </h3>
+                    <p class="text-stone-300 text-sm mb-6">
+                        No adivines. Usa nuestra IA para escanear tus
+                        proporciones y obtener un diagnóstico preciso.
+                    </p>
+                    <a href="/herramientas/calculadora-rostro">
+                        <Button
+                            className="w-full bg-white text-black hover:bg-[#d4af37]"
+                        >
+                            Usar Calculadora Facial
+                        </Button>
+                    </a>
+                </div>
+
+                <div
+                    class="bg-stone-50 border border-stone-200 p-8 rounded-xl text-center"
+                >
+                    <h4 class="font-serif text-xl mb-4">La teoría es el 50%</h4>
+                    <p class="text-sm text-stone-600 mb-6">
+                        La ejecución es el resto. Agenda tu diseño de corte
+                        visagista en nuestro estudio privado.
+                    </p>
+                    <a href="/servicios/visagismo-corte">
+                        <Button
+                            variant="outline"
+                            className="w-full border-black hover:bg-black hover:text-white"
+                        >
+                            Agendar Cita en Bogotá
+                        </Button>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </article>
+</MainLayout>

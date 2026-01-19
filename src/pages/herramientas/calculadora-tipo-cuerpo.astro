@@ -1,0 +1,21 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+
+const seoData = {
+    title: "Calculadora de Tipo de Cuerpo | Roger Murillo",
+    description:
+        "Descubre tu tipo de cuerpo (Triángulo, Rectángulo, etc) con nuestra calculadora.",
+    h1: "Calculadora de Morfología Corporal",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-20 px-6 max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl font-serif text-primary mb-8">{seoData.h1}</h1>
+        <p class="text-xl text-muted-foreground mb-12">
+            Herramienta interactiva próximamente.
+        </p>
+        <Button variant="outline">Volver a Herramientas</Button>
+    </section>
+</MainLayout>

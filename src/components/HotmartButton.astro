@@ -1,0 +1,64 @@
+---
+import AnimeColorIcon from "./ui/AnimeColorIcon.astro";
+
+const { link, price, label = "Comprar Ahora", class: className } = Astro.props;
+
+// Añadimos parámetros de rastreo para Hotmart Analytics
+// Esto permite saber en Hotmart que la venta vino de la web ("src=website")
+// Verificamos si el link ya tiene parámetros para saber si usar ? o &
+const separator = link.includes("?") ? "&" : "?";
+const trackedLink = `${link}${separator}src=rogermurillo_website_pdp`;
+---
+
+<a
+    href={trackedLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`flex items-center justify-center gap-3 w-full bg-brand-primary text-white font-bold uppercase tracking-widest py-4 px-8 hover:bg-brand-black transition-all duration-300 shadow-lg shadow-brand-primary/20 group rounded-sm ${className}`}
+>
+    <span>{label}</span>
+    <!-- Icono de Candado para generar confianza (Trust Signal) -->
+    <AnimeColorIcon
+        hoverColor="#FFD700"
+        duration={600}
+        initialColor="#FFFFFF70"
+    >
+        <svg
+            class="w-4 h-4 text-white/70 transition-colors"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+            ></path>
+        </svg>
+    </AnimeColorIcon>
+</a>
+
+<!-- Microcopy de seguridad debajo del botón -->
+<div
+    class="mt-3 flex items-center justify-center gap-2 text-[10px] text-gray-400 uppercase tracking-wider"
+>
+    <span class="flex items-center gap-1">
+        <svg
+            class="w-3 h-3 text-green-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+        >
+        Pago Seguro
+    </span>
+    <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+    <span>Garantía 7 días</span>
+    <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+    <span>Acceso Inmediato</span>
+</div>

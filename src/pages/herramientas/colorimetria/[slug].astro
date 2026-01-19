@@ -1,0 +1,110 @@
+---
+// 1. Importamos los datos (El Cerebro)
+import seasons from "../../../data/color_seasons.json";
+import MainLayout from "../../../layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button"; // Shadcn
+
+// 2. getStaticPaths: Le dice a Astro qué páginas construir en el build time
+export async function getStaticPaths() {
+    return seasons.map((season) => ({
+        params: { slug: season.slug },
+        props: { season },
+    }));
+}
+
+// 3. Recibimos los datos para ESTA página específica
+const { season } = Astro.props;
+
+// 4. Lógica de colores para Tailwind (Estilos dinámicos)
+const bgStyle = { backgroundColor: season.palette.best_colors[0] + "20" }; // 20 es opacidad hex
+---
+
+<MainLayout title={season.seo_title} description={season.description}>
+    <section class="py-20 px-4 text-center" style={bgStyle}>
+        <h1
+            class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4"
+        >
+            {season.name}
+        </h1>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-8 font-light">
+            {season.description}
+        </p>
+
+        <div
+            class="bg-white p-6 rounded-lg shadow-sm max-w-lg mx-auto border border-gray-100"
+        >
+            <p class="text-sm uppercase tracking-widest text-gray-500 mb-2">
+                Diagnóstico
+            </p>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                ¿Quieres confirmar si esta es tu estación?
+            </h3>
+            <Button className="w-full bg-black text-white hover:bg-gray-800">
+                Agendar Análisis Profesional
+            </Button>
+        </div>
+    </section>
+
+    <section class="py-16 max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-serif mb-8 text-center text-luxury-sand">
+            Tu Paleta de Poder
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {
+                season.palette.best_colors.map((color) => (
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-24 h-24 rounded-full shadow-md mb-2 transition-transform transform group-hover:scale-110"
+                            style={{ backgroundColor: color }}
+                        />
+                        <span class="text-xs text-gray-500 font-mono">
+                            {color}
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl font-serif mb-6 text-gray-900">
+                Colores que Apagan tu Luz
+            </h2>
+            <p class="mb-6 text-gray-600">
+                Para un perfil {season.name}, estos colores pueden hacerte ver
+                cansado o resaltar imperfecciones:
+            </p>
+            <div class="flex gap-4">
+                {
+                    season.palette.avoid_colors.map((color) => (
+                        <div
+                            class="w-16 h-16 rounded-md shadow-inner"
+                            style={{ backgroundColor: color }}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-serif mb-6 text-luxury-sand">
+            Características
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="font-semibold text-luxury-gold mb-2">Piel</h3>
+                <p class="text-luxury-sand/80">{season.characteristics.skin}</p>
+            </div>
+            <div>
+                <h3 class="font-semibold text-luxury-gold mb-2">Pelo</h3>
+                <p class="text-luxury-sand/80">{season.characteristics.hair}</p>
+            </div>
+            <div>
+                <h3 class="font-semibold text-luxury-gold mb-2">Ojos</h3>
+                <p class="text-luxury-sand/80">{season.characteristics.eyes}</p>
+            </div>
+        </div>
+    </section>
+</MainLayout>

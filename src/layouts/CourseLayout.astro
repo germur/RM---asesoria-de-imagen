@@ -1,0 +1,133 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import {
+    CheckCircle2,
+    Star,
+    ShieldCheck,
+    PlayCircle,
+    BookOpen,
+} from "lucide-react";
+
+const { frontmatter } = Astro.props;
+const {
+    title,
+    subtitle,
+    price,
+    description,
+    modules,
+    benefits,
+    image,
+    buyLink,
+} = frontmatter;
+
+const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: title,
+    description: description,
+    provider: {
+        "@type": "Organization",
+        name: "Roger Murillo Academy",
+    },
+    offers: {
+        "@type": "Offer",
+        price: price.replace(/\D/g, ""),
+        priceCurrency: "USD",
+        url: buyLink || "#",
+    },
+};
+---
+
+<MainLayout
+    title={`${title} | Roger Murillo Academy`}
+    description={description}
+    schema={JSON.stringify(courseSchema)}
+>
+    <section
+        class="relative pt-32 pb-20 bg-brand-black text-white overflow-hidden"
+    >
+        <div
+            class="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 mix-blend-overlay"
+        >
+        </div>
+        <div
+            class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16"
+        >
+            <div class="w-full md:w-1/2">
+                <span
+                    class="inline-block py-1 px-3 border border-brand-primary/50 text-brand-primary text-xs font-bold uppercase tracking-[0.3em] mb-6 rounded-sm bg-brand-primary/10"
+                >
+                    Curso Online
+                </span>
+                <h1 class="font-serif text-5xl md:text-6xl mb-6 leading-tight">
+                    {title}
+                </h1>
+                <p
+                    class="text-xl text-gray-400 font-light mb-8 leading-relaxed"
+                >
+                    {subtitle}
+                </p>
+                <div class="flex items-center gap-6 mb-10">
+                    <span class="text-3xl font-serif text-white">{price}</span>
+                    <a
+                        href={buyLink}
+                        class="bg-brand-primary text-white px-8 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-brand-primary transition-all rounded-sm shadow-lg shadow-brand-primary/20"
+                    >
+                        Inscribirse Ahora
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 relative group">
+                <div
+                    class="absolute inset-0 bg-brand-primary/20 blur-3xl rounded-full transform scale-75 group-hover:scale-100 transition-transform duration-700"
+                >
+                </div>
+                <img
+                    src={image}
+                    alt={title}
+                    class="relative w-full rounded-sm shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-700 object-cover aspect-video"
+                />
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="font-serif text-3xl mb-12 text-brand-black text-center">
+                Lo que lograrás
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                {
+                    benefits.map((benefit) => (
+                        <div class="flex gap-4">
+                            <CheckCircle2 className="w-6 h-6 text-brand-primary shrink-0" />
+                            <p class="text-slate-600 font-light">{benefit}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-gray">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="font-serif text-3xl mb-12 text-brand-black text-center">
+                Contenido del Curso
+            </h2>
+            <div
+                class="bg-white rounded-sm shadow-sm border border-gray-100 overflow-hidden"
+            >
+                {
+                    modules.map((mod, index) => (
+                        <div class="border-b border-gray-100 last:border-0 p-6 hover:bg-gray-50 transition-colors flex items-center gap-4">
+                            <span class="text-brand-primary font-bold text-lg opacity-50">
+                                0{index + 1}
+                            </span>
+                            <p class="text-brand-black font-medium">{mod}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</MainLayout>

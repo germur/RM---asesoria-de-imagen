@@ -1,0 +1,33 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+
+const seoData = {
+    title: "Curso de Colorimetría Profesional para Asesores | Roger Murillo",
+    description:
+        "Certifícate en el método de las 12 estaciones. Curso avanzado para estilistas y asesores de imagen.",
+    h1: "Domina la Ciencia del Color: Curso Profesional",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-24 px-6 max-w-4xl mx-auto text-center">
+        <span
+            class="bg-accent/10 text-accent px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
+        >
+            Academia RM
+        </span>
+        <h1
+            class="text-5xl md:text-6xl font-serif text-primary mt-6 mb-8 leading-tight"
+        >
+            {seoData.h1}
+        </h1>
+        <p class="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Deja de adivinar. Aprende a diagnosticar con precisión matemática
+            usando el sistema de 12 estaciones.
+        </p>
+        <Button size="lg" className="bg-primary text-white">
+            Unirme a la Lista de Espera
+        </Button>
+    </section>
+</MainLayout>

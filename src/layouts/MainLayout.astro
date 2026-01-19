@@ -1,0 +1,49 @@
+---
+import BaseHead from "../components/seo/BaseHead.astro";
+import Navbar from "../components/ui/Navbar.astro";
+import Footer from "../components/ui/Footer.astro";
+import CookieConsent from "../components/ui/CookieConsent.astro";
+import Breadcrumbs from "../components/ui/Breadcrumbs.astro";
+import { cn } from "../lib/utils";
+
+interface Props {
+    title: string;
+    description: string;
+    class?: string;
+    schema?: string;
+}
+
+const { title, description, class: className, schema } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+    <head>
+        <BaseHead title={title} description={description} schema={schema} />
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Google Fonts End -->
+    </head>
+    <body
+        class={cn(
+            "min-h-screen bg-luxury-black text-luxury-sand font-sans antialiased flex flex-col",
+            className,
+        )}
+    >
+        <Navbar />
+
+        <Breadcrumbs />
+
+        <main class="flex-1 w-full">
+            <slot />
+        </main>
+
+        <Footer />
+        <CookieConsent />
+    </body>
+</html>

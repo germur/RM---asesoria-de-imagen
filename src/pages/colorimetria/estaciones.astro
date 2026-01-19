@@ -1,0 +1,129 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import seasons from "../../data/color_seasons.json"; // Importamos la data que ya creamos
+
+const seoData = {
+    title: "Las 12 Estaciones de Colorimetría | Guía Completa Roger Murillo",
+    description:
+        "Descubre las características de cada estación: Invierno, Verano, Otoño y Primavera. Aprende a identificar tu paleta de colores ideal.",
+    h1: "Las 12 Estaciones del Color: El Mapa de tu Belleza",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-20 px-6 max-w-6xl mx-auto text-center">
+        <span class="text-xs font-bold tracking-widest text-[#d4af37] uppercase"
+            >Sub-Cluster: Teoría del Color</span
+        >
+        <h1 class="text-4xl md:text-6xl font-serif text-primary mt-4 mb-8">
+            {seoData.h1}
+        </h1>
+        <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-16">
+            La teoría estacional divide la belleza en 4 grupos principales y 12
+            subgrupos específicos. Encuentra el tuyo para dejar de gastar en
+            ropa que no te favorece.
+        </p>
+
+        <div class="grid md:grid-cols-4 gap-8 text-left">
+            <div class="space-y-4">
+                <h3 class="text-2xl font-serif border-b border-gray-200 pb-2">
+                    Invierno
+                </h3>
+                <ul class="space-y-3">
+                    {
+                        seasons
+                            .filter((s) => s.id.includes("invierno"))
+                            .map((s) => (
+                                <li>
+                                    <a
+                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        class="group flex items-center justify-between text-muted-foreground hover:text-primary"
+                                    >
+                                        {s.name}{" "}
+                                        <span class="opacity-0 group-hover:opacity-100 transition-opacity">
+                                            →
+                                        </span>
+                                    </a>
+                                </li>
+                            ))
+                    }
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-2xl font-serif border-b border-gray-200 pb-2">
+                    Verano
+                </h3>
+                <ul class="space-y-3">
+                    {
+                        seasons
+                            .filter((s) => s.id.includes("verano"))
+                            .map((s) => (
+                                <li>
+                                    <a
+                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        class="group flex items-center justify-between text-muted-foreground hover:text-primary"
+                                    >
+                                        {s.name}{" "}
+                                        <span class="opacity-0 group-hover:opacity-100 transition-opacity">
+                                            →
+                                        </span>
+                                    </a>
+                                </li>
+                            ))
+                    }
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-2xl font-serif border-b border-gray-200 pb-2">
+                    Otoño
+                </h3>
+                <ul class="space-y-3">
+                    {
+                        seasons
+                            .filter((s) => s.id.includes("otono"))
+                            .map((s) => (
+                                <li>
+                                    <a
+                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        class="group flex items-center justify-between text-muted-foreground hover:text-primary"
+                                    >
+                                        {s.name}{" "}
+                                        <span class="opacity-0 group-hover:opacity-100 transition-opacity">
+                                            →
+                                        </span>
+                                    </a>
+                                </li>
+                            ))
+                    }
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-2xl font-serif border-b border-gray-200 pb-2">
+                    Primavera
+                </h3>
+                <ul class="space-y-3">
+                    {
+                        seasons
+                            .filter((s) => s.id.includes("primavera"))
+                            .map((s) => (
+                                <li>
+                                    <a
+                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        class="group flex items-center justify-between text-muted-foreground hover:text-primary"
+                                    >
+                                        {s.name}{" "}
+                                        <span class="opacity-0 group-hover:opacity-100 transition-opacity">
+                                            →
+                                        </span>
+                                    </a>
+                                </li>
+                            ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+</MainLayout>

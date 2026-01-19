@@ -1,0 +1,35 @@
+---
+// 1. Importar la Data
+import visagismoData from "../../../../data/visagismo.json";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import { Check, X } from "lucide-react";
+
+// 2. Generar Rutas Estáticas (Combinatoria)
+export async function getStaticPaths() {
+    const paths: any[] = [];
+
+    visagismoData.forEach((rostro) => {
+        rostro.categories.forEach((cat) => {
+            paths.push({
+                params: {
+                    rostro: rostro.slug,
+                    categoria: cat.type,
+                },
+                props: { rostro, categoriaData: cat },
+            });
+        });
+    });
+
+    return paths;
+}
+
+// 3. Recibir las Props para renderizar
+const { rostro, categoriaData } = Astro.props;
+
+// SEO Dinámico
+const pageTitle = `${categoriaData.title} | Guía ${new Date().getFullYear()}`;
+const metaDesc = `Descubre los mejores ${categoriaData.type.replace("-", " ")} para ${rostro.name}. ${categoriaData.advice} Guía experta de Roger Murillo.`;
+---
+
+<MainLayout title={pageTitle} description={metaDesc} />

@@ -1,0 +1,65 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const seoData = {
+    title: "Quiet Luxury y Estilo Ejecutivo | Guía de Marca Personal",
+    description:
+        "Cómo proyectar poder sin ostentación. La guía definitiva del Quiet Luxury para ejecutivos en Bogotá. Calidad, texturas y semiótica.",
+    h1: "Quiet Luxury: El Arte de la Autoridad Silenciosa",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <article class="max-w-3xl mx-auto py-24 px-6 prose prose-lg prose-stone">
+        <span class="text-xs font-bold tracking-widest text-primary uppercase"
+            >Tendencia & Estrategia</span
+        >
+        <h1 class="font-serif text-5xl mt-4 mb-10">{seoData.h1}</h1>
+
+        <p class="lead text-xl text-gray-600 italic">
+            "El dinero grita, la riqueza susurra". En el mundo corporativo
+            actual, los logotipos gigantes han muerto. La autoridad se construye
+            con cortes impecables y materiales nobles.
+        </p>
+
+        <h2>¿Qué es el Quiet Luxury en el entorno laboral?</h2>
+        <p>
+            No se trata de comprar la marca más cara, sino la que mejor te
+            queda. El Quiet Luxury es una estrategia de imagen basada en la
+            inversión inteligente: pocas prendas, de altísima calidad, que
+            combinan entre sí y proyectan una imagen de control y sofisticación.
+        </p>
+
+        <h3>Las 3 Reglas de Oro</h3>
+        <ul>
+            <li>
+                <strong>Ajuste (Fit):</strong> Un traje de $5,000 dólares que te queda
+                grande se ve peor que uno de $500 ajustado por un sastre (Visagismo).
+            </li>
+            <li>
+                <strong>Paleta Neutra:</strong> Los tonos tierra, azules profundos,
+                grises y crema comunican estabilidad.
+            </li>
+            <li>
+                <strong>Ausencia de Logos:</strong> Tu cara es la marca, no tu camisa.
+            </li>
+        </ul>
+
+        <div class="my-12 p-8 bg-stone-100 border-l-4 border-[#d4af37]">
+            <h4 class="font-serif text-2xl mb-4 mt-0">
+                Auditoría de Lujo Silencioso
+            </h4>
+            <p class="mb-4">
+                ¿Tu armario actual proyecta tu nivel de ingresos o te hace ver
+                como un aspirante?
+            </p>
+            <a href="/servicios/imagen-ejecutiva" class="no-underline">
+                <button
+                    class="bg-black text-white px-6 py-3 rounded uppercase text-sm font-bold tracking-wide hover:bg-gray-800 transition"
+                >
+                    Agendar Evaluación B2B
+                </button>
+            </a>
+        </div>
+    </article>
+</MainLayout>

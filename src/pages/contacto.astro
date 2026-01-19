@@ -1,0 +1,251 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import QualificationForm from "../components/react/QualificationForm";
+import { MapPin, Clock, Phone, MessageCircle } from "lucide-react";
+
+// Schema SEO para Página de Contacto y Negocio Local
+const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    mainEntity: {
+        "@type": "LocalBusiness",
+        name: "Roger Murillo Asesoría de Imagen",
+        image: "https://rogermurillo.co/logo.png",
+        telephone: "+573000000000",
+        email: "contacto@rogermurillo.co",
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "Calle 161 con Av. Boyacá",
+            addressLocality: "Bogotá",
+            addressRegion: "Cundinamarca",
+            addressCountry: "CO",
+        },
+        openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+            ],
+            opens: "09:00",
+            closes: "19:00",
+        },
+    },
+};
+---
+
+<MainLayout
+    title="Contacto y Agendamiento | Roger Murillo"
+    description="Agenda tu cita de valoración o consultoría de imagen en Bogotá. Estudio privado a puerta cerrada. Contacto directo."
+    schema={contactSchema}
+>
+    <section
+        class="pt-32 pb-20 bg-brand-black text-white text-center border-b border-brand-primary/20"
+    >
+        <div class="container mx-auto px-6">
+            <span
+                class="text-brand-primary font-bold tracking-[0.2em] uppercase text-xs mb-6 block"
+            >
+                Estudio Privado
+            </span>
+            <h1 class="font-serif text-5xl md:text-7xl mb-6">
+                Hablemos de tu Imagen
+            </h1>
+            <p class="text-gray-400 max-w-xl mx-auto font-light text-lg">
+                La transformación comienza con una decisión. Reserva tu espacio
+                en nuestra agenda exclusiva al norte de Bogotá.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-gray relative">
+        <div
+            class="absolute top-0 right-0 w-full lg:w-1/3 h-full bg-white hidden lg:block"
+        >
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 xl:gap-24">
+                <div class="w-full lg:w-1/2 pt-4">
+                    <h2 class="font-serif text-3xl text-brand-black mb-12">
+                        Información del Estudio
+                    </h2>
+
+                    <div class="space-y-10 mb-16">
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm shrink-0"
+                            >
+                                <MapPin />
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-bold text-brand-black uppercase text-xs tracking-widest mb-2"
+                                >
+                                    Ubicación
+                                </h4>
+                                <p
+                                    class="text-slate-600 leading-relaxed font-light"
+                                >
+                                    Calle 161 con Av. Boyacá (Colina Campestre)<br
+                                    />
+                                    Bogotá, Colombia<br />
+                                    <span
+                                        class="text-xs text-brand-primary font-bold mt-2 block"
+                                        >* Ingreso con código de seguridad.</span
+                                    >
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm shrink-0"
+                            >
+                                <Clock />
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-bold text-brand-black uppercase text-xs tracking-widest mb-2"
+                                >
+                                    Horario de Atención
+                                </h4>
+                                <p
+                                    class="text-slate-600 leading-relaxed font-light"
+                                >
+                                    Lunes a Sábado: 9:00 AM – 7:00 PM<br />
+                                    Domingos y Festivos: Cerrado
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm shrink-0"
+                            >
+                                <MessageCircle />
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-bold text-brand-black uppercase text-xs tracking-widest mb-2"
+                                >
+                                    Contacto Rápido
+                                </h4>
+                                <p
+                                    class="text-slate-600 leading-relaxed font-light mb-4"
+                                >
+                                    ¿Consultas urgentes? Escríbenos
+                                    directamente.
+                                </p>
+                                <a
+                                    href="https://wa.me/573000000000?text=Hola,%20quisiera%20agendar%20una%20cita"
+                                    target="_blank"
+                                    class="inline-flex items-center gap-3 px-6 py-3 bg-[#25D366] text-white font-bold rounded-sm hover:bg-[#128C7E] transition-colors shadow-md text-sm uppercase tracking-wider"
+                                >
+                                    <MessageCircle size={18} /> Chat en WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="w-full h-80 bg-gray-200 border-4 border-white shadow-xl overflow-hidden relative group rounded-sm"
+                    >
+                        <div
+                            class="absolute inset-0 bg-brand-black/10 group-hover:bg-transparent transition-colors pointer-events-none z-10"
+                        >
+                        </div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.336427384784!2d-74.05649962416174!3d4.711099541589136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f854666d925ad%3A0x673997e0b25d070!2sAv.%20Boyac%C3%A1%20%26%20Cl.%20161%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1709823456789!5m2!1ses!2sco"
+                            width="100%"
+                            height="100%"
+                            style="border:0; filter: grayscale(100%);"
+                            allowfullscreen=""
+                            loading="lazy"
+                            class="group-hover:filter-none transition-all duration-700"
+                        ></iframe>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 -mt-12 lg:mt-0 relative z-20">
+                    <QualificationForm client:load />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+            <h3 class="font-serif text-3xl text-brand-black mb-10">
+                Dudas Frecuentes
+            </h3>
+            <div class="space-y-4 text-left">
+                <details
+                    class="bg-brand-gray p-6 rounded-sm cursor-pointer group"
+                >
+                    <summary
+                        class="font-bold flex justify-between items-center list-none text-brand-black"
+                    >
+                        ¿Cuál es el costo de la valoración inicial?
+                        <span
+                            class="text-brand-primary group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
+                    </summary>
+                    <p
+                        class="text-sm text-slate-600 mt-3 pl-4 border-l-2 border-brand-primary"
+                    >
+                        La valoración tiene un costo que funciona como depósito.
+                        Si decides tomar el servicio completo, este valor se
+                        deduce del total.
+                    </p>
+                </details>
+
+                <details
+                    class="bg-brand-gray p-6 rounded-sm cursor-pointer group"
+                >
+                    <summary
+                        class="font-bold flex justify-between items-center list-none text-brand-black"
+                    >
+                        ¿Puedo ir acompañado/a?
+                        <span
+                            class="text-brand-primary group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
+                    </summary>
+                    <p
+                        class="text-sm text-slate-600 mt-3 pl-4 border-l-2 border-brand-primary"
+                    >
+                        Debido al protocolo "A Puerta Cerrada", priorizamos la
+                        privacidad del cliente. Se permite un acompañante máximo
+                        si es estrictamente necesario.
+                    </p>
+                </details>
+
+                <details
+                    class="bg-brand-gray p-6 rounded-sm cursor-pointer group"
+                >
+                    <summary
+                        class="font-bold flex justify-between items-center list-none text-brand-black"
+                    >
+                        ¿Cómo debo ir vestido/a?
+                        <span
+                            class="text-brand-primary group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
+                    </summary>
+                    <p
+                        class="text-sm text-slate-600 mt-3 pl-4 border-l-2 border-brand-primary"
+                    >
+                        Ven como te vistes normalmente en tu día a día. Esto nos
+                        ayuda a tener un punto de partida real para el
+                        diagnóstico.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+</MainLayout>

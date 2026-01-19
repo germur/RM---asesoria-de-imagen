@@ -1,0 +1,68 @@
+---
+import { CaretRight, House } from "@phosphor-icons/react";
+
+const { pathname } = Astro.url;
+const segments = pathname.split("/").filter(Boolean);
+
+// Mapa de nombres legibles para rutas
+const routeNames: Record<string, string> = {
+    herramientas: "Diagnóstico",
+    servicios: "Servicios",
+    academia: "Academia",
+    contacto: "Contacto",
+    libro: "Libro",
+    "test-colorimetria": "Test de Color",
+};
+
+// No mostrar breadcrumbs en home
+if (pathname === "/") return null;
+---
+
+<nav aria-label="Breadcrumb" class="container mx-auto px-6 pt-24 pb-4">
+    <ol
+        class="flex items-center space-x-2 text-xs uppercase tracking-widest text-gray-500 font-medium"
+    >
+        <li>
+            <a
+                href="/"
+                class="hover:text-brand-primary transition-colors flex items-center gap-1"
+            >
+                <House weight="bold" size={14} />
+                <span class="sr-only">Inicio</span>
+            </a>
+        </li>
+
+        {
+            segments.map((segment, index) => {
+                const isLast = index === segments.length - 1;
+                const href = `/${segments.slice(0, index + 1).join("/")}`;
+                const name = routeNames[segment] || segment.replace(/-/g, " ");
+
+                return (
+                    <>
+                        <li class="text-gray-400">
+                            <CaretRight size={12} weight="bold" />
+                        </li>
+                        <li>
+                            {isLast ? (
+                                <span
+                                    class="text-brand-primary font-bold"
+                                    aria-current="page"
+                                >
+                                    {name}
+                                </span>
+                            ) : (
+                                <a
+                                    href={href}
+                                    class="hover:text-brand-primary transition-colors"
+                                >
+                                    {name}
+                                </a>
+                            )}
+                        </li>
+                    </>
+                );
+            })
+        }
+    </ol>
+</nav>

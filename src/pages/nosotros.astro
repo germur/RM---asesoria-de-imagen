@@ -1,0 +1,313 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { ShieldCheck, Lock, Clock, Users } from "lucide-react";
+
+// Schema para Google (EEAT 2.0 - Doble Autoridad)
+const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Roger Murillo & Adriana Garzón - Consultoría de Imagen",
+    url: "https://rogermurillo.co/nosotros",
+    image: "https://rogermurillo.co/images/roger-adriana-duo.jpg",
+    founder: [
+        {
+            "@type": "Person",
+            name: "Roger Murillo",
+            jobTitle: "Director Creativo & Estratega de Imagen",
+            description: "Especialista en Visagismo y Arquitectura Facial.",
+        },
+        {
+            "@type": "Person",
+            name: "Adriana Garzón",
+            jobTitle: "Consultora Senior & Especialista en Colorimetría",
+            description: "Experta en salud capilar y diseño de color.",
+        },
+    ],
+    description:
+        "Firma de consultoría de imagen estratégica en Bogotá. Especialistas en visagismo, colorimetría y proyección ejecutiva.",
+};
+---
+
+<MainLayout
+    title="La Firma | Roger Murillo & Adriana Garzón"
+    description="Conoce a los arquitectos de tu imagen. Roger Murillo y Adriana Garzón combinan ciencia, arte y estrategia para potenciar líderes."
+    schema={organizationSchema}
+>
+    <section
+        class="relative pt-32 pb-24 bg-brand-black text-white overflow-hidden"
+    >
+        <div
+            class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-primary/10 to-transparent"
+        >
+        </div>
+
+        <div
+            class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center"
+        >
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 mb-6 border-l-4 border-brand-primary pl-4 animate-fade-in-up"
+                >
+                    <span
+                        class="text-brand-primary font-bold tracking-[0.2em] uppercase text-xs"
+                    >
+                        Nuestra Filosofía
+                    </span>
+                </div>
+
+                <h1
+                    class="font-serif text-5xl md:text-7xl leading-tight mb-8 animate-fade-in-up delay-100"
+                >
+                    No cambiamos tu apariencia. <br />
+                    <span class="text-gray-400 italic"
+                        >Revelamos tu autoridad.</span
+                    >
+                </h1>
+
+                <div
+                    class="border-l border-white/20 pl-8 mt-8 animate-fade-in-up delay-200"
+                >
+                    <p class="text-xl text-gray-300 font-light leading-relaxed">
+                        La imagen no es vanidad, es semiótica. En un mundo donde
+                        se juzga en 7 segundos, tu presencia es tu primera
+                        herramienta de negociación. Nosotros no seguimos
+                        tendencias; aplicamos <strong
+                            class="text-white font-medium"
+                            >antropometría, ciencia del color y estrategia</strong
+                        >
+                        para alinear lo que eres con lo que proyectas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative h-[500px] border border-white/10 p-2">
+                <img
+                    src="/images/studio-abstract-bw.jpg"
+                    alt="Estudio de Imagen Roger Murillo"
+                    class="w-full h-full object-cover grayscale contrast-125"
+                />
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-center mb-32">
+                <div class="w-full md:w-1/2 relative group">
+                    <div
+                        class="absolute top-4 left-4 w-full h-full border-2 border-brand-black -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"
+                    >
+                    </div>
+                    <img
+                        src="/images/roger-portrait-bw.jpg"
+                        alt="Roger Murillo"
+                        class="relative w-full h-[600px] object-cover grayscale filter contrast-125 z-10 shadow-xl"
+                    />
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    <h2 class="font-serif text-5xl text-brand-black mb-2">
+                        Roger Murillo
+                    </h2>
+                    <span
+                        class="text-brand-primary text-xs font-bold uppercase tracking-widest mb-8 block flex items-center gap-2"
+                    >
+                        <span class="w-8 h-[1px] bg-brand-primary"></span> El Estratega
+                    </span>
+
+                    <p
+                        class="text-slate-600 mb-6 leading-relaxed text-lg font-light"
+                    >
+                        Con más de dos décadas en la industria, Roger trascendió
+                        la peluquería tradicional para fundar una metodología
+                        basada en la <strong>arquitectura del rostro</strong>.
+                        Su enfoque no es "cortar cabello", es diseñar líneas
+                        geométricas que corrijan proporciones y proyecten
+                        carácter.
+                    </p>
+                    <p
+                        class="text-slate-600 mb-8 leading-relaxed text-lg font-light"
+                    >
+                        Es el cerebro detrás del concepto <em
+                            >"A Puerta Cerrada"</em
+                        >, entendiendo que el verdadero lujo para un ejecutivo
+                        es la privacidad y la personalización absoluta.
+                    </p>
+
+                    <div class="space-y-3 border-t border-gray-100 pt-6">
+                        <div class="flex items-center gap-3">
+                            <ShieldCheck class="w-5 h-5 text-brand-black" />
+                            <span
+                                class="text-sm font-bold text-brand-black uppercase tracking-wide"
+                                >Creador del Método MAES</span
+                            >
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <Users class="w-5 h-5 text-brand-black" />
+                            <span
+                                class="text-sm font-bold text-brand-black uppercase tracking-wide"
+                                >Especialista en Imagen Ejecutiva</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse gap-16 items-center">
+                <div class="w-full md:w-1/2 relative group">
+                    <div
+                        class="absolute top-4 right-4 w-full h-full border-2 border-brand-primary -z-10 transition-transform group-hover:-translate-x-2 group-hover:translate-y-2"
+                    >
+                    </div>
+                    <img
+                        src="/images/adriana-portrait-bw.jpg"
+                        alt="Adriana Garzón"
+                        class="relative w-full h-[600px] object-cover grayscale filter contrast-125 z-10 shadow-xl"
+                    />
+                </div>
+
+                <div class="w-full md:w-1/2 text-left md:text-right">
+                    <h2 class="font-serif text-5xl text-brand-black mb-2">
+                        Adriana Garzón
+                    </h2>
+                    <span
+                        class="text-brand-primary text-xs font-bold uppercase tracking-widest mb-8 block flex items-center gap-2 justify-start md:justify-end"
+                    >
+                        La Especialista <span
+                            class="w-8 h-[1px] bg-brand-primary"></span>
+                    </span>
+
+                    <p
+                        class="text-slate-600 mb-6 leading-relaxed text-lg font-light"
+                    >
+                        Adriana aporta la precisión técnica y la visión integral
+                        al equipo. Su dominio de la <strong
+                            >Colorimetría Avanzada</strong
+                        > y el cuidado capilar transforma no solo cómo te ves, sino
+                        la salud real de tu imagen.
+                    </p>
+                    <p
+                        class="text-slate-600 mb-8 leading-relaxed text-lg font-light"
+                    >
+                        Su enfoque se centra en la <strong
+                            >coherencia estética</strong
+                        >: asegurar que el color, la textura y el estilo
+                        comuniquen el mismo mensaje de sofisticación. Es la
+                        experta en traducir códigos de vestimenta para la mujer
+                        contemporánea y el hombre moderno.
+                    </p>
+
+                    <div
+                        class="space-y-3 border-t border-gray-100 pt-6 flex flex-col items-start md:items-end"
+                    >
+                        <div class="flex items-center gap-3 flex-row-reverse">
+                            <ShieldCheck class="w-5 h-5 text-brand-black" />
+                            <span
+                                class="text-sm font-bold text-brand-black uppercase tracking-wide"
+                                >Máster en Colorimetría</span
+                            >
+                        </div>
+                        <div class="flex items-center gap-3 flex-row-reverse">
+                            <Users class="w-5 h-5 text-brand-black" />
+                            <span
+                                class="text-sm font-bold text-brand-black uppercase tracking-wide"
+                                >Consultora de Imagen Femenina</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-gray relative overflow-hidden">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] md:text-[20rem] font-serif text-white pointer-events-none opacity-50 font-bold whitespace-nowrap"
+        >
+            PRIVATE
+        </div>
+
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="text-center mb-16">
+                <Lock class="w-12 h-12 mx-auto text-brand-primary mb-6" />
+                <h2
+                    class="font-serif text-4xl md:text-5xl text-brand-black mb-6"
+                >
+                    Por qué "A Puerta Cerrada"
+                </h2>
+                <p
+                    class="text-slate-600 text-xl leading-relaxed max-w-2xl mx-auto font-light"
+                >
+                    Decidimos romper con el modelo de "peluquería ruidosa". La
+                    consultoría de imagen requiere intimidad, silencio y foco.
+                    En nuestro estudio privado, no eres un turno más. <br
+                    /><strong>Eres el único foco de atención.</strong>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white p-10 border-t-4 border-brand-black shadow-lg hover:-translate-y-2 transition-transform duration-300"
+                >
+                    <h3 class="font-serif text-2xl mb-4 text-brand-black">
+                        Privacidad Total
+                    </h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Sin vitrinas a la calle. Sin miradas indiscretas. Ideal
+                        para figuras públicas y ejecutivos que valoran su
+                        discreción por encima de todo.
+                    </p>
+                </div>
+                <div
+                    class="bg-white p-10 border-t-4 border-brand-primary shadow-lg hover:-translate-y-2 transition-transform duration-300 transform md:scale-105 z-10"
+                >
+                    <h3 class="font-serif text-2xl mb-4 text-brand-black">
+                        Atención 1 a 1
+                    </h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Roger y Adriana dedicados exclusivamente a tu análisis
+                        durante tu sesión. Sin asistentes junior haciendo el
+                        trabajo importante.
+                    </p>
+                </div>
+                <div
+                    class="bg-white p-10 border-t-4 border-brand-black shadow-lg hover:-translate-y-2 transition-transform duration-300"
+                >
+                    <h3 class="font-serif text-2xl mb-4 text-brand-black">
+                        Sin Esperas
+                    </h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Tu tiempo es dinero. Agendamos con márgenes amplios para
+                        garantizar puntualidad suiza. Cuando llegas, empezamos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-black text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="font-serif text-4xl md:text-5xl mb-8 leading-tight">
+                ¿Listo para elevar tu estándar?
+            </h2>
+            <p class="mb-12 text-gray-400 text-lg max-w-xl mx-auto font-light">
+                La agenda de Roger y Adriana es limitada debido a la naturaleza
+                exclusiva del servicio.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a
+                    href="/servicios"
+                    class="bg-brand-primary text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-brand-secondary transition-all shadow-lg rounded-sm"
+                >
+                    Ver Servicios
+                </a>
+                <a
+                    href="/contacto"
+                    class="border border-white/30 text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all rounded-sm"
+                >
+                    Solicitar Cita
+                </a>
+            </div>
+        </div>
+    </section>
+</MainLayout>

@@ -1,0 +1,458 @@
+[
+    {
+        "id": "invierno-profundo",
+        "name": "Invierno Profundo (Deep Winter)",
+        "slug": "paleta-invierno-profundo",
+        "seo_title": "Paleta Invierno Profundo: Colores, Maquillaje y Estilo",
+        "description": "Tu imagen es intensa y misteriosa. Tienes un alto contraste y oscuridad en tus rasgos.",
+        "characteristics": {
+            "skin": "Neutro-fría, puede ser oliva o muy pálida.",
+            "hair": "Negro, castaño muy oscuro o gris acero.",
+            "eyes": "Negro, marrón oscuro profundo."
+        },
+        "palette": {
+            "best_colors": [
+                "#000000",
+                "#FFFFFF",
+                "#800020",
+                "#191970",
+                "#008080"
+            ],
+            "avoid_colors": [
+                "#D2691E",
+                "#DAA520",
+                "#F4A460",
+                "#FFD700"
+            ],
+            "neutrals": [
+                "#000000",
+                "#2F4F4F",
+                "#FFFFFF"
+            ]
+        },
+        "advice": "El negro es tu mejor amigo. Úsalo cerca del rostro.",
+        "famous_examples": [
+            "Anne Hathaway",
+            "Kim Kardashian",
+            "Penélope Cruz"
+        ]
+    },
+    {
+        "id": "invierno-verdadero",
+        "name": "Invierno Verdadero (True Winter)",
+        "slug": "paleta-invierno-verdadero",
+        "seo_title": "Invierno Verdadero (Frío): Qué Colores Usar y Evitar",
+        "description": "Eres la definición de 'frío'. Tu piel parece de porcelana o muy fría y los colores cálidos te apagan.",
+        "characteristics": {
+            "skin": "Muy fría, con subtono azulado. No te bronceas fácil.",
+            "hair": "Negro azabache, ceniza muy oscuro o blanco puro.",
+            "eyes": "Azul hielo, gris frío, marrón frío."
+        },
+        "palette": {
+            "best_colors": [
+                "#0000FF",
+                "#DC143C",
+                "#00CED1",
+                "#800080",
+                "#2E8B57"
+            ],
+            "avoid_colors": [
+                "#FFA500",
+                "#FFD700",
+                "#8B4513",
+                "#D2B48C"
+            ],
+            "neutrals": [
+                "#FFFFFF",
+                "#000000",
+                "#708090"
+            ]
+        },
+        "advice": "Busca colores 'joya' puros y vibrantes. Evita los tonos tierra.",
+        "famous_examples": [
+            "Meryl Streep",
+            "Liv Tyler",
+            "Zooey Deschanel"
+        ]
+    },
+    {
+        "id": "invierno-brillante",
+        "name": "Invierno Brillante (Bright Winter)",
+        "slug": "paleta-invierno-brillante",
+        "seo_title": "Invierno Brillante: Guía de Colores Intensos y Neón",
+        "description": "Tienes un brillo especial. Tus ojos suelen destacar muchísimo y puedes llevar colores neón.",
+        "characteristics": {
+            "skin": "Clara y traslúcida, a veces con pecas.",
+            "hair": "Negro o castaño oscuro, pero con un brillo notable.",
+            "eyes": "Azul brillante, verde esmeralda o avellana muy claro."
+        },
+        "palette": {
+            "best_colors": [
+                "#FF00FF",
+                "#00FF00",
+                "#FFFF00",
+                "#1E90FF",
+                "#FF1493"
+            ],
+            "avoid_colors": [
+                "#808080",
+                "#F5DEB3",
+                "#A9A9A9",
+                "#BC8F8F"
+            ],
+            "neutrals": [
+                "#000000",
+                "#FFFFFF",
+                "#C0C0C0"
+            ]
+        },
+        "advice": "No tengas miedo al color. El contraste alto es vital para ti.",
+        "famous_examples": [
+            "Megan Fox",
+            "Katy Perry",
+            "Courtney Cox"
+        ]
+    },
+    {
+        "id": "verano-claro",
+        "name": "Verano Claro (Light Summer)",
+        "slug": "paleta-verano-claro",
+        "seo_title": "Verano Claro: Colores Pasteles y Suaves para Ti",
+        "description": "Tu imagen es suave, etérea y luminosa. Los colores oscuros te hacen ver cansada.",
+        "characteristics": {
+            "skin": "Rosada, muy clara, se quema fácil al sol.",
+            "hair": "Rubio muy claro, ceniza claro.",
+            "eyes": "Azul claro, verde agua, gris claro."
+        },
+        "palette": {
+            "best_colors": [
+                "#B0E0E6",
+                "#FFB6C1",
+                "#E6E6FA",
+                "#98FB98",
+                "#87CEEB"
+            ],
+            "avoid_colors": [
+                "#000000",
+                "#800000",
+                "#FF4500",
+                "#006400"
+            ],
+            "neutrals": [
+                "#D3D3D3",
+                "#F5F5F5",
+                "#F0F8FF"
+            ]
+        },
+        "advice": "Mantén todo claro y fresco. Evita el negro cerca de la cara.",
+        "famous_examples": [
+            "Reese Witherspoon",
+            "Gwyneth Paltrow",
+            "Cate Blanchett"
+        ]
+    },
+    {
+        "id": "verano-verdadero",
+        "name": "Verano Verdadero (True Summer)",
+        "slug": "paleta-verano-verdadero",
+        "seo_title": "Verano Verdadero (Frío): La Paleta de Tonos Fríos y Suaves",
+        "description": "La elegancia clásica. Todo en ti es frío y suave, sin contrastes duros.",
+        "characteristics": {
+            "skin": "Subtono frío, rosado o beige frío.",
+            "hair": "Rubio ceniza medio a castaño claro ceniza (mousy).",
+            "eyes": "Gris, azul grisáceo, verde grisáceo."
+        },
+        "palette": {
+            "best_colors": [
+                "#6495ED",
+                "#DB7093",
+                "#4682B4",
+                "#D8BFD8",
+                "#00CED1"
+            ],
+            "avoid_colors": [
+                "#FFA500",
+                "#FFFF00",
+                "#FFD700",
+                "#A0522D"
+            ],
+            "neutrals": [
+                "#778899",
+                "#A9A9A9",
+                "#E0FFFF"
+            ]
+        },
+        "advice": "Los azules y rosas fríos son tu base. Nada de naranja.",
+        "famous_examples": [
+            "Kate Middleton",
+            "Emily Blunt",
+            "Jennifer Garner"
+        ]
+    },
+    {
+        "id": "verano-suave",
+        "name": "Verano Suave (Soft Summer)",
+        "slug": "paleta-verano-suave",
+        "seo_title": "Verano Suave: Colores Empolvados y Elegantes",
+        "description": "Misteriosa y difusa. Tus rasgos se mezclan suavemente, pareces tener un filtro de Instagram.",
+        "characteristics": {
+            "skin": "Neutra, beige, puede broncearse un poco.",
+            "hair": "Castaño claro ceniza, 'mousey brown'.",
+            "eyes": "Gris, avellana suave, verde oliva apagado."
+        },
+        "palette": {
+            "best_colors": [
+                "#BC8F8F",
+                "#708090",
+                "#6A5ACD",
+                "#2E8B57",
+                "#5F9EA0"
+            ],
+            "avoid_colors": [
+                "#FF0000",
+                "#000000",
+                "#FFFF00",
+                "#0000CD"
+            ],
+            "neutrals": [
+                "#808080",
+                "#DCDCDC",
+                "#FFE4E1"
+            ]
+        },
+        "advice": "Tus colores deben ser agrisados (muted). El gris marengo es tu nuevo negro.",
+        "famous_examples": [
+            "Jennifer Aniston",
+            "Sarah Jessica Parker",
+            "Miley Cyrus"
+        ]
+    },
+    {
+        "id": "otono-suave",
+        "name": "Otoño Suave (Soft Autumn)",
+        "slug": "paleta-otono-suave",
+        "seo_title": "Otoño Suave: Tonos Tierra y Neutros Cálidos",
+        "description": "Cálida pero suave. Eres la transición entre el verano y el otoño.",
+        "characteristics": {
+            "skin": "Neutra tirando a cálida, beige dorado suave.",
+            "hair": "Rubio dorado oscuro, castaño claro dorado.",
+            "eyes": "Miel, verde oliva, marrón claro."
+        },
+        "palette": {
+            "best_colors": [
+                "#D2B48C",
+                "#556B2F",
+                "#CD5C5C",
+                "#DAA520",
+                "#8FBC8F"
+            ],
+            "avoid_colors": [
+                "#000000",
+                "#FF00FF",
+                "#0000FF",
+                "#FFFFFF"
+            ],
+            "neutrals": [
+                "#F5DEB3",
+                "#D2B48C",
+                "#FFF8DC"
+            ]
+        },
+        "advice": "Tonos tierra suaves y verdes oliva te hacen brillar.",
+        "famous_examples": [
+            "Gigi Hadid",
+            "Gisele Bündchen",
+            "Drew Barrymore"
+        ]
+    },
+    {
+        "id": "otono-verdadero",
+        "name": "Otoño Verdadero (True Autumn)",
+        "slug": "paleta-otono-verdadero",
+        "seo_title": "Otoño Verdadero (Cálido): La Guía Definitiva de Color",
+        "description": "La calidez personificada. Dorada, rica y vibrante como un bosque en octubre.",
+        "characteristics": {
+            "skin": "Claramente cálida, dorada, pecas.",
+            "hair": "Pelirrojo, cobrizo, castaño dorado intenso.",
+            "eyes": "Marrón dorado, ámbar, verde oliva intenso."
+        },
+        "palette": {
+            "best_colors": [
+                "#D2691E",
+                "#FF8C00",
+                "#006400",
+                "#8B0000",
+                "#DAA520"
+            ],
+            "avoid_colors": [
+                "#FF69B4",
+                "#00BFFF",
+                "#000000",
+                "#808080"
+            ],
+            "neutrals": [
+                "#8B4513",
+                "#F5DEB3",
+                "#DEB887"
+            ]
+        },
+        "advice": "Colores especia (mostaza, canela, teja) son imprescindibles.",
+        "famous_examples": [
+            "Julianne Moore",
+            "Lindsay Lohan",
+            "Julia Roberts"
+        ]
+    },
+    {
+        "id": "otono-profundo",
+        "name": "Otoño Profundo (Dark Autumn)",
+        "slug": "paleta-otono-profundo",
+        "seo_title": "Otoño Profundo: Colores Intensos y Sofisticados",
+        "description": "Fuerte y cálida. Puedes tomar colores prestados del invierno, pero con un toque dorado.",
+        "characteristics": {
+            "skin": "Dorada, bronce, oliva cálido.",
+            "hair": "Castaño oscuro, caoba oscuro, negro con reflejos cálidos.",
+            "eyes": "Marrón oscuro, negro cálido, verde oscuro."
+        },
+        "palette": {
+            "best_colors": [
+                "#800000",
+                "#006400",
+                "#8B4513",
+                "#FF4500",
+                "#4B0082"
+            ],
+            "avoid_colors": [
+                "#E6E6FA",
+                "#ADD8E6",
+                "#FFC0CB",
+                "#D3D3D3"
+            ],
+            "neutrals": [
+                "#000000",
+                "#2F4F4F",
+                "#8B4513"
+            ]
+        },
+        "advice": "El negro te queda bien, pero el marrón chocolate es mejor.",
+        "famous_examples": [
+            "Natalie Portman",
+            "Kim Kardashian",
+            "Eva Mendes"
+        ]
+    },
+    {
+        "id": "primavera-clara",
+        "name": "Primavera Clara (Light Spring)",
+        "slug": "paleta-primavera-clara",
+        "seo_title": "Primavera Clara: Colores Luminosos y Alegres",
+        "description": "Luz pura y calidez delicada. Pareces un día de sol en primavera.",
+        "characteristics": {
+            "skin": "Marfil, melocotón claro, se quema fácil.",
+            "hair": "Rubio dorado, rubio fresa, castaño muy claro dorado.",
+            "eyes": "Azul claro, verde claro, aguamarina."
+        },
+        "palette": {
+            "best_colors": [
+                "#FF7F50",
+                "#FFE4B5",
+                "#98FB98",
+                "#40E0D0",
+                "#FF69B4"
+            ],
+            "avoid_colors": [
+                "#000000",
+                "#800020",
+                "#483D8B",
+                "#2F4F4F"
+            ],
+            "neutrals": [
+                "#F5F5DC",
+                "#D2B48C",
+                "#FFFACD"
+            ]
+        },
+        "advice": "Evita colores oscuros y pesados. Busca corales y turquesas.",
+        "famous_examples": [
+            "Taylor Swift",
+            "Blake Lively",
+            "Scarlett Johansson"
+        ]
+    },
+    {
+        "id": "primavera-verdadera",
+        "name": "Primavera Verdadera (True Spring)",
+        "slug": "paleta-primavera-verdadera",
+        "seo_title": "Primavera Verdadera (Cálida): Colores Vibrantes y Frescos",
+        "description": "Vibrante, fresca y cálida. Eres el 'splash' de color en una habitación.",
+        "characteristics": {
+            "skin": "Cálida, dorada clara, melocotón.",
+            "hair": "Rubio dorado, cobrizo claro, castaño dorado.",
+            "eyes": "Verde cálido, topacio, azul con rayos dorados."
+        },
+        "palette": {
+            "best_colors": [
+                "#FFA500",
+                "#32CD32",
+                "#FFFF00",
+                "#FF4500",
+                "#00BFFF"
+            ],
+            "avoid_colors": [
+                "#000000",
+                "#A9A9A9",
+                "#ADD8E6",
+                "#D8BFD8"
+            ],
+            "neutrals": [
+                "#F5DEB3",
+                "#DAA520",
+                "#FFF8DC"
+            ]
+        },
+        "advice": "Tus colores deben tener vida y energía. El beige dorado es tu neutro.",
+        "famous_examples": [
+            "Nicole Kidman",
+            "Amy Adams",
+            "Charlize Theron"
+        ]
+    },
+    {
+        "id": "primavera-brillante",
+        "name": "Primavera Brillante (Bright Spring)",
+        "slug": "paleta-primavera-brillante",
+        "seo_title": "Primavera Brillante: Alto Contraste y Colores Vivos",
+        "description": "Impactante. Tienes el contraste del invierno pero la calidez de la primavera.",
+        "characteristics": {
+            "skin": "Clara y brillante, o negra brillante.",
+            "hair": "Castaño oscuro, negro, pero con piel cálida.",
+            "eyes": "Azul eléctrico, verde brillante, avellana claro."
+        },
+        "palette": {
+            "best_colors": [
+                "#FF0000",
+                "#00FF7F",
+                "#FFD700",
+                "#1E90FF",
+                "#FF1493"
+            ],
+            "avoid_colors": [
+                "#D2B48C",
+                "#808080",
+                "#BC8F8F",
+                "#778899"
+            ],
+            "neutrals": [
+                "#000000",
+                "#FFFFFF",
+                "#808080"
+            ]
+        },
+        "advice": "El negro te queda bien. Combínalo con colores saturados.",
+        "famous_examples": [
+            "Emma Stone",
+            "Milla Jovovich",
+            "Rose McGowan"
+        ]
+    }
+]

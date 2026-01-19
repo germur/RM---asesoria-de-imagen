@@ -1,0 +1,221 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { BookOpen, Video, Users, ArrowRight, Star, PlayCircle, ShieldCheck, Palette, Mic, Smile } from 'lucide-react';
+import AnimatedTitleWords from '@/components/ui/AnimatedTitleWords.astro';
+
+// Datos de los productos REALES
+const products = [
+  {
+    id: "libro-maes",
+    title: "Revoluciona tu Imagen",
+    subtitle: "El Manual Fundacional",
+    type: "Libro Físico + Digital",
+    price: "$19 USD",
+    image: "/images/book-lifestyle.jpg",
+    tags: ["Best Seller", "Lectura Obligatoria"],
+    link: "/libro",
+    style: "col-span-1 md:col-span-2 row-span-2", // Tarjeta Gigante (Hero)
+    dark: true,
+    Icon: BookOpen
+  },
+  {
+    id: "descubrete",
+    title: "Curso Descúbrete",
+    subtitle: "El poder de tu imagen",
+    type: "Curso Online",
+    price: "$94 USD",
+    image: "/images/course-descubrete.jpg",
+    tags: ["Estilo", "Fundamentos"],
+    link: "/academia/curso-descubrete",
+    style: "col-span-1 md:col-span-1 row-span-1",
+    dark: false,
+    Icon: Smile
+  },
+  {
+    id: "disenate",
+    title: "Curso Diseñate",
+    subtitle: "Crea tu Iconología",
+    type: "Curso Online",
+    price: "$94 USD",
+    image: "/images/course-disenate.jpg",
+    tags: ["Diseño", "Avanzado"],
+    link: "/academia/crea-tu-iconologia",
+    style: "col-span-1 md:col-span-1 row-span-1",
+    dark: false,
+    Icon: Users
+  },
+  {
+    id: "conquista",
+    title: "Curso Conquista",
+    subtitle: "Diseña tu Voz",
+    type: "Curso Online",
+    price: "$94 USD",
+    image: "/images/course-conquista.jpg",
+    tags: ["Comunicación", "Voz"],
+    link: "/academia/disena-tu-voz",
+    style: "col-span-1 md:col-span-1 row-span-1", 
+    dark: false,
+    Icon: Mic
+  },
+  {
+    id: "destaca",
+    title: "Curso Destaca",
+    subtitle: "El Correcto Uso del Color",
+    type: "Curso Online",
+    price: "$94 USD",
+    image: "/images/course-destaca.jpg",
+    tags: ["Color", "Impacto"],
+    link: "/academia/el-correcto-uso-del-color",
+    style: "col-span-1 md:col-span-2 row-span-1", // Tarjeta Ancha
+    dark: true, // Dark theme for highlighting color mastery
+    Icon: Palette
+  }
+];
+
+// Schema para Cursos
+const academiaSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": products.map((prod, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Course",
+      "name": prod.title,
+      "description": prod.subtitle,
+      "provider": {
+        "@type": "Organization",
+        "name": "Roger Murillo Academy"
+      }
+    }
+  }))
+};
+---
+
+<MainLayout 
+  title="Academia de Imagen y Estilo | Roger Murillo" 
+  description="Formación profesional en imagen estratégica. Cursos de colorimetría, visagismo y estilo basados en la metodología MAES."
+  schema={JSON.stringify(academiaSchema)}
+>
+
+  <!-- HERO: MANIFIESTO EDUCATIVO -->
+  <section class="relative pt-32 pb-16 bg-brand-black text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 mix-blend-overlay"></div>
+    <div class="container mx-auto px-6 relative z-10 text-center">
+      
+      <span class="inline-block py-1 px-3 border border-brand-primary/50 text-brand-primary text-xs font-bold uppercase tracking-[0.3em] mb-6 rounded-sm bg-brand-primary/10">
+        Inteligencia de Estilo
+      </span>
+      
+      <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">
+        <AnimatedTitleWords text="La ciencia detrás" class="block text-white" />
+        <span class="text-white">
+             <AnimatedTitleWords text="de tu presencia." delay={400} />
+        </span>
+      </h1>
+      
+      <p class="text-lg text-gray-400 font-light max-w-2xl mx-auto mb-8">
+        No enseñamos moda. Enseñamos las leyes físicas y antropométricas que gobiernan 
+        cómo eres percibido. Fórmate con la metodología que usan los CEOs.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- BENTO GRID (El Catálogo Moderno) -->
+  <section class="py-20 bg-brand-gray px-4 md:px-0">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
+        
+        {products.map((item) => (
+          <a href={item.link} class={`relative group overflow-hidden rounded-sm transition-all duration-500 hover:shadow-2xl ${item.style} border border-transparent hover:border-brand-primary/20`}>
+            
+            <!-- Imagen de Fondo con Zoom al Hover -->
+            <div class="absolute inset-0 w-full h-full">
+              <img 
+                src={item.image} 
+                alt={item.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+              />
+              <div class={`absolute inset-0 ${item.dark ? 'bg-black/70 group-hover:bg-black/50' : 'bg-white/80 group-hover:bg-white/60'} transition-colors duration-300`}></div>
+            </div>
+
+            <!-- Contenido -->
+            <div class="relative z-10 p-8 h-full flex flex-col justify-between">
+              
+              <div class="flex justify-between items-start">
+                <div class="flex flex-col gap-2">
+                  {item.tags.map(tag => (
+                    <span class="inline-block w-fit px-2 py-1 text-[10px] font-bold uppercase tracking-widest bg-brand-primary text-white rounded-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <span class={`font-serif italic text-lg ${item.dark ? 'text-white' : 'text-brand-black'}`}>
+                  {item.price}
+                </span>
+              </div>
+
+              <div>
+                <span class={`text-xs font-bold uppercase tracking-widest mb-1 block flex items-center gap-2 ${item.dark ? 'text-gray-400' : 'text-slate-500'}`}>
+                  <item.Icon className="w-4 h-4" />
+                  {item.type}
+                </span>
+                <h3 class={`font-serif text-3xl mb-2 ${item.dark ? 'text-white' : 'text-brand-black'}`}>
+                  {item.title}
+                </h3>
+                <p class={`text-sm ${item.dark ? 'text-gray-300' : 'text-slate-600'}`}>
+                  {item.subtitle}
+                </p>
+              </div>
+
+            </div>
+          </a>
+        ))}
+
+        <!-- CTA BOX: LA SALIDA HACIA EL HIGH TICKET -->
+        <!-- Estrategia: Capturar al usuario que se siente abrumado por aprender -->
+        <div class="col-span-1 md:col-span-1 row-span-1 bg-brand-black text-white p-8 flex flex-col justify-center items-center text-center border border-white/10 group hover:border-brand-primary transition-colors relative overflow-hidden rounded-sm">
+          <div class="absolute inset-0 bg-brand-primary/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+          <div class="relative z-10">
+            <h3 class="font-serif text-2xl mb-4">¿No tienes tiempo para estudiar?</h3>
+            <p class="text-sm text-gray-400 mb-6">
+              Deja que Roger y Adriana diseñen tu estrategia por ti en una sesión privada.
+            </p>
+            <a href="/contacto" class="inline-block border-b border-brand-primary pb-1 uppercase text-xs font-bold tracking-widest hover:text-brand-primary transition-colors">
+              Agendar Consultoría 1:1 &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GARANTÍA DE AUTORIDAD (Social Proof) -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-8">
+        Certificación y Metodología Avalada Por
+      </p>
+      <div class="flex justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+        <!-- Logos de entidades o stats simples si no hay logos -->
+        <div class="flex flex-col items-center">
+            <ShieldCheck size={40} className="mb-2 text-brand-black"/>
+            <div class="text-sm font-serif text-brand-black">AICI</div>
+        </div>
+        <div class="flex flex-col items-center">
+             <Star size={40} className="mb-2 text-brand-black"/>
+            <div class="text-sm font-serif text-brand-black">Método MAES</div>
+        </div>
+        <div class="flex flex-col items-center">
+             <Users size={40} className="mb-2 text-brand-black"/>
+            <div class="text-sm font-serif text-brand-black">+5.000 Alumnos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</MainLayout>

@@ -1,0 +1,58 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import { Mail } from "lucide-react";
+
+const seoData = {
+    title: "¡Revisa tu Correo! | Roger Murillo",
+    description:
+        "Ya casi estás listo. Confirma tu suscripción para recibir tu recurso gratuito.",
+    h1: "Tu Guía está en camino",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-32 px-6 text-center bg-[#fafaf9]">
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white p-4 rounded-full inline-block mb-8 shadow-sm">
+                <Mail class="w-12 h-12 text-[#0c0a09]" />
+            </div>
+            <h1 class="text-4xl md:text-5xl font-serif text-[#0c0a09] mb-6">
+                {seoData.h1}
+            </h1>
+            <p class="text-xl text-stone-600 mb-12">
+                Acabo de enviar el recurso que solicitaste a tu correo
+                electrónico. Debería llegar en los próximos 5 minutos.
+            </p>
+
+            <div
+                class="bg-[#0c0a09] text-white p-8 rounded-xl shadow-2xl relative overflow-hidden"
+            >
+                <div class="relative z-10">
+                    <span
+                        class="text-[#d4af37] text-xs font-bold uppercase tracking-widest mb-2 block"
+                        >Oferta Especial de Bienvenida</span
+                    >
+                    <h3 class="text-2xl font-serif mb-4">
+                        ¿No quieres esperar? Acelera tu resultado.
+                    </h3>
+                    <p class="text-stone-300 mb-6 text-sm">
+                        Mientras esperas, puedes acceder a mi Masterclass de
+                        Colorimetría Express por un precio simbólico de
+                        bienvenida.
+                    </p>
+                    <Button
+                        className="bg-[#d4af37] text-black hover:bg-white w-full sm:w-auto"
+                    >
+                        Ver Oferta Flash ($7 USD)
+                    </Button>
+                </div>
+                <!-- Background decoration -->
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-[#d4af37] opacity-10 rounded-full blur-3xl -mr-10 -mt-10"
+                >
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>

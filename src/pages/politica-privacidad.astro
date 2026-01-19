@@ -1,0 +1,70 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const seoData = {
+    title: "Política de Privacidad | Roger Murillo Consultoría",
+    description:
+        "Política de tratamiento de datos personales, cookies y privacidad de Roger Murillo Consultoría de Imagen.",
+    h1: "Política de Privacidad",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto prose prose-stone">
+            <h1 class="font-serif text-4xl mb-8 text-[#0c0a09]">
+                {seoData.h1}
+            </h1>
+
+            <p>
+                Última actualización: {new Date().toLocaleDateString("es-CO")}
+            </p>
+
+            <h3>1. Responsable del Tratamiento</h3>
+            <p>
+                Roger Murillo Consultoría de Imagen ("Nosotros") es el
+                responsable del tratamiento de los datos personales recabados a
+                través del sitio web rogermurillo.co.
+            </p>
+
+            <h3>2. Datos que Recopilamos</h3>
+            <p>
+                Podemos recopilar información personal como:
+                <ul>
+                    <li>
+                        Datos de contacto (nombre, email, teléfono) al rellenar
+                        formularios.
+                    </li>
+                    <li>
+                        Datos técnicos (IP, navegador) a través de cookies para
+                        mejorar la experiencia.
+                    </li>
+                    <li>
+                        Información de medidas o preferencias al usar nuestras
+                        calculadoras (estrictamente para el servicio).
+                    </li>
+                </ul>
+            </p>
+
+            <h3>3. Finalidad del Tratamiento</h3>
+            <p>
+                Usamos sus datos para:
+                <ul>
+                    <li>Proveer los servicios de consultoría solicitados.</li>
+                    <li>
+                        Enviar información relevante sobre su estilo o cursos
+                        (Newsletter), siempre con su consentimiento.
+                    </li>
+                    <li>Mejorar nuestros servicios digitales.</li>
+                </ul>
+            </p>
+
+            <h3>4. Sus Derechos</h3>
+            <p>
+                Usted tiene derecho a acceder, rectificar o eliminar sus datos
+                personales en cualquier momento. Puede ejercer estos derechos
+                contactándonos en legal@rogermurillo.co.
+            </p>
+        </div>
+    </section>
+</MainLayout>

@@ -1,0 +1,108 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+
+// 🔴 DATOS DE LA MATRIZ MAESTRA
+const seoData = {
+    title: "Visagismo y Diseño de Rostro en Bogotá | Cortes, Barba y Accesorios",
+    description:
+        "Expertos en Visagismo. Analizamos la geometría de tu rostro para definir el corte de cabello, barba o accesorios perfectos. Armoniza tus facciones con ciencia.",
+    h1: "Visagismo: La Ciencia de la Arquitectura del Rostro",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <article class="max-w-4xl mx-auto py-20 px-6">
+        <header class="text-center mb-16">
+            <span
+                class="text-xs font-bold text-muted-foreground uppercase tracking-widest"
+            >
+                Pilar de Conocimiento
+            </span>
+            <h1 class="text-5xl md:text-6xl font-serif text-primary mt-4 mb-8">
+                {seoData.h1}
+            </h1>
+            <p class="text-xl text-muted-foreground leading-relaxed">
+                No existen rostros feos, solo geometrías incomprendidas. El
+                visagismo es el estudio de las líneas, volúmenes y formas de tu
+                cara para potenciar tu belleza natural.
+            </p>
+        </header>
+
+        <hr class="border-accent/30 my-12" />
+
+        <div class="space-y-16">
+            <section id="tipos-rostro">
+                <h2 class="text-3xl font-serif text-primary mb-6">
+                    Tipos de rostro y sus correcciones
+                </h2>
+                <p class="mb-4">
+                    Identificar si tu rostro es <strong
+                        >Diamante, Cuadrado, Ovalado o Redondo</strong
+                    > es el primer paso. Cada forma tiene una "arquitectura ideal"
+                    que buscamos alcanzar mediante ilusiones ópticas.
+                </p>
+                <a
+                    href="/herramientas/calculadora-rostro"
+                    class="text-accent font-medium hover:underline"
+                >
+                    → Descubre tu tipo de rostro con nuestra herramienta
+                </a>
+            </section>
+
+            <section id="barba-corte">
+                <h2 class="text-3xl font-serif text-primary mb-6">
+                    Diseño de barba y corte
+                </h2>
+                <p class="mb-4">
+                    Para los hombres, la barba es maquillaje natural. Una barba
+                    bien diseñada puede crear una mandíbula donde no la hay o
+                    suavizar un mentón demasiado agresivo.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    {
+                        /* These links serve as future placeholders or can link to the generated pages once fully integrated */
+                    }
+                    <a
+                        href="/guia-estilo/visagismo/cuadrado/barba"
+                        class="block p-4 border border-border rounded-lg hover:border-accent transition-colors"
+                    >
+                        <span class="font-serif block mb-2">Cara Cuadrada</span>
+                        <span class="text-sm text-muted-foreground"
+                            >Cómo suavizar ángulos.</span
+                        >
+                    </a>
+                    <a
+                        href="/guia-estilo/visagismo/diamante/barba"
+                        class="block p-4 border border-border rounded-lg hover:border-accent transition-colors"
+                    >
+                        <span class="font-serif block mb-2">Cara Diamante</span>
+                        <span class="text-sm text-muted-foreground"
+                            >Cómo equilibrar pómulos.</span
+                        >
+                    </a>
+                    {
+                        /* More links can be added programmatically or manually as the silo grows */
+                    }
+                </div>
+            </section>
+
+            <section id="gafas">
+                <h2 class="text-3xl font-serif text-primary mb-6">
+                    Gafas según tu cara
+                </h2>
+                <p>
+                    Las gafas son el accesorio más invasivo porque están SOBRE
+                    tu identidad. Elegir la montura opuesta a tu geometría es la
+                    regla de oro.
+                </p>
+                <div class="mt-4">
+                    <a
+                        href="/guia-estilo/visagismo/diamante/lentes"
+                        class="text-accent hover:underline"
+                        >Ver guía para rostro Diamante →</a
+                    >
+                </div>
+            </section>
+        </div>
+    </article>
+</MainLayout>

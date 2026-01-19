@@ -1,0 +1,42 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+
+// Placeholder for future blog integration or sub-silo index
+---
+
+<MainLayout
+    title="Blog de Visagismo y Estilo Masculino | Roger Murillo"
+    description="Artículos expertos sobre cortes de cabello, barba y gafas según tu tipo de rostro."
+>
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <span
+                class="text-xs font-bold tracking-widest text-accent uppercase"
+                >Silo de Autoridad</span
+            >
+            <h1 class="text-5xl font-serif text-primary mt-4 mb-6">
+                Visagismo & Grooming
+            </h1>
+            <p class="text-xl text-muted-foreground">
+                La ciencia detrás de un rostro equilibrado.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <a
+                href="/visagismo/barba-y-corte"
+                class="block bg-stone-100 p-8 rounded-lg hover:bg-stone-200 transition-colors"
+            >
+                <h2 class="text-2xl font-serif text-primary mb-2 mt-0">
+                    Guía de Barba y Corte
+                </h2>
+                <p>Encuentra el estilo perfecto para tu forma de cara.</p>
+            </a>
+            <div
+                class="border border-dashed border-gray-300 p-8 rounded-lg flex items-center justify-center text-muted-foreground"
+            >
+                <p>Más artículos próximamente...</p>
+            </div>
+        </div>
+    </section>
+</MainLayout>

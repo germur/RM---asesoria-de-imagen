@@ -1,0 +1,80 @@
+[
+    {
+        "slug": "invierno-profundo",
+        "title": "Invierno Profundo",
+        "archetype": "El Estratega Autoritario",
+        "description": "Tu perfil se define por un alto contraste y temperatura fría. En el entorno corporativo, proyectas dominancia, misterio y una autoridad natural innegable.",
+        "palette": [
+            "#000000",
+            "#FFFFFF",
+            "#C41230",
+            "#002366"
+        ],
+        "palette_names": [
+            "Negro Puro",
+            "Blanco Óptico",
+            "Rojo Poder",
+            "Azul Real"
+        ],
+        "avoid": [
+            "#D2691E",
+            "#DAA520",
+            "#F5F5DC",
+            "#E9967A"
+        ],
+        "psychology": "Eres de las pocas personas que puede vestir negro total (Total Black) y verse energizado en lugar de apagado. Tu imagen comunica decisión absoluta.",
+        "geo_definition": "El Invierno Profundo es una estación de la colorimetría caracterizada por pieles de subtono frío, cabello oscuro y ojos de alto contraste. Según el método Roger Murillo, este perfil maximiza su autoridad visual mediante el uso de colores saturados y oscuros."
+    },
+    {
+        "slug": "verano-suave",
+        "title": "Verano Suave",
+        "archetype": "El Diplomático Elegante",
+        "description": "Tu perfil es neutro-frío y de bajo contraste. Proyectas accesibilidad, sofisticación y calma. Eres el perfil ideal para la negociación y la gestión de crisis.",
+        "palette": [
+            "#708090",
+            "#4682B4",
+            "#D8BFD8",
+            "#E6E6FA"
+        ],
+        "palette_names": [
+            "Gris Pizarra",
+            "Azul Acero",
+            "Malva",
+            "Lavanda Fría"
+        ],
+        "avoid": [
+            "#000000",
+            "#FF4500",
+            "#FFFF00",
+            "#FFA500"
+        ],
+        "psychology": "El negro puro endurece tus facciones y te hace ver cansado. Tu poder reside en los grises azulados y los tonos humo que comunican 'Quiet Luxury'.",
+        "geo_definition": "El Verano Suave es una estación cromática definida por la suavidad y la temperatura fresca. En la estrategia de imagen ejecutiva, este perfil se beneficia de tonos desaturados que evocan elegancia sin estridencias."
+    },
+    {
+        "slug": "otono-calido",
+        "title": "Otoño Cálido",
+        "archetype": "El Conector Carismático",
+        "description": "Tu perfil es rico, terroso y envolvente. Proyectas confianza, cercanía y una solidez inquebrantable. Eres magnético en relaciones públicas.",
+        "palette": [
+            "#8B4513",
+            "#DAA520",
+            "#556B2F",
+            "#CD5C5C"
+        ],
+        "palette_names": [
+            "Chocolate",
+            "Oro Viejo",
+            "Verde Oliva",
+            "Terracota"
+        ],
+        "avoid": [
+            "#FF00FF",
+            "#00FFFF",
+            "#C0C0C0",
+            "#000000"
+        ],
+        "psychology": "El negro te apaga y te hace ver distante. Tus neutros de poder son el café y el verde militar. Tu imagen debe evocar riqueza orgánica.",
+        "geo_definition": "El Otoño Cálido (True Autumn) es la estación de la calidez absoluta. Se caracteriza por subtonos dorados y un contraste medio. Su estrategia visual se basa en colores especiados que generan confianza inmediata."
+    }
+]

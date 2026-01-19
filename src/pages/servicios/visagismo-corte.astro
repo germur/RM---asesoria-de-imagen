@@ -1,0 +1,127 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const seoData = {
+    title: "Visagismo y Diseño de Corte en Bogotá | Roger Murillo",
+    description:
+        "Ingeniería estética aplicada a tu rostro. Corte de pelo según rostro y diseño de barba basado en geometría facial. Servicio exclusivo.",
+    h1: "Ingeniería Estética aplicada a tu Rostro",
+};
+
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Visagismo y Corte",
+    provider: { "@type": "Person", name: "Roger Murillo" },
+    description: "Estudio geométrico del rostro para diseño de corte y barba.",
+});
+---
+
+<MainLayout
+    title={seoData.title}
+    description={seoData.description}
+    schema={schema}
+>
+    <section class="py-24 px-6 bg-white border-b border-stone-100">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span
+                    class="text-xs font-bold bg-black text-white px-2 py-1 mb-4 inline-block"
+                    >MÉTODO TÉCNICO</span
+                >
+                <h1
+                    class="text-5xl font-serif text-[#0c0a09] mb-6 leading-tight"
+                >
+                    {seoData.h1}
+                </h1>
+                <p class="text-xl text-stone-600 font-light mb-8">
+                    No cortamos cabello, <strong>equilibramos facciones</strong
+                    >. El visagismo es el estudio geométrico de tu rostro para
+                    potenciar tus rasgos dominantes y disimular asimetrías.
+                </p>
+                <a
+                    href="/contacto"
+                    class="inline-block bg-brand-black text-white px-8 py-3 font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors rounded-sm"
+                >
+                    Reservar Cita de Diseño
+                </a>
+            </div>
+            <div
+                class="relative h-[500px] bg-stone-200 rounded-lg overflow-hidden"
+            >
+                <img
+                    src="/images/visagismo-diagram.webp"
+                    alt="Estudio de Visagismo Geométrico"
+                    class="w-full h-full object-cover mix-blend-multiply"
+                />
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#fafaf9]">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-serif mb-6 text-[#0c0a09]">
+                ¿Por qué ese corte de moda no te queda bien?
+            </h2>
+            <p class="text-lg text-stone-600 mb-8 leading-relaxed">
+                La respuesta es matemática: <strong
+                    >Porque no respeta tu estructura ósea.</strong
+                >
+                Un corte diseñado para un rostro ovalado puede desequilibrar por completo
+                un rostro cuadrado o diamante. Nosotros analizamos tus líneas mandibulares,
+                la altura de tu frente y la separación de tus ojos antes de tocar
+                la tijera.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-[#0c0a09] text-white text-center">
+        <h3 class="text-2xl font-serif mb-4">
+            ¿No sabes cuál es tu tipo de rostro?
+        </h3>
+        <p class="text-stone-400 mb-8">
+            Usa nuestra Calculadora de Visagismo con IA antes de agendar. Es
+            gratis.
+        </p>
+        <a
+            href="/herramientas/analizador-rostro"
+            class="inline-block border border-white text-white px-8 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-colors rounded-sm"
+        >
+            Usar Calculadora Facial
+        </a>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-2xl font-serif mb-8 text-center">
+                El Ritual "Puerta Cerrada"
+            </h3>
+            <div class="grid md:grid-cols-4 gap-4 text-center">
+                <div class="p-4 border border-stone-100 rounded">
+                    <strong class="block mb-2">1. Diagnóstico</strong>
+                    <span class="text-sm text-stone-500"
+                        >Análisis craneal y facial.</span
+                    >
+                </div>
+                <div class="p-4 border border-stone-100 rounded">
+                    <strong class="block mb-2">2. Lavado Spa</strong>
+                    <span class="text-sm text-stone-500"
+                        >Preparación del cabello.</span
+                    >
+                </div>
+                <div class="p-4 border border-stone-100 rounded">
+                    <strong class="block mb-2">3. Corte Precisión</strong>
+                    <span class="text-sm text-stone-500"
+                        >Técnica geométrica.</span
+                    >
+                </div>
+                <div class="p-4 border border-stone-100 rounded">
+                    <strong class="block mb-2">4. Educación</strong>
+                    <span class="text-sm text-stone-500"
+                        >Te enseñamos a peinarte.</span
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>

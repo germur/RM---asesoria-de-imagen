@@ -1,0 +1,101 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const seoData = {
+    title: "Mapa del Sitio | Roger Murillo",
+    description:
+        "Índice completo de todas las páginas, herramientas y artículos de la academia de Roger Murillo.",
+    h1: "Mapa del Sitio",
+};
+
+// Estructura del Mapa
+const sitemap = [
+    {
+        category: "Principal",
+        links: [
+            { name: "Inicio", url: "/" },
+            { name: "Nosotros", url: "/nosotros" },
+            { name: "Contacto", url: "/contacto" },
+            { name: "Política de Privacidad", url: "/politica-privacidad" },
+            { name: "Términos y Condiciones", url: "/terminos-condiciones" },
+        ],
+    },
+    {
+        category: "Servicios (Silo 1)",
+        links: [
+            { name: "Servicios General", url: "/servicios" },
+            {
+                name: "Asesoría Integral",
+                url: "/servicios/asesoria-integral-imagen",
+            },
+            {
+                name: "Imagen Ejecutiva",
+                url: "/servicios/imagen-ejecutiva-autoridad",
+            },
+            { name: "Visagismo y Corte", url: "/servicios/visagismo-corte" },
+        ],
+    },
+    {
+        category: "Herramientas (Silo 2)",
+        links: [
+            { name: "Hub de Herramientas", url: "/herramientas" },
+            {
+                name: "Test de Colorimetría",
+                url: "/herramientas/test-colorimetria-online",
+            },
+            {
+                name: "Calculadora de Rostro",
+                url: "/herramientas/calculadora-rostro",
+            },
+        ],
+    },
+    {
+        category: "Academia (Silo 3)",
+        links: [
+            { name: "Hub Academia", url: "/academia" },
+            {
+                name: "Guía de Visagismo",
+                url: "/academia/visagismo/tipos-rostro-hombre",
+            },
+            {
+                name: "Colorimetría Negocios",
+                url: "/academia/colorimetria/colores-para-negociar",
+            },
+        ],
+    },
+];
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="font-serif text-4xl mb-12 text-[#0c0a09]">
+                {seoData.h1}
+            </h1>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                {
+                    sitemap.map((section) => (
+                        <div>
+                            <h2 class="text-xl font-bold text-[#d4af37] border-b border-stone-200 pb-2 mb-6 uppercase tracking-widest text-xs">
+                                {section.category}
+                            </h2>
+                            <ul class="space-y-3">
+                                {section.links.map((link) => (
+                                    <li>
+                                        <a
+                                            href={link.url}
+                                            class="text-stone-600 hover:text-[#0c0a09] hover:underline transition-colors block py-1"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</MainLayout>

@@ -1,0 +1,82 @@
+---
+interface Props {
+    text: string;
+    class?: string;
+    tag?: string;
+    delay?: number;
+}
+
+const { text, class: className = "", tag = "span", delay = 0 } = Astro.props;
+const uniqueId = `animated-text-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<script>
+    import { animate, splitText, stagger } from "animejs";
+
+    function initTextAnimations() {
+        const wrappers = document.querySelectorAll(".animated-text-wrapper");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const wrapper = entry.target as HTMLElement;
+                        if (wrapper.dataset.animated === "true") return;
+                        wrapper.dataset.animated = "true";
+
+                        // Ensure visibility
+                        wrapper.style.opacity = "1";
+
+                        // Use Anime.js V4 splitText
+                        const split = splitText(wrapper, {
+                            words: {
+                                wrap: "clip",
+                            },
+                        });
+
+                        // Animation: Words slide up from masked area
+                        animate(split.words, {
+                            y: ["100%", 0],
+                            opacity: [0, 1],
+                            duration: 1000,
+                            ease: "outExpo",
+                            delay: stagger(100, {
+                                start: parseInt(wrapper.dataset.delay || "0"),
+                            }),
+                        });
+
+                        observer.unobserve(wrapper);
+                    }
+                });
+            },
+            { threshold: 0.1 },
+        );
+
+        wrappers.forEach((wrapper) => {
+            if (!wrapper.dataset.animated) {
+                observer.observe(wrapper);
+            }
+        });
+    }
+
+    // Robust initialization
+    document.addEventListener("astro:page-load", initTextAnimations);
+    document.addEventListener("DOMContentLoaded", initTextAnimations);
+
+    // Immediate check in case event already fired
+    if (
+        document.readyState === "complete" ||
+        document.readyState === "interactive"
+    ) {
+        setTimeout(initTextAnimations, 50);
+    }
+</script>
+
+<!-- Render content immediately but start with opacity 0 to prevent FOUT before split -->
+<span
+    id={uniqueId}
+    class={`animated-text-wrapper inline-block opacity-0 ${className}`}
+    data-text={text}
+    data-delay={delay}
+    style="will-change: opacity, transform;">{text}</span
+>

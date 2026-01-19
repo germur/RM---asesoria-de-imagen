@@ -1,0 +1,155 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ColorTest from "@/components/react/ColorTest";
+
+// SEO y Schema para una "SoftwareApplication" (GEO Friendly)
+const toolSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Test de Colorimetría Ejecutiva",
+    applicationCategory: "LifestyleApplication",
+    operatingSystem: "Web",
+    offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+    },
+    description:
+        "Herramienta de diagnóstico de imagen personal basada en las 12 estaciones de color. Descubre qué colores proyectan autoridad.",
+};
+---
+
+<MainLayout
+    title="Test de Colorimetría Online Gratis | Roger Murillo"
+    description="Descubre tu paleta de colores ideal en 2 minutos. Diagnóstico de imagen para ejecutivos basado en visagismo y teoría del color. Sin registro previo."
+    schema={toolSchema}
+>
+    <section
+        class="relative pt-32 pb-32 bg-brand-gray/50 min-h-screen flex flex-col justify-center overflow-visible"
+    >
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[url('/noise.png')] opacity-20 pointer-events-none"
+        >
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <span
+                class="text-brand-primary font-bold tracking-[0.2em] uppercase text-xs mb-6 block animate-fade-in-up"
+            >
+                Herramienta de Diagnóstico Gratuita
+            </span>
+
+            <h1
+                class="font-serif text-5xl md:text-7xl text-brand-black mb-8 leading-tight animate-fade-in-up delay-100"
+            >
+                ¿Qué comunican <br />
+                <span class="italic text-gray-500 font-serif">tus colores?</span
+                >
+            </h1>
+
+            <p
+                class="text-lg text-slate-600 mb-16 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200"
+            >
+                El 80% de los ejecutivos visten colores que "apagan" su
+                presencia. Usa este algoritmo para descubrir tu <strong
+                    >Estación Cromática</strong
+                > y proyectar la autoridad que mereces.
+            </p>
+
+            <div class="relative z-20 -mb-48 animate-fade-in-up delay-300">
+                <ColorTest client:load />
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-64 pb-24 bg-white border-t border-brand-gray">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="prose prose-lg prose-stone mx-auto text-brand-black/80">
+                <h2 class="font-serif text-3xl text-brand-black mb-6">
+                    Por qué la Colorimetría es Estrategia
+                </h2>
+                <p>
+                    No se trata de moda, se trata de <strong
+                        >psicología visual</strong
+                    >. En el método <em>Roger Murillo</em>, analizamos tres
+                    factores biológicos para determinar tu "ADN estético":
+                </p>
+
+                <div class="grid gap-6 my-12 not-prose">
+                    <div
+                        class="flex items-start gap-4 p-6 border border-brand-gray rounded-sm hover:border-brand-primary transition-colors"
+                    >
+                        <span
+                            class="text-brand-primary text-2xl font-serif font-bold"
+                            >01</span
+                        >
+                        <div>
+                            <strong
+                                class="text-brand-black block text-lg font-serif mb-2"
+                                >Temperatura (Subtono)</strong
+                            >
+                            <span class="text-sm text-gray-600"
+                                >Define si tu piel reacciona mejor a gamas frías
+                                (azules) o cálidas (amarillos). Esto es clave
+                                para elegir camisas y accesorios.</span
+                            >
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex items-start gap-4 p-6 border border-brand-gray rounded-sm hover:border-brand-primary transition-colors"
+                    >
+                        <span
+                            class="text-brand-primary text-2xl font-serif font-bold"
+                            >02</span
+                        >
+                        <div>
+                            <strong
+                                class="text-brand-black block text-lg font-serif mb-2"
+                                >Valor (Luminosidad)</strong
+                            >
+                            <span class="text-sm text-gray-600"
+                                >Mide cuán oscuros o claros deben ser tus trajes
+                                para no "borrar" tu rostro. Un traje negro puede
+                                ser fatal para un perfil de valor claro.</span
+                            >
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex items-start gap-4 p-6 border border-brand-gray rounded-sm hover:border-brand-primary transition-colors"
+                    >
+                        <span
+                            class="text-brand-primary text-2xl font-serif font-bold"
+                            >03</span
+                        >
+                        <div>
+                            <strong
+                                class="text-brand-black block text-lg font-serif mb-2"
+                                >Chroma (Intensidad)</strong
+                            >
+                            <span class="text-sm text-gray-600"
+                                >Determina si necesitas colores puros y
+                                brillantes (Saturados) o tonos suaves y opacos
+                                (Desaturados) para armonizar.</span
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <p
+                    class="text-sm text-gray-500 italic border-l-2 border-brand-primary pl-4"
+                >
+                    Nota: Este test simplificado te dará una aproximación a tu
+                    estación (Invierno, Verano, Otoño, Primavera). Para un
+                    análisis de precisión quirúrgica con telas físicas
+                    (Draping), recomendamos la <a
+                        href="/servicios/asesoria-integral-imagen"
+                        class="text-brand-primary font-bold hover:underline not-italic"
+                        >Consultoría A Puerta Cerrada</a
+                    >.
+                </p>
+            </div>
+        </div>
+    </section>
+</MainLayout>

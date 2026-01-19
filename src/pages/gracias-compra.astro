@@ -1,0 +1,52 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2 } from "lucide-react";
+
+const seoData = {
+    title: "¡Gracias por tu Compra! | Roger Murillo",
+    description:
+        "Confirmación de compra exitosa. Instrucciones para acceder a tu asesoría o producto digital.",
+    h1: "¡Bienvenido a la Élite!",
+};
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+    <section class="py-32 px-6 text-center bg-white">
+        <div class="max-w-2xl mx-auto">
+            <CheckCircle2 class="w-24 h-24 text-[#d4af37] mx-auto mb-8" />
+            <h1 class="text-4xl md:text-5xl font-serif text-[#0c0a09] mb-6">
+                {seoData.h1}
+            </h1>
+            <p class="text-xl text-stone-600 mb-8">
+                Tu compra ha sido procesada correctamente. Hemos enviado un
+                correo electrónico con los detalles de tu pedido y las
+                instrucciones de acceso.
+            </p>
+
+            <div
+                class="bg-stone-50 p-8 rounded-lg border border-stone-200 mb-12 text-left"
+            >
+                <h3 class="font-bold text-lg mb-4">Próximos Pasos:</h3>
+                <ul class="list-disc pl-5 space-y-2 text-stone-600">
+                    <li>
+                        Revisa tu bandeja de entrada (y spam) buscando un correo
+                        de <strong>info@rogermurillo.co</strong>.
+                    </li>
+                    <li>
+                        Si compraste un curso, el acceso es inmediato a través
+                        del enlace en el correo.
+                    </li>
+                    <li>
+                        Si agendaste una cita, nuestro equipo te contactará por
+                        WhatsApp para confirmar los detalles pre-sesión.
+                    </li>
+                </ul>
+            </div>
+
+            <a href="/">
+                <Button variant="outline">Volver al Inicio</Button>
+            </a>
+        </div>
+    </section>
+</MainLayout>

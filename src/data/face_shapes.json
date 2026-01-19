@@ -1,0 +1,24 @@
+[
+    {
+        "id": "rostro-diamante",
+        "name": "Rostro Diamante",
+        "slug": "cortes-rostro-diamante",
+        "description": "Pómulos prominentes y barbilla/frente estrechos. Eres pura estructura ósea.",
+        "tips": {
+            "hair_male": "Volumen en la parte superior, lados recortados pero no rapados al cero.",
+            "beard": "Barba completa corta o perilla para suavizar la barbilla puntiaguda.",
+            "glasses": "Monturas ovaladas o 'Clubmaster' para equilibrar los pómulos."
+        }
+    },
+    {
+        "id": "rostro-cuadrado",
+        "name": "Rostro Cuadrado",
+        "slug": "cortes-rostro-cuadrado",
+        "description": "Mandíbula fuerte y frente ancha. Transmites autoridad y fuerza.",
+        "tips": {
+            "hair_male": "Cortes cortos y clásicos (Crew Cut) o con textura arriba. Evita el flequillo recto.",
+            "beard": "Barba de 3 días muy perfilada para marcar aún más la mandíbula o perilla.",
+            "glasses": "Monturas redondas o de aviador para suavizar los ángulos."
+        }
+    }
+]

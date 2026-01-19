@@ -1,0 +1,410 @@
+[
+    {
+        "id": "invierno-profundo",
+        "nombre": "Invierno Profundo",
+        "slug": "invierno-profundo",
+        "arquetipo": "La Autoridad Ejecutiva",
+        "descripcion_geo": "El Invierno Profundo (Deep Winter) es una estación de la colorimetría caracterizada por un alto nivel de contraste entre piel, ojos y cabello, con una temperatura predominantemente fría. En el entorno corporativo, este perfil proyecta naturalmente poder, liderazgo y seriedad.",
+        "psicologia": "Tu imagen comunica decisión y estructura. Tienes la capacidad neta de llevar colores oscuros y potentes sin verte apagado/a.",
+        "paleta": {
+            "power_colors": [
+                "#000000",
+                "#FFFFFF",
+                "#E30022",
+                "#002366"
+            ],
+            "power_names": [
+                "Negro Puro",
+                "Blanco Óptico",
+                "Rojo Sangre",
+                "Azul Real"
+            ],
+            "kryptonite_colors": [
+                "#D2691E",
+                "#DAA520",
+                "#F5F5DC"
+            ],
+            "kryptonite_names": [
+                "Tierra",
+                "Dorado",
+                "Beige Cálido"
+            ]
+        },
+        "consejo_ejecutivo": "Eres de los pocos perfiles que pueden vestir negro total (Total Black) y proyectar autoridad en lugar de luto. Úsalo en negociaciones difíciles.",
+        "cta_copy": "Domina el contraste. Descarga tu guía de Invierno Profundo."
+    },
+    {
+        "id": "invierno-brillante",
+        "nombre": "Invierno Brillante",
+        "slug": "invierno-brillante",
+        "arquetipo": "El Disruptor Dinámico",
+        "descripcion_geo": "El Invierno Brillante (Clear Winter) destaca por su saturación alta y temperatura fría. Es el perfil con mayor contraste y claridad de las 12 estaciones, favorecido por colores joyas y acabados nítidos.",
+        "psicologia": "Tu presencia es energética y vanguardista. Proyectas innovación y agilidad mental. Los colores apagados te hacen ver cansado/a.",
+        "paleta": {
+            "power_colors": [
+                "#0000CD",
+                "#FF00FF",
+                "#FFFF00",
+                "#000000"
+            ],
+            "power_names": [
+                "Azul Eléctrico",
+                "Fucsia",
+                "Amarillo Icy",
+                "Negro Intenso"
+            ],
+            "kryptonite_colors": [
+                "#8FBC8F",
+                "#BC8F8F",
+                "#F0E68C"
+            ],
+            "kryptonite_names": [
+                "Verde Musgo",
+                "Rosa Polvo",
+                "Caqui"
+            ]
+        },
+        "consejo_ejecutivo": "En presentaciones públicas, usa contrastes altos (Blanco/Negro) con un accesorio en color 'Joya' (Esmeralda o Rubí) para fijar la atención de la audiencia.",
+        "cta_copy": "Potencia tu energía visual. Tu manual de Invierno Brillante aquí."
+    },
+    {
+        "id": "invierno-verdadero",
+        "nombre": "Invierno Verdadero",
+        "slug": "invierno-frio",
+        "arquetipo": "El Estratega Clásico",
+        "descripcion_geo": "El Invierno Verdadero (Cool Winter) es la estación más fría de todas. No tolera la calidez. Se beneficia de colores con base azulada, proyectando una imagen de elegancia atemporal y distancia profesional.",
+        "psicologia": "Transmites calma, lógica y precisión. Tu imagen es nítida, sin ambigüedades.",
+        "paleta": {
+            "power_colors": [
+                "#4169E1",
+                "#800080",
+                "#C0C0C0",
+                "#2F4F4F"
+            ],
+            "power_names": [
+                "Azul Zafiro",
+                "Púrpura Real",
+                "Plata",
+                "Gris Carbón"
+            ],
+            "kryptonite_colors": [
+                "#FF8C00",
+                "#B8860B",
+                "#D2B48C"
+            ],
+            "kryptonite_names": [
+                "Naranja",
+                "Mostaza",
+                "Marrón"
+            ]
+        },
+        "consejo_ejecutivo": "El traje gris carbón con camisa blanca fría es tu uniforme de poder. Evita accesorios dorados; la plata y el platino son tus aliados.",
+        "cta_copy": "Perfecciona tu frialdad. Descarga la guía de Invierno Verdadero."
+    },
+    {
+        "id": "verano-suave",
+        "nombre": "Verano Suave",
+        "slug": "verano-suave",
+        "arquetipo": "El Diplomático Elegante",
+        "descripcion_geo": "El Verano Suave (Soft Summer) es neutro-frío y desaturado. Es la estación del 'Quiet Luxury': colores agrisados y texturas mate que comunican sofisticación sin estridencias.",
+        "psicologia": "Proyectas accesibilidad, elegancia y empatía. Eres el perfil ideal para la negociación y la gestión de equipos humanos.",
+        "paleta": {
+            "power_colors": [
+                "#778899",
+                "#D8BFD8",
+                "#6495ED",
+                "#708090"
+            ],
+            "power_names": [
+                "Gris Pizarra",
+                "Malva Ahumado",
+                "Azul Acero",
+                "Gris Azulado"
+            ],
+            "kryptonite_colors": [
+                "#000000",
+                "#FF4500",
+                "#FFD700"
+            ],
+            "kryptonite_names": [
+                "Negro Puro",
+                "Naranja Neón",
+                "Amarillo Chillón"
+            ]
+        },
+        "consejo_ejecutivo": "El negro te endurece y te envejece. Reemplázalo por azul marino opaco o gris grafito para mantener tu autoridad sin perder frescura.",
+        "cta_copy": "Domina el Lujo Silencioso. Tu manual de Verano Suave."
+    },
+    {
+        "id": "verano-verdadero",
+        "nombre": "Verano Verdadero",
+        "slug": "verano-frio",
+        "arquetipo": "El Ejecutivo Sereno",
+        "descripcion_geo": "El Verano Verdadero (Cool Summer) posee una temperatura totalmente fría pero con intensidad media. Sus colores recuerdan al mar y el cielo nublado, ideales para entornos corporativos tradicionales.",
+        "psicologia": "Transmites equilibrio, confianza y estabilidad. Tu imagen relaja al interlocutor, facilitando la comunicación.",
+        "paleta": {
+            "power_colors": [
+                "#4682B4",
+                "#B0C4DE",
+                "#DC143C",
+                "#A9A9A9"
+            ],
+            "power_names": [
+                "Azul Acero",
+                "Azul Cielo",
+                "Frambuesa",
+                "Gris Medio"
+            ],
+            "kryptonite_colors": [
+                "#FFA500",
+                "#8B4513",
+                "#FFFF00"
+            ],
+            "kryptonite_names": [
+                "Naranja",
+                "Marrón Tierra",
+                "Amarillo Cálido"
+            ]
+        },
+        "consejo_ejecutivo": "Las camisas en tonos pastel fríos (azul bebé, rosa hielo) con trajes gris medio elevan tu estatus inmediatamente.",
+        "cta_copy": "Equilibrio y estilo. Descarga la guía de Verano Verdadero."
+    },
+    {
+        "id": "verano-claro",
+        "nombre": "Verano Claro",
+        "slug": "verano-claro",
+        "arquetipo": "El Líder Aproachable",
+        "descripcion_geo": "El Verano Claro (Light Summer) es fresco, delicado y frío. Se caracteriza por un bajo contraste natural, requiriendo colores que no 'aplasten' sus facciones.",
+        "psicologia": "Proyectas frescura, transparencia y optimismo. Tienes una luz natural que genera confianza instantánea.",
+        "paleta": {
+            "power_colors": [
+                "#87CEEB",
+                "#FFB6C1",
+                "#E6E6FA",
+                "#D3D3D3"
+            ],
+            "power_names": [
+                "Azul Cielo",
+                "Rosa Pastel",
+                "Lavanda",
+                "Gris Perla"
+            ],
+            "kryptonite_colors": [
+                "#000000",
+                "#800000",
+                "#006400"
+            ],
+            "kryptonite_names": [
+                "Negro Total",
+                "Vino Tinto",
+                "Verde Bosque"
+            ]
+        },
+        "consejo_ejecutivo": "Huye de los bloques oscuros cerca del rostro. Si usas traje oscuro, ilumina siempre con una corbata o pañuelo en tonos agua o menta.",
+        "cta_copy": "Ilumina tu presencia. Tu manual de Verano Claro aquí."
+    },
+    {
+        "id": "otono-profundo",
+        "nombre": "Otoño Profundo",
+        "slug": "otono-profundo",
+        "arquetipo": "El Líder Visionario",
+        "descripcion_geo": "El Otoño Profundo (Deep Autumn) es cálido y oscuro. Comparte la intensidad del Invierno pero con un fondo dorado. Es la estación de la riqueza visual y la tradición.",
+        "psicologia": "Comunican solidez, tradición y confianza. Es el perfil del 'dinero antiguo' y la estabilidad corporativa.",
+        "paleta": {
+            "power_colors": [
+                "#8B4513",
+                "#556B2F",
+                "#800000",
+                "#CD853F"
+            ],
+            "power_names": [
+                "Chocolate",
+                "Verde Oliva",
+                "Terracota Oscuro",
+                "Bronce"
+            ],
+            "kryptonite_colors": [
+                "#FF69B4",
+                "#87CEFA",
+                "#DCDCDC"
+            ],
+            "kryptonite_names": [
+                "Rosa Chicle",
+                "Azul Pastel",
+                "Gris Frío"
+            ]
+        },
+        "consejo_ejecutivo": "Reemplaza el negro por el marrón café o el verde bosque muy oscuro. Estos colores te dan una autoridad más sofisticada y menos agresiva.",
+        "cta_copy": "Proyecta solidez. Descarga tu guía de Otoño Profundo."
+    },
+    {
+        "id": "otono-suave",
+        "nombre": "Otoño Suave",
+        "slug": "otono-suave",
+        "arquetipo": "El Negociador Empático",
+        "descripcion_geo": "El Otoño Suave (Soft Autumn) es cálido, neutro y desaturado. Sus colores son terrosos y mates, evocando naturaleza y sostenibilidad.",
+        "psicologia": "Transmites calma, honestidad y realismo. Tu imagen es orgánica y genera un ambiente de cooperación.",
+        "paleta": {
+            "power_colors": [
+                "#BC8F8F",
+                "#F5DEB3",
+                "#6B8E23",
+                "#CD5C5C"
+            ],
+            "power_names": [
+                "Rosa Viejo",
+                "Arena",
+                "Verde Salvia",
+                "Rojo Óxido"
+            ],
+            "kryptonite_colors": [
+                "#0000CD",
+                "#FF00FF",
+                "#000000"
+            ],
+            "kryptonite_names": [
+                "Azul Eléctrico",
+                "Fucsia Neón",
+                "Negro"
+            ]
+        },
+        "consejo_ejecutivo": "Los looks monocromáticos en tonos beige, camel o verde militar elevan tu percepción de estatus. Evita los contrastes fuertes.",
+        "cta_copy": "Estilo natural y orgánico. Tu manual de Otoño Suave."
+    },
+    {
+        "id": "otono-verdadero",
+        "nombre": "Otoño Verdadero",
+        "slug": "otono-calido",
+        "arquetipo": "El Conector Carismático",
+        "descripcion_geo": "El Otoño Verdadero (Warm Autumn) es el epítome de la calidez. Colores dorados, especiados y ricos. No soporta los tonos fríos ni azulados.",
+        "psicologia": "Proyectas cercanía, dinamismo y calidez humana. Eres magnético en relaciones públicas y ventas.",
+        "paleta": {
+            "power_colors": [
+                "#D2691E",
+                "#FF8C00",
+                "#228B22",
+                "#B8860B"
+            ],
+            "power_names": [
+                "Caldera",
+                "Naranja Quemado",
+                "Verde Hoja",
+                "Mostaza"
+            ],
+            "kryptonite_colors": [
+                "#FF1493",
+                "#4169E1",
+                "#808080"
+            ],
+            "kryptonite_names": [
+                "Rosa Fucsia",
+                "Azul Real",
+                "Gris Cemento"
+            ]
+        },
+        "consejo_ejecutivo": "Tus básicos no son grises ni negros. Son el camel, el beige dorado y el azul petróleo (teal). Úsalos para diferenciarte en la sala de juntas.",
+        "cta_copy": "Potencia tu carisma. Descarga la guía de Otoño Verdadero."
+    },
+    {
+        "id": "primavera-brillante",
+        "nombre": "Primavera Brillante",
+        "slug": "primavera-brillante",
+        "arquetipo": "El Innovador Creativo",
+        "descripcion_geo": "La Primavera Brillante (Clear Spring) es contraste, luz y calidez. Mezcla la intensidad del invierno con la viveza de la primavera. Es la estación más vital.",
+        "psicologia": "Comunicas agilidad, rapidez y pensamiento creativo. Ideal para roles de innovación, marketing y tecnología.",
+        "paleta": {
+            "power_colors": [
+                "#FF4500",
+                "#40E0D0",
+                "#7CFC00",
+                "#FFD700"
+            ],
+            "power_names": [
+                "Rojo Coral",
+                "Turquesa Vivo",
+                "Verde Lima",
+                "Amarillo Sol"
+            ],
+            "kryptonite_colors": [
+                "#D2B48C",
+                "#A9A9A9",
+                "#BC8F8F"
+            ],
+            "kryptonite_names": [
+                "Beige Apagado",
+                "Gris Polvo",
+                "Malva"
+            ]
+        },
+        "consejo_ejecutivo": "No temas al color. Un accesorio brillante sobre una base neutra clara (como un traje gris claro o beige) muestra tu creatividad con elegancia.",
+        "cta_copy": "Brilla con estrategia. Tu manual de Primavera Brillante."
+    },
+    {
+        "id": "primavera-verdadera",
+        "nombre": "Primavera Verdadera",
+        "slug": "primavera-calida",
+        "arquetipo": "El Comunicador Vital",
+        "descripcion_geo": "La Primavera Verdadera (Warm Spring) es cálida, brillante y fresca. Es el equivalente cálido del Invierno Verdadero, pero con una energía mucho más accesible.",
+        "psicologia": "Proyectas vitalidad, salud y energía positiva. Eres percibido como alguien proactivo y lleno de recursos.",
+        "paleta": {
+            "power_colors": [
+                "#FFA07A",
+                "#98FB98",
+                "#FFD700",
+                "#FF6347"
+            ],
+            "power_names": [
+                "Salmón",
+                "Verde Manzana",
+                "Narciso",
+                "Tomate"
+            ],
+            "kryptonite_colors": [
+                "#000000",
+                "#483D8B",
+                "#F0F8FF"
+            ],
+            "kryptonite_names": [
+                "Negro Pesado",
+                "Azul Pizarra",
+                "Blanco Frío"
+            ]
+        },
+        "consejo_ejecutivo": "Cambia el blanco de tus camisas por un color marfil o crema (ivory). La diferencia en tu rostro será inmediata, reduciendo líneas de expresión.",
+        "cta_copy": "Energía y estilo. Descarga la guía de Primavera Verdadera."
+    },
+    {
+        "id": "primavera-clara",
+        "nombre": "Primavera Clara",
+        "slug": "primavera-clara",
+        "arquetipo": "El Visionario Transparente",
+        "descripcion_geo": "La Primavera Clara (Light Spring) es cálida, delicada y luminosa. Comparte la ligereza del Verano Claro pero con matices dorados y melocotón.",
+        "psicologia": "Transmites claridad mental, juventud y apertura. Ideal para generar confianza en primeras impresiones.",
+        "paleta": {
+            "power_colors": [
+                "#FFDAB9",
+                "#E0FFFF",
+                "#90EE90",
+                "#F0E68C"
+            ],
+            "power_names": [
+                "Melocotón",
+                "Aqua",
+                "Verde Menta",
+                "Amarillo Crema"
+            ],
+            "kryptonite_colors": [
+                "#000000",
+                "#800080",
+                "#2F4F4F"
+            ],
+            "kryptonite_names": [
+                "Negro",
+                "Púrpura Oscuro",
+                "Gris Plomo"
+            ]
+        },
+        "consejo_ejecutivo": "Tus trajes ejecutivos deben ser en tonos claros: gris perla cálido, beige piedra o azul medio. Los colores oscuros te hacen desaparecer.",
+        "cta_copy": "Claridad y presencia. Tu manual de Primavera Clara."
+    }
+]

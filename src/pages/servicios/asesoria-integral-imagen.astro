@@ -1,0 +1,145 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import {
+    Accordion,
+    AccordionItem,
+    AccordionTrigger,
+    AccordionContent,
+} from "@/components/ui/accordion"; // (Asumiendo componente Shadcn)
+
+const seoData = {
+    title: "Asesoría de Imagen Integral Bogotá | Cambio de Look & Personal Shopper",
+    description:
+        "Una inmersión total en tu estilo. Análisis de color, morfología, visagismo y personal shopper. Descubre la versión de ti que deberías ver en el espejo.",
+    h1: "Descubre a la Persona que Deberías Estar Viendo en el Espejo",
+};
+
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Personal Image Consulting",
+    provider: { "@type": "Person", name: "Roger Murillo" },
+    areaServed: "Bogotá",
+    description: seoData.description,
+});
+---
+
+<MainLayout
+    title={seoData.title}
+    description={seoData.description}
+    schema={schema}
+>
+    <section class="py-24 px-6 bg-[#fafaf9] text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1
+                class="text-5xl md:text-7xl font-serif text-[#0c0a09] mb-6 leading-tight"
+            >
+                {seoData.h1}
+            </h1>
+            <p
+                class="text-xl text-stone-600 font-light max-w-2xl mx-auto mb-10"
+            >
+                Una inmersión total en tu estilo. Desde el análisis de tu ADN
+                cromático hasta la arquitectura de tu guardarropa.
+            </p>
+            <a href="/contacto">
+                <Button
+                    size="lg"
+                    className="bg-[#0c0a09] text-white h-14 px-10"
+                >
+                    Iniciar mi Transformación
+                </Button>
+            </a>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-serif mb-8 text-center">
+                El Proceso Integral
+            </h2>
+
+            <div class="space-y-4">
+                <div class="border border-stone-200 rounded-lg p-4">
+                    <h3 class="font-bold text-lg mb-2">
+                        1. Colorimetría Avanzada (12 Estaciones)
+                    </h3>
+                    <p class="text-stone-600 text-sm">
+                        No es solo saber si eres "invierno" o "verano". Es saber
+                        usar la luz a tu favor para reducir ojeras, manchas y
+                        líneas de expresión con solo usar el color correcto.
+                    </p>
+                </div>
+
+                <div class="border border-stone-200 rounded-lg p-4">
+                    <h3 class="font-bold text-lg mb-2">
+                        2. Morfología Corporal
+                    </h3>
+                    <p class="text-stone-600 text-sm">
+                        Aprende a vestir tu cuerpo real, no el que esperas
+                        tener. Equilibramos proporciones usando cortes
+                        estratégicos y efectos ópticos.
+                    </p>
+                </div>
+
+                <div class="border border-stone-200 rounded-lg p-4">
+                    <h3 class="font-bold text-lg mb-2">
+                        3. Visagismo y Rostro
+                    </h3>
+                    <p class="text-stone-600 text-sm">
+                        El marco de tu rostro. Definimos corte de cabello,
+                        diseño de barba (hombres), gafas y accesorios según tu
+                        geometría facial.
+                    </p>
+                </div>
+
+                <div class="border border-stone-200 rounded-lg p-4">
+                    <h3 class="font-bold text-lg mb-2">4. Personal Shopper</h3>
+                    <p class="text-stone-600 text-sm">
+                        Acompañamiento de compras inteligente. Te enseñamos a
+                        comprar calidad, no cantidad. Es un ahorro de dinero
+                        garantizado a largo plazo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-[#fafaf9]">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-2 gap-8 text-center">
+                <div>
+                    <h4
+                        class="font-bold text-stone-400 mb-4 uppercase tracking-widest text-xs"
+                    >
+                        Peluquería Tradicional
+                    </h4>
+                    <p class="text-stone-500 mb-2">
+                        Te dicen qué está de moda.
+                    </p>
+                    <p class="text-stone-500 mb-2">
+                        Ambiente ruidoso y público.
+                    </p>
+                    <p class="text-stone-500">Corte estándar.</p>
+                </div>
+                <div class="border-l border-stone-300">
+                    <h4
+                        class="font-bold text-[#0c0a09] mb-4 uppercase tracking-widest text-xs"
+                    >
+                        Roger Murillo
+                    </h4>
+                    <p class="text-[#0c0a09] font-medium mb-2">
+                        Te dice qué es eterno y estratégico para TI.
+                    </p>
+                    <p class="text-[#0c0a09] font-medium mb-2">
+                        Estudio privado exclusivo (A Puerta Cerrada).
+                    </p>
+                    <p class="text-[#0c0a09] font-medium">
+                        Arquitectura facial personalizada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>
