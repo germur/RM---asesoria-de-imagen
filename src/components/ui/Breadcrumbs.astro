@@ -14,18 +14,26 @@ const routeNames: Record<string, string> = {
     "test-colorimetria": "Test de Color",
 };
 
-// No mostrar breadcrumbs en home
+// No mostrar breadcrumbs en home (la raíz no lleva breadcrumb)
 if (pathname === "/") return null;
+
+const { theme = 'dark' } = Astro.props;
+const isDark = theme === 'dark';
+
+const textClass = isDark ? "text-gray-300" : "text-gray-500";
+const hoverClass = isDark ? "hover:text-white" : "hover:text-brand-primary";
+const activeClass = isDark ? "text-white" : "text-brand-primary";
 ---
 
-<nav aria-label="Breadcrumb" class="container mx-auto px-6 pt-24 pb-4">
+<nav aria-label="Breadcrumb" class="absolute top-20 left-0 w-full z-40">
+    <div class="container mx-auto px-6 py-4">
     <ol
-        class="flex items-center space-x-2 text-xs uppercase tracking-widest text-gray-500 font-medium"
+        class={`flex items-center space-x-2 text-xs uppercase tracking-widest font-medium ${textClass}`}
     >
         <li>
             <a
                 href="/"
-                class="hover:text-brand-primary transition-colors flex items-center gap-1"
+                class={`${hoverClass} transition-colors flex items-center gap-1`}
             >
                 <House weight="bold" size={14} />
                 <span class="sr-only">Inicio</span>
@@ -40,13 +48,13 @@ if (pathname === "/") return null;
 
                 return (
                     <>
-                        <li class="text-gray-400">
+                        <li class="opacity-50">
                             <CaretRight size={12} weight="bold" />
                         </li>
                         <li>
                             {isLast ? (
                                 <span
-                                    class="text-brand-primary font-bold"
+                                    class={`${activeClass} font-bold`}
                                     aria-current="page"
                                 >
                                     {name}
@@ -54,7 +62,7 @@ if (pathname === "/") return null;
                             ) : (
                                 <a
                                     href={href}
-                                    class="hover:text-brand-primary transition-colors"
+                                    class={`${hoverClass} transition-colors`}
                                 >
                                     {name}
                                 </a>
@@ -65,4 +73,5 @@ if (pathname === "/") return null;
             })
         }
     </ol>
+    </div>
 </nav>

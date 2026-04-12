@@ -1,0 +1,27 @@
+---
+import CourseLayout from "@/layouts/CourseLayout.astro";
+
+const frontmatter = {
+    title: "Curso Descúbrete",
+    subtitle: "Desbloquea el poder de tu imagen personal. Ideal para quienes inician su camino en la maestría de la percepción.",
+    price: "$25 USD",
+    description: "Inicia tu camino en la estrategia de la percepción. El curso fundacional para comprender cómo el mundo te lee antes de que digas una sola palabra.",
+    image: "/images/course-descubrete.jpg",
+    buyLink: "https://pay.hotmart.com/U99309978M",
+    modules: [
+        "Módulo 1: El mito de la frivolidad y el poder de la primera impresión",
+        "Módulo 2: Autodiagnóstico Express - Tu punto de partida",
+        "Módulo 3: Introducción a la Semiótica del Vestuario",
+        "Módulo 4: Higiene Visual y Errores Fatales a evitar",
+        "Módulo 5: Plan de Acción Inmediato"
+    ],
+    benefits: [
+        "Comprende qué comunica tu imagen actual.",
+        "Elimina factores de ruido visual y distracción.",
+        "Gana seguridad al conocer tus fortalezas estéticas.",
+        "Acceso vitalicio y actualizaciones futuras."
+    ]
+};
+---
+
+<CourseLayout frontmatter={frontmatter} />

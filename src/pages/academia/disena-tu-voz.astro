@@ -1,0 +1,43 @@
+---
+import CourseLayout from "@/layouts/CourseLayout.astro";
+
+const frontmatter = {
+    title: "Curso Conquista: Diseña tu Voz",
+    subtitle: "Domina el arte de influir. La apariencia atrae, pero la comunicación asegura el trato.",
+    price: "$40 USD *",
+    description: "Alinea tu imagen no verbal con una comunicación persuasiva. Domina el tono, el lenguaje corporal y la presencia escénica (Aplica conversión a moneda local en checkout).",
+    image: "/images/course-conquista.jpg",
+    buyLink: "https://pay.hotmart.com/U99476935H",
+    modules: [
+        "Módulo 1: Dominio del Lenguaje Corporal y Kinesia",
+        "Módulo 2: Gestión de Espacios y Presencia Escénica (Proxémica)",
+        "Módulo 3: Entrenamiento Vocal Ejecutivo - Modulación y Tono",
+        "Módulo 4: Estructurando un Pitch Irresistible e Impactante",
+        "Módulo 5: Manejo de Crisis y Preguntas Difíciles en Público"
+    ],
+    benefits: [
+        "Elimina las muletillas corporales que roban tu autoridad.",
+        "Aprende a llenar la habitación con tu sola presencia física.",
+        "Proyecta una voz profunda, segura y confiable que todos escuchen.",
+        "Cierra más acuerdos mejorando tus habilidades de persuasión."
+    ]
+};
+---
+
+<CourseLayout frontmatter={frontmatter} />
+
+<!-- Microcopy for COP note in this specific layout -->
+<style is:global>
+    /* In CourseLayout, modifying the layout to account for COP pricing */
+    .text-3xl.font-serif.text-white::after {
+        content: " (Equivalente en moneda local)";
+        font-size: 0.4em;
+        display: block;
+        color: #9CA3AF;
+        font-family: sans-serif;
+        font-weight: 300;
+        margin-top: 4px;
+        letter-spacing: 0;
+        text-transform: none;
+    }
+</style>

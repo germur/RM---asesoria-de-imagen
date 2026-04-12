@@ -1,0 +1,27 @@
+---
+import CourseLayout from "@/layouts/CourseLayout.astro";
+
+const frontmatter = {
+    title: "Curso Diseñate: Crea tu Iconología",
+    subtitle: "Pasa de ser uno más en la sala a convertirte en la referencia. Metodología de branding personal aplicada al vestuario avanzado.",
+    price: "$35 USD",
+    description: "Crea tu iconología y marca personal. Aprende a diseñar una presencia magnética que proyecte autoridad de manera silenciosa pero implacable.",
+    image: "/images/course-disenate.jpg",
+    buyLink: "https://pay.hotmart.com/O99463899F",
+    modules: [
+        "Módulo 1: Arquitectura de la Marca Personal Fuerte",
+        "Módulo 2: Psicología de las Siluetas y Proporciones",
+        "Módulo 3: Definición del ADN Estilístico y Arquetipos",
+        "Módulo 4: Construcción Avanzada de Armario Cápsula Estratégico",
+        "Módulo 5: Casos de Éxito: Diseñando a Líderes y Ejecutivos"
+    ],
+    benefits: [
+        "Construye un estilo inolvidable que te diferencie en tu industria.",
+        "Optimiza tu tiempo de vestir diariamente reduciendo decisiones.",
+        "Domina los cortes y ajustes perfectos para tu tipo de cuerpo.",
+        "Proyecta autoridad y confianza para ascensos y ventas."
+    ]
+};
+---
+
+<CourseLayout frontmatter={frontmatter} />

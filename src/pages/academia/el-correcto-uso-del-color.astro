@@ -1,0 +1,43 @@
+---
+import CourseLayout from "@/layouts/CourseLayout.astro";
+
+const frontmatter = {
+    title: "Curso Destaca: El Correcto Uso del Color",
+    subtitle: "Sistematiza el color para tus intereses estratégicos. (Curso: Resplandece / Destaca).",
+    price: "$40 USD *",
+    description: "Deja de vestir de negro por inercia. Descubre la ciencia exacta detrás de la psicología del color, temperatura y armonías para destacar magnéticamente (Aplica conversión a moneda local en checkout).",
+    image: "/images/course-destaca.jpg",
+    buyLink: "https://pay.hotmart.com/W99484170E",
+    modules: [
+        "Módulo 1: Introducción Munsell y Temperatura del Color",
+        "Módulo 2: Cómo la Psicología del Color manipula a tu audiencia",
+        "Módulo 3: Contraste y Armonías Visuales en la Indumentaria",
+        "Módulo 4: Paletas de Invierno, Verano, Primavera y Otoño",
+        "Módulo 5: Combinando con Maestría: El Arte del Estampado"
+    ],
+    benefits: [
+        "Deja atrás el encasillamiento del color negro como único recurso corporativo.",
+        "Encuentra los tonos que iluminan tu rostro y ocultan imperfecciones naturalmente.",
+        "Entiende qué mensajes subliminales envía cada pigmento a nivel neurológico.",
+        "Metodología práctica para combinar colores sin parecer un carnaval."
+    ]
+};
+---
+
+<CourseLayout frontmatter={frontmatter} />
+
+<!-- Microcopy for COP note in this specific layout -->
+<style is:global>
+    /* In CourseLayout, modifying the layout to account for COP pricing */
+    .text-3xl.font-serif.text-white::after {
+        content: " (Equivalente en moneda local)";
+        font-size: 0.4em;
+        display: block;
+        color: #9CA3AF;
+        font-family: sans-serif;
+        font-weight: 300;
+        margin-top: 4px;
+        letter-spacing: 0;
+        text-transform: none;
+    }
+</style>
