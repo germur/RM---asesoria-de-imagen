@@ -39,12 +39,14 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight text-brand-black font-medium;
+    @apply font-serif tracking-tight font-medium;
+    /* Sin color fijo: hereda del padre (blanco en secciones claras, blanco en oscuras) */
   }
 
   h1 { @apply text-5xl md:text-7xl leading-[1.05]; }
 
-  p { @apply text-brand-black/80 leading-relaxed font-light; }
+  p { @apply leading-relaxed font-light; }
+  /* Sin color fijo en p: hereda del padre. Usa text-neutral-500 en claras, text-neutral-300 en oscuras */
 }
 
 /* ============================================================
