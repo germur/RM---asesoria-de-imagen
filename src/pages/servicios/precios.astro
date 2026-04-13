@@ -1,0 +1,245 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "PriceSpecification",
+    priceCurrency: "USD",
+    eligibleRegion: {
+        "@type": "City",
+        name: "Bogotá",
+    },
+    seller: {
+        "@type": "ProfessionalService",
+        name: "Roger Murillo Asesoría de Imagen",
+        url: "https://rogermurillo.co",
+    },
+});
+---
+
+<MainLayout
+    title="Precios Asesoría de Imagen Bogotá · Consultoría · Cursos | Roger Murillo"
+    description="Conoce los rangos de inversión de nuestra asesoría de imagen en Bogotá. Desde herramientas gratuitas hasta consultoría integral A Puerta Cerrada para ejecutivos y líderes."
+    schema={schema}
+>
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
+        <div class="container mx-auto px-6 max-w-3xl text-center">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Inversión</p>
+            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-brand-black mb-8">
+                ¿Cuánto cuesta una asesoría de imagen en Bogotá?
+            </h1>
+            <p class="text-lg text-neutral-500 font-light leading-relaxed">
+                Aquí no hay letra pequeña. Te mostramos todos nuestros niveles de servicio y su inversión real, para que decidas con información.
+            </p>
+        </div>
+    </section>
+
+    <!-- PRICING TIERS -->
+    <section class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6 text-center">Niveles de Servicio</p>
+            <p class="text-lg text-neutral-500 font-light leading-relaxed text-center mb-20">Desde el diagnóstico gratuito hasta la transformación completa.</p>
+
+            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
+
+                <!-- NIVEL 1: Gratuito -->
+                <div class="bg-white p-10 md:p-12 flex flex-col">
+                    <div class="mb-10">
+                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Nivel 1 · Digital</p>
+                        <h3 class="font-serif text-3xl text-brand-black mb-4">Herramientas Gratuitas</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="font-serif text-5xl text-brand-black">$0</span>
+                            <span class="text-sm text-neutral-400">USD</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Test de Colorimetría con IA
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Calculadora de tipo de rostro
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Resultado inmediato sin registro
+                        </li>
+                    </ul>
+                    <a
+                        href="/herramientas/test-colorimetria-online"
+                        class="px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-brand-black border border-brand-black/20 hover:border-brand-black transition-colors duration-500 rounded-sm text-center"
+                    >
+                        Empezar Gratis
+                    </a>
+                </div>
+
+                <!-- NIVEL 2: Academia -->
+                <div class="bg-white p-10 md:p-12 flex flex-col">
+                    <div class="mb-10">
+                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Nivel 2 · Formación</p>
+                        <h3 class="font-serif text-3xl text-brand-black mb-4">Academia Digital</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-sm text-neutral-400">Desde</span>
+                            <span class="font-serif text-5xl text-brand-black">$25</span>
+                            <span class="text-sm text-neutral-400">USD</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Curso Descúbrete — $25 USD
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Curso Diseñate — $35 USD
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Cursos Conquista / Destaca — $40 USD c/u
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Libro Revoluciona tu Imagen — $19 USD
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-500 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Acceso inmediato desde cualquier lugar
+                        </li>
+                    </ul>
+                    <a
+                        href="/academia"
+                        class="inline-flex items-center justify-center gap-3 px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-brand-black border border-brand-black/20 hover:border-brand-black transition-colors duration-500 rounded-sm"
+                    >
+                        Ver Academia <ArrowRight size={14} />
+                    </a>
+                </div>
+
+                <!-- NIVEL 3: Consultoría — Featured -->
+                <div class="bg-brand-black p-10 md:p-12 flex flex-col">
+                    <div class="mb-10">
+                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">Nivel 3 · Presencial</p>
+                        <h3 class="font-serif text-3xl text-white mb-4">Consultoría A Puerta Cerrada</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-sm text-neutral-500">Inversión desde</span>
+                            <span class="font-serif text-2xl text-brand-primary">Consultar</span>
+                        </div>
+                        <p class="text-xs text-neutral-300 mt-3">Cada caso es único. Contáctanos para una cotización personalizada.</p>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex items-start gap-3 text-sm text-neutral-300 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Diagnóstico biométrico de rostro y cuerpo
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-300 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Test de colorimetría con telas físicas (Draping)
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-300 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Diseño y corte por Roger y Adriana
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-300 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Dossier de imagen personalizado
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-300 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Estudio privado, 0 interrupciones
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-neutral-300 leading-relaxed">
+                            <CheckCircle2 className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
+                            Agenda limitada: máx. 4 cupos/mes
+                        </li>
+                    </ul>
+                    <a
+                        href="/contacto"
+                        class="inline-flex items-center justify-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500 rounded-sm"
+                    >
+                        Solicitar Cotización <ArrowRight size={14} />
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ DE PRECIOS -->
+    <section class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6 text-center">FAQ</p>
+            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black text-center mb-20">Preguntas sobre la inversión</h2>
+
+            <div class="divide-y divide-neutral-200">
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center list-none font-serif text-lg text-brand-black">
+                        <span>¿Por qué no publican el precio exacto de la consultoría?</span>
+                        <span class="text-neutral-400 text-2xl font-light transition-transform duration-300 group-open:rotate-45 shrink-0 ml-4">+</span>
+                    </summary>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-light mt-4 max-w-2xl">
+                        Porque cada cliente tiene necesidades distintas. Una consultoría de visagismo puro no cuesta lo mismo que una integral con colorimetría de telas, diseño capilar y dossier completo. Siempre te daremos un precio claro antes de cualquier compromiso. No hay sorpresas.
+                    </p>
+                </details>
+
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center list-none font-serif text-lg text-brand-black">
+                        <span>¿La consultoría incluye el corte de cabello?</span>
+                        <span class="text-neutral-400 text-2xl font-light transition-transform duration-300 group-open:rotate-45 shrink-0 ml-4">+</span>
+                    </summary>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-light mt-4 max-w-2xl">
+                        La Consultoría Integral "A Puerta Cerrada" sí incluye diagnóstico + diseño + ejecución (corte y/o color) por Roger y Adriana. Los servicios focales de Visagismo y Color también incluyen la ejecución presencial.
+                    </p>
+                </details>
+
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center list-none font-serif text-lg text-brand-black">
+                        <span>¿Hacen asesoría de imagen online?</span>
+                        <span class="text-neutral-400 text-2xl font-light transition-transform duration-300 group-open:rotate-45 shrink-0 ml-4">+</span>
+                    </summary>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-light mt-4 max-w-2xl">
+                        Los servicios presenciales requieren estar en Bogotá, ya que la colorimetría de precisión se hace con telas físicas y el visagismo requiere análisis craneal directo. Para clientes de otras ciudades, recomendamos empezar con los cursos de la Academia y el test de colorimetría online, y agendar una cita cuando vengan a Bogotá.
+                    </p>
+                </details>
+
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center list-none font-serif text-lg text-brand-black">
+                        <span>¿Hay forma de saber si el servicio es para mí antes de invertir?</span>
+                        <span class="text-neutral-400 text-2xl font-light transition-transform duration-300 group-open:rotate-45 shrink-0 ml-4">+</span>
+                    </summary>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-light mt-4 max-w-2xl">
+                        Sí. Empieza por el <a href="/herramientas/test-colorimetria-online" class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black hover:text-brand-primary transition-colors duration-500">test de colorimetría gratuito</a>. Si el resultado resuena contigo, estás listo para dar el siguiente paso. Muchos de nuestros clientes llegan al servicio presencial después de hacer el test y darse cuenta de cuánto estaban perdiendo.
+                    </p>
+                </details>
+
+                <details class="group py-6 cursor-pointer">
+                    <summary class="flex justify-between items-center list-none font-serif text-lg text-brand-black">
+                        <span>¿Es para mí si no soy ejecutivo/a?</span>
+                        <span class="text-neutral-400 text-2xl font-light transition-transform duration-300 group-open:rotate-45 shrink-0 ml-4">+</span>
+                    </summary>
+                    <p class="text-sm text-neutral-500 leading-relaxed font-light mt-4 max-w-2xl">
+                        Completamente. Trabajamos con ejecutivos, empresarios y también con personas que están en una transición de vida: un divorcio, un cambio de década, una reactivación profesional. La imagen estratégica no es solo para el mundo corporativo; es para cualquier persona que quiera que su exterior comunique exactamente quién es hoy.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="py-32 md:py-40 bg-brand-black text-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">Siguiente Paso</p>
+            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] mb-8">¿Tienes dudas sobre cuál nivel es el correcto?</h2>
+            <p class="text-neutral-300 font-light text-lg leading-relaxed mb-12">
+                Escríbenos por WhatsApp. Sin compromiso ni presión. Te ayudamos a elegir el camino que más sentido tiene para tu momento de vida.
+            </p>
+            <a
+                href="/contacto"
+                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500 rounded-sm"
+            >
+                Hablar con el Equipo <ArrowRight size={14} />
+            </a>
+        </div>
+    </section>
+</MainLayout>

@@ -2,25 +2,129 @@
 import CourseLayout from "@/layouts/CourseLayout.astro";
 
 const frontmatter = {
-    title: "Curso Diseñate: Crea tu Iconología",
-    subtitle: "Pasa de ser uno más en la sala a convertirte en la referencia. Metodología de branding personal aplicada al vestuario avanzado.",
+    title: "Diséñate",
+    tag: "Módulo 2 · Iconología",
+    subtitle: "Construye una firma visual tan poderosa que te reconozcan incluso antes de hablar.",
     price: "$35 USD",
-    description: "Crea tu iconología y marca personal. Aprende a diseñar una presencia magnética que proyecte autoridad de manera silenciosa pero implacable.",
+    description: "Saber quién eres no es suficiente. El verdadero poder está en saber diseñar cómo te ven. En este módulo aprenderás a usar líneas, formas, volúmenes y accesorios como herramientas estratégicas para crear una imagen icónica, coherente y memorable.",
+    promise: "Saldrás de este módulo con tu propia iconología definida: un conjunto de elementos visuales que te representan con precisión y te hacen inconfundible.",
     image: "/images/course-disenate.jpg",
     buyLink: "https://pay.hotmart.com/O99463899F",
-    modules: [
-        "Módulo 1: Arquitectura de la Marca Personal Fuerte",
-        "Módulo 2: Psicología de las Siluetas y Proporciones",
-        "Módulo 3: Definición del ADN Estilístico y Arquetipos",
-        "Módulo 4: Construcción Avanzada de Armario Cápsula Estratégico",
-        "Módulo 5: Casos de Éxito: Diseñando a Líderes y Ejecutivos"
+    instructor: "Roger Murillo & Adriana Garzón",
+    studentCount: "3.200+",
+    instructorCredentials: [
+        "Fundadores de la metodología propia",
+        "Expertos en iconología y diseño de imagen",
+        "20+ años de experiencia internacional",
+        "Certificación AICI",
+    ],
+    instructorBio: [
+        "Roger Murillo desarrolló el concepto de Iconología Aplicada como parte del nuestra metodología tras años de trabajar con líderes que necesitaban ser reconocidos visualmente en contextos de alto poder. Su trabajo ha sido referenciado en publicaciones como Forbes y GQ.",
+        "Adriana Garzón aporta su dominio en el diseño de silueta y la selección de prendas por morfología. Su especialización en colorimetría avanzada convierte cada look en una declaración estratégica calculada al detalle.",
     ],
     benefits: [
-        "Construye un estilo inolvidable que te diferencie en tu industria.",
-        "Optimiza tu tiempo de vestir diariamente reduciendo decisiones.",
-        "Domina los cortes y ajustes perfectos para tu tipo de cuerpo.",
-        "Proyecta autoridad y confianza para ascensos y ventas."
-    ]
+        {
+            icon: "✍️",
+            title: "Tu firma visual",
+            text: "Definirás un conjunto de elementos visuales únicos que te representen en cualquier contexto y seas reconocible al instante.",
+        },
+        {
+            icon: "📐",
+            title: "Diseño con intención",
+            text: "Aprenderás a usar líneas y formas para corregir, equilibrar y potenciar cualquier silueta sin depender del azar.",
+        },
+        {
+            icon: "💎",
+            title: "Poder en los detalles",
+            text: "Dominarás el arte del accesorio estratégico: cómo un elemento bien elegido transforma un look ordinario en uno de autoridad.",
+        },
+    ],
+    forWho: [
+        "Profesionales que ya completaron Descúbrete o tienen noción de su estilo y quieren llevarlo al siguiente nivel.",
+        "Líderes y directivos que necesitan proyectar una imagen de autoridad consistente en todos sus espacios.",
+        "Emprendedores personales o creadores de contenido que quieren construir una marca personal visual potente.",
+        "Personas que se han sentido invisibles o genéricas y quieren ser memorables en sus entornos profesionales.",
+        "Quienes quieren dejar de vestirse por intuición y empezar a diseñar su imagen con criterio.",
+    ],
+    notForWho: [
+        "Personas que no han trabajado los fundamentos de imagen (se recomienda tomar Descúbrete primero).",
+        "Quienes buscan un curso de moda o tendencias actuales de temporada.",
+        "Personas que esperan recetas de outfits sin entender los principios detrás de cada decisión.",
+    ],
+    modules: [
+        {
+            title: "Introducción a la Iconología Personal",
+            lessons: [
+                "Qué es la iconología y por qué las marcas más poderosas la usan",
+                "De marca comercial a marca personal: los mismos principios",
+                "Ejemplos de iconologías poderosas en figuras públicas",
+                "Ejercicio: Define tu propuesta de valor visual en una sola imagen",
+            ],
+        },
+        {
+            title: "Principios de diseño aplicados a la imagen",
+            lessons: [
+                "Las 7 líneas del vestuario y qué comunica cada una",
+                "Formas y volúmenes: equilibrio, contraste y proporción",
+                "Cómo crear puntos focales que dirijan la atención donde tú quieras",
+                "El principio de la jerarquía visual en los outfits",
+            ],
+        },
+        {
+            title: "Morfología y silueta estratégica",
+            lessons: [
+                "Los 6 arquetipos morfológicos y cómo potenciarlos",
+                "Líneas que alargan, equilibran o estructuran la figura",
+                "Proporciones y la regla del ojo dorado en la moda",
+                "Ejercicio: Diagnóstico de silueta con hoja de trabajo",
+            ],
+        },
+        {
+            title: "El arte del accesorio como herramienta de poder",
+            lessons: [
+                "Por qué el accesorio correcto puede hacer o deshacer un look",
+                "Joyería, relojes y bolsos como señales de estatus y personalidad",
+                "Cómo usar texturas y estampados para reforzar tu iconología",
+                "Los accesorios que nunca deberían faltar en tu guardarropa ejecutivo",
+            ],
+        },
+        {
+            title: "Construye tu Iconología — Plan de Acción",
+            lessons: [
+                "Sintetiza tu firma visual en un moodboard personalizado",
+                "Cómo aplicar tu iconología en contextos formales, casuales y digitales",
+                "Crea tu cápsula de imagen: las piezas clave de tu guardarropa estratégico",
+                "Auditoría final de coherencia visual",
+            ],
+        },
+    ],
+    testimonial: {
+        quote: "Diséñate me enseñó que vestirnos es una forma de diseño. Antes compraba ropa por impulso y nunca sentía que me representaba. Ahora cada prenda que elijo tiene una razón, y el cambio en cómo me perciben mis clientes y colegas ha sido brutal.",
+        name: "Andrés M.",
+        role: "Director Creativo, Medellín",
+    },
+    faq: [
+        {
+            q: "¿Es necesario haber tomado Descúbrete antes?",
+            a: "Se recomienda altamente. Diséñate asume que ya tienes claridad sobre tu identidad y arquetipo de imagen. Sin esa base, las herramientas de diseño son más difíciles de personalizar. Dicho esto, si tienes experiencia previa en imagen, puedes comenzar aquí.",
+        },
+        {
+            q: "¿Este curso funciona para imagen masculina y femenina?",
+            a: "Sí. Los principios de diseño, líneas y proporción son universales. El curso incluye ejemplos y casos de aplicación para hombres y mujeres en contextos profesionales y ejecutivos.",
+        },
+        {
+            q: "¿Necesito tener dinero para ropa nueva?",
+            a: "No necesariamente. Gran parte del trabajo es aprender a usar mejor lo que ya tienes con criterio. Los ejercicios de auditoría te mostrarán qué conservar, qué modificar y qué reemplazar con inteligencia.",
+        },
+        {
+            q: "¿Cuánto tiempo lleva completar este módulo?",
+            a: "El contenido equivale a aproximadamente 4-5 horas de video más ejercicios prácticos. Puedes avanzar a tu ritmo durante semanas o completarlo en un fin de semana.",
+        },
+        {
+            q: "¿Puedo aplicar esto si trabajo en un ambiente muy formal o con código de vestimenta?",
+            a: "Especialmente en esos contextos. La iconología es más poderosa cuando los márgenes son estrechos: aprendes a diferenciarte dentro de las reglas, no violándolas.",
+        },
+    ],
 };
 ---
 

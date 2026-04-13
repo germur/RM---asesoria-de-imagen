@@ -99,7 +99,7 @@ export default function ColorTest() {
 
             {/* Barra de Progreso Superior */}
             {!showEmailGate && (
-                <div className="w-full h-1 bg-gray-100">
+                <div className="w-full h-1 bg-neutral-100">
                     <motion.div
                         className="h-full bg-brand-primary"
                         initial={{ width: 0 }}
@@ -131,9 +131,9 @@ export default function ColorTest() {
                                     <button
                                         key={i}
                                         onClick={() => handleSelect(questions[step].category, opt.value)}
-                                        className="w-full text-left p-6 border border-gray-200 hover:border-brand-primary hover:bg-red-50/10 transition-all duration-300 group flex items-center justify-between rounded-sm"
+                                        className="w-full text-left p-6 border border-neutral-200 hover:border-brand-primary hover:bg-red-50/10 transition-all duration-300 group flex items-center justify-between rounded-sm"
                                     >
-                                        <span className="font-sans text-lg text-gray-700 group-hover:text-brand-black font-medium">
+                                        <span className="font-sans text-lg text-neutral-700 group-hover:text-brand-black font-medium">
                                             {opt.label}
                                         </span>
                                         <span className="text-2xl opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:scale-110 duration-200">
@@ -158,7 +158,7 @@ export default function ColorTest() {
                             <h3 className="font-serif text-2xl text-brand-black animate-pulse mb-2">
                                 {processText}
                             </h3>
-                            <p className="text-sm text-gray-400 font-light uppercase tracking-widest">
+                            <p className="text-sm text-neutral-400 font-light uppercase tracking-widest">
                                 No cierres esta ventana
                             </p>
                         </motion.div>
@@ -178,7 +178,7 @@ export default function ColorTest() {
                             <h3 className="font-serif text-3xl text-brand-black mb-4">
                                 Diagnóstico Completado
                             </h3>
-                            <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                            <p className="text-neutral-600 mb-8 max-w-md mx-auto">
                                 Hemos identificado tu estación y tus colores de poder. Ingresa tu correo para desbloquear tu <strong>Informe Ejecutivo Personalizado</strong>.
                             </p>
 
@@ -187,13 +187,13 @@ export default function ColorTest() {
                                     type="text"
                                     placeholder="Tu Nombre"
                                     required
-                                    className="w-full p-4 bg-gray-50 border-b-2 border-gray-200 focus:border-brand-primary outline-none transition-colors placeholder:text-gray-400"
+                                    className="w-full p-4 bg-neutral-50 border-b-2 border-neutral-200 focus:border-brand-primary outline-none transition-colors placeholder:text-neutral-400"
                                 />
                                 <input
                                     type="email"
                                     placeholder="Tu Correo Corporativo"
                                     required
-                                    className="w-full p-4 bg-gray-50 border-b-2 border-gray-200 focus:border-brand-primary outline-none transition-colors placeholder:text-gray-400"
+                                    className="w-full p-4 bg-neutral-50 border-b-2 border-neutral-200 focus:border-brand-primary outline-none transition-colors placeholder:text-neutral-400"
                                 />
                                 <button
                                     type="submit"
@@ -201,7 +201,7 @@ export default function ColorTest() {
                                 >
                                     Ver mis Resultados
                                 </button>
-                                <p className="text-[10px] text-gray-400 mt-4 uppercase tracking-widest">
+                                <p className="text-[10px] text-neutral-400 mt-4 uppercase tracking-widest">
                                     Respetamos tu privacidad. Tus datos están encriptados.
                                 </p>
                             </form>

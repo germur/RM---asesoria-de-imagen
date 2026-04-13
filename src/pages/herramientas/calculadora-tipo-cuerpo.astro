@@ -1,21 +1,228 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const seoData = {
-    title: "Calculadora de Tipo de Cuerpo | Roger Murillo",
-    description:
-        "Descubre tu tipo de cuerpo (Triángulo, Rectángulo, etc) con nuestra calculadora.",
-    h1: "Calculadora de Morfología Corporal",
-};
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Calculadora de Morfología Corporal Roger Murillo",
+    applicationCategory: "LifestyleApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    featureList: "Análisis de morfología corporal, Recomendación de siluetas, Guía de proporciones",
+});
+
+// Los 5 tipos corporales con sus características y recomendaciones
+const bodyTypes = [
+    {
+        id: "triangulo",
+        name: "Triángulo",
+        aka: "Pera",
+        description: "Hombros más estrechos que caderas. La parte inferior del cuerpo es más ancha.",
+        tip: "Equilibrar visualmente la parte superior con hombros estructurados, colores claros arriba y patrones en la zona del torso.",
+    },
+    {
+        id: "triangulo-invertido",
+        name: "Triángulo Invertido",
+        aka: "V / Atlético",
+        description: "Hombros más anchos que caderas. Parte superior más dominante.",
+        tip: "Suavizar la amplitud del torso con cuellos en V, telas fluidas abajo y evitar hombreras o patrones horizontales en la parte superior.",
+    },
+    {
+        id: "rectangulo",
+        name: "Rectángulo",
+        aka: "Banana",
+        description: "Hombros, cintura y caderas con medidas similares. Silueta lineal.",
+        tip: "Crear ilusión de curvas con cinturones, blusas con volumen en cadera o hombro, y cortes que definan la cintura.",
+    },
+    {
+        id: "reloj-arena",
+        name: "Reloj de Arena",
+        aka: "Ampolleta",
+        description: "Hombros y caderas similares con cintura marcada. La silueta más 'equilibrada'.",
+        tip: "Resaltar la cintura natural. Prendas ajustadas que sigan la curva del cuerpo. Todos los estilos clásicos funcionan.",
+    },
+    {
+        id: "manzana",
+        name: "Manzana",
+        aka: "Óvalo",
+        description: "Mayor volumen en la zona media. Cintura poco marcada.",
+        tip: "Alargamiento vertical con líneas rectas, prendas con escote en V, pantalones de tiro alto y telas que fluyan sin ceñir.",
+    },
+];
 ---
 
-<MainLayout title={seoData.title} description={seoData.description}>
-    <section class="py-20 px-6 max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl font-serif text-primary mb-8">{seoData.h1}</h1>
-        <p class="text-xl text-muted-foreground mb-12">
-            Herramienta interactiva próximamente.
-        </p>
-        <Button variant="outline">Volver a Herramientas</Button>
+<MainLayout
+    title="Calculadora de Morfología Corporal · Tipo de Cuerpo | Roger Murillo"
+    description="Descubre tu tipo de cuerpo (triángulo, reloj de arena, rectángulo y más) y aprende qué siluetas de ropa te favorecen según tu morfología. Gratis y sin registro."
+    schema={schema}
+>
+    <section class="relative pt-32 pb-16 bg-brand-black text-white">
+        <div class="container mx-auto px-6 text-center max-w-3xl relative z-10">
+            <span class="text-brand-primary font-bold tracking-[0.2em] uppercase text-xs mb-6 block">
+                Herramienta Gratuita
+            </span>
+            <h1 class="font-serif text-5xl md:text-6xl mb-6 leading-tight">
+                Calculadora de<br />
+                <span class="italic text-gray-400">Morfología Corporal</span>
+            </h1>
+            <p class="text-lg text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+                Viste tu cuerpo real, no el que crees tener. Ingresa tus medidas y descubre qué tipo de silueta eres y qué prendas equilibran tus proporciones.
+            </p>
+        </div>
+    </section>
+
+    <!-- CALCULADORA -->
+    <section class="py-16 bg-brand-gray">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <div class="bg-white p-10 shadow-2xl border-t-4 border-brand-primary">
+                <h2 class="font-serif text-2xl text-brand-black mb-2">Ingresa tus medidas</h2>
+                <p class="text-sm text-gray-500 mb-8">En centímetros. Usa una cinta métrica flexible sobre la ropa.</p>
+
+                <form id="body-form" class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-brand-black mb-2" for="hombros">
+                            Contorno de Hombros (cm)
+                        </label>
+                        <input
+                            id="hombros"
+                            type="number"
+                            min="50"
+                            max="200"
+                            placeholder="ej. 104"
+                            class="w-full border border-gray-200 px-4 py-3 text-brand-black focus:outline-none focus:border-brand-primary transition-colors text-lg"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-brand-black mb-2" for="cintura">
+                            Contorno de Cintura (cm)
+                        </label>
+                        <input
+                            id="cintura"
+                            type="number"
+                            min="40"
+                            max="200"
+                            placeholder="ej. 80"
+                            class="w-full border border-gray-200 px-4 py-3 text-brand-black focus:outline-none focus:border-brand-primary transition-colors text-lg"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-brand-black mb-2" for="caderas">
+                            Contorno de Caderas (cm)
+                        </label>
+                        <input
+                            id="caderas"
+                            type="number"
+                            min="60"
+                            max="200"
+                            placeholder="ej. 100"
+                            class="w-full border border-gray-200 px-4 py-3 text-brand-black focus:outline-none focus:border-brand-primary transition-colors text-lg"
+                            required
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full bg-brand-primary text-white py-4 font-bold uppercase tracking-widest hover:bg-brand-black transition-colors"
+                    >
+                        Calcular mi Morfología
+                    </button>
+                </form>
+
+                <!-- RESULTADO -->
+                <div id="result" class="hidden mt-10 pt-10 border-t border-gray-100">
+                    <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Tu tipo de cuerpo</p>
+                    <h3 id="result-name" class="font-serif text-4xl text-brand-black mb-1"></h3>
+                    <p id="result-aka" class="text-sm text-gray-400 mb-6"></p>
+                    <p id="result-desc" class="text-gray-600 text-sm leading-relaxed mb-6"></p>
+                    <div class="bg-brand-gray p-6 border-l-4 border-brand-primary">
+                        <p class="text-xs font-bold uppercase tracking-widest text-brand-black mb-2">Estrategia de Vestuario</p>
+                        <p id="result-tip" class="text-sm text-slate-700 leading-relaxed"></p>
+                    </div>
+                    <a
+                        href="/servicios/asesoria-integral-imagen"
+                        class="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:underline"
+                    >
+                        Quiero un análisis completo con Roger y Adriana <ArrowRight size={12} />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOS 5 TIPOS -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="font-serif text-4xl text-brand-black text-center mb-4">Los 5 tipos de morfología</h2>
+            <p class="text-center text-slate-500 font-light mb-16">Conocerlos no es vanidad. Es la base para vestirte con precisión.</p>
+            <div class="grid md:grid-cols-5 gap-4">
+                {bodyTypes.map(t => (
+                    <div class="bg-brand-gray p-6 border-t-2 border-transparent hover:border-brand-primary transition-colors">
+                        <h3 class="font-serif text-xl text-brand-black mb-1">{t.name}</h3>
+                        <p class="text-xs text-brand-primary font-bold uppercase tracking-widest mb-3">{t.aka}</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">{t.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- BRIDGE A CONSULTORÍA -->
+    <section class="py-16 bg-brand-black text-white text-center">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <p class="text-gray-400 mb-4 text-lg font-light">¿Quieres que Roger y Adriana analicen tu morfología en persona?</p>
+            <h3 class="font-serif text-3xl mb-8">El diagnóstico digital es el primer paso.<br /><span class="text-brand-primary">El presencial es la transformación.</span></h3>
+            <a
+                href="/contacto"
+                class="inline-block bg-brand-primary text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all rounded-sm"
+            >
+                Agendar Consultoría Presencial
+            </a>
+        </div>
     </section>
 </MainLayout>
+
+<script define:vars={{ bodyTypes }}>
+    const form = document.getElementById('body-form');
+    const resultDiv = document.getElementById('result');
+
+    form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const h = parseFloat(document.getElementById('hombros').value);
+        const c = parseFloat(document.getElementById('cintura').value);
+        const ca = parseFloat(document.getElementById('caderas').value);
+
+        if (!h || !c || !ca) return;
+
+        const waistRatioH = c / h;
+        const waistRatioCa = c / ca;
+        const hipToShoulder = ca / h;
+
+        let typeId = 'rectangulo';
+
+        if (h / ca >= 1.05 && waistRatioH < 0.75) {
+            typeId = 'triangulo-invertido';
+        } else if (ca / h >= 1.05 && waistRatioCa < 0.75) {
+            typeId = 'triangulo';
+        } else if (waistRatioH < 0.75 && waistRatioCa < 0.75) {
+            typeId = 'reloj-arena';
+        } else if (c >= h * 0.9 && c >= ca * 0.9) {
+            typeId = 'manzana';
+        } else {
+            typeId = 'rectangulo';
+        }
+
+        const found = bodyTypes.find(t => t.id === typeId);
+        if (!found) return;
+
+        document.getElementById('result-name').textContent = found.name;
+        document.getElementById('result-aka').textContent = 'También conocido como: ' + found.aka;
+        document.getElementById('result-desc').textContent = found.description;
+        document.getElementById('result-tip').textContent = found.tip;
+
+        resultDiv?.classList.remove('hidden');
+        resultDiv?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+</script>

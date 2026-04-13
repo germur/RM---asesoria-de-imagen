@@ -1,547 +1,173 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import AnimatedTitleWords from "../components/ui/AnimatedTitleWords.astro";
-import { Scan, Palette, HourglassHigh, Briefcase } from "@phosphor-icons/react";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { ArrowRight, Palette, User, Ruler } from "lucide-react";
 
-// Datos de las Herramientas (Activos Programáticos)
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Herramientas de Diagnóstico de Imagen",
+    description: "Herramientas gratuitas de diagnóstico de imagen: colorimetría, tipo de rostro y morfología corporal.",
+    hasPart: [
+        { "@type": "SoftwareApplication", name: "Test de Colorimetría Online", url: "https://rogermurillo.co/herramientas/test-colorimetria-online" },
+        { "@type": "SoftwareApplication", name: "Calculadora de Visagismo", url: "https://rogermurillo.co/herramientas/calculadora-rostro" },
+        { "@type": "SoftwareApplication", name: "Calculadora de Morfología Corporal", url: "https://rogermurillo.co/herramientas/calculadora-tipo-cuerpo" },
+    ],
+});
+
 const tools = [
-  // 1. Silo de Colorimetría
-  {
-    id: "colorimetria-ia",
-    title: "Test de Colorimetría IA",
-    subtitle: "Estación y Subtono",
-    description:
-      "Análisis de foto para determinar tu estación (Invierno, Verano...) y subtono. La base de tu estrategia de imagen.",
-    tags: ["Lead Magnet", "IA Powered"],
-    category: "Colorimetría",
-    image: "/images/tools/color-analysis-ui.jpg",
-    cta: "Iniciar Diagnóstico",
-    href: "/herramientas/test-colorimetria",
-    featured: true,
-  },
-  {
-    id: "contraste-personal",
-    title: "Calculadora de Contraste",
-    subtitle: "Piel, Ojos y Cabello",
-    description:
-      "Sube tu foto y calculamos el nivel de contraste natural de tu rostro para elegir estampados y combinaciones ideales.",
-    tags: ["Técnico", "Guía"],
-    category: "Colorimetría",
-    image: "/images/tools/contrast-calc-ui.jpg",
-    cta: "Calcular Contraste",
-    href: "/herramientas/calculadora-contraste",
-    featured: false,
-  },
-  {
-    id: "paletas-programaticas",
-    title: "Generador de Paletas",
-    subtitle: "Tu ADN Cromático",
-    description:
-      "Visualiza instantáneamente tu paleta de colores personalizada (ej: Invierno Brillante) y aprende a usarla.",
-    tags: ["Visual", "Paleta Digital"],
-    category: "Colorimetría",
-    image: "/images/tools/palette-gen-ui.jpg",
-    cta: "Ver Mi Paleta",
-    href: "/herramientas/generador-paletas",
-    featured: false,
-  },
-  {
-    id: "psicologia-color",
-    title: "Test Psicología del Color",
-    subtitle: "Estrategia Emocional",
-    description:
-      "¿Qué quieres comunicar hoy? Descubre qué colores usar según tus objetivos de negocio y estado de ánimo.",
-    tags: ["Estrategia", "Soft Skills"],
-    category: "Colorimetría",
-    image: "/images/tools/color-psych-ui.jpg",
-    cta: "Descubrir Mensaje",
-    href: "/herramientas/test-psicologia-color",
-    featured: false,
-  },
-  {
-    id: "detector-errores-color",
-    title: "Detector de Colores a Evitar",
-    subtitle: "Auditoría de Armario",
-    description:
-      "Descubre qué tonos te hacen ver cansado o enfermo según tu estación cromática y por qué evitarlos.",
-    tags: ["Auditoría", "Urgencia"],
-    category: "Colorimetría",
-    image: "/images/tools/color-avoid-ui.jpg",
-    cta: "Auditar Colores",
-    href: "/herramientas/detector-errores-color",
-    featured: false,
-  },
-
-  // 2. Silo de Visagismo
-  {
-    id: "analizador-rostro",
-    title: "Analizador de Rostro IA",
-    subtitle: "Geometría Facial",
-    description:
-      "Sube una foto y detectamos la forma exacta de tu rostro (Ovalado, Diamante, Cuadrado...) con visión por computadora.",
-    tags: ["Biometría", "IA Powered"],
-    category: "Visagismo",
-    image: "/images/tools/face-shape-ui.jpg",
-    cta: "Escanear Rostro",
-    href: "/herramientas/analizador-rostro",
-    featured: false,
-  },
-  {
-    id: "simulador-gafas",
-    title: "Simulador de Gafas",
-    subtitle: "Óptica Virtual",
-    description:
-      "Pruébate virtualmente los marcos que armonizan con tu biometría facial. Deja de adivinar qué gafas te quedan bien.",
-    tags: ["Simulador", "Estilo"],
-    category: "Visagismo",
-    image: "/images/tools/glasses-sim-ui.jpg",
-    cta: "Probar Monturas",
-    href: "/herramientas/simulador-gafas",
-    featured: false,
-  },
-  {
-    id: "guia-barbas",
-    title: "Guía de Barbas y Cortes",
-    subtitle: "Exclusivo Hombres",
-    description:
-      "Algoritmo experto que sugiere el corte de cabello y estilo de barba perfecto según tu estructura ósea.",
-    tags: ["Men's Grooming", "Visagismo"],
-    category: "Visagismo",
-    image: "/images/tools/beard-guide-ui.jpg",
-    cta: "Diseñar Estilo",
-    href: "/herramientas/guia-barbas",
-    featured: false,
-  },
-  {
-    id: "calculadora-aurea",
-    title: "Calculadora Proporción Áurea",
-    subtitle: "Belleza Matemática",
-    description:
-      "Ingresa tus medidas faciales y calcula qué tan cerca estás de la proporción divina (1.618).",
-    tags: ["Avanzado", "Matemáticas"],
-    category: "Visagismo",
-    image: "/images/tools/golden-ratio-ui.jpg",
-    cta: "Calcular Phi",
-    href: "/herramientas/calculadora-aurea",
-    featured: false,
-  },
-  {
-    id: "simulador-peinados",
-    title: "Simulador de Peinados",
-    subtitle: "Exclusivo Mujeres",
-    description:
-      "Visualiza cortes y peinados adaptados a tu tipo de rostro antes de ir al salón.",
-    tags: ["Hair Styling", "Simulador"],
-    category: "Visagismo",
-    image: "/images/tools/hairstyle-sim-ui.jpg",
-    cta: "Probar Looks",
-    href: "/herramientas/simulador-peinados",
-    featured: false,
-  },
-
-  // 3. Silo de Morfología
-  {
-    id: "calculadora-cuerpo",
-    title: "Calculadora Tipo de Cuerpo",
-    subtitle: "Antropometría Corporal",
-    description:
-      "Introduce tus medidas (hombros, cintura, cadera) y determina tu somatotipo exacto (Reloj de Arena, Triángulo...).",
-    tags: ["Medidas", "Diagnóstico"],
-    category: "Morfología",
-    image: "/images/tools/body-calc-ui.jpg",
-    cta: "Calcular Tipo",
-    href: "/herramientas/calculadora-cuerpo",
-    featured: false,
-  },
-  {
-    id: "guias-estilo-body",
-    title: "Generador Guía de Estilo",
-    subtitle: "Manual Personalizado",
-    description:
-      "Obtén una hoja de ruta con las prendas clave (Do's & Don'ts) específicas para tu arquitectura corporal.",
-    tags: ["Guía", "Estrategia"],
-    category: "Morfología",
-    image: "/images/tools/style-guide-ui.jpg",
-    cta: "Generar Guía",
-    href: "/herramientas/generador-guia-estilo",
-    featured: false,
-  },
-  {
-    id: "detector-errores-ropa",
-    title: "Detector Errores Vestuario",
-    subtitle: "Corrección de Estilo",
-    description:
-      "Selecciona una prenda y te diremos si favorece o perjudica tu silueta. Aprende a comprar con inteligencia.",
-    tags: ["Auditoría", "Compras"],
-    category: "Morfología",
-    image: "/images/tools/wardrobe-error-ui.jpg",
-    cta: "Verificar Prenda",
-    href: "/herramientas/detector-errores-vestuario",
-    featured: false,
-  },
-  {
-    id: "simulador-siluetas",
-    title: "Simulador de Siluetas",
-    subtitle: "Ilusiones Ópticas",
-    description:
-      "Mira cómo diferentes cortes y largos de ropa modifican visualmente tus proporciones. Domina el arte del engaño visual.",
-    tags: ["Visual", "Advanced"],
-    category: "Morfología",
-    image: "/images/tools/silhouette-sim-ui.jpg",
-    cta: "Simular Efectos",
-    href: "/herramientas/simulador-siluetas",
-    featured: false,
-  },
-  {
-    id: "test-proporcion",
-    title: "Test Altura y Proporción",
-    subtitle: "Equilibrio Vertical",
-    description:
-      "¿Torso largo o piernas largas? Descubre tu proporción vertical y cómo vestirte para equilibrarla.",
-    tags: ["Medidas", "Proporción"],
-    category: "Morfología",
-    image: "/images/tools/vertical-prop-ui.jpg",
-    cta: "Analizar Proporciones",
-    href: "/herramientas/test-proporcion",
-    featured: false,
-  },
-
-  // 4. Silo de Imagen Ejecutiva
-  {
-    id: "audit-linkedin",
-    title: "Auditoría Foto LinkedIn",
-    subtitle: "Marca Personal",
-    description:
-      "Analizamos tu foto de perfil profesional: iluminación, código de vestimenta y expresión para maximizar tu autoridad.",
-    tags: ["Profesional", "LinkedIn"],
-    category: "Imagen Ejecutiva",
-    image: "/images/tools/linkedin-audit-ui.jpg",
-    cta: "Auditar Perfil",
-    href: "/herramientas/audit-linkedin",
-    featured: false,
-  },
-  {
-    id: "generador-outfits",
-    title: "Generador Outfits Power",
-    subtitle: "Códigos de Vestimenta",
-    description:
-      "Dinos tu industria y nivel de cargo, y generaremos la fórmula de vestuario para proyectar liderazgo.",
-    tags: ["Negocios", "Liderazgo"],
-    category: "Imagen Ejecutiva",
-    image: "/images/tools/power-outfit-ui.jpg",
-    cta: "Crear Look",
-    href: "/herramientas/generador-outfits",
-    featured: false,
-  },
-  {
-    id: "test-arquetipos",
-    title: "Buscador de Arquetipos",
-    subtitle: "Psicología del Estilo",
-    description:
-      "Identifica tu arquetipo de estilo dominante (Creativo, Dramático, Natural...) y alinea tu imagen con tu esencia.",
-    tags: ["Psicología", "Identidad"],
-    category: "Imagen Ejecutiva",
-    image: "/images/tools/archetype-ui.jpg",
-    cta: "Descubrir Arquetipo",
-    href: "/herramientas/test-arquetipos",
-    featured: false,
-  },
-  {
-    id: "nivel-sofisticacion",
-    title: "Termómetro de Sofisticación",
-    subtitle: "Auditoría de Imagen",
-    description:
-      "Evalúa el nivel de refinamiento actual de tu imagen y recibe pasos concretos para elevarlo al siguiente nivel.",
-    tags: ["Diagnóstico", "Lujo"],
-    category: "Imagen Ejecutiva",
-    image: "/images/tools/sophistication-ui.jpg",
-    cta: "Medir Nivel",
-    href: "/herramientas/nivel-sofisticacion",
-    featured: false,
-  },
-  {
-    id: "calculadora-roi",
-    title: "Calculadora ROI de Imagen",
-    subtitle: "Inversión Profesional",
-    description:
-      "Calcula el retorno de inversión potencial de mejorar tu imagen en términos de salario y oportunidades.",
-    tags: ["Negocios", "Dinero"],
-    category: "Imagen Ejecutiva",
-    image: "/images/tools/roi-calc-ui.jpg",
-    cta: "Calcular ROI",
-    href: "/herramientas/calculadora-roi",
-    featured: false,
-  },
+    {
+        number: "01",
+        label: "Más usado",
+        title: "Test de Colorimetría",
+        subtitle: "Cambio de look con IA · Gratis",
+        description: "¿Invierno, Verano, Otoño o Primavera? Descubre los colores que iluminan tu piel y cuáles te apagan. Resultado en 2 minutos, sin registro.",
+        href: "/herramientas/test-colorimetria-online",
+        cta: "Hacer el Test",
+        icon: "palette",
+        bg: "bg-brand-primary",
+        image: "/images/roger-murillo.jpg",
+    },
+    {
+        number: "02",
+        label: null,
+        title: "Calculadora de Rostro",
+        subtitle: "Visagismo · Geometría facial",
+        description: "La forma de tu cara, decodificada con matemáticas. Descubre tu tipo de rostro y qué corte, barba y gafas equilibran tus facciones.",
+        href: "/herramientas/calculadora-rostro",
+        cta: "Analizar mi Rostro",
+        icon: "user",
+        bg: "bg-brand-black",
+        image: "/images/visagismo-diagram.webp",
+    },
+    {
+        number: "03",
+        label: null,
+        title: "Calculadora de Cuerpo",
+        subtitle: "Morfología · Siluetas estratégicas",
+        description: "Triángulo, Reloj de Arena, Rectángulo... Ingresa tus medidas y aprende qué siluetas de ropa equilibran tu figura real.",
+        href: "/herramientas/calculadora-tipo-cuerpo",
+        cta: "Calcular Ahora",
+        icon: "ruler",
+        bg: "bg-neutral-800",
+        image: "/images/executive-consulting.webp",
+    },
 ];
-
-// Group tools by category for display
-const categories = [...new Set(tools.map((t) => t.category))];
-
-// Schema para WebApplication (Alto EEAT)
-const toolsSchema = {
-  // ... existing schema ...
-  featureList: tools.map((t) => t.title).join(", "),
-};
 ---
 
 <MainLayout
-  title="Herramientas de Diagnóstico de Imagen | Roger Murillo Lab"
-  description="Accede a 20+ herramientas profesionales de diagnóstico. Colorimetría IA, Visagismo, Morfología e Imagen Ejecutiva."
-  schema={toolsSchema}
-  class="bg-brand-black"
+    title="Herramientas de Imagen Gratis · Colorimetría · Visagismo · Morfología | Roger Murillo"
+    description="Herramientas gratuitas de diagnóstico de imagen: test de colorimetría con IA, calculadora de tipo de rostro y calculadora de morfología corporal. Sin registro previo."
+    schema={schema}
 >
-  <!-- HERO: ENTRADA AL LABORATORIO -->
-  <section
-    class="relative min-h-[50vh] flex items-center bg-brand-black text-white overflow-hidden pt-20"
-  >
-    <!-- Fondo Simple y Limpio (Solo Gradiente) -->
-    <div class="absolute inset-0 z-0 bg-brand-black"></div>
-    <div
-      class="absolute inset-0 z-0 bg-gradient-to-b from-brand-black via-transparent to-brand-black/90"
-    >
-    </div>
-
-    <div class="container mx-auto px-6 relative z-10 text-center">
-      <span
-        class="inline-block py-1 px-3 border border-white/20 rounded-sm bg-white/5 backdrop-blur-sm text-xs font-serif italic text-white/80 mb-6 tracking-widest uppercase"
-      >
-        The Diagnostic Suite
-      </span>
-
-      <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">
-        <AnimatedTitleWords
-          text="Lo que no se mide,"
-          class="block text-white"
-        />
-        <span class="text-white">
-          <AnimatedTitleWords text="no se puede mejorar." delay={400} />
-        </span>
-      </h1>
-
-      <p
-        class="text-xl text-gray-300 font-light max-w-2xl mx-auto mb-10 leading-relaxed"
-      >
-        Bienvenido al centro de diagnóstico. Usamos datos y antropometría para
-        eliminar la subjetividad de tu imagen.
-      </p>
-    </div>
-  </section>
-
-  <!-- CATEGORY FILTER & GRID -->
-  <section class="py-20 bg-brand-black text-white relative z-20 -mt-20">
-    <div class="container mx-auto px-6">
-      {
-        categories.map((category) => (
-          <div class="mb-24">
-            <div class="flex items-end gap-4 mb-10 border-b border-white/10 pb-4">
-              <h2 class="font-serif text-3xl text-white italic">{category}</h2>
-              <span class="text-xs font-sans text-gray-500 uppercase tracking-widest mb-1">
-                — {tools.filter((t) => t.category === category).length}{" "}
-                Instrumentos
-              </span>
+    <!-- HERO — dark -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex items-center gap-4 mb-8">
+                <span class="w-8 h-px bg-brand-primary"></span>
+                <p class="text-xs tracking-[0.3em] uppercase text-neutral-500">Herramientas Gratuitas</p>
             </div>
+            <div class="max-w-3xl">
+                <h1 class="font-serif text-5xl md:text-7xl leading-[0.95] mb-10 text-white">
+                    Diagnostica tu imagen.<br />
+                    <span class="text-neutral-500">En minutos. Gratis.</span>
+                </h1>
+                <p class="text-lg text-neutral-400 font-light max-w-2xl leading-relaxed">
+                    Los mismos principios de colorimetría, visagismo y morfología
+                    que Roger y Adriana aplican en consultoría, ahora disponibles
+                    como herramientas digitales gratuitas.
+                </p>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {tools
-                .filter((t) => t.category === category)
-                .map((tool) => (
-                  <div
-                    class={`group relative bg-white/5 border border-white/10 rounded-sm overflow-hidden hover:border-brand-primary/30 transition-all duration-500 ${tool.featured ? "md:col-span-2 lg:col-span-2" : ""}`}
-                  >
-                    {/* Image Area */}
-                    <div
-                      class={`relative overflow-hidden ${tool.featured ? "h-64" : "h-48"}`}
-                    >
-                      <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent z-10 opacity-60" />
-
-                      {/* Placeholder/Fallback Logic */}
-                      <div class="w-full h-full bg-stone-900 flex items-center justify-center text-gray-700">
-                        <img
-                          src={tool.image}
-                          alt={tool.title}
-                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0 opacity-60 block"
-                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
-                        />
-                        <div class="hidden absolute inset-0 flex-col items-center justify-center text-center p-4">
-                          <span class="text-2xl mb-2 text-white/20">✦</span>
-                          <span class="text-[10px] uppercase tracking-widest text-white/40">
-                            Coming Soon
-                          </span>
+    <!-- TOOLS — cards with images -->
+    <section class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
+                {tools.map((tool) => (
+                    <a href={tool.href} class="group bg-white flex flex-col">
+                        <!-- Visual block with image -->
+                        <div class={`relative h-52 overflow-hidden ${tool.bg}`}>
+                            <img
+                                src={tool.image}
+                                alt={tool.title}
+                                class="w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700"
+                            />
+                            <div class="absolute inset-0 flex flex-col justify-between p-8">
+                                <div class="flex justify-between items-start">
+                                    <span class="font-serif text-5xl text-white/20">{tool.number}</span>
+                                    {tool.label && (
+                                        <span class="text-[10px] tracking-[0.25em] uppercase bg-white/10 text-white px-3 py-1 border border-white/20">
+                                            {tool.label}
+                                        </span>
+                                    )}
+                                </div>
+                                <div>
+                                    {tool.icon === "palette" && <Palette size={32} className="text-white opacity-70" />}
+                                    {tool.icon === "user" && <User size={32} className="text-white opacity-70" />}
+                                    {tool.icon === "ruler" && <Ruler size={32} className="text-white opacity-70" />}
+                                </div>
+                            </div>
                         </div>
-                      </div>
 
-                      <div class="absolute top-3 left-3 z-20 flex gap-2 flex-wrap">
-                        {tool.tags.map((tag) => (
-                          <span class="bg-black/50 backdrop-blur border border-white/10 text-[9px] font-sans uppercase tracking-widest px-2 py-1 text-white/80">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Content Area */}
-                    <div class="p-6">
-                      <h3 class="font-serif text-2xl mb-2 text-white group-hover:text-brand-primary transition-colors">
-                        {tool.title}
-                      </h3>
-                      <p class="text-brand-primary text-[10px] uppercase tracking-[0.2em] mb-3 font-bold opacity-80">
-                        {tool.subtitle}
-                      </p>
-                      <p class="text-gray-300 text-sm mb-6 leading-relaxed line-clamp-3 font-light">
-                        {tool.description}
-                      </p>
-
-                      <a
-                        href={tool.href}
-                        class="inline-flex items-center gap-2 text-white font-bold uppercase tracking-widest text-[10px] group-hover:gap-4 transition-all hover:text-brand-primary"
-                      >
-                        <span>{tool.cta}</span>
-                        <span class="text-brand-primary">→</span>
-                      </a>
-                    </div>
-                  </div>
+                        <!-- Content -->
+                        <div class="p-8 flex flex-col flex-1 justify-between">
+                            <div>
+                                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">{tool.subtitle}</p>
+                                <h2 class="font-serif text-xl md:text-2xl text-brand-black mb-3 group-hover:text-brand-primary transition-colors duration-500">
+                                    {tool.title}
+                                </h2>
+                                <p class="text-sm text-neutral-500 leading-relaxed">
+                                    {tool.description}
+                                </p>
+                            </div>
+                            <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-6">
+                                {tool.cta} <ArrowRight size={14} />
+                            </span>
+                        </div>
+                    </a>
                 ))}
             </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- SECCIÓN EEAT: LA CIENCIA DETRÁS -->
-  <section class="py-24 bg-stone-100 text-brand-black">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col md:flex-row gap-16 items-center">
-        <div class="md:w-1/2">
-          <h2 class="font-serif text-4xl mb-6">
-            No adivinamos.<br />Calculamos.
-          </h2>
-          <p class="text-gray-600 text-lg mb-6 leading-relaxed font-light">
-            La mayoría de asesores usan la "intuición". En Roger Murillo usamos
-            el <strong class="text-brand-black">Sistema Munsell</strong> y la <strong
-              class="text-brand-black">Proporción Áurea</strong
-            >. Nuestras herramientas digitales son una simplificación de las
-            mismas matrices complejas que usamos en nuestras consultorías "A
-            Puerta Cerrada".
-          </p>
-
-          <div class="flex gap-8 opacity-80 mt-8">
-            <div class="text-center">
-              <div class="text-3xl font-serif mb-1">20</div>
-              <div
-                class="text-[10px] uppercase tracking-widest border-t border-brand-black/20 pt-2"
-              >
-                Herramientas
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl font-serif mb-1">4</div>
-              <div
-                class="text-[10px] uppercase tracking-widest border-t border-brand-black/20 pt-2"
-              >
-                Silos de Análisis
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl font-serif mb-1">98%</div>
-              <div
-                class="text-[10px] uppercase tracking-widest border-t border-brand-black/20 pt-2"
-              >
-                Precisión
-              </div>
-            </div>
-          </div>
         </div>
+    </section>
 
-        <div
-          class="md:w-1/2 bg-white p-12 shadow-sm border border-gray-200 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-24 h-24 bg-brand-primary/5 rounded-bl-full"
-          >
-          </div>
-
-          <h3 class="font-serif text-2xl mb-8 italic">Metodología RM™</h3>
-
-          <div class="grid grid-cols-1 gap-6">
-            <div class="flex items-center gap-4 group">
-              <div
-                class="p-3 bg-gray-50 rounded-lg group-hover:bg-brand-primary/5 transition-colors"
-              >
-                <Scan
-                  size={32}
-                  color="#D4AF37"
-                  weight="duotone"
-                  className="text-brand-primary"
-                />
-              </div>
-              <div>
-                <h4 class="font-bold text-sm text-brand-black">
-                  Biometría Facial
-                </h4>
-                <p class="text-xs text-gray-500">Face ID & Proporción Áurea</p>
-              </div>
+    <!-- BRIDGE — dark -->
+    <section class="py-32 md:py-40 bg-brand-black text-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-12 gap-16 md:gap-24 items-center">
+                <div class="md:col-span-7">
+                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">¿Quieres ir más allá?</p>
+                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-white mb-8">
+                        Las herramientas son el diagnóstico.
+                        <span class="text-neutral-500"> La consultoría es la transformación.</span>
+                    </h2>
+                    <p class="text-neutral-400 font-light mb-12 leading-relaxed max-w-xl">
+                        Una vez que conoces tu estación cromática, tu tipo de rostro y tu morfología,
+                        Roger y Adriana los usan para construir tu estrategia de imagen completa.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a
+                            href="/servicios/asesoria-integral-imagen"
+                            class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500"
+                        >
+                            Ver Consultoría Integral
+                        </a>
+                        <a
+                            href="/servicios/precios"
+                            class="px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white border border-white/20 hover:border-white transition-colors duration-500"
+                        >
+                            Ver Precios
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-5">
+                    <img
+                        src="/images/service-consulting-full.jpg"
+                        alt="Consultoría de imagen"
+                        class="w-full h-80 object-cover grayscale opacity-60"
+                    />
+                </div>
             </div>
-
-            <div class="flex items-center gap-4 group">
-              <div
-                class="p-3 bg-gray-50 rounded-lg group-hover:bg-brand-primary/5 transition-colors"
-              >
-                <Palette
-                  size={32}
-                  color="#D4AF37"
-                  weight="duotone"
-                  className="text-brand-primary"
-                />
-              </div>
-              <div>
-                <h4 class="font-bold text-sm text-brand-black">Colorimetría</h4>
-                <p class="text-xs text-gray-500">12 Estaciones Avanzadas</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 group">
-              <div
-                class="p-3 bg-gray-50 rounded-lg group-hover:bg-brand-primary/5 transition-colors"
-              >
-                <HourglassHigh
-                  size={32}
-                  color="#D4AF37"
-                  weight="duotone"
-                  className="text-brand-primary"
-                />
-              </div>
-              <div>
-                <h4 class="font-bold text-sm text-brand-black">Morfología</h4>
-                <p class="text-xs text-gray-500">Arquitectura Corporal</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 group">
-              <div
-                class="p-3 bg-gray-50 rounded-lg group-hover:bg-brand-primary/5 transition-colors"
-              >
-                <Briefcase
-                  size={32}
-                  color="#D4AF37"
-                  weight="duotone"
-                  className="text-brand-primary"
-                />
-              </div>
-              <div>
-                <h4 class="font-bold text-sm text-brand-black">Ejecutiva</h4>
-                <p class="text-xs text-gray-500">Semiótica de Poder</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-10 pt-8 border-t border-gray-100 text-center">
-            <p class="font-serif text-xl italic text-brand-black">
-              "La elegancia es una ecuación matemática."
-            </p>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </MainLayout>

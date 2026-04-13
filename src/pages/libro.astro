@@ -1,16 +1,7 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import {
-    CheckCircle2,
-    BookOpen,
-    Star,
-    ShieldCheck,
-    Download,
-    Zap,
-} from "lucide-react";
 
 // 1. Schema Markup Híbrido (Book + Product)
-// Esto le dice a Google: "Esto es un libro, tiene este autor y cuesta esto".
 const bookSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -51,271 +42,147 @@ const bookSchema = {
 ---
 
 <MainLayout
-    title="Libro: Revoluciona tu Imagen | Roger Murillo"
-    description="El manual definitivo de estrategia de imagen y visagismo. Deja de vestir como empleado y empieza a proyectar como CEO. Descarga inmediata."
+    title="Revoluciona tu Imagen · Libro de Imagen Personal · Visagismo y Estilo | Roger Murillo"
+    description="El manual definitivo de imagen personal, visagismo y estilo ejecutivo. Aprende a proyectar autoridad, liderazgo y confianza desde la primera página. Descarga inmediata."
     schema={JSON.stringify(bookSchema)}
 >
-    <section
-        class="relative pt-32 pb-20 bg-brand-black text-white overflow-hidden"
-    >
-        <div
-            class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-primary rounded-full blur-[200px] opacity-10 pointer-events-none"
-        >
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="w-full md:w-1/2 text-center md:text-left">
-                    <div
-                        class="inline-flex items-center gap-2 px-3 py-1 border border-brand-primary/50 text-brand-primary text-xs font-bold uppercase tracking-widest mb-6 rounded-sm bg-brand-primary/10"
-                    >
-                        <Zap size={14} /> Best Seller Digital
-                    </div>
-
-                    <h1
-                        class="font-serif text-5xl md:text-6xl lg:text-7xl leading-tight mb-6"
-                    >
-                        Deja de vestir como un empleado. <br />
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400"
-                        >
-                            Proyecta como un CEO.
-                        </span>
-                    </h1>
-
-                    <p
-                        class="text-xl text-gray-400 font-light mb-10 leading-relaxed max-w-lg mx-auto md:mx-0"
-                    >
-                        El manual definitivo de <strong
-                            >visagismo y estrategia de imagen</strong
-                        > que no te enseñan en las escuelas de moda. Ciencia aplicada
-                        a tu reputación.
-                    </p>
-
-                    <div
-                        class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-                    >
-                        <a
-                            href="#comprar"
-                            class="bg-brand-primary text-white px-8 py-4 text-center font-bold uppercase tracking-widest hover:bg-brand-secondary transition-all shadow-xl hover:shadow-brand-primary/20 rounded-sm flex items-center justify-center gap-3"
-                        >
-                            <Download size={20} /> Comprar Ahora - $19 USD
-                        </a>
-                        <p
-                            class="text-xs text-gray-500 flex items-center justify-center gap-2 mt-2 sm:mt-0"
-                        >
-                            <ShieldCheck size={14} /> Garantía de 30 días
-                        </p>
-                    </div>
-                </div>
-
-                <div class="w-full md:w-1/2 flex justify-center relative group">
-                    <div
-                        class="absolute inset-0 bg-white/5 blur-3xl rounded-full transform scale-75 group-hover:scale-100 transition-transform duration-700"
-                    >
-                    </div>
-
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                <div class="w-full md:w-1/2 flex justify-center">
                     <img
                         src="/images/book-cover-3d.png"
                         alt="Libro Revoluciona tu Imagen por Roger Murillo"
-                        class="relative w-3/4 md:w-full max-w-sm drop-shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500"
+                        class="w-3/4 md:w-full max-w-sm"
                         fetchpriority="high"
                     />
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-12 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <p
-                class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6"
-            >
-                Más de 20 años definiendo la imagen de la élite en Bogotá
-            </p>
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
-                <div
-                    class="flex items-center gap-2 opacity-60 grayscale hover:grayscale-0 transition-all"
-                >
-                    <div
-                        class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden"
-                    >
-                        <img
-                            src="/images/avatar-1.jpg"
-                            alt="Cliente"
-                            class="w-full h-full object-cover"
-                        />
-                    </div>
-                    <div class="text-left">
-                        <p class="text-xs font-bold text-brand-black">
-                            "Se pagó con mi primer ascenso"
-                        </p>
-                        <p class="text-[10px] text-gray-500">
-                            Carlos D. - Director Comercial
-                        </p>
-                    </div>
-                </div>
-                <div
-                    class="flex items-center gap-2 opacity-60 grayscale hover:grayscale-0 transition-all"
-                >
-                    <div
-                        class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden"
-                    >
-                        <img
-                            src="/images/avatar-2.jpg"
-                            alt="Cliente"
-                            class="w-full h-full object-cover"
-                        />
-                    </div>
-                    <div class="text-left">
-                        <p class="text-xs font-bold text-brand-black">
-                            "No es moda, es ingeniería"
-                        </p>
-                        <p class="text-[10px] text-gray-500">
-                            Ana M. - Abogada Senior
-                        </p>
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
+                        Best Seller Digital
+                    </p>
+
+                    <h1 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
+                        Deja de vestir como un empleado. <br />
+                        <span class="text-neutral-400">Proyecta como un CEO.</span>
+                    </h1>
+
+                    <p class="text-lg text-neutral-500 font-light leading-relaxed mb-10 max-w-lg mx-auto md:mx-0">
+                        El manual definitivo de <strong class="text-brand-black font-medium">visagismo y estrategia de imagen</strong>
+                        que no te ensenan en las escuelas de moda. Ciencia aplicada a tu reputacion.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center">
+                        <a
+                            href="#comprar"
+                            class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500 inline-block"
+                        >
+                            Comprar Ahora &mdash; $19 USD
+                        </a>
+                        <span class="text-xs text-neutral-400">Garantia de 30 dias</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-brand-gray">
+    <section class="py-32 md:py-40 bg-neutral-50">
         <div class="container mx-auto px-6 max-w-3xl text-center">
-            <h2 class="font-serif text-3xl md:text-4xl text-brand-black mb-6">
-                ¿Crees que el estilo es caro?
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
+                Mas de 20 anos de experiencia
+            </p>
+            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
+                Crees que el estilo es caro?
             </h2>
-            <p class="text-lg text-slate-600 leading-relaxed font-light mb-8">
-                La realidad es que la <strong>falta de estrategia</strong> es lo que
-                te está costando dinero y oportunidades. Comprar ropa cara que no
+            <p class="text-lg text-neutral-500 font-light leading-relaxed">
+                La realidad es que la <strong class="text-brand-black font-medium">falta de estrategia</strong> es lo que
+                te esta costando dinero y oportunidades. Comprar ropa cara que no
                 comunica nada es un gasto. Invertir en conocimiento es un activo.
             </p>
-            <div class="w-24 h-1 bg-brand-primary mx-auto"></div>
         </div>
     </section>
 
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
+    <section class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
                 <div>
-                    <span
-                        class="text-brand-primary font-bold uppercase tracking-widest text-xs mb-4 block"
-                        >Lo que aprenderás</span
-                    >
-                    <h2 class="font-serif text-4xl text-brand-black mb-8">
-                        Manipula la percepción <br /> de tu entorno.
+                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
+                        Contenido
+                    </p>
+                    <h2 class="font-serif text-4xl leading-[1.1] text-brand-black mb-10">
+                        Manipula la percepcion de tu entorno.
                     </h2>
 
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 bg-brand-gray rounded-full flex items-center justify-center text-brand-primary shrink-0"
-                            >
-                                <span class="text-2xl">🧬</span>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-black text-lg">
-                                    La Ciencia del Visagismo
-                                </h4>
-                                <p class="text-sm text-gray-500">
-                                    Entiende la geometría de tu rostro para
-                                    elegir cortes y accesorios con precisión
-                                    matemática.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 bg-brand-gray rounded-full flex items-center justify-center text-brand-primary shrink-0"
-                            >
-                                <span class="text-2xl">👔</span>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-black text-lg">
-                                    Los 5 Errores de Autoridad
-                                </h4>
-                                <p class="text-sm text-gray-500">
-                                    Descubre qué detalles de tu vestimenta están
-                                    gritando "inseguridad" en la sala de juntas.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 bg-brand-gray rounded-full flex items-center justify-center text-brand-primary shrink-0"
-                            >
-                                <span class="text-2xl">🎨</span>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-black text-lg">
-                                    Tu Paleta de Poder
-                                </h4>
-                                <p class="text-sm text-gray-500">
-                                    Cómo elegir los colores que te hacen ver
-                                    saludable y dominante sin ser un experto en
-                                    moda.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="space-y-10">
+                        <div>
+                            <h4 class="font-serif text-lg text-brand-black mb-2">La Ciencia del Visagismo</h4>
+                            <p class="text-neutral-500 font-light leading-relaxed">
+                                Entiende la geometria de tu rostro para elegir cortes y accesorios con precision matematica.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg text-brand-black mb-2">Los 5 Errores de Autoridad</h4>
+                            <p class="text-neutral-500 font-light leading-relaxed">
+                                Descubre que detalles de tu vestimenta estan gritando "inseguridad" en la sala de juntas.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-lg text-brand-black mb-2">Tu Paleta de Poder</h4>
+                            <p class="text-neutral-500 font-light leading-relaxed">
+                                Como elegir los colores que te hacen ver saludable y dominante sin ser un experto en moda.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <div
-                    class="bg-brand-black p-8 text-white relative rounded-sm shadow-2xl rotate-1"
-                >
-                    <h3
-                        class="font-serif text-2xl mb-6 border-b border-gray-700 pb-4 text-white"
-                    >
-                        Índice del Manual
+                <div class="bg-brand-black p-10 md:p-12 text-white">
+                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">
+                        Indice
+                    </p>
+                    <h3 class="font-serif text-2xl mb-8 text-white">
+                        Indice del Manual
                     </h3>
-                    <ul class="space-y-3 text-sm text-gray-300 font-mono">
+                    <ul class="space-y-4 text-sm text-neutral-300 font-light">
                         <li>01. El mito de la belleza vs. Estilo</li>
-                        <li>02. Antropometría Facial Aplicada</li>
-                        <li>03. Semiótica del Traje Ejecutivo</li>
-                        <li>04. Colorimetría para Negocios</li>
-                        <li>05. Construyendo tu Cápsula de Poder</li>
-                        <li>06. Auditoría de Armario</li>
-                        <li class="text-brand-primary pt-2">
-                            ... y 4 capítulos más.
-                        </li>
+                        <li>02. Antropometria Facial Aplicada</li>
+                        <li>03. Semiotica del Traje Ejecutivo</li>
+                        <li>04. Colorimetria para Negocios</li>
+                        <li>05. Construyendo tu Capsula de Poder</li>
+                        <li>06. Auditoria de Armario</li>
+                        <li class="text-brand-primary pt-2">... y 4 capitulos mas.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="comprar" class="py-24 bg-brand-primary text-white text-center">
-        <div class="container mx-auto px-6 max-w-2xl">
-            <BookOpen size={48} className="mx-auto mb-6 opacity-80" />
-            <h2 class="font-serif text-4xl md:text-5xl mb-6">
-                Tu transformación comienza con $19.
-            </h2>
-            <p class="text-white/80 text-lg mb-10">
-                Descarga inmediata en PDF. Léelo en tu tablet, móvil o
-                computadora. Si aplicas una sola técnica, el libro se habrá
-                pagado solo.
+    <section id="comprar" class="py-32 md:py-40 bg-brand-black text-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">
+                Descarga inmediata
             </p>
 
-            <div
-                class="bg-white/10 p-8 rounded-lg backdrop-blur-sm border border-white/20"
-            >
-                <div class="flex justify-between items-center mb-6 text-left">
-                    <div>
-                        <span
-                            class="block text-sm font-bold uppercase tracking-widest"
-                            >Ebook: Revoluciona tu Imagen</span
-                        >
-                        <span class="text-xs opacity-70"
-                            >Edición Digital 2026</span
-                        >
+            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-white mb-8">
+                Tu transformacion comienza con $19.
+            </h2>
+
+            <p class="text-lg text-neutral-300 font-light leading-relaxed mb-12">
+                Descarga inmediata en PDF. Leelo en tu tablet, movil o
+                computadora. Si aplicas una sola tecnica, el libro se habra pagado solo.
+            </p>
+
+            <div class="border border-neutral-700 p-8 md:p-10 max-w-lg mx-auto mb-8">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="text-left">
+                        <span class="block text-xs font-medium uppercase tracking-[0.2em] text-white mb-1">
+                            Ebook: Revoluciona tu Imagen
+                        </span>
+                        <span class="text-xs text-neutral-500">Edicion Digital 2026</span>
                     </div>
                     <div class="text-right">
-                        <span class="block text-3xl font-serif font-bold"
-                            >$19.00</span
-                        >
-                        <span class="text-xs line-through opacity-50"
-                            >$49.00</span
-                        >
+                        <span class="block text-3xl font-serif text-white">$19</span>
+                        <span class="text-xs text-neutral-600 line-through">$49.00</span>
                     </div>
                 </div>
 
@@ -323,14 +190,13 @@ const bookSchema = {
                     href="https://hotmart.com/es/marketplace/productos/hagsxd-revoluciona-tu-imagen-p6zmn/Y86932194S?src=rogermurillo_website_pdp"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="block w-full py-4 bg-white text-brand-primary font-bold uppercase tracking-widest hover:bg-brand-black hover:text-white transition-all shadow-lg rounded-sm"
+                    class="block w-full py-4 bg-brand-primary text-white text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500 text-center"
                 >
                     Descargar Ahora
                 </a>
 
-                <p class="text-[10px] mt-4 opacity-60">
-                    Pago seguro vía Hotmart. Acceso inmediato al correo
-                    electrónico.
+                <p class="text-xs text-neutral-600 mt-4">
+                    Pago seguro via Hotmart. Acceso inmediato al correo electronico.
                 </p>
             </div>
         </div>

@@ -2,42 +2,130 @@
 import CourseLayout from "@/layouts/CourseLayout.astro";
 
 const frontmatter = {
-    title: "Curso Destaca: El Correcto Uso del Color",
-    subtitle: "Sistematiza el color para tus intereses estratégicos. (Curso: Resplandece / Destaca).",
-    price: "$40 USD *",
-    description: "Deja de vestir de negro por inercia. Descubre la ciencia exacta detrás de la psicología del color, temperatura y armonías para destacar magnéticamente (Aplica conversión a moneda local en checkout).",
+    title: "Resplandece",
+    tag: "Módulo 4 · Colorimetría",
+    subtitle: "El color no es decoración. Es el idioma más rápido de la imagen.",
+    price: "$40 USD",
+    description: "El color que usas puede hacerte lucir enfermo, apagado o sin autoridad — o puede hacer que entres a una sala y la gente no pueda dejar de mirarte. En este módulo aprenderás la ciencia y el arte del color aplicado a la imagen personal: tu estación cromática, tus colores de poder y cómo usarlos para influir, convencer y brillar.",
+    promise: "Al finalizar conocerás tu estación cromática personal, tus 5 colores de poder y serás capaz de combinar colores estratégicamente en cualquier contexto sin volver a equivocarte.",
     image: "/images/course-destaca.jpg",
     buyLink: "https://pay.hotmart.com/W99484170E",
-    modules: [
-        "Módulo 1: Introducción Munsell y Temperatura del Color",
-        "Módulo 2: Cómo la Psicología del Color manipula a tu audiencia",
-        "Módulo 3: Contraste y Armonías Visuales en la Indumentaria",
-        "Módulo 4: Paletas de Invierno, Verano, Primavera y Otoño",
-        "Módulo 5: Combinando con Maestría: El Arte del Estampado"
+    instructor: "Adriana Garzón",
+    studentCount: "2.500+",
+    instructorCredentials: [
+        "Máster en Colorimetría",
+        "Especialista en Salud Capilar",
+        "Co-creadora de la metodología propia",
+        "15+ años en análisis de color personal",
+    ],
+    instructorBio: [
+        "Adriana Garzón es la colorimetrista más reconocida de la firma Roger Murillo AI. Con un Máster en Colorimetría y especialización en salud capilar, ha desarrollado su propio sistema de análisis cromático basado en las 12 estaciones del nuestro sistema de colorimetría, que va más allá del tradicional sistema de 4 estaciones.",
+        "Ha analizado el color de más de 3.000 personas en consultoría privada y ha formado a colorimetristas en toda Latinoamérica. Su enfoque es único: el color como herramienta de salud, imagen y poder al mismo tiempo.",
     ],
     benefits: [
-        "Deja atrás el encasillamiento del color negro como único recurso corporativo.",
-        "Encuentra los tonos que iluminan tu rostro y ocultan imperfecciones naturalmente.",
-        "Entiende qué mensajes subliminales envía cada pigmento a nivel neurológico.",
-        "Metodología práctica para combinar colores sin parecer un carnaval."
-    ]
+        {
+            icon: "🎨",
+            title: "Tu estación cromática",
+            text: "Descubrirás a cuál de las 12 estaciones del nuestro sistema de colorimetría perteneces y qué paleta de colores potencia tu imagen natural.",
+        },
+        {
+            icon: "💼",
+            title: "Colores de poder",
+            text: "Identificarás tus 5 colores de mayor impacto para contextos de negociación, liderazgo y visibilidad profesional.",
+        },
+        {
+            icon: "🚫",
+            title: "Evita errores costosos",
+            text: "Aprenderás a identificar los colores que apagan tu presencia o crean disarmonía visual, y eliminarlos de tu guardarropa estratégico.",
+        },
+    ],
+    forWho: [
+        "Personas que no entienden por qué algunas prendas las hacen ver radiantes y otras apagadas.",
+        "Profesionales que quieren usar el color para proyectar autoridad, confianza o creatividad según el contexto.",
+        "Quienes se han sentido abrumados por la teoría del color y buscan una guía práctica y aplicable.",
+        "Personas que invierten en ropa pero no logran que su imagen tenga coherencia visual.",
+        "Emprendedores y figuras públicas que quieren que su paleta de colores hable de su marca personal.",
+    ],
+    notForWho: [
+        "Personas que buscan aprender colorimetría para hacer análisis de color a otras personas (ese es el curso profesional).",
+        "Quienes esperan teoría de arte o diseño gráfico en vez de aplicación directa a la imagen personal.",
+        "Quienes no están dispuestos a hacer el test de colorimetría práctico que es el corazón del módulo.",
+    ],
+    modules: [
+        {
+            title: "El poder del color en la percepción humana",
+            lessons: [
+                "Por qué el cerebro procesa el color antes que las palabras o los gestos",
+                "Psicología del color aplicada a la imagen personal y ejecutiva",
+                "Cómo el color equivocado puede hacerte ver cansado, enfermo o poco confiable",
+                "Casos reales: el antes y después de cambiar la paleta de color de una persona",
+            ],
+        },
+        {
+            title: "El sistema de 12 estaciones del nuestro sistema de colorimetría",
+            lessons: [
+                "Por qué el sistema clásico de 4 estaciones es insuficiente",
+                "Las 12 estaciones cromáticas: características, paletas y psicología de cada una",
+                "Cómo determinar tu estación a través del análisis de subtono, contraste y temperatura",
+                "Ejercicio guiado: test de colorimetría personal paso a paso",
+            ],
+        },
+        {
+            title: "Tu paleta de color personal",
+            lessons: [
+                "Colores que armonizan con tu tono de piel, ojos y cabello",
+                "Colores que crean disarmonía y cómo identificarlos en tu guardarropa",
+                "Los colores de neutrales de tu estación: base de cualquier outfit estratégico",
+                "Cómo construir una paleta funcional con 12 colores clave",
+            ],
+        },
+        {
+            title: "Color y contexto — estrategia cromática ejecutiva",
+            lessons: [
+                "Qué colores usar para negociar, presentar, liderar o crear",
+                "Psicología del color por industria: finanzas, creatividad, salud, política",
+                "Combinaciones cromáticas de alto impacto para reuniones importantes",
+                "Cómo usar el color de acento para crear puntos focales de poder",
+            ],
+        },
+        {
+            title: "Color en cabello, maquillaje y accesorios",
+            lessons: [
+                "Cómo el color del cabello afecta el análisis de imagen total",
+                "Maquillaje y paleta cromática: armonía desde la piel hasta la ropa",
+                "El color en accesorios: anillos, bolsos, corbatas y pañuelos como señales estratégicas",
+                "Plan de acción: tu guardarropa cromático ideal en 30 días",
+            ],
+        },
+    ],
+    testimonial: {
+        quote: "Siempre usé negro porque pensé que era lo más seguro. Adriana me mostró que el negro me apagaba completamente. Cambié a mi paleta de otoño cálido y en la primera reunión con mi equipo tres personas me dijeron que me veía diferente, más 'poderosa'. El color sí cambia todo.",
+        name: "Valentina O.",
+        role: "Directora de Operaciones, Bogotá",
+    },
+    faq: [
+        {
+            q: "¿Puedo hacer el análisis de colorimetría yo solo sin un espejo profesional?",
+            a: "El módulo incluye una guía de autodiagnóstico diseñada para hacerse en casa con materiales simples. Para un análisis con precisión profesional de alta gama siempre recomendamos la consultoría privada con Adriana, pero el test del curso tiene una precisión del 80-85% para la mayoría de personas.",
+        },
+        {
+            q: "¿Qué diferencia hay entre este curso y el Test de Colorimetría gratuito del sitio?",
+            a: "El test gratuito te da una orientación básica de 4 estaciones. Este módulo trabaja con el sistema de 12 estaciones del nuestro sistema de colorimetría, incluye análisis de combinaciones, psicología aplicada al contexto profesional y tu plan de acción cromático personalizado.",
+        },
+        {
+            q: "¿Funciona para personas con piel oscura, asiática o de tonos muy específicos?",
+            a: "Sí. El nuestro sistema fue desarrollado con diversidad étnica en mente. A diferencia del sistema anglosajón de 4 estaciones, nuestras 12 estaciones cubren con mayor precisión todos los tonos de piel de Latinoamérica y el mundo.",
+        },
+        {
+            q: "¿El precio en pesos colombianos es más alto que en USD?",
+            a: "El precio base es USD 40. Hotmart puede mostrarte el equivalente en pesos según la tasa de cambio vigente. Si estás fuera de Colombia la conversión se hace automáticamente a tu moneda local.",
+        },
+        {
+            q: "¿Puedo tomar este módulo sin los anteriores?",
+            a: "Sí. Resplandece es el módulo más autónomo de los cuatro porque se enfoca en una ciencia específica: el color. Dicho esto, los resultados son más poderosos cuando ya tienes tu iconología definida (Diséñate) para saber cómo integrar el color en tu firma visual.",
+        },
+    ],
 };
 ---
 
 <CourseLayout frontmatter={frontmatter} />
-
-<!-- Microcopy for COP note in this specific layout -->
-<style is:global>
-    /* In CourseLayout, modifying the layout to account for COP pricing */
-    .text-3xl.font-serif.text-white::after {
-        content: " (Equivalente en moneda local)";
-        font-size: 0.4em;
-        display: block;
-        color: #9CA3AF;
-        font-family: sans-serif;
-        font-weight: 300;
-        margin-top: 4px;
-        letter-spacing: 0;
-        text-transform: none;
-    }
-</style>

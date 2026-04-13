@@ -2,9 +2,9 @@
 import { ChevronDown } from "lucide-react";
 
 const navItems = [
-    { 
-        label: "Servicios", 
-        href: "/servicios", 
+    {
+        label: "Servicios",
+        href: "/servicios",
         type: "dropdown",
         items: [
             { label: "Consultoría Integral", href: "/servicios/asesoria-integral-imagen" },
@@ -13,43 +13,26 @@ const navItems = [
             { label: "Imagen Ejecutiva", href: "/servicios/imagen-ejecutiva-autoridad" },
         ]
     },
-    { 
-        label: "La Firma", 
+    {
+        label: "La Firma",
         href: "/nosotros",
         type: "simple"
     },
-    { 
-        label: "Academia", 
+    {
+        label: "Academia",
         href: "/academia",
-        type: "mega",
-        columns: [
-            {
-                title: "Formación Online",
-                items: [
-                    { label: "Ver Todo", href: "/academia" },
-                    { label: "Curso Descúbrete", href: "/academia/curso-descubrete" },
-                    { label: "Curso Diseñate", href: "/academia/crea-tu-iconologia" },
-                    { label: "Curso Conquista", href: "/academia/disena-tu-voz" },
-                    { label: "Curso Destaca", href: "/academia/el-correcto-uso-del-color" },
-                ]
-            },
-            {
-                title: "Recursos",
-                items: [
-                     { label: "Libro: Revoluciona tu Imagen", href: "/libro" },
-                     { label: "Herramientas Gratuitas", href: "/herramientas" }
-                ]
-            }
-        ],
-        featured: {
-            image: "/images/book-lifestyle.jpg",
-            title: "El Manual Fundacional",
-            subtitle: "Tu guía definitiva de estilo.",
-            href: "/libro"
-        }
+        type: "dropdown",
+        items: [
+            { label: "Todos los cursos", href: "/academia" },
+            { label: "Curso Descúbrete", href: "/academia/curso-descubrete" },
+            { label: "Curso Diseñate", href: "/academia/crea-tu-iconologia" },
+            { label: "Curso Conquista", href: "/academia/disena-tu-voz" },
+            { label: "Curso Destaca", href: "/academia/el-correcto-uso-del-color" },
+            { label: "Libro Oficial", href: "/libro" },
+        ]
     },
-    { 
-        label: "Herramientas", 
+    {
+        label: "Herramientas",
         href: "/herramientas",
         type: "simple"
     },
@@ -58,115 +41,71 @@ const navItems = [
 const { theme = 'dark' } = Astro.props;
 
 const isDark = theme === 'dark';
-const textColorClass = isDark 
-    ? "text-white group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black" 
+const textColorClass = isDark
+    ? "text-brand-black group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black"
     : "text-brand-black";
 
 const logoClass = isDark
-    ? "brightness-0 invert group-[.scrolled]/header:invert-0 group-hover/header:invert-0"
-    : "brightness-0 invert-0";
+    ? "brightness-0 group-[.scrolled]/header:brightness-0 group-hover/header:brightness-0"
+    : "brightness-0";
 
 const mobileMenuBtnClass = isDark
-    ? "text-white group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black"
+    ? "text-brand-black group-[.scrolled]/header:text-brand-black group-hover/header:text-brand-black"
     : "text-brand-black";
 ---
 
 <header
     id="main-header"
-    class="fixed w-full top-0 z-50 transition-all duration-500 bg-transparent border-b border-transparent group/header hover:bg-white hover:text-brand-black"
+    class="fixed w-full top-0 z-50 transition-all duration-500 bg-transparent border-b border-transparent group/header"
 >
-    <div class="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
-        <a href="/" class="block group relative z-50">
+    <div class="container mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+        <!-- LOGO -->
+        <a href="/" class="block relative z-50">
             <img
-                src="/logo_rmai.webp"
+                src="/images/logo_rm.png"
                 alt="Roger Murillo Asesoría de Imagen"
-                class={`h-8 md:h-14 w-auto object-contain transition-all duration-500 ${logoClass}`}
+                class={`h-7 md:h-10 w-auto object-contain transition-all duration-500 ${logoClass}`}
             />
         </a>
 
-        <!-- DESKTOP NAVIGATION -->
+        <!-- DESKTOP NAV -->
         <nav class="hidden md:flex items-center gap-10">
             {
                 navItems.map((item) => (
-                    <div class="relative group h-20 flex items-center">
+                    <div class="relative group h-24 flex items-center">
                         <a
                             href={item.href}
-                            class={`text-xs font-bold uppercase tracking-widest py-2 relative hover:text-brand-primary transition-colors duration-500 flex items-center gap-1 ${textColorClass}`}
+                            class={`text-[11px] tracking-[0.2em] uppercase py-2 relative hover:text-brand-primary transition-colors duration-300 flex items-center gap-1 ${textColorClass}`}
                         >
                             {item.label}
-                            {item.type !== 'simple' && <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-300" />}
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full" />
+                            {item.type === 'dropdown' && <ChevronDown className="w-3 h-3 opacity-40 group-hover:rotate-180 transition-transform duration-300" />}
                         </a>
 
-                        {/* MEGA MENU: ACADEMIA */}
-                        {item.type === 'mega' && (
-                            <div class="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 shadow-2xl rounded-sm overflow-hidden p-8 grid grid-cols-12 gap-8">
-                                
-                                <!-- Columns -->
-                                <div class="col-span-8 grid grid-cols-2 gap-8 border-r border-gray-100 pr-8">
-                                    {item.columns?.map(col => (
-                                        <div>
-                                            <h4 class="font-serif text-lg text-brand-black mb-4">{col.title}</h4>
-                                            <ul class="space-y-3">
-                                                {col.items?.map(subItem => (
-                                                    <li>
-                                                        <a href={subItem.href} class="text-sm text-slate-600 hover:text-brand-primary transition-colors block py-0.5">
-                                                            {subItem.label}
-                                                        </a>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <!-- Featured -->
-                                <div class="col-span-4 flex flex-col justify-between h-full">
-                                    <h4 class="font-xs font-bold uppercase tracking-widest text-brand-primary mb-4">Destacado</h4>
-                                    {item.featured && (
-                                    <a href={item.featured.href} class="block group/featured overflow-hidden rounded-sm relative aspect-[3/4] bg-brand-gray flex items-center justify-center">
-                                        <div class="absolute inset-0 bg-brand-primary/0 group-hover/featured:bg-brand-primary/10 transition-colors z-10"></div>
-                                        <img src="/images/book-cover-3d.png" alt={item.featured.title} class="w-2/3 h-auto object-contain drop-shadow-2xl transition-transform duration-700 group-hover/featured:scale-110 relative z-0" />
-                                        <div class="absolute bottom-0 left-0 w-full p-4 z-20 bg-white/90 backdrop-blur-sm border-t border-gray-100">
-                                            <p class="font-serif text-lg leading-tight mb-0.5 text-brand-black">{item.featured.title}</p>
-                                            <p class="text-[10px] uppercase tracking-wider text-gray-500">{item.featured.subtitle}</p>
-                                        </div>
-                                    </a>
-                                    )}
-                                </div>
-
-                            </div>
-                        )}
-
-                        {/* SIMPLE DROPDOWN: SERVICIOS */}
+                        {/* DROPDOWN */}
                         {item.type === 'dropdown' && (
-                            <div class="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 py-2 shadow-2xl rounded-sm">
+                            <div class="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white border border-neutral-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 py-3 shadow-lg">
                                 {item.items?.map(subItem => (
                                     <a
                                         href={subItem.href}
-                                        class="block px-6 py-3 hover:bg-brand-gray text-xs uppercase tracking-widest text-brand-black hover:text-brand-primary transition-colors text-left"
+                                        class="block px-6 py-2.5 text-[11px] tracking-[0.15em] uppercase text-neutral-600 hover:text-brand-primary hover:bg-neutral-50 transition-colors text-left"
                                     >
                                         {subItem.label}
                                     </a>
                                 ))}
-                            </div> 
+                            </div>
                         )}
-
                     </div>
                 ))
             }
         </nav>
 
-        <div class="flex items-center gap-4 relative z-50">
+        <!-- CTA + MOBILE BTN -->
+        <div class="flex items-center gap-6 relative z-50">
             <a
                 href="/contacto"
-                class={`hidden md:block px-6 py-3 text-xs font-bold uppercase tracking-widest border transition-colors shadow-lg rounded-sm ${
-                    isDark 
-                    ? "bg-brand-primary text-white hover:bg-white hover:text-brand-black border-transparent hover:border-brand-black shadow-brand-primary/20" 
-                    : "bg-brand-black text-white hover:bg-brand-primary hover:border-brand-primary"
-                }`}
+                class="hidden md:block px-7 py-3 text-[11px] tracking-[0.2em] uppercase bg-brand-black text-white hover:bg-brand-primary transition-colors duration-500"
             >
-                Agendar Cita
+                Contacto
             </a>
 
             <button
@@ -174,76 +113,50 @@ const mobileMenuBtnClass = isDark
                 class={`md:hidden focus:outline-none p-2 transition-colors duration-500 ${mobileMenuBtnClass}`}
                 aria-label="Abrir menú"
             >
-                <svg
-                    class="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
-                        d="M4 6h16M4 12h16M4 18h16"></path>
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
     </div>
 
-    <!-- MOBILE MENU (Sliding Overlay) -->
+    <!-- MOBILE MENU -->
     <div
         id="mobile-menu"
-        class="fixed inset-0 bg-brand-black/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-500 md:hidden flex flex-col h-screen"
+        class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-500 md:hidden flex flex-col h-screen"
     >
-        <div class="p-6 flex justify-between items-center h-16 border-b border-white/10">
-             <span class="text-white font-serif text-lg">Menu</span>
+        <div class="px-6 flex justify-between items-center h-20 border-b border-neutral-100">
+            <span class="text-[11px] tracking-[0.3em] uppercase text-neutral-400">Menu</span>
             <button
                 id="close-menu-btn"
-                class="text-white hover:text-brand-primary transition-colors flex items-center justify-center w-8 h-8"
-                >
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                class="text-brand-black hover:text-brand-primary transition-colors w-8 h-8 flex items-center justify-center"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
-        
-        <div class="flex-1 px-8 py-8 flex flex-col gap-6 overflow-y-auto">
+
+        <div class="flex-1 px-6 py-10 flex flex-col gap-0 overflow-y-auto">
             {
                 navItems.map((item) => (
                     item.type === 'simple' ? (
                         <a
                             href={item.href}
-                            class="text-2xl font-serif text-white hover:text-brand-primary transition-colors py-2 border-b border-white/10"
+                            class="text-2xl font-serif text-brand-black hover:text-brand-primary transition-colors py-5 border-b border-neutral-100"
                         >
                             {item.label}
                         </a>
                     ) : (
-                        <div class="border-b border-white/10 pb-4">
-                            <button class="mobile-accordion-btn text-2xl font-serif text-white hover:text-brand-primary transition-colors w-full flex justify-between items-center py-2">
+                        <div class="border-b border-neutral-100">
+                            <button class="mobile-accordion-btn text-2xl font-serif text-brand-black hover:text-brand-primary transition-colors w-full flex justify-between items-center py-5">
                                 {item.label}
-                                <ChevronDown className="w-5 h-5 transition-transform duration-300" />
+                                <ChevronDown className="w-4 h-4 text-neutral-400 transition-transform duration-300" />
                             </button>
-                            <div class="mobile-accordion-content hidden pl-4 pt-4 space-y-4">
-                                {item.type === 'dropdown' ? (
-                                    item.items?.map(subItem => (
-                                         <a href={subItem.href} class="block text-sm text-gray-400 uppercase tracking-widest hover:text-white">
-                                            {subItem.label}
-                                         </a>
-                                    ))
-                                ) : ( // Mega Menu Mobile
-                                    <>
-                                        {item.columns?.map(col => (
-                                            <div class="mb-4">
-                                                <p class="text-xs font-bold text-brand-primary uppercase mb-3 border-l-2 border-brand-primary pl-2">{col.title}</p>
-                                                <div class="space-y-3">
-                                                {col.items?.map(subItem => (
-                                                    <a href={subItem.href} class="block text-sm text-gray-400 hover:text-white">
-                                                        {subItem.label}
-                                                    </a>
-                                                ))}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </>
-                                )}
+                            <div class="mobile-accordion-content hidden pl-4 pb-5 space-y-4">
+                                {item.items?.map(subItem => (
+                                    <a href={subItem.href} class="block text-sm text-neutral-500 tracking-[0.1em] uppercase hover:text-brand-primary transition-colors">
+                                        {subItem.label}
+                                    </a>
+                                ))}
                             </div>
                         </div>
                     )
@@ -252,13 +165,10 @@ const mobileMenuBtnClass = isDark
 
             <a
                 href="/contacto"
-                class="text-brand-primary text-xl font-bold uppercase tracking-widest mt-8 border border-brand-primary px-8 py-4 hover:bg-brand-primary hover:text-white transition-colors text-center shrink-0"
+                class="mt-10 bg-brand-black text-white text-center py-4 text-xs tracking-[0.2em] uppercase hover:bg-brand-primary transition-colors"
             >
-                Agendar Cita
+                Contacto
             </a>
-            
-             <!-- Extra padding for bottom scrol -->
-             <div class="h-20 shrink-0"></div>
         </div>
     </div>
 </header>
@@ -270,26 +180,13 @@ const mobileMenuBtnClass = isDark
     const menu = document.getElementById("mobile-menu");
     const accordionBtns = document.querySelectorAll('.mobile-accordion-btn');
 
-    // SCROLL EFFECT
     const handleScroll = () => {
         if (header) {
-            if (window.scrollY > 20) { // Changed to 20px for faster trigger on mobile
-                header.classList.add(
-                    "scrolled",
-                    "bg-white/95",
-                    "backdrop-blur-md",
-                    "shadow-sm",
-                    "border-gray-100",
-                );
+            if (window.scrollY > 20) {
+                header.classList.add("scrolled", "bg-white", "border-neutral-100");
                 header.classList.remove("bg-transparent", "border-transparent");
             } else {
-                header.classList.remove(
-                    "scrolled",
-                    "bg-white/95",
-                    "backdrop-blur-md",
-                    "shadow-sm",
-                    "border-gray-100",
-                );
+                header.classList.remove("scrolled", "bg-white", "border-neutral-100");
                 header.classList.add("bg-transparent", "border-transparent");
             }
         }
@@ -298,29 +195,24 @@ const mobileMenuBtnClass = isDark
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("load", handleScroll);
 
-    // MENU TOGGLE
     menuBtn?.addEventListener("click", () => {
         menu?.classList.remove("translate-x-full");
-        document.body.style.overflow = 'hidden'; // Prevent body scroll
-    });
-    
-    closeBtn?.addEventListener("click", () => {
-        menu?.classList.add("translate-x-full");
-        document.body.style.overflow = ''; // Restore body scroll
+        document.body.style.overflow = 'hidden';
     });
 
-    // MOBILE ACCORDION LOGIC
+    closeBtn?.addEventListener("click", () => {
+        menu?.classList.add("translate-x-full");
+        document.body.style.overflow = '';
+    });
+
     accordionBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const content = btn.nextElementSibling;
             const icon = btn.querySelector('svg');
-            
             if (!content || !icon) return;
 
-            // Toggle Logic
             if (content.classList.contains('hidden')) {
-                 // Close others (optional)
-                 accordionBtns.forEach(otherBtn => {
+                accordionBtns.forEach(otherBtn => {
                     if(otherBtn !== btn) {
                         const otherContent = otherBtn.nextElementSibling;
                         const otherIcon = otherBtn.querySelector('svg');
@@ -329,13 +221,12 @@ const mobileMenuBtnClass = isDark
                             otherIcon.style.transform = 'rotate(0deg)';
                         }
                     }
-                 });
-
-                 content.classList.remove('hidden');
-                 icon.style.transform = 'rotate(180deg)';
+                });
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
             } else {
-                 content.classList.add('hidden');
-                 icon.style.transform = 'rotate(0deg)';
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
             }
         });
     });

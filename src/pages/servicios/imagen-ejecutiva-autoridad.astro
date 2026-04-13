@@ -1,12 +1,11 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const seoData = {
-    title: "Asesoría de Imagen Ejecutiva Bogotá | Marca Personal para CEOs",
+    title: "Imagen Ejecutiva · Marca Personal · Estilo Corporativo en Bogotá | Roger Murillo",
     description:
-        "Consultoría de imagen corporativa para altos directivos. Alineamos tu presencia visual con tu jerarquía. Servicio exclusivo a puerta cerrada.",
+        "Consultoría de imagen ejecutiva en Bogotá para CEOs, directivos y líderes. Alineamos tu presencia visual con tu autoridad y jerarquía real. Servicio exclusivo a puerta cerrada.",
     h1: "Tu Imagen es tu Tarjeta de Presentación antes de que Digas una Palabra",
 };
 
@@ -25,134 +24,103 @@ const schema = JSON.stringify({
     description={seoData.description}
     schema={schema}
 >
-    <section class="relative py-24 px-6 bg-[#0c0a09] text-white">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span
-                    class="text-[#d4af37] font-bold tracking-widest text-xs uppercase mb-4 block"
-                    >Servicio B2B & C-Level</span
-                >
-                <h1 class="text-5xl md:text-6xl font-serif leading-tight mb-6">
-                    {seoData.h1}
-                </h1>
-                <p
-                    class="text-xl text-stone-300 font-light mb-8 border-l-2 border-[#d4af37] pl-6"
-                >
-                    Para CEOs, Altos Directivos y Políticos. Alineamos tu
-                    presencia visual con la jerarquía de tu cargo.
-                </p>
-                <a href="/contacto">
-                    <Button
-                        size="lg"
-                        className="bg-[#d4af37] text-black hover:bg-white h-14 px-8 text-base"
-                    >
-                        Solicitar Auditoría de Imagen
-                    </Button>
-                </a>
-            </div>
-            <div
-                class="aspect-[4/5] bg-stone-800 rounded-lg overflow-hidden border border-stone-700"
+    <!-- Hero -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Imagen Ejecutiva</p>
+            <h1 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black max-w-4xl mb-8">
+                {seoData.h1}
+            </h1>
+            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-xl mb-12">
+                Para CEOs, Altos Directivos y Políticos. Alineamos tu presencia visual con la jerarquía de tu cargo.
+            </p>
+            <a
+                href="/contacto"
+                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500"
             >
-                <img
-                    src="/images/executive-consulting.webp"
-                    alt="Asesoría de Imagen Ejecutiva Bogotá"
-                    class="w-full h-full object-cover opacity-80"
-                />
+                Solicitar Auditoría de Imagen
+                <ArrowRight size={14} />
+            </a>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="py-32 md:py-40 bg-neutral-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-12 gap-16 md:gap-24">
+                <div class="md:col-span-5">
+                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Problema</p>
+                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black">
+                        ¿Tu apariencia está frenando tu ascenso?
+                    </h2>
+                </div>
+                <div class="md:col-span-7 flex items-center">
+                    <ul class="space-y-6">
+                        <li class="text-lg text-neutral-500 font-light leading-relaxed">
+                            <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Tienes la experiencia, pero te confunden con un junior o alguien de menor rango.
+                        </li>
+                        <li class="text-lg text-neutral-500 font-light leading-relaxed">
+                            <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Tu equipo no percibe autoridad inmediata cuando entras a la sala de juntas.
+                        </li>
+                        <li class="text-lg text-neutral-500 font-light leading-relaxed">
+                            <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Pierdes tiempo valioso cada mañana decidiendo qué ponerte para reuniones clave.
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-serif text-[#0c0a09] mb-8 text-center">
-                ¿Tu apariencia está frenando tu ascenso?
+    <!-- Process -->
+    <section class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Proceso</p>
+            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-20">
+                Tres Fases de Transformación
             </h2>
-            <ul class="space-y-4">
-                <li
-                    class="flex items-start gap-3 p-4 bg-stone-50 rounded-lg border border-stone-100"
-                >
-                    <span class="text-red-900 font-bold">×</span>
-                    <p class="text-stone-600">
-                        Tienes la experiencia, pero te confunden con un junior o
-                        alguien de menor rango.
-                    </p>
-                </li>
-                <li
-                    class="flex items-start gap-3 p-4 bg-stone-50 rounded-lg border border-stone-100"
-                >
-                    <span class="text-red-900 font-bold">×</span>
-                    <p class="text-stone-600">
-                        Tu equipo no percibe autoridad inmediata cuando entras a
-                        la sala de juntas.
-                    </p>
-                </li>
-                <li
-                    class="flex items-start gap-3 p-4 bg-stone-50 rounded-lg border border-stone-100"
-                >
-                    <span class="text-red-900 font-bold">×</span>
-                    <p class="text-stone-600">
-                        Pierdes tiempo valioso cada mañana decidiendo qué
-                        ponerte para reuniones clave.
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 bg-[#fafaf9] border-y border-stone-200">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8">
-                    <span class="text-4xl font-serif text-[#d4af37] block mb-4"
-                        >01</span
-                    >
-                    <h3 class="text-xl font-bold text-[#0c0a09] mb-2">
-                        Auditoría Semiótica
-                    </h3>
-                    <p class="text-stone-600 text-sm">
-                        Analizamos qué comunica tu ropa actual. ¿Transmites
-                        accesibilidad o poder? ¿Rigidez o innovación?
+            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
+                <div class="bg-white p-10">
+                    <span class="font-serif text-4xl text-brand-primary block mb-6">01</span>
+                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Auditoría Semiótica</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
+                        Analizamos qué comunica tu ropa actual. ¿Transmites accesibilidad o poder? ¿Rigidez o innovación?
                     </p>
                 </div>
-                <div class="p-8 border-l border-stone-200">
-                    <span class="text-4xl font-serif text-[#d4af37] block mb-4"
-                        >02</span
-                    >
-                    <h3 class="text-xl font-bold text-[#0c0a09] mb-2">
-                        Estrategia de Color
-                    </h3>
-                    <p class="text-stone-600 text-sm">
-                        Psicología del color aplicada a negocios. Aprende a usar
-                        el azul para negociar y el gris para mediar.
+                <div class="bg-white p-10">
+                    <span class="font-serif text-4xl text-brand-primary block mb-6">02</span>
+                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Estrategia de Color</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
+                        Psicología del color aplicada a negocios. Aprende a usar el azul para negociar y el gris para mediar.
                     </p>
                 </div>
-                <div class="p-8 border-l border-stone-200">
-                    <span class="text-4xl font-serif text-[#d4af37] block mb-4"
-                        >03</span
-                    >
-                    <h3 class="text-xl font-bold text-[#0c0a09] mb-2">
-                        Armario de Poder
-                    </h3>
-                    <p class="text-stone-600 text-sm">
-                        Creación de cápsulas eficientes. Menos ropa, más
-                        impacto. Preparado para viajes y juntas imprevistas.
+                <div class="bg-white p-10">
+                    <span class="font-serif text-4xl text-brand-primary block mb-6">03</span>
+                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Armario de Poder</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
+                        Creación de cápsulas eficientes. Menos ropa, más impacto. Preparado para viajes y juntas imprevistas.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 px-6 bg-[#0c0a09] text-center">
-        <h3 class="text-2xl font-serif text-white mb-6">
-            ¿Tu imagen proyecta liderazgo real?
-        </h3>
-        <a href="/herramientas/test-colorimetria-online">
-            <Button
-                variant="outline"
-                className="border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black"
+    <!-- CTA -->
+    <section class="py-32 md:py-40 bg-brand-black text-white">
+        <div class="container mx-auto px-6 max-w-6xl text-center">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Descúbrelo</p>
+            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-white mb-8">
+                ¿Tu imagen proyecta liderazgo real?
+            </h2>
+            <p class="text-lg text-neutral-300 font-light leading-relaxed max-w-xl mx-auto mb-12">
+                Haz nuestro test rápido de colorimetría y descubre si tu paleta de color está alineada con tu rol.
+            </p>
+            <a
+                href="/herramientas/test-colorimetria-online"
+                class="inline-flex items-center gap-3 px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white border border-white/20 hover:border-white transition-colors duration-500"
             >
-                Haz este test rápido de 2 minutos
-            </Button>
-        </a>
+                Haz el Test de 2 Minutos
+                <ArrowRight size={14} />
+            </a>
+        </div>
     </section>
 </MainLayout>

@@ -22,14 +22,14 @@ export default function PaletteViewer({ colors, names, avoid }) {
                             className="group relative cursor-pointer"
                         >
                             <div
-                                className="h-24 w-full rounded-sm shadow-md transition-transform transform group-hover:scale-105 border border-gray-100"
+                                className="h-24 w-full rounded-sm shadow-md transition-transform transform group-hover:scale-105 border border-neutral-100"
                                 style={{ backgroundColor: color }}
                             ></div>
-                            <span className="text-xs text-gray-500 mt-3 block font-bold uppercase tracking-wide">{names[i]}</span>
+                            <span className="text-xs text-neutral-500 mt-3 block font-bold uppercase tracking-wide">{names[i]}</span>
                         </motion.div>
                     ))}
                 </div>
-                <p className="text-sm text-gray-400 mt-8 italic border-t border-gray-100 pt-4">
+                <p className="text-sm text-neutral-400 mt-8 italic border-t border-neutral-100 pt-4">
                     * Úsalos en reuniones de directorio, negociaciones y presentaciones clave para maximizar tu autoridad.
                 </p>
             </div>
@@ -46,7 +46,7 @@ export default function PaletteViewer({ colors, names, avoid }) {
                     {avoid.map((color, i) => (
                         <div key={color} className="relative group">
                             <div
-                                className="h-16 w-full rounded-sm mx-auto mb-2 border border-gray-200 shadow-inner relative overflow-hidden"
+                                className="h-16 w-full rounded-sm mx-auto mb-2 border border-neutral-200 shadow-inner relative overflow-hidden"
                                 style={{ backgroundColor: color }}
                             >
                                 {/* La X roja sobre el color */}

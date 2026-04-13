@@ -34,7 +34,7 @@ export default function QualificationForm() {
             >
                 <div className="w-20 h-20 bg-brand-primary rounded-full flex items-center justify-center mb-6 text-4xl">✨</div>
                 <h3 className="font-serif text-3xl mb-4">Solicitud Recibida</h3>
-                <p className="text-gray-300 mb-8 max-w-sm mx-auto leading-relaxed">
+                <p className="text-neutral-300 mb-8 max-w-sm mx-auto leading-relaxed">
                     Gracias, {formData.nombre}. Hemos recibido tu perfil.
                     Nuestro equipo de concierge revisará tu solicitud y te contactará en menos de 24 horas para coordinar tu cita.
                 </p>
@@ -59,7 +59,7 @@ export default function QualificationForm() {
             <div className="mb-10">
                 <span className="text-brand-primary text-xs font-bold uppercase tracking-widest mb-2 block">Paso 1</span>
                 <h3 className="font-serif text-3xl md:text-4xl text-brand-black mb-4">Aplica para una Sesión</h3>
-                <p className="text-sm text-slate-500 font-light leading-relaxed">
+                <p className="text-sm text-neutral-500 font-light leading-relaxed">
                     Completa los campos para asegurar que Roger o Adriana sean los especialistas adecuados para tu objetivo actual.
                 </p>
             </div>
@@ -74,7 +74,7 @@ export default function QualificationForm() {
                             type="text"
                             name="nombre"
                             required
-                            className="w-full border-b border-gray-200 py-3 focus:border-brand-primary outline-none transition-colors bg-transparent placeholder-gray-300 text-brand-black"
+                            className="w-full border-b border-neutral-200 py-3 focus:border-brand-primary outline-none transition-colors bg-transparent placeholder-neutral-300 text-brand-black"
                             onChange={handleChange}
                         />
                     </div>
@@ -85,7 +85,7 @@ export default function QualificationForm() {
                             type="tel"
                             name="telefono"
                             required
-                            className="w-full border-b border-gray-200 py-3 focus:border-brand-primary outline-none transition-colors bg-transparent placeholder-gray-300 text-brand-black"
+                            className="w-full border-b border-neutral-200 py-3 focus:border-brand-primary outline-none transition-colors bg-transparent placeholder-neutral-300 text-brand-black"
                             onChange={handleChange}
                         />
                     </div>
@@ -98,7 +98,7 @@ export default function QualificationForm() {
                         type="email"
                         name="email"
                         required
-                        className="w-full border-b border-gray-200 py-3 focus:border-brand-primary outline-none transition-colors bg-transparent placeholder-gray-300 text-brand-black"
+                        className="w-full border-b border-neutral-200 py-3 focus:border-brand-primary outline-none transition-colors bg-transparent placeholder-neutral-300 text-brand-black"
                         onChange={handleChange}
                     />
                 </div>
@@ -110,7 +110,7 @@ export default function QualificationForm() {
                         <select
                             name="interes"
                             required
-                            className="w-full border-b border-gray-200 py-3 focus:border-brand-primary outline-none bg-transparent appearance-none rounded-none cursor-pointer text-brand-black"
+                            className="w-full border-b border-neutral-200 py-3 focus:border-brand-primary outline-none bg-transparent appearance-none rounded-none cursor-pointer text-brand-black"
                             onChange={handleChange}
                         >
                             <option value="" disabled selected>Selecciona una opción...</option>
@@ -130,7 +130,7 @@ export default function QualificationForm() {
                         name="objetivo"
                         rows="3"
                         placeholder="Ej: Tengo un ascenso pronto y necesito proyectar más autoridad..."
-                        className="w-full border border-gray-200 p-4 focus:border-brand-primary outline-none transition-colors resize-none bg-brand-gray/20 text-brand-black rounded-sm"
+                        className="w-full border border-neutral-200 p-4 focus:border-brand-primary outline-none transition-colors resize-none bg-brand-gray/20 text-brand-black rounded-sm"
                         onChange={handleChange}
                     ></textarea>
                 </div>
@@ -138,7 +138,7 @@ export default function QualificationForm() {
                 {/* Checkbox Legal */}
                 <div className="flex items-start gap-3 mt-4">
                     <input type="checkbox" required id="privacy" className="mt-1 w-4 h-4 accent-brand-primary cursor-pointer" />
-                    <label htmlFor="privacy" className="text-xs text-gray-500 leading-relaxed cursor-pointer select-none">
+                    <label htmlFor="privacy" className="text-xs text-neutral-500 leading-relaxed cursor-pointer select-none">
                         He leído y acepto la <a href="/legales/privacidad" className="underline hover:text-brand-primary" target="_blank">política de tratamiento de datos</a>. Entiendo que este formulario es una solicitud sujeta a la disponibilidad de la agenda.
                     </label>
                 </div>

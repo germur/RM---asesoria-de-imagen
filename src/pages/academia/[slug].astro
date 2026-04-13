@@ -11,7 +11,7 @@ export async function getStaticPaths() {
             slug: "curso-descubrete",
             title: "Curso Descúbrete",
             subtitle: "El poder de tu imagen",
-            price: "$94 USD",
+            price: "$25 USD",
             instructor: "Adriana Garzón & Roger Murillo",
             level: "Fundamentos",
             duration: "Online / A tu ritmo",
@@ -29,23 +29,14 @@ export async function getStaticPaths() {
                 "Mejora tu Comunicación No Verbal",
                 "Construye Coherencia Visual",
             ],
-            hotmartLink: "https://pay.hotmart.com/L93679802O?checkoutMode=10", // Real Link captured from screenshot/deduced or placeholder if not provided. Using placeholder structure for now based on user input example.
-            // WAIT using placeholder from user input instruction structure.
-            // User said: "TU ENLACE DE HOTMART AQUÍ (Checkout directo)"
-            // I will use a generic placeholder format OR if I can find the real one.
-            // The user provided examples like A00000000X. I will use the one I found in the scrape if possible, otherwise placeholder.
-            // In the scrape I saw: https://rogermurillo.co/rmai-academia/curso-descubrete/ -> Button leads to Hotmart?
-            // I'll stick to the user provided example structure or a safe default.
-            // Re-reading user request: "Si queremos posicionar... aquí tienes la implementación...". The user GAVE me the file structure but with placeholders.
-            // I will use the user's placeholders if I don't have the real ones, BUT I should try to use real ones if I saw them.
-            // For now I will use the structure provided to be safe:
+            hotmartLink: "https://pay.hotmart.com/U99309978M",
             id: "prod_descubrete",
         },
         {
             slug: "crea-tu-iconologia",
             title: "Curso Diseñate",
             subtitle: "Crea tu Iconología",
-            price: "$94 USD",
+            price: "$35 USD",
             instructor: "Adriana Garzón",
             level: "Avanzado / Diseño",
             duration: "Online / A tu ritmo",
@@ -63,14 +54,14 @@ export async function getStaticPaths() {
                 "Crea Puntos Focales",
                 "Diseño de Outfits Armónicos",
             ],
-            hotmartLink: "https://pay.hotmart.com/C93679836S?checkoutMode=10",
+            hotmartLink: "https://pay.hotmart.com/O99463899F",
             id: "prod_disenate",
         },
         {
             slug: "disena-tu-voz",
             title: "Curso Conquista",
             subtitle: "Diseña tu Voz",
-            price: "$94 USD",
+            price: "$40 USD",
             instructor: "Roger Murillo",
             level: "Intermedio / Comunicación",
             duration: "Online / A tu ritmo",
@@ -88,14 +79,14 @@ export async function getStaticPaths() {
                 "Lenguaje Corporal de Líder",
                 "Gana Confianza Absoluta",
             ],
-            hotmartLink: "https://pay.hotmart.com/H93679841W?checkoutMode=10",
+            hotmartLink: "https://pay.hotmart.com/U99476935H",
             id: "prod_conquista",
         },
         {
             slug: "el-correcto-uso-del-color",
             title: "Curso Destaca",
             subtitle: "El Correcto Uso del Color",
-            price: "$94 USD",
+            price: "$40 USD",
             instructor: "Adriana Garzón",
             level: "Profesional / Color",
             duration: "Online / A tu ritmo",
@@ -113,7 +104,7 @@ export async function getStaticPaths() {
                 "Crea Combinaciones Impactantes",
                 "Influye con tu Estética",
             ],
-            hotmartLink: "https://pay.hotmart.com/D93679854L?checkoutMode=10",
+            hotmartLink: "https://pay.hotmart.com/W99484170E",
             id: "prod_destaca",
         },
     ];
@@ -161,10 +152,10 @@ const courseSchema = {
 >
     <!-- HEADER DE VENTA (Sticky CTA en móvil) -->
     <div
-        class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 z-50 md:hidden flex justify-between items-center shadow-[0_-5px_20px_rgba(0,0,0,0.1)]"
+        class="fixed bottom-0 left-0 w-full bg-white border-t border-neutral-200 p-4 z-50 md:hidden flex justify-between items-center shadow-[0_-5px_20px_rgba(0,0,0,0.1)]"
     >
         <div>
-            <span class="text-xs text-gray-500 block">Precio total</span>
+            <span class="text-xs text-neutral-500 block">Precio total</span>
             <span class="font-bold text-brand-black text-xl"
                 >{course.price}</span
             >
@@ -182,7 +173,7 @@ const courseSchema = {
     >
         <!-- Fondo decorativo sutil -->
         <div
-            class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-gray-900 to-transparent opacity-50"
+            class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-neutral-900 to-transparent opacity-50"
         >
         </div>
 
@@ -197,7 +188,7 @@ const courseSchema = {
                     >
                         {course.level}
                     </span>
-                    <span class="text-gray-400 text-sm flex items-center gap-2">
+                    <span class="text-neutral-400 text-sm flex items-center gap-2">
                         <span>👨🏫</span>
                         {course.instructor}
                     </span>

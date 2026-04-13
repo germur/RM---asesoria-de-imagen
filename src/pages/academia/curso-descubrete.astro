@@ -2,25 +2,133 @@
 import CourseLayout from "@/layouts/CourseLayout.astro";
 
 const frontmatter = {
-    title: "Curso Descúbrete",
-    subtitle: "Desbloquea el poder de tu imagen personal. Ideal para quienes inician su camino en la maestría de la percepción.",
+    title: "Descúbrete",
+    tag: "Módulo 1 · Fundamentos",
+    subtitle: "El primer paso hacia una imagen auténtica, coherente y poderosa.",
     price: "$25 USD",
-    description: "Inicia tu camino en la estrategia de la percepción. El curso fundacional para comprender cómo el mundo te lee antes de que digas una sola palabra.",
+    description: "La mayoría de personas lleva años proyectando una imagen que no los representa. Este curso te devuelve el control: aprende a leer tu propia presencia, identificar qué estás comunicando sin palabras y construir una imagen que genere confianza desde el primer segundo.",
+    promise: "Al finalizar este módulo sabrás exactamente qué comunica tu imagen hoy, y tendrás un plan claro para transformarla.",
     image: "/images/course-descubrete.jpg",
     buyLink: "https://pay.hotmart.com/U99309978M",
-    modules: [
-        "Módulo 1: El mito de la frivolidad y el poder de la primera impresión",
-        "Módulo 2: Autodiagnóstico Express - Tu punto de partida",
-        "Módulo 3: Introducción a la Semiótica del Vestuario",
-        "Módulo 4: Higiene Visual y Errores Fatales a evitar",
-        "Módulo 5: Plan de Acción Inmediato"
+    instructor: "Roger Murillo & Adriana Garzón",
+    studentCount: "5.000+",
+    instructorCredentials: [
+        "Fundadores RMAI",
+        "20+ años de experiencia",
+        "Certificados AICI",
+        "Metodología propia patentada",
+    ],
+    instructorBio: [
+        "Roger Murillo es el creador del nuestra metodología, el primer sistema latinoamericano de diagnóstico de imagen que integra visagismo, colorimetría y semiótica del vestuario. Ha transformado la imagen de ejecutivos, políticos y líderes empresariales en más de 15 países.",
+        "Adriana Garzón es Máster en Colorimetría y especialista en salud capilar. Juntos dirigen la firma de consultoría de imagen estratégica más exclusiva de Colombia, con sede en Bogotá, atendiendo clientes a puerta cerrada.",
     ],
     benefits: [
-        "Comprende qué comunica tu imagen actual.",
-        "Elimina factores de ruido visual y distracción.",
-        "Gana seguridad al conocer tus fortalezas estéticas.",
-        "Acceso vitalicio y actualizaciones futuras."
-    ]
+        {
+            icon: "🪞",
+            title: "Claridad total",
+            text: "Entenderás exactamente qué mensaje envía tu imagen actual en reuniones, entrevistas y eventos sociales.",
+        },
+        {
+            icon: "🧭",
+            title: "Tu punto de partida",
+            text: "Realizarás un autodiagnóstico honesto y estructurado que te muestra dónde estás y adónde ir.",
+        },
+        {
+            icon: "⚡",
+            title: "Cambios inmediatos",
+            text: "Aplicarás correcciones de alto impacto desde el primer día, sin necesidad de comprar ropa nueva.",
+        },
+    ],
+    forWho: [
+        "Profesionales que sienten que su imagen no refleja su nivel de experiencia o cargo.",
+        "Personas que van a una entrevista, ascenso o presentación importante y quieren causar la mejor impresión.",
+        "Emprendedores o freelancers que necesitan proyectar autoridad y credibilidad ante sus clientes.",
+        "Cualquier persona que alguna vez se ha preguntado: '¿Qué dice mi imagen de mí?'",
+        "Quienes quieren empezar desde cero a construir una imagen personal con intención.",
+    ],
+    notForWho: [
+        "Personas que buscan consejos de moda o tendencias de temporada.",
+        "Quienes esperan resultados sin hacer los ejercicios prácticos del curso.",
+        "Quienes ya tienen claridad total sobre su imagen y buscan técnicas avanzadas de color o visagismo.",
+    ],
+    modules: [
+        {
+            title: "La imagen que proyectas vs. la imagen que crees proyectar",
+            lessons: [
+                "Por qué el 93% de la comunicación es no verbal",
+                "Los 7 segundos que definen la primera impresión",
+                "El mito de la frivolidad: por qué la imagen sí importa en los negocios",
+                "Ejercicio: Auditoría de tu imagen actual",
+            ],
+        },
+        {
+            title: "Autodiagnóstico express — tu punto de partida real",
+            lessons: [
+                "Cómo leerte a ti mismo sin sesgos",
+                "Los 4 arquetipos de imagen y cuál es el tuyo",
+                "Coherencia entre imagen interna y externa",
+                "Test de estilo personal con hoja de resultados descargable",
+            ],
+        },
+        {
+            title: "Semiótica del vestuario — qué dice cada prenda",
+            lessons: [
+                "El lenguaje de las prendas: colores, formas y siluetas",
+                "Qué transmite el negro, el azul marino y el rojo en contextos profesionales",
+                "Cómo leer el código de vestimenta de cualquier industria",
+                "Los 5 errores de imagen más comunes en profesionales exitosos",
+            ],
+        },
+        {
+            title: "Higiene visual y errores fatales a eliminar hoy",
+            lessons: [
+                "Ruido visual: qué es y cómo eliminarlo",
+                "Los detalles que destruyen una imagen impecable",
+                "Grooming masculino y femenino de alto estatus",
+                "Checklist de imagen antes de cada reunión importante",
+            ],
+        },
+        {
+            title: "Tu plan de acción inmediato",
+            lessons: [
+                "Cómo priorizar cambios con bajo presupuesto y alto impacto",
+                "Las 3 prendas clave que toda persona profesional debe tener",
+                "Rutina de imagen en 15 minutos diarios",
+                "Próximos pasos: hoja de ruta para el resto de los módulos RMAI",
+            ],
+        },
+    ],
+    testimonial: {
+        quote: "Antes de Descúbrete, yo pensaba que 'vestirse bien' era superficial. Ahora entiendo que mi imagen es mi tarjeta de presentación 24/7. En el primer mes conseguí dos clientes nuevos que me dijeron que mi presencia les transmitió confianza desde el inicio.",
+        name: "Camila R.",
+        role: "Consultora de Marketing, Bogotá",
+    },
+    faq: [
+        {
+            q: "¿Necesito conocimientos previos de imagen o moda?",
+            a: "No. Este es el módulo de entrada al método RMAI y está diseñado para personas que parten de cero. Si ya tienes conocimientos, te servirá para estructurar y validar lo que sabes.",
+        },
+        {
+            q: "¿Cuánto tiempo toma completar el curso?",
+            a: "El contenido está organizado en sesiones de 20-40 minutos. Puedes completarlo en un fin de semana intenso o distribuirlo en 2 semanas avanzando un módulo por día.",
+        },
+        {
+            q: "¿El acceso expira?",
+            a: "No. Tu acceso es de por vida. Además, cualquier actualización futura del contenido estará disponible para ti sin costo adicional.",
+        },
+        {
+            q: "¿Funciona tanto para hombres como para mujeres?",
+            a: "Sí. Los principios de imagen, semiótica y diagnóstico de nuestra metodología aplican igual para hombres y mujeres en contextos profesionales.",
+        },
+        {
+            q: "¿Lo puedo tomar si estoy fuera de Colombia?",
+            a: "Completamente. El curso es 100% digital y lo has tomado estudiantes en más de 12 países. El pago se procesa en USD a través de Hotmart con todas las divisas.",
+        },
+        {
+            q: "¿Qué diferencia este curso de un video de YouTube sobre imagen?",
+            a: "El contenido está basado en el nuestra metodología, un sistema propietario que integra visagismo, colorimetría y semiótica. No es consejos genéricos: es un diagnóstico estructurado con herramientas descargables y ejercicios con feedback.",
+        },
+    ],
 };
 ---
 

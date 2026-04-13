@@ -8,28 +8,28 @@ export default function SmartContactForm() {
     const options = [
         {
             id: 'vip',
-            icon: <MessageCircle className="w-6 h-6 mb-2 text-[#d4af37]" />,
+            icon: <MessageCircle className="w-6 h-6 mb-2 text-brand-primary" />,
             label: "Asesoría de Imagen Ejecutiva",
             desc: "Para CEOs y Líderes. Prioridad Alta.",
             action: "WhatsApp VIP"
         },
         {
             id: 'booking',
-            icon: <Calendar className="w-6 h-6 mb-2 text-stone-600" />,
+            icon: <Calendar className="w-6 h-6 mb-2 text-neutral-600" />,
             label: "Cambio de Look / Visagismo",
             desc: "Cita presencial en estudio.",
             action: "Ir al Booking"
         },
         {
             id: 'student',
-            icon: <GraduationCap className="w-6 h-6 mb-2 text-stone-600" />,
+            icon: <GraduationCap className="w-6 h-6 mb-2 text-neutral-600" />,
             label: "Alumno / Cursos",
             desc: "Dudas sobre academia.",
             action: "Ver Academia"
         },
         {
             id: 'press',
-            icon: <Mail className="w-6 h-6 mb-2 text-stone-600" />,
+            icon: <Mail className="w-6 h-6 mb-2 text-neutral-600" />,
             label: "Prensa / Conferencias",
             desc: "Colaboraciones.",
             action: "Enviar Email"
@@ -47,7 +47,7 @@ export default function SmartContactForm() {
     };
 
     return (
-        <div className="bg-white p-8 rounded-xl shadow-xl border border-stone-100 max-w-2xl mx-auto">
+        <div className="bg-white p-8 rounded-xl shadow-xl border border-neutral-100 max-w-2xl mx-auto">
             <h3 className="text-2xl font-serif text-center mb-8">¿Cómo podemos ayudarte hoy?</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -56,13 +56,13 @@ export default function SmartContactForm() {
                         key={opt.id}
                         onClick={() => setSelectedIntention(opt.id)}
                         className={`p-6 rounded-lg border-2 text-left transition-all duration-200 ${selectedIntention === opt.id
-                                ? 'border-[#d4af37] bg-stone-50 shadow-md'
-                                : 'border-stone-100 hover:border-stone-300'
+                                ? 'border-brand-primary bg-neutral-50 shadow-md'
+                                : 'border-neutral-100 hover:border-neutral-300'
                             }`}
                     >
                         {opt.icon}
-                        <div className="font-bold text-[#0c0a09]">{opt.label}</div>
-                        <div className="text-xs text-stone-500 mt-1">{opt.desc}</div>
+                        <div className="font-bold text-brand-black">{opt.label}</div>
+                        <div className="text-xs text-neutral-500 mt-1">{opt.desc}</div>
                     </button>
                 ))}
             </div>
@@ -72,7 +72,7 @@ export default function SmartContactForm() {
                     size="lg"
                     onClick={handleAction}
                     disabled={!selectedIntention}
-                    className={`w-full h-14 text-lg transition-all ${!selectedIntention ? 'opacity-50 cursor-not-allowed' : 'bg-[#0c0a09] hover:bg-[#d4af37] hover:text-black'
+                    className={`w-full h-14 text-lg transition-all ${!selectedIntention ? 'opacity-50 cursor-not-allowed' : 'bg-brand-black hover:bg-brand-primary hover:text-white'
                         }`}
                 >
                     {selectedIntention

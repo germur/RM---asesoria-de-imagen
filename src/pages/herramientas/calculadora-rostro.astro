@@ -1,13 +1,12 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import FaceShapeCalculator from "@/components/tools/FaceShapeCalculator"; // Componente React
-import { Button } from "@/components/ui/button";
+import FaceShapeCalculator from "@/components/tools/FaceShapeCalculator";
 
 const seoData = {
     title: "Calculadora de Visagismo Online | ¿Qué tipo de rostro tengo?",
     description:
         "No es magia, son matemáticas. Mide tus proporciones faciales y descubre la geometría exacta de tu rostro para elegir el corte, barba y gafas perfectas.",
-    h1: "Calculadora de Visagismo: La Geometría de tu Rostro",
+    h1: "Calculadora de Visagismo",
 };
 
 const schema = JSON.stringify({
@@ -25,41 +24,43 @@ const schema = JSON.stringify({
     description={seoData.description}
     schema={schema}
 >
-    <section class="py-20 px-6 bg-[#0c0a09] text-white text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-serif mb-6">{seoData.h1}</h1>
-            <p class="text-xl text-stone-300 font-light max-w-2xl mx-auto">
-                Toma una cinta métrica. Vamos a decodificar tus facciones para
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
+        <div class="container mx-auto px-6 max-w-3xl text-center">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
+                Herramienta de Visagismo
+            </p>
+
+            <h1 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
+                {seoData.h1}
+            </h1>
+
+            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-2xl mx-auto">
+                Toma una cinta metrica. Vamos a decodificar tus facciones para
                 que dejes de copiar cortes que no te favorecen.
             </p>
         </div>
     </section>
 
-    <section class="py-16 px-6 bg-[#fafaf9] -mt-10">
-        <div
-            class="max-w-5xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-xl border border-stone-200"
-        >
-            <div class="grid md:grid-cols-2 gap-12">
+    <section class="py-32 md:py-40 bg-neutral-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-16">
                 <div>
-                    <h3 class="text-2xl font-serif text-[#0c0a09] mb-6">
+                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
+                        Medidas
+                    </p>
+                    <h3 class="font-serif text-2xl text-brand-black mb-8">
                         Introduce tus medidas
                     </h3>
                     <FaceShapeCalculator client:visible />
                 </div>
 
-                <div
-                    class="bg-stone-50 p-8 rounded-lg border border-dashed border-stone-300 flex items-center justify-center"
-                >
+                <div class="border border-neutral-200 bg-white flex items-center justify-center p-12">
                     <div class="text-center">
-                        <p class="text-stone-400 text-sm mb-4">
-                            El diagrama de tu rostro aparecerá aquí
+                        <p class="text-neutral-400 text-sm mb-6">
+                            El diagrama de tu rostro aparecera aqui
                         </p>
-                        <div
-                            class="w-48 h-64 border-2 border-stone-200 rounded-full mx-auto relative"
-                        >
-                            <div
-                                class="absolute inset-0 flex items-center justify-center text-stone-200 font-serif text-6xl"
-                            >
+                        <div class="w-48 h-64 border border-neutral-200 rounded-full mx-auto relative">
+                            <div class="absolute inset-0 flex items-center justify-center text-neutral-200 font-serif text-6xl">
                                 ?
                             </div>
                         </div>
@@ -69,15 +70,17 @@ const schema = JSON.stringify({
         </div>
     </section>
 
-    <section class="py-16 text-center">
-        <p class="text-stone-500 mb-4">¿Ya tienes tu resultado?</p>
-        <a href="/servicios/visagismo-corte/">
-            <Button
-                variant="link"
-                className="text-[#0c0a09] font-bold text-lg decoration-[#d4af37]"
+    <section class="py-32 md:py-40 bg-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <p class="text-lg text-neutral-500 font-light leading-relaxed mb-8">
+                Ya tienes tu resultado?
+            </p>
+            <a
+                href="/servicios/visagismo-corte/"
+                class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500 inline-block"
             >
-                Agenda tu Diseño de Corte Profesional →
-            </Button>
-        </a>
+                Agenda tu Diseno de Corte Profesional
+            </a>
+        </div>
     </section>
 </MainLayout>

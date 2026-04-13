@@ -2,42 +2,130 @@
 import CourseLayout from "@/layouts/CourseLayout.astro";
 
 const frontmatter = {
-    title: "Curso Conquista: Diseña tu Voz",
-    subtitle: "Domina el arte de influir. La apariencia atrae, pero la comunicación asegura el trato.",
-    price: "$40 USD *",
-    description: "Alinea tu imagen no verbal con una comunicación persuasiva. Domina el tono, el lenguaje corporal y la presencia escénica (Aplica conversión a moneda local en checkout).",
+    title: "Conquista",
+    tag: "Módulo 3 · Presencia Escénica",
+    subtitle: "La imagen atrae. La presencia cierra el trato.",
+    price: "$40 USD",
+    description: "Puedes vestir perfectamente y aun así perder la sala. La presencia escénica, el lenguaje corporal y la voz son el segundo idioma de la autoridad. En este módulo aprenderás a proyectar magnetismo, confianza y carisma en cualquier escenario: una reunión, una presentación, una negociación o una cámara.",
+    promise: "Al terminar este módulo tendrás el control de tu comunicación no verbal y podrás entrar a cualquier espacio con la certeza de que tu presencia habla por ti.",
     image: "/images/course-conquista.jpg",
     buyLink: "https://pay.hotmart.com/U99476935H",
-    modules: [
-        "Módulo 1: Dominio del Lenguaje Corporal y Kinesia",
-        "Módulo 2: Gestión de Espacios y Presencia Escénica (Proxémica)",
-        "Módulo 3: Entrenamiento Vocal Ejecutivo - Modulación y Tono",
-        "Módulo 4: Estructurando un Pitch Irresistible e Impactante",
-        "Módulo 5: Manejo de Crisis y Preguntas Difíciles en Público"
+    instructor: "Roger Murillo",
+    studentCount: "2.800+",
+    instructorCredentials: [
+        "Creador de la metodología de imagen estratégica",
+        "Speaker TEDx",
+        "Asesor de imagen de figuras públicas",
+        "20+ años en imagen ejecutiva",
+    ],
+    instructorBio: [
+        "Roger Murillo ha asesorado a políticos, ejecutivos de C-suite y celebridades en el manejo de su presencia pública. Como speaker TEDx y conferencista internacional, conoce de primera mano el poder que tiene el cuerpo, la voz y la actitud para transformar la percepción de una sala entera.",
+        "En este módulo comparte las mismas técnicas que usa en sus consultorías privadas 'a puerta cerrada' en Bogotá, adaptadas al formato digital para que puedas aplicarlas sin importar dónde estés.",
     ],
     benefits: [
-        "Elimina las muletillas corporales que roban tu autoridad.",
-        "Aprende a llenar la habitación con tu sola presencia física.",
-        "Proyecta una voz profunda, segura y confiable que todos escuchen.",
-        "Cierra más acuerdos mejorando tus habilidades de persuasión."
-    ]
+        {
+            icon: "🎙️",
+            title: "Voz de autoridad",
+            text: "Aprenderás a modular tu tono, ritmo y proyección para que cada vez que hables, la sala te escuche.",
+        },
+        {
+            icon: "🧍",
+            title: "Lenguaje corporal de alto estatus",
+            text: "Eliminarás los gestos que traicionan tu inseguridad y adoptarás posturas que comunican liderazgo sin decir una palabra.",
+        },
+        {
+            icon: "🔥",
+            title: "Magnetismo genuino",
+            text: "Descubrirás cómo activar tu presencia escénica para ser memorable, persuasivo y carismático en cualquier contexto.",
+        },
+    ],
+    forWho: [
+        "Profesionales que tienen el conocimiento pero no logran que otros los perciban como líderes.",
+        "Personas que se sienten invisibles en reuniones o pierden protagonismo al hablar en público.",
+        "Ejecutivos y gerentes que presentan propuestas importantes y necesitan dominar el escenario.",
+        "Emprendedores que quieren cerrar más negocios mejorando su comunicación no verbal.",
+        "Quienes se sienten intimidados o nerviosos al hablar frente a grupos y quieren superarlo.",
+    ],
+    notForWho: [
+        "Personas que buscan un curso de oratoria clásica o técnicas de memorización de discursos.",
+        "Quienes esperan resultados sin practicar los ejercicios de postura, voz y movimiento.",
+        "Quienes ya dominan la presencia escénica y buscan técnicas de negociación avanzada.",
+    ],
+    modules: [
+        {
+            title: "Los pilares de la presencia escénica",
+            lessons: [
+                "Qué es la presencia y por qué no tiene nada que ver con el volumen de la voz",
+                "La ciencia del magnetismo: qué hace que una persona llene una habitación",
+                "Mapa corporal: las zonas que más hablan cuando callamos",
+                "Ejercicio: Video de autodiagnóstico de presencia",
+            ],
+        },
+        {
+            title: "Lenguaje corporal de alto estatus",
+            lessons: [
+                "Los 12 gestos que comunican inseguridad y cómo eliminarlos",
+                "Postura de poder: de pie, sentado y en cámara",
+                "El uso estratégico del espacio (proxémica ejecutiva)",
+                "Cómo manejar el contacto visual para proyectar confianza, no agresividad",
+            ],
+        },
+        {
+            title: "Entrenamiento vocal ejecutivo",
+            lessons: [
+                "Anatomía de la voz de autoridad: tono, ritmo, pausas y volumen",
+                "Cómo proyectar sin gritar y articular sin sobre-explicar",
+                "El silencio como herramienta de poder",
+                "Ejercicios de calentamiento vocal para antes de una presentación importante",
+            ],
+        },
+        {
+            title: "Microexpresiones y decodificación del otro",
+            lessons: [
+                "Cómo leer las señales no verbales de la sala en tiempo real",
+                "Detectar desinterés, escepticismo o acuerdo sin que lo digan",
+                "Cómo adaptar tu presencia según la energía del grupo",
+                "El efecto espejo: técnicas de rapport no verbal",
+            ],
+        },
+        {
+            title: "Presencia en cámara y entornos digitales",
+            lessons: [
+                "Las reglas cambian en video: qué ajustar en calls y grabaciones",
+                "Iluminación, ángulo y fondo como elementos de imagen ejecutiva",
+                "Cómo mantener la atención de una audiencia virtual durante 30+ minutos",
+                "Checklist de presencia para reuniones digitales importantes",
+            ],
+        },
+    ],
+    testimonial: {
+        quote: "Llevaba años siendo el más preparado de la sala y el menos escuchado. Conquista me enseñó que el problema no era mi contenido, era cómo lo entregaba. Ahora mis presentaciones terminan con aplausos, no con silencio educado.",
+        name: "Santiago V.",
+        role: "Gerente Regional, Sector Financiero",
+    },
+    faq: [
+        {
+            q: "¿Necesito haber tomado los módulos anteriores?",
+            a: "No es obligatorio, pero se recomienda. Conquista funciona mejor cuando ya tienes claridad sobre tu imagen visual. Sin embargo, si tu necesidad principal es la presencia y comunicación, puedes empezar aquí.",
+        },
+        {
+            q: "¿Funciona para personas introvertidas?",
+            a: "Especialmente para ellas. Este módulo no te pide que cambies tu personalidad, sino que aprendas a comunicar con mayor intención desde quien ya eres. Muchos de nuestros mejores resultados vienen de personas introvertidas que descubrieron su forma particular de proyectar autoridad.",
+        },
+        {
+            q: "¿Los ejercicios requieren otro equipo o software?",
+            a: "Solo necesitas un celular o cámara para los ejercicios de video de autodiagnóstico. No se requiere ningún equipo especializado.",
+        },
+        {
+            q: "¿El precio aparece en pesos colombianos?",
+            a: "Sí, Hotmart puede mostrarte el equivalente en pesos al momento del checkout según la tasa de cambio vigente. El precio base es USD 40 y si estás fuera de Colombia se aplica la conversión automática a tu moneda local.",
+        },
+        {
+            q: "¿Cuánto tiempo duran los resultados?",
+            a: "Las técnicas de lenguaje corporal y voz son habilidades que se instalan con práctica. La mayoría de estudiantes reporta cambios visibles en las primeras 2 semanas de aplicación consciente de los ejercicios.",
+        },
+    ],
 };
 ---
 
 <CourseLayout frontmatter={frontmatter} />
-
-<!-- Microcopy for COP note in this specific layout -->
-<style is:global>
-    /* In CourseLayout, modifying the layout to account for COP pricing */
-    .text-3xl.font-serif.text-white::after {
-        content: " (Equivalente en moneda local)";
-        font-size: 0.4em;
-        display: block;
-        color: #9CA3AF;
-        font-family: sans-serif;
-        font-weight: 300;
-        margin-top: 4px;
-        letter-spacing: 0;
-        text-transform: none;
-    }
-</style>

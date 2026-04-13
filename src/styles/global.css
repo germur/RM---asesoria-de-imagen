@@ -3,36 +3,20 @@
 
 @layer base {
   :root {
-    /* Variables CSS nativas alineadas con la nueva paleta */
     --background: 0 0% 100%;
-    /* #FFFFFF */
     --foreground: 0 0% 0%;
-    /* #000000 */
-
     --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
-
     --primary: 0 0% 0%;
-    /* Botones Negros (Estándar) */
     --primary-foreground: 0 0% 100%;
-
     --secondary: 210 10% 95%;
-    /* #F0F2F3 (Brand Gray) */
     --secondary-foreground: 0 0% 0%;
-
     --muted: 210 10% 95%;
     --muted-foreground: 0 0% 40%;
-    /* Gris medio para no cansar la vista */
-
     --accent: 350 83% 42%;
-    /* #C41230 (Brand Primary) */
     --accent-foreground: 0 0% 100%;
-
     --border: 210 10% 90%;
     --radius: 0.2rem;
-    /* Radio "Sharp" */
-
-    /* Chart colors required by Shadcn but not used directly in current redesign */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -40,51 +24,96 @@
     --chart-5: 27 87% 67%;
   }
 
-  /* Force light mode variables always since we removed dark mode for this brand */
   .dark {
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
     --primary: 0 0% 0%;
     --primary-foreground: 0 0% 100%;
-    /* ... keep it consistent with light mode for strict editorial look */
   }
 
   body {
     @apply bg-brand-white text-brand-black font-sans antialiased;
-
-    /* La selección de texto ahora es ROJA */
     ::selection {
       @apply bg-brand-primary/20 text-brand-black;
     }
   }
 
-  /* JERARQUÍA EDITORIAL */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-serif tracking-tight text-brand-black font-medium;
   }
 
-  /* H1: Menos es más. Negro puro. */
-  h1 {
-    @apply text-5xl md:text-7xl leading-[1.05];
+  h1 { @apply text-5xl md:text-7xl leading-[1.05]; }
+
+  p { @apply text-brand-black/80 leading-relaxed font-light; }
+}
+
+/* ============================================================
+   SISTEMA DE COLOR — FUENTE ÚNICA DE VERDAD
+   ============================================================
+
+   SECCIONES CLARAS (bg-white, bg-neutral-50):
+   - Label sobre H:   text-neutral-400   tracking-[0.3em] uppercase text-xs
+   - H1/H2/H3:        text-brand-black
+   - Span secondary:  text-neutral-400
+   - Párrafo body:    text-neutral-500
+   - Énfasis strong:  text-brand-black font-normal
+   - Bordes:          border-neutral-200
+   - Dividers:        divide-neutral-100
+
+   SECCIONES OSCURAS (bg-brand-black):
+   - Label sobre H:   text-neutral-500   tracking-[0.3em] uppercase text-xs
+   - H1/H2/H3:        text-white
+   - Span secondary:  text-neutral-400
+   - Párrafo body:    text-neutral-300
+   - Énfasis strong:  text-white font-normal
+   - Bordes:          border-neutral-700
+   - Dividers:        divide-neutral-800
+
+   CTAs:
+   - Primario (rojo):  bg-brand-primary text-white hover:bg-brand-black
+   - Primario (negro): bg-brand-black text-white hover:bg-brand-primary
+   - Outline claro:    border border-brand-black/20 text-brand-black hover:border-brand-black
+   - Outline oscuro:   border border-white/20 text-white hover:border-white
+
+   FUENTES NO PERMITIDAS (usar siempre neutral-*):
+   - text-stone-*  → usar text-neutral-*
+   - text-gray-*   → usar text-neutral-*
+   - text-slate-*  → usar text-neutral-*
+   - text-[#xxx]   → usar tokens brand-* o neutral-*
+   ============================================================ */
+
+/* Utilidades semánticas reutilizables */
+@layer utilities {
+  /* Label de sección — para usar encima de títulos */
+  .label-light {
+    @apply text-xs tracking-[0.3em] uppercase text-neutral-400;
+  }
+  .label-dark {
+    @apply text-xs tracking-[0.3em] uppercase text-neutral-500;
   }
 
-  /* Párrafos: Truco óptico. Usamos opacidad 90% o gris oscuro para lectura */
-  p {
-    @apply text-brand-black/80 leading-relaxed font-light;
+  /* Texto de cuerpo */
+  .body-light {
+    @apply text-neutral-500 leading-relaxed font-light;
+  }
+  .body-dark {
+    @apply text-neutral-300 leading-relaxed font-light;
+  }
+
+  /* CTA inline (arrow link) */
+  .cta-link-light {
+    @apply inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black hover:text-brand-primary transition-colors duration-500;
+  }
+  .cta-link-dark {
+    @apply inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-neutral-400 hover:text-brand-primary transition-colors duration-500;
   }
 }
 
-/* Enlaces dentro de texto - moving out of @layer base to avoid order issues */
-.text-link {
-  @apply border-b border-brand-primary/30 hover:border-brand-primary transition-colors;
-}
-
-/* Utilities custom */
+/* Utilidades de textura */
 .bg-noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.text-link {
+  @apply border-b border-brand-primary/30 hover:border-brand-primary transition-colors;
 }
