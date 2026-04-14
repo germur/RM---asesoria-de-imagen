@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://rogermurillo.co',
+  base: '/RM---asesoria-de-imagen',
   integrations: [
     react(),
     sitemap(),
