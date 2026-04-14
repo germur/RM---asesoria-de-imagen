@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 
 export default function PaletteViewer({ colors, names, avoid }) {
+    const safeColors = Array.isArray(colors) ? colors : [];
+    const safeNames  = Array.isArray(names)  ? names  : [];
+    const safeAvoid  = Array.isArray(avoid)  ? avoid  : [];
+
     return (
         <div className="grid md:grid-cols-2 gap-12 my-16">
 
@@ -13,7 +17,7 @@ export default function PaletteViewer({ colors, names, avoid }) {
                 </h3>
 
                 <div className="grid grid-cols-2 gap-6">
-                    {colors.map((color, i) => (
+                    {safeColors.map((color, i) => (
                         <motion.div
                             key={color}
                             initial={{ opacity: 0, y: 20 }}
@@ -25,7 +29,9 @@ export default function PaletteViewer({ colors, names, avoid }) {
                                 className="h-24 w-full rounded-sm shadow-md transition-transform transform group-hover:scale-105 border border-neutral-100"
                                 style={{ backgroundColor: color }}
                             ></div>
-                            <span className="text-xs text-neutral-500 mt-3 block font-bold uppercase tracking-wide">{names[i]}</span>
+                            <span className="text-xs text-neutral-500 mt-3 block font-bold uppercase tracking-wide">
+                                {safeNames[i] ?? color}
+                            </span>
                         </motion.div>
                     ))}
                 </div>
@@ -43,8 +49,8 @@ export default function PaletteViewer({ colors, names, avoid }) {
                 </h3>
 
                 <div className="grid grid-cols-2 gap-6 opacity-80">
-                    {avoid.map((color, i) => (
-                        <div key={color} className="relative group">
+                    {safeAvoid.map((color, i) => (
+                        <div key={`${color}-${i}`} className="relative group">
                             <div
                                 className="h-16 w-full rounded-sm mx-auto mb-2 border border-neutral-200 shadow-inner relative overflow-hidden"
                                 style={{ backgroundColor: color }}
