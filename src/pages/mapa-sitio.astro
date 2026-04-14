@@ -8,7 +8,6 @@ const seoData = {
     h1: "Mapa del Sitio",
 };
 
-// Estructura del Mapa
 const sitemap = [
     {
         category: "Principal",
@@ -16,85 +15,73 @@ const sitemap = [
             { name: "Inicio", url: "/" },
             { name: "Nosotros", url: "/nosotros" },
             { name: "Contacto", url: "/contacto" },
-            { name: "Política de Privacidad", url: "/politica-privacidad" },
-            { name: "Términos y Condiciones", url: "/terminos-condiciones" },
+            { name: "Política de Privacidad", url: "/legales/privacidad" },
+            { name: "Términos y Condiciones", url: "/legales/terminos" },
         ],
     },
     {
-        category: "Servicios (Silo 1)",
+        category: "Servicios",
         links: [
-            { name: "Servicios General", url: "/servicios" },
-            {
-                name: "Asesoría Integral",
-                url: "/servicios/asesoria-integral-imagen",
-            },
-            {
-                name: "Imagen Ejecutiva",
-                url: "/servicios/imagen-ejecutiva-autoridad",
-            },
+            { name: "Todos los Servicios", url: "/servicios" },
+            { name: "Asesoría Integral", url: "/servicios/asesoria-integral-imagen" },
+            { name: "Imagen Ejecutiva", url: "/servicios/imagen-ejecutiva-autoridad" },
             { name: "Visagismo y Corte", url: "/servicios/visagismo-corte" },
+            { name: "Color y Salud Capilar", url: "/servicios/color-salud-capilar" },
+            { name: "Tarifas", url: "/servicios/precios" },
         ],
     },
     {
-        category: "Herramientas (Silo 2)",
+        category: "Herramientas",
         links: [
-            { name: "Hub de Herramientas", url: "/herramientas" },
-            {
-                name: "Test de Colorimetría",
-                url: "/herramientas/test-colorimetria-online",
-            },
-            {
-                name: "Calculadora de Rostro",
-                url: "/herramientas/calculadora-rostro",
-            },
+            { name: "Todas las Herramientas", url: "/herramientas" },
+            { name: "Test de Colorimetría", url: "/herramientas/test-colorimetria-online" },
+            { name: "Calculadora de Rostro", url: "/herramientas/calculadora-rostro" },
+            { name: "Calculadora de Cuerpo", url: "/herramientas/calculadora-tipo-cuerpo" },
+            { name: "Test de Impacto Ejecutivo", url: "/herramientas/test-impacto-ejecutivo" },
         ],
     },
     {
-        category: "Academia (Silo 3)",
+        category: "Academia",
         links: [
-            { name: "Hub Academia", url: "/academia" },
-            {
-                name: "Guía de Visagismo",
-                url: "/academia/visagismo/tipos-rostro-hombre",
-            },
-            {
-                name: "Colorimetría Negocios",
-                url: "/academia/colorimetria/colores-para-negociar",
-            },
+            { name: "Todos los Cursos", url: "/academia" },
+            { name: "Curso Descúbrete", url: "/academia/curso-descubrete" },
+            { name: "Curso Diseñate", url: "/academia/crea-tu-iconologia" },
+            { name: "Curso Conquista", url: "/academia/disena-tu-voz" },
+            { name: "Curso Destaca", url: "/academia/el-correcto-uso-del-color" },
+            { name: "Libro Oficial", url: "/libro" },
         ],
     },
 ];
 ---
 
 <MainLayout title={seoData.title} description={seoData.description}>
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="font-serif text-4xl mb-12 text-[#0c0a09]">
+    <section class="pt-40 pb-32 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Índice del Sitio</p>
+            <h1 class="font-serif text-4xl md:text-5xl text-brand-black mb-16">
                 {seoData.h1}
             </h1>
 
             <div class="grid md:grid-cols-2 gap-12">
-                {
-                    sitemap.map((section) => (
-                        <div>
-                            <h2 class="text-xl font-bold text-[#d4af37] border-b border-stone-200 pb-2 mb-6 uppercase tracking-widest text-xs">
-                                {section.category}
-                            </h2>
-                            <ul class="space-y-3">
-                                {section.links.map((link) => (
-                                    <li>
-                                        <a
-                                            href={link.url}
-                                            class="text-stone-600 hover:text-[#0c0a09] hover:underline transition-colors block py-1"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))
-                }
+                {sitemap.map((section) => (
+                    <div>
+                        <p class="text-[10px] tracking-[0.38em] uppercase text-neutral-400 border-b border-neutral-100 pb-3 mb-5">
+                            {section.category}
+                        </p>
+                        <ul class="space-y-2">
+                            {section.links.map((link) => (
+                                <li>
+                                    <a
+                                        href={link.url}
+                                        class="text-sm text-neutral-500 hover:text-brand-primary transition-colors duration-200 font-light block py-1"
+                                    >
+                                        {link.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
             </div>
         </div>
     </section>
