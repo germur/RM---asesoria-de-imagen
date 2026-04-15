@@ -85,50 +85,63 @@ const courseSchema = {
         </a>
     </div>
 
-    <!-- 1. HERO -->
-    <section class="relative pt-32 pb-20 bg-brand-black text-white overflow-hidden">
-        <div class="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 mix-blend-overlay"></div>
-        <div class="absolute right-0 top-0 w-2/3 h-full bg-gradient-to-l from-neutral-900/60 to-transparent"></div>
+    <!-- 1. HERO — full-bleed editorial -->
+    <section class="relative min-h-[90vh] flex flex-col justify-end bg-brand-black text-white overflow-hidden">
+        <!-- Background: course image -->
+        <div class="absolute inset-0">
+            <img
+                src={image}
+                alt={title}
+                class="w-full h-full object-cover object-center"
+            />
+            <!-- Gradient overlays for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
+        </div>
 
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
-            <div class="w-full md:w-1/2">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="inline-block py-1 px-3 border border-brand-primary/50 text-brand-primary text-xs font-bold uppercase tracking-[0.3em] rounded-sm bg-brand-primary/10">
+        <!-- Content anchored to bottom-left -->
+        <div class="container mx-auto px-6 max-w-6xl relative z-10 pb-16 pt-48 md:pb-24">
+            <div class="max-w-2xl">
+                <!-- Badge + students -->
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <span class="inline-block py-1 px-3 border border-brand-primary/50 text-brand-primary text-xs font-bold uppercase tracking-[0.3em] bg-brand-primary/10">
                         {tag || "Curso Online"}
                     </span>
                     {studentCount && (
-                        <span class="text-neutral-400 text-xs flex items-center gap-1">
+                        <span class="text-neutral-400 text-xs flex items-center gap-1.5">
                             <Users className="w-3 h-3" /> {studentCount} estudiantes
                         </span>
                     )}
                 </div>
-                <h1 class="font-serif text-5xl md:text-6xl mb-6 leading-tight">{title}</h1>
-                <p class="text-xl text-neutral-400 font-light mb-4 leading-relaxed">{subtitle}</p>
+
+                <!-- Title -->
+                <h1 class="font-serif text-6xl md:text-8xl text-white mb-4 leading-none">{title}</h1>
+
+                <!-- Subtitle -->
+                <p class="text-lg md:text-xl text-neutral-300 font-light mb-5 leading-relaxed">{subtitle}</p>
+
+                <!-- Promise -->
                 {promise && (
-                    <p class="text-sm text-brand-primary font-medium border-l-2 border-brand-primary pl-4 mb-8 italic">
+                    <p class="text-sm text-brand-primary border-l-2 border-brand-primary pl-4 mb-10 italic">
                         "{promise}"
                     </p>
                 )}
-                <div class="hidden md:flex flex-col gap-4 mb-2 w-full sm:w-2/3">
+
+                <!-- Price + CTA — always visible -->
+                <div class="flex flex-wrap items-center gap-6">
                     <div class="flex items-baseline gap-3">
                         <span class="text-3xl font-serif text-white">{price}</span>
                         {originalPrice && (
                             <span class="text-sm text-neutral-500 line-through">{originalPrice}</span>
                         )}
                     </div>
-                    <HotmartButton link={buyLink} label="Inscribirme Ahora" />
-                    <p class="text-xs text-neutral-500 text-center flex items-center justify-center gap-1">
-                        <Shield className="w-3 h-3" /> Acceso inmediato · Pago seguro
-                    </p>
+                    <div class="flex flex-col gap-2">
+                        <HotmartButton link={buyLink} label="Inscribirme Ahora" />
+                        <p class="text-xs text-neutral-400 flex items-center gap-1">
+                            <Shield className="w-3 h-3" /> Acceso inmediato · Pago seguro
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="w-full md:w-1/2 relative group">
-                <div class="absolute inset-0 bg-brand-primary/20 blur-3xl rounded-full transform scale-75 group-hover:scale-100 transition-transform duration-700"></div>
-                <img
-                    src={image}
-                    alt={title}
-                    class="relative w-full rounded-sm shadow-2xl object-cover aspect-video"
-                />
             </div>
         </div>
     </section>
