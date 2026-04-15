@@ -1,6 +1,6 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
@@ -12,12 +12,12 @@ const schema = JSON.stringify({
     featureList: "Análisis de morfología corporal, Recomendación de siluetas, Guía de proporciones",
 });
 
-// Los 5 tipos corporales con sus características y recomendaciones
 const bodyTypes = [
     {
         id: "triangulo",
         name: "Triángulo",
         aka: "Pera",
+        svgPath: "M34,15 C34,45 18,70 14,105 L86,105 C82,70 66,45 66,15 Z",
         description: "Hombros más estrechos que caderas. La parte inferior del cuerpo es más ancha.",
         tip: "Equilibrar visualmente la parte superior con hombros estructurados, colores claros arriba y patrones en la zona del torso.",
     },
@@ -25,6 +25,7 @@ const bodyTypes = [
         id: "triangulo-invertido",
         name: "Triángulo Invertido",
         aka: "V / Atlético",
+        svgPath: "M14,15 C14,45 32,70 34,105 L66,105 C68,70 86,45 86,15 Z",
         description: "Hombros más anchos que caderas. Parte superior más dominante.",
         tip: "Suavizar la amplitud del torso con cuellos en V, telas fluidas abajo y evitar hombreras o patrones horizontales en la parte superior.",
     },
@@ -32,6 +33,7 @@ const bodyTypes = [
         id: "rectangulo",
         name: "Rectángulo",
         aka: "Banana",
+        svgPath: "M26,15 C26,45 28,68 26,105 L74,105 C72,68 74,45 74,15 Z",
         description: "Hombros, cintura y caderas con medidas similares. Silueta lineal.",
         tip: "Crear ilusión de curvas con cinturones, blusas con volumen en cadera o hombro, y cortes que definan la cintura.",
     },
@@ -39,6 +41,7 @@ const bodyTypes = [
         id: "reloj-arena",
         name: "Reloj de Arena",
         aka: "Ampolleta",
+        svgPath: "M20,15 C20,38 38,62 20,105 L80,105 C62,62 80,38 80,15 Z",
         description: "Hombros y caderas similares con cintura marcada. La silueta más 'equilibrada'.",
         tip: "Resaltar la cintura natural. Prendas ajustadas que sigan la curva del cuerpo. Todos los estilos clásicos funcionan.",
     },
@@ -46,6 +49,7 @@ const bodyTypes = [
         id: "manzana",
         name: "Manzana",
         aka: "Óvalo",
+        svgPath: "M30,15 C28,42 14,65 30,105 L70,105 C86,65 72,42 70,15 Z",
         description: "Mayor volumen en la zona media. Cintura poco marcada.",
         tip: "Alargamiento vertical con líneas rectas, prendas con escote en V, pantalones de tiro alto y telas que fluyan sin ceñir.",
     },
@@ -133,20 +137,39 @@ const bodyTypes = [
 
                 <!-- RESULTADO -->
                 <div id="result" class="hidden mt-10 pt-10 border-t border-gray-100">
-                    <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Tu tipo de cuerpo</p>
-                    <h3 id="result-name" class="font-serif text-4xl text-brand-black mb-1"></h3>
-                    <p id="result-aka" class="text-sm text-gray-400 mb-6"></p>
+                    <!-- Visual + nombre -->
+                    <div class="flex gap-8 items-center mb-8">
+                        <div id="result-visual" class="flex-shrink-0 w-20 flex items-center justify-center">
+                            <!-- SVG inyectado por JS -->
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Tu tipo de cuerpo</p>
+                            <h3 id="result-name" class="font-serif text-4xl text-brand-black mb-1 leading-tight"></h3>
+                            <p id="result-aka" class="text-sm text-gray-400"></p>
+                        </div>
+                    </div>
+
                     <p id="result-desc" class="text-gray-600 text-sm leading-relaxed mb-6"></p>
-                    <div class="bg-brand-gray p-6 border-l-4 border-brand-primary">
+
+                    <div class="bg-brand-gray p-6 border-l-4 border-brand-primary mb-8">
                         <p class="text-xs font-bold uppercase tracking-widest text-brand-black mb-2">Estrategia de Vestuario</p>
                         <p id="result-tip" class="text-sm text-slate-700 leading-relaxed"></p>
                     </div>
-                    <a
-                        href="/servicios/asesoria-integral-imagen"
-                        class="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:underline"
-                    >
-                        Quiero un análisis completo con Roger y Adriana <ArrowRight size={12} />
-                    </a>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a
+                            href="/servicios/asesoria-integral-imagen"
+                            class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:underline"
+                        >
+                            Quiero un análisis completo <ArrowRight size={12} />
+                        </a>
+                        <button
+                            id="reset-btn"
+                            class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-brand-black transition-colors text-left sm:text-right"
+                        >
+                            Calcular de nuevo
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,10 +182,24 @@ const bodyTypes = [
             <p class="text-center text-slate-500 font-light mb-16">Conocerlos no es vanidad. Es la base para vestirte con precisión.</p>
             <div class="grid md:grid-cols-5 gap-4">
                 {bodyTypes.map(t => (
-                    <div class="bg-brand-gray p-6 border-t-2 border-transparent hover:border-brand-primary transition-colors">
+                    <div class="bg-brand-gray p-6 border-t-2 border-transparent hover:border-brand-primary transition-colors text-center group">
+                        <!-- Silhouette SVG -->
+                        <div class="flex justify-center mb-5 h-24">
+                            <svg viewBox="0 0 100 125" class="h-full" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d={t.svgPath}
+                                    fill="#C9111E"
+                                    fill-opacity="0.1"
+                                    stroke="#C9111E"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
                         <h3 class="font-serif text-xl text-brand-black mb-1">{t.name}</h3>
                         <p class="text-xs text-brand-primary font-bold uppercase tracking-widest mb-3">{t.aka}</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">{t.description}</p>
+                        <p class="text-xs text-gray-500 leading-relaxed text-left">{t.description}</p>
                     </div>
                 ))}
             </div>
@@ -187,6 +224,9 @@ const bodyTypes = [
 <script define:vars={{ bodyTypes }}>
     const form = document.getElementById('body-form');
     const resultDiv = document.getElementById('result');
+    const resetBtn = document.getElementById('reset-btn');
+
+    const shapes = Object.fromEntries(bodyTypes.map(t => [t.id, t.svgPath]));
 
     form?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -198,7 +238,6 @@ const bodyTypes = [
 
         const waistRatioH = c / h;
         const waistRatioCa = c / ca;
-        const hipToShoulder = ca / h;
 
         let typeId = 'rectangulo';
 
@@ -217,6 +256,12 @@ const bodyTypes = [
         const found = bodyTypes.find(t => t.id === typeId);
         if (!found) return;
 
+        // Inject SVG silhouette
+        const visual = document.getElementById('result-visual');
+        visual.innerHTML = `<svg viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:100px">
+            <path d="${shapes[typeId]}" fill="#C9111E" fill-opacity="0.1" stroke="#C9111E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+
         document.getElementById('result-name').textContent = found.name;
         document.getElementById('result-aka').textContent = 'También conocido como: ' + found.aka;
         document.getElementById('result-desc').textContent = found.description;
@@ -224,5 +269,11 @@ const bodyTypes = [
 
         resultDiv?.classList.remove('hidden');
         resultDiv?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    resetBtn?.addEventListener('click', () => {
+        resultDiv?.classList.add('hidden');
+        form?.reset();
+        form?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 </script>
