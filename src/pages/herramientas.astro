@@ -1,200 +1,176 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { ArrowRight, Palette, User, Ruler, BarChart2 } from "lucide-react";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Herramientas de Diagnóstico de Imagen",
-    description: "Herramientas gratuitas de diagnóstico de imagen: colorimetría, tipo de rostro y morfología corporal.",
-    hasPart: [
-        { "@type": "SoftwareApplication", name: "Test de Colorimetría Online", url: "https://rogermurillo.co/herramientas/test-colorimetria-online" },
-        { "@type": "SoftwareApplication", name: "Calculadora de Visagismo", url: "https://rogermurillo.co/herramientas/calculadora-rostro" },
-        { "@type": "SoftwareApplication", name: "Calculadora de Morfología Corporal", url: "https://rogermurillo.co/herramientas/calculadora-tipo-cuerpo" },
-        { "@type": "SoftwareApplication", name: "Test de Impacto Ejecutivo", url: "https://rogermurillo.co/herramientas/test-impacto-ejecutivo" },
-        { "@type": "SoftwareApplication", name: "Reto: Revoluciona Tu Imagen", url: "https://rogermurillo.co/herramientas/reto-revoluciona-tu-imagen" },
-    ],
+    description: "Herramientas gratuitas de diagnóstico de imagen: colorimetría, tipo de rostro y morfología corporal."
 });
-
-const tools = [
-    {
-        number: "01",
-        label: "Más usado",
-        title: "Test de Colorimetría",
-        subtitle: "Cambio de look con IA · Gratis",
-        description: "¿Invierno, Verano, Otoño o Primavera? Descubre los colores que iluminan tu piel y cuáles te apagan. Resultado en 2 minutos, sin registro.",
-        href: "/herramientas/test-colorimetria-online",
-        cta: "Hacer el Test",
-        icon: "palette",
-        bg: "bg-brand-primary",
-        image: "/images/roger-murillo.jpg",
-    },
-    {
-        number: "02",
-        label: null,
-        title: "Calculadora de Rostro",
-        subtitle: "Visagismo · Geometría facial",
-        description: "La forma de tu cara, decodificada con matemáticas. Descubre tu tipo de rostro y qué corte, barba y gafas equilibran tus facciones.",
-        href: "/herramientas/calculadora-rostro",
-        cta: "Analizar mi Rostro",
-        icon: "user",
-        bg: "bg-brand-black",
-        image: "/images/visagismo-diagram.webp",
-    },
-    {
-        number: "03",
-        label: null,
-        title: "Calculadora de Cuerpo",
-        subtitle: "Morfología · Siluetas estratégicas",
-        description: "Triángulo, Reloj de Arena, Rectángulo... Ingresa tus medidas y aprende qué siluetas de ropa equilibran tu figura real.",
-        href: "/herramientas/calculadora-tipo-cuerpo",
-        cta: "Calcular Ahora",
-        icon: "ruler",
-        bg: "bg-neutral-800",
-        image: "/images/executive-consulting.webp",
-    },
-    {
-        number: "04",
-        label: null,
-        title: "Test de Impacto Ejecutivo",
-        subtitle: "Autoridad · Presencia · Coherencia de Marca",
-        description: "15 preguntas, 5 dimensiones. Descubre si tu imagen está generando autoridad o saboteando tu liderazgo — con gráfico radar personalizado.",
-        href: "/herramientas/test-impacto-ejecutivo",
-        cta: "Hacer el Diagnóstico",
-        icon: "chart",
-        bg: "bg-[#1a1a1a]",
-        image: "/images/roger-portrait-bw.jpg",
-    },
-    {
-        number: "05",
-        label: "Nuevo",
-        title: "Reto: Revoluciona Tu Imagen",
-        subtitle: "Identidad · Personaje · Dossier Cinematográfico",
-        description: "Un workbook interactivo de 6 etapas para diagnosticar quién eres hoy, tomar la decisión de evolucionar y construir tu personaje con intención.",
-        href: "/herramientas/reto-revoluciona-tu-imagen",
-        cta: "Comenzar el Reto",
-        icon: "chart",
-        bg: "bg-[#0f0f0f]",
-        image: "/images/roger-murillo.jpg",
-    },
-];
 ---
 
 <MainLayout
-    title="Herramientas de Imagen Gratis · Colorimetría · Visagismo · Morfología | Roger Murillo"
-    description="Herramientas gratuitas de diagnóstico de imagen: test de colorimetría con IA, calculadora de tipo de rostro y calculadora de morfología corporal. Sin registro previo."
-    schema={schema}
+  title="Herramientas Gratuitas de Imagen Personal | Roger Murillo"
+  description="Diagnóstico de colorimetría, tipo de rostro, morfología corporal y más. Herramientas gratuitas desarrolladas por Roger Murillo."
+  schema={schema}
 >
-    <!-- HERO — dark -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex items-center gap-4 mb-8">
-                <span class="w-8 h-px bg-brand-primary"></span>
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-500">Herramientas Gratuitas</p>
-            </div>
-            <div class="max-w-3xl">
-                <h1 class="font-serif text-5xl md:text-7xl leading-[0.95] mb-10 text-white">
-                    Diagnostica tu imagen.<br />
-                    <span class="text-neutral-500">En minutos. Gratis.</span>
-                </h1>
-                <p class="text-lg text-neutral-400 font-light max-w-2xl leading-relaxed">
-                    Los mismos principios de colorimetría, visagismo y morfología
-                    que Roger y Adriana aplican en consultoría, ahora disponibles
-                    como herramientas digitales gratuitas.
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <!-- TOOLS — cards with images -->
-    <section class="py-32 md:py-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200">
-                {tools.map((tool) => (
-                    <a href={tool.href} class="group bg-white flex flex-col">
-                        <!-- Visual block with image -->
-                        <div class={`relative h-52 overflow-hidden ${tool.bg}`}>
-                            <img
-                                src={tool.image}
-                                alt={tool.title}
-                                class="w-full h-full object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700"
-                            />
-                            <div class="absolute inset-0 flex flex-col justify-between p-8">
-                                <div class="flex justify-between items-start">
-                                    <span class="font-serif text-5xl text-white/20">{tool.number}</span>
-                                    {tool.label && (
-                                        <span class="text-[10px] tracking-[0.25em] uppercase bg-white/10 text-white px-3 py-1 border border-white/20">
-                                            {tool.label}
-                                        </span>
-                                    )}
-                                </div>
-                                <div>
-                                    {tool.icon === "palette" && <Palette size={32} className="text-white opacity-70" />}
-                                    {tool.icon === "user" && <User size={32} className="text-white opacity-70" />}
-                                    {tool.icon === "ruler" && <Ruler size={32} className="text-white opacity-70" />}
-                                    {tool.icon === "chart" && <BarChart2 size={32} className="text-white opacity-70" />}
-                                </div>
-                            </div>
-                        </div>
+  <style>
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+    .reveal.is-in{opacity:1;transform:translateY(0)}
+    .tool-card{transition:all .6s cubic-bezier(.16,1,.3,1)}
+    .tool-card:hover{background:#0a0a0a;color:#fff}
+    .tool-card:hover .tool-num{color:var(--color-brand-primary, #C41230)}
+    .tool-card:hover .tool-cta{color:#fff;border-color:#fff}
+  </style>
 
-                        <!-- Content -->
-                        <div class="p-8 flex flex-col flex-1 justify-between">
-                            <div>
-                                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">{tool.subtitle}</p>
-                                <h2 class="font-serif text-xl md:text-2xl text-brand-black mb-3 group-hover:text-brand-primary transition-colors duration-500">
-                                    {tool.title}
-                                </h2>
-                                <p class="text-sm text-neutral-500 leading-relaxed">
-                                    {tool.description}
-                                </p>
-                            </div>
-                            <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-6">
-                                {tool.cta} <ArrowRight size={14} />
-                            </span>
-                        </div>
-                    </a>
-                ))}
-            </div>
-        </div>
-    </section>
+  <!-- HERO -->
+  <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="flex items-center gap-5 mb-14">
+        <span class="w-12 h-px bg-brand-primary"></span>
+        <p class="text-[10px] tracking-[0.4em] uppercase text-white/60">Diagnóstico · Gratuito</p>
+      </div>
+      <h1 class="font-serif leading-[0.85] max-w-4xl">
+        <AnimatedTitleWords text="Herramientas" class="block text-6xl md:text-8xl lg:text-9xl text-white" />
+        <AnimatedTitleWords text="que miden" class="block text-6xl md:text-8xl lg:text-9xl italic text-neutral-500 pl-[6%]" delay={300} />
+        <AnimatedTitleWords text="la verdad." class="block text-6xl md:text-8xl lg:text-9xl text-brand-primary pl-[2%]" delay={500} />
+      </h1>
+      <div class="mt-14 max-w-xl">
+        <p class="text-base text-white/60 font-light leading-relaxed">Diagnósticos de colorimetría, rostro, cuerpo e impacto ejecutivo. Sin registro, sin costo.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- BRIDGE — dark -->
-    <section class="py-32 md:py-40 bg-brand-black text-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24 items-center">
-                <div class="md:col-span-7">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">¿Quieres ir más allá?</p>
-                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-white mb-8">
-                        Las herramientas son el diagnóstico.
-                        <span class="text-neutral-500"> La consultoría es la transformación.</span>
-                    </h2>
-                    <p class="text-neutral-400 font-light mb-12 leading-relaxed max-w-xl">
-                        Una vez que conoces tu estación cromática, tu tipo de rostro y tu morfología,
-                        Roger y Adriana los usan para construir tu estrategia de imagen completa.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-5">
-                        <a
-                            href="/servicios/asesoria-integral-imagen"
-                            class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500"
-                        >
-                            Ver Consultoría Integral
-                        </a>
-                        <a
-                            href="/servicios/precios"
-                            class="px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white border border-white/20 hover:border-white transition-colors duration-500"
-                        >
-                            Ver Precios
-                        </a>
-                    </div>
-                </div>
-                <div class="md:col-span-5">
-                    <img
-                        src="/images/service-consulting-full.jpg"
-                        alt="Consultoría de imagen"
-                        class="w-full h-80 object-cover grayscale opacity-60"
-                    />
-                </div>
+  <!-- TOOLS LIST -->
+  <section class="bg-white">
+    <div class="border-b border-neutral-200">
+      <div class="container mx-auto px-6 max-w-6xl py-8 flex items-end justify-between text-[10px] tracking-[0.4em] uppercase text-neutral-400">
+        <span>Herramientas</span><span>5 disponibles</span>
+      </div>
+    </div>
+
+    <!-- Tool 01 -->
+    <div class="tool-card border-b border-neutral-200">
+      <div class="container mx-auto px-6 max-w-6xl py-16 md:py-20">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-baseline gap-8 mb-8">
+              <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">01</span>
+              <div>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-2">Más usado · Cambio de look con IA</p>
+                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Test de Colorimetría</h3>
+              </div>
             </div>
+            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+              ¿Invierno, Verano, Otoño o Primavera? Descubre los colores que iluminan tu piel y cuáles te apagan. Resultado en 2 minutos, sin registro.
+            </p>
+            <a href="/herramientas/test-colorimetria-online" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Hacer el test →</a>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+
+    <!-- Tool 02 -->
+    <div class="tool-card border-b border-neutral-200">
+      <div class="container mx-auto px-6 max-w-6xl py-16 md:py-20">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-baseline gap-8 mb-8">
+              <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">02</span>
+              <div>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Visagismo · Geometría facial</p>
+                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Calculadora de Rostro</h3>
+              </div>
+            </div>
+            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+              La forma de tu cara, decodificada con matemáticas. Descubre tu tipo de rostro y qué corte, barba y gafas equilibran tus facciones.
+            </p>
+            <a href="/herramientas/calculadora-rostro" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Analizar mi rostro →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 03 -->
+    <div class="tool-card border-b border-neutral-200">
+      <div class="container mx-auto px-6 max-w-6xl py-16 md:py-20">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-baseline gap-8 mb-8">
+              <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">03</span>
+              <div>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Morfología · Siluetas estratégicas</p>
+                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Calculadora de Cuerpo</h3>
+              </div>
+            </div>
+            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+              Triángulo, Reloj de Arena, Rectángulo... Ingresa tus medidas y aprende qué siluetas de ropa equilibran tu figura real.
+            </p>
+            <a href="/herramientas/calculadora-tipo-cuerpo" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Calcular ahora →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 04 -->
+    <div class="tool-card border-b border-neutral-200">
+      <div class="container mx-auto px-6 max-w-6xl py-16 md:py-20">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-baseline gap-8 mb-8">
+              <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">04</span>
+              <div>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Autoridad · Presencia · Coherencia</p>
+                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Test de Impacto Ejecutivo</h3>
+              </div>
+            </div>
+            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+              Evalúa tu presencia visual como líder: coherencia de marca, autoridad percibida y congruencia entre rol e imagen.
+            </p>
+            <a href="/herramientas/test-impacto-ejecutivo" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Hacer evaluación →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool 05 -->
+    <div class="tool-card border-b border-neutral-200">
+      <div class="container mx-auto px-6 max-w-6xl py-16 md:py-20">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-baseline gap-8 mb-8">
+              <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">05</span>
+              <div>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Reto · 7 días</p>
+                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Revoluciona Tu Imagen</h3>
+              </div>
+            </div>
+            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+              7 días, 7 ejercicios prácticos para transformar tu imagen desde la raíz. Guía paso a paso por email.
+            </p>
+            <a href="/herramientas/reto-revoluciona-tu-imagen" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Empezar reto →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-32 md:py-40 bg-neutral-50 border-t border-neutral-200">
+    <div class="container mx-auto px-6 max-w-5xl text-center">
+      <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] text-brand-black mb-10">
+        ¿Listo para la<br/><span class="italic text-brand-primary">consultoría completa?</span>
+      </h2>
+      <p class="text-lg text-neutral-600 font-light max-w-xl mx-auto mb-12">Las herramientas diagnostican. La consultoría transforma.</p>
+      <a href="/servicios/asesoria-integral-imagen" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Ver consultoría →</a>
+    </div>
+  </section>
+
+  <script>
+    const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
+
 </MainLayout>

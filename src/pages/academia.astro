@@ -1,191 +1,140 @@
 ---
-import MainLayout from '@/layouts/MainLayout.astro';
-import { ArrowRight } from 'lucide-react';
-
-const products = [
-  {
-    id: "libro-maes",
-    title: "Revoluciona tu Imagen",
-    subtitle: "El Manual Fundacional",
-    type: "Libro Físico + Digital",
-    price: "$19 USD",
-    link: "/libro",
-    image: "/images/book-mockup-3d.jpg",
-  },
-  {
-    id: "descubrete",
-    title: "Curso Descúbrete",
-    subtitle: "El poder de tu imagen",
-    type: "Curso Online",
-    price: "$25 USD",
-    link: "/academia/curso-descubrete",
-    image: "/images/course-descubrete.jpg",
-  },
-  {
-    id: "disenate",
-    title: "Curso Diseñate",
-    subtitle: "Crea tu Iconología",
-    type: "Curso Online",
-    price: "$35 USD",
-    link: "/academia/crea-tu-iconologia",
-    image: "/images/course-disenate.jpg",
-  },
-  {
-    id: "conquista",
-    title: "Curso Conquista",
-    subtitle: "Diseña tu Voz",
-    type: "Curso Online",
-    price: "$40 USD",
-    link: "/academia/disena-tu-voz",
-    image: "/images/course-conquista.jpg",
-  },
-  {
-    id: "destaca",
-    title: "Curso Destaca",
-    subtitle: "El Correcto Uso del Color",
-    type: "Curso Online",
-    price: "$40 USD",
-    link: "/academia/el-correcto-uso-del-color",
-    image: "/images/course-destaca.jpg",
-  }
-];
+import MainLayout from "@/layouts/MainLayout.astro";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const academiaSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "itemListElement": products.map((prod, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "item": {
-      "@type": "Course",
-      "name": prod.title,
-      "description": prod.subtitle,
-      "provider": {
-        "@type": "Organization",
-        "name": "Roger Murillo Academy"
-      }
-    }
-  }))
+  name: "Academia Roger Murillo",
+  description: "Cursos y recursos de imagen personal, colorimetría y visagismo."
 };
 ---
 
 <MainLayout
-  title="Cursos de Imagen Personal · Colorimetría · Visagismo Online | Roger Murillo"
-  description="Formación profesional en imagen estratégica. Cursos de colorimetría, visagismo y estilo personal con certificación internacional."
-  schema={JSON.stringify(academiaSchema)}
+  title="Academia de Imagen Personal · Cursos Online | Roger Murillo"
+  description="Aprende los fundamentos de la imagen estratégica: colorimetría, visagismo, morfología y estilo. Cursos desde $25 USD."
+  schema={academiaSchema}
 >
 
+  <style>
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+    .reveal.is-in{opacity:1;transform:translateY(0)}
+    .course-card{transition:all .6s cubic-bezier(.16,1,.3,1);cursor:pointer}
+    .course-card:hover{transform:translateY(-8px)}
+    .course-card:hover .card-title{color:var(--color-brand-primary, #C41230)}
+    .card-title{transition:color .4s}
+  </style>
+
   <!-- HERO -->
-  <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white">
+  <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white relative overflow-hidden">
     <div class="container mx-auto px-6 max-w-6xl">
-      <div class="grid md:grid-cols-12 gap-16 items-center">
-        <div class="md:col-span-7">
-          <div class="flex items-center gap-4 mb-8">
-            <span class="w-8 h-px bg-brand-primary"></span>
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-500">Formación Online</p>
+      <div class="flex items-center gap-5 mb-14">
+        <span class="w-12 h-px bg-brand-primary"></span>
+        <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Formación · Digital</p>
+      </div>
+      <h1 class="font-serif leading-[0.85] text-brand-black max-w-4xl">
+        <AnimatedTitleWords text="Aprende" class="block text-6xl md:text-8xl lg:text-9xl" />
+        <AnimatedTitleWords text="las reglas" class="block text-6xl md:text-8xl lg:text-9xl italic text-neutral-400 pl-[6%]" delay={300} />
+        <AnimatedTitleWords text="del juego." class="block text-6xl md:text-8xl lg:text-9xl text-brand-primary pl-[2%]" delay={500} />
+      </h1>
+      <div class="mt-14 max-w-xl">
+        <p class="text-base text-neutral-700 font-light leading-relaxed">Cursos, guías y masterclasses para entender las reglas del color, el corte y el estilo. Desde $25 USD.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES GRID -->
+  <section class="py-32 md:py-40 bg-neutral-50">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="max-w-2xl mb-20">
+        <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Catálogo</p>
+        <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">5 cursos.<br/><span class="italic text-neutral-400">Un sistema.</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Libro -->
+        <a href="/libro" class="course-card bg-white p-8 border border-neutral-200 reveal">
+          <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-4">Libro · Fundacional</p>
+          <h3 class="card-title font-serif text-3xl text-brand-black mb-3">Revoluciona tu Imagen</h3>
+          <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">El manual fundacional. Físico + digital.</p>
+          <div class="flex items-baseline justify-between border-t border-neutral-100 pt-6">
+            <p class="font-serif text-2xl text-brand-black">$19<span class="text-sm text-neutral-400"> USD</span></p>
+            <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">→</span>
           </div>
-          <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-white mb-8">
-            La ciencia detrás <br />
-            <span class="text-neutral-500">de tu presencia.</span>
-          </h1>
-          <p class="text-lg text-neutral-400 font-light leading-relaxed max-w-xl">
-            No enseñamos moda. Enseñamos las leyes físicas y antropométricas que gobiernan
-            cómo eres percibido. Fórmate con la metodología que usan los CEOs.
-          </p>
-        </div>
-        <div class="md:col-span-5">
-          <div class="grid grid-cols-2 gap-2">
-            <img src="/images/course-descubrete.jpg" alt="Curso Descúbrete" class="w-full h-36 object-cover opacity-60" />
-            <img src="/images/course-conquista.jpg" alt="Curso Conquista" class="w-full h-36 object-cover opacity-60" />
-            <img src="/images/course-disenate.jpg" alt="Curso Diseñate" class="w-full h-36 object-cover opacity-60 col-span-2" />
+        </a>
+
+        <!-- Descúbrete -->
+        <a href="/academia/curso-descubrete" class="course-card bg-white p-8 border border-neutral-200 reveal" style="--delay:.1s">
+          <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-4">Curso 01 · Fundamentos</p>
+          <h3 class="card-title font-serif text-3xl text-brand-black mb-3">Descúbrete</h3>
+          <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">El poder de tu imagen personal.</p>
+          <div class="flex items-baseline justify-between border-t border-neutral-100 pt-6">
+            <p class="font-serif text-2xl text-brand-black">$25<span class="text-sm text-neutral-400"> USD</span></p>
+            <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">→</span>
+          </div>
+        </a>
+
+        <!-- Diseñate -->
+        <a href="/academia/crea-tu-iconologia" class="course-card bg-white p-8 border border-neutral-200 reveal" style="--delay:.2s">
+          <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-4">Curso 02 · Iconología</p>
+          <h3 class="card-title font-serif text-3xl text-brand-black mb-3">Diseñate</h3>
+          <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">Crea tu iconología personal.</p>
+          <div class="flex items-baseline justify-between border-t border-neutral-100 pt-6">
+            <p class="font-serif text-2xl text-brand-black">$35<span class="text-sm text-neutral-400"> USD</span></p>
+            <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">→</span>
+          </div>
+        </a>
+
+        <!-- Conquista -->
+        <a href="/academia/disena-tu-voz" class="course-card bg-white p-8 border border-neutral-200 reveal" style="--delay:.3s">
+          <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-4">Curso 03 · Comunicación</p>
+          <h3 class="card-title font-serif text-3xl text-brand-black mb-3">Conquista</h3>
+          <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">Diseña tu voz y tu mensaje.</p>
+          <div class="flex items-baseline justify-between border-t border-neutral-100 pt-6">
+            <p class="font-serif text-2xl text-brand-black">$40<span class="text-sm text-neutral-400"> USD</span></p>
+            <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">→</span>
+          </div>
+        </a>
+
+        <!-- Destaca -->
+        <a href="/academia/el-correcto-uso-del-color" class="course-card bg-white p-8 border border-neutral-200 reveal" style="--delay:.4s">
+          <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-4">Curso 04 · Color</p>
+          <h3 class="card-title font-serif text-3xl text-brand-black mb-3">Destaca</h3>
+          <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">El correcto uso del color.</p>
+          <div class="flex items-baseline justify-between border-t border-neutral-100 pt-6">
+            <p class="font-serif text-2xl text-brand-black">$40<span class="text-sm text-neutral-400"> USD</span></p>
+            <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">→</span>
+          </div>
+        </a>
+
+        <!-- Bundle placeholder -->
+        <div class="course-card bg-brand-black text-white p-8 border border-brand-primary reveal" style="--delay:.5s">
+          <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">Bundle · Ahorra 30%</p>
+          <h3 class="card-title font-serif text-3xl mb-3">Pack Completo</h3>
+          <p class="text-sm text-white/60 font-light leading-relaxed mb-8">Los 4 cursos + libro a precio especial.</p>
+          <div class="flex items-baseline justify-between border-t border-white/20 pt-6">
+            <p class="font-serif text-2xl">$99<span class="text-sm text-white/40"> USD</span></p>
+            <span class="text-[10px] tracking-[0.3em] uppercase text-white/40">→</span>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- PRODUCTS LIST — with thumbnails -->
-  <section class="py-32 md:py-40 bg-white">
-    <div class="container mx-auto px-6 max-w-6xl">
-
-      <div class="divide-y divide-neutral-100">
-        {products.map((item, i) => (
-          <a href={item.link} class="group flex gap-6 md:gap-10 py-8 md:py-10 items-center">
-
-            <!-- Thumbnail -->
-            <div class="w-20 h-20 md:w-28 md:h-28 shrink-0 overflow-hidden bg-neutral-100">
-              <img
-                src={item.image}
-                alt={item.title}
-                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
-              />
-            </div>
-
-            <!-- Number -->
-            <span class="hidden md:block font-serif text-4xl text-neutral-200 group-hover:text-brand-primary transition-colors duration-500 shrink-0 w-12">0{i + 1}</span>
-
-            <!-- Info -->
-            <div class="flex-1 min-w-0">
-              <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">{item.type}</p>
-              <h2 class="font-serif text-xl md:text-2xl text-brand-black group-hover:text-brand-primary transition-colors duration-500 mb-1">{item.title}</h2>
-              <p class="text-sm text-neutral-500 leading-relaxed truncate">{item.subtitle}</p>
-            </div>
-
-            <!-- Price + CTA -->
-            <div class="shrink-0 text-right">
-              <span class="block font-serif text-xl text-brand-black mb-2">{item.price}</span>
-              <span class="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-neutral-400 group-hover:text-brand-primary transition-colors duration-500">
-                Ver <ArrowRight size={12} />
-              </span>
-            </div>
-
-          </a>
-        ))}
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FULL-WIDTH IMAGE BREAK -->
-  <div class="relative h-64 md:h-96 overflow-hidden">
-    <img
-      src="/images/roger-adriana-duo.jpg"
-      alt="Roger Murillo y Adriana Garzón"
-      class="w-full h-full object-cover object-top grayscale"
-    />
-    <div class="absolute inset-0 bg-brand-black/60"></div>
-    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
-      <p class="font-serif text-2xl md:text-4xl text-white max-w-2xl leading-relaxed">
-        "No seguimos tendencias.<br /><span class="text-neutral-400">Aplicamos ciencia."</span>
-      </p>
-    </div>
-  </div>
 
   <!-- CTA -->
-  <section class="py-32 md:py-40 bg-brand-black text-white text-center">
-    <div class="container mx-auto px-6 max-w-xl">
-      <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] mb-8">
-        ¿No tienes tiempo<br /><span class="text-neutral-500">para estudiar?</span>
+  <section class="py-32 md:py-40 bg-white border-t border-neutral-200">
+    <div class="container mx-auto px-6 max-w-5xl text-center">
+      <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] text-brand-black mb-10">
+        Empieza con<br/><span class="italic text-brand-primary">lo gratuito.</span>
       </h2>
-      <p class="text-lg text-neutral-500 font-light leading-relaxed mb-12">
-        Deja que Roger y Adriana diseñen tu estrategia en una sesión privada.
-      </p>
-      <a
-        href="/contacto"
-        class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500 inline-flex items-center gap-3"
-      >
-        Agendar Consultoría 1:1 <ArrowRight size={14} />
-      </a>
+      <p class="text-lg text-neutral-600 font-light max-w-xl mx-auto mb-12">Prueba nuestras herramientas sin costo. Después decide qué curso tomar.</p>
+      <a href="/herramientas" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Ver herramientas gratuitas →</a>
     </div>
   </section>
 
-  <!-- CERTIFICACION -->
-  <section class="py-12 bg-white border-t border-neutral-100">
-    <div class="container mx-auto px-6 max-w-6xl text-center">
-      <p class="text-xs tracking-[0.3em] uppercase text-neutral-400">
-        Certificación avalada por AICI &mdash; Metodología Propia &mdash; +5.000 Alumnos
-      </p>
-    </div>
-  </section>
+  <script>
+    const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
 
 </MainLayout>

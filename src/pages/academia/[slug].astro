@@ -1,111 +1,153 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-import HotmartButton from "../../components/HotmartButton.astro";
-import { CreditCard, PlayCircle } from "lucide-react";
+import MainLayout from "@/layouts/MainLayout.astro";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
-// 1. DATA MASTER OF COURSES (CMS Simulation)
-// Real data sourced from previous scrape + user high-ticket layout
+// ─── COURSES DATA ─────────────────────────────────────────────────────
 export async function getStaticPaths() {
     const courses = [
         {
             slug: "curso-descubrete",
-            title: "Curso Descúbrete",
-            subtitle: "El poder de tu imagen",
-            price: "$25 USD",
-            instructor: "Adriana Garzón & Roger Murillo",
-            level: "Fundamentos",
-            duration: "Online / A tu ritmo",
-            description:
-                "Descubre tu estilo auténtico y proyecta una imagen que refleje tu esencia. Este curso fundacional te ayuda a identificar tu arquetipo de estilo dominante, eliminar la disonancia entre quién eres y cómo te ven, y construir un guardarropa coherente con tu identidad.",
-            syllabus: [
-                "Fundamentos del Estilo Personal.",
-                "Psicología de la Imagen: Arquetipos.",
-                "Diagnóstico de Estilo y Esencia.",
-                "Auditoría de Guardarropa Estratégica.",
+            number: "01",
+            tag: "Fundamentos",
+            title: "Descúbrete",
+            subtitle: "El poder de tu imagen personal.",
+            priceUsd: 25,
+            duration: "4 semanas",
+            lessons: 18,
+            level: "Principiante",
+            heroLineA: "Antes de vestirte,",
+            heroLineB: "descúbrete.",
+            overview:
+                "El curso fundacional de la Academia. Aquí no hablamos de ropa: hablamos de identidad. Porque la imagen personal no empieza en el clóset — empieza en conocer quién eres, qué comunicas y qué quieres proyectar.",
+            forWho: [
+                "Profesionales que quieren invertir en su imagen con criterio",
+                "Quienes sienten que su imagen actual no refleja quién son",
+                "Personas en transición (nuevo rol, nueva etapa, nuevo país)",
+                "Cualquiera que quiera dejar de improvisar frente al espejo",
+            ],
+            modules: [
+                { n: "01", title: "Semiótica de la imagen", summary: "Qué comunicas sin darte cuenta. Lectura de primeras impresiones y efecto halo." },
+                { n: "02", title: "Arquetipos e identidad", summary: "Los 12 arquetipos de Jung aplicados a tu presencia personal." },
+                { n: "03", title: "Estilo vs. moda", summary: "Por qué el estilo dura y la moda caduca. Cómo construir el tuyo." },
+                { n: "04", title: "Audit de imagen actual", summary: "Diagnóstico honesto: qué funciona, qué no y por qué." },
+                { n: "05", title: "Plan de evolución", summary: "Tu hoja de ruta: 90 días para transformar tu imagen con intención." },
+            ],
+            outcomes: [
+                "Entender qué comunicas hoy sin decir nada",
+                "Identificar tu arquetipo de imagen personal",
+                "Construir un criterio propio para decidir qué comprar y qué no",
+                "Dejar de seguir tendencias que no te pertenecen",
             ],
             image: "/images/course-descubrete.jpg",
-            benefits: [
-                "Identifica tu Arquetipo",
-                "Mejora tu Comunicación No Verbal",
-                "Construye Coherencia Visual",
-            ],
             hotmartLink: "https://pay.hotmart.com/U99309978M",
-            id: "prod_descubrete",
         },
         {
             slug: "crea-tu-iconologia",
-            title: "Curso Diseñate",
-            subtitle: "Crea tu Iconología",
-            price: "$35 USD",
-            instructor: "Adriana Garzón",
-            level: "Avanzado / Diseño",
-            duration: "Online / A tu ritmo",
-            description:
+            number: "02",
+            tag: "Diseño",
+            title: "Diseñate",
+            subtitle: "Crea tu iconología.",
+            priceUsd: 35,
+            duration: "5 semanas",
+            lessons: 22,
+            level: "Avanzado",
+            heroLineA: "Diseña la silueta",
+            heroLineB: "que te representa.",
+            overview:
                 "Lleva tu estilo al siguiente nivel. Aprenderás los principios básicos del diseño de imagen (líneas, formas, volúmenes) y cómo aplicarlos a tu estilo personal para crear puntos focales estratégicos y una firma visual única.",
-            syllabus: [
-                "Principios de Diseño en la Imagen.",
-                "Líneas, Formas y Volúmenes Corporales.",
-                "Puntos Focales y el Arte del Accesorio.",
-                "Texturas y Estampados Estratégicos.",
+            forWho: [
+                "Quienes ya conocen su estilo y quieren refinarlo",
+                "Profesionales que quieren una firma visual reconocible",
+                "Personas que buscan entender el lenguaje técnico del diseño",
+                "Amantes de la moda que quieren dominarla, no seguirla",
+            ],
+            modules: [
+                { n: "01", title: "Principios de diseño", summary: "Líneas, formas y volúmenes aplicados a la imagen personal." },
+                { n: "02", title: "Líneas y siluetas", summary: "Cómo leer tu cuerpo y elegir prendas que lo dialoguen, no lo escondan." },
+                { n: "03", title: "Puntos focales estratégicos", summary: "Dónde quieres que la mirada del otro aterrice. Y cómo lograrlo." },
+                { n: "04", title: "Accesorios con intención", summary: "El arte de acentuar sin saturar. Joyas, gafas, relojes como lenguaje." },
+                { n: "05", title: "Texturas y estampados", summary: "Cuándo funcionan, cuándo no, y por qué." },
+            ],
+            outcomes: [
+                "Dominar los códigos del diseño de imagen personal",
+                "Crear outfits armónicos sin improvisar",
+                "Entender qué silueta potencia tu geometría",
+                "Desarrollar una firma visual reconocible",
             ],
             image: "/images/course-disenate.jpg",
-            benefits: [
-                "Domina tu Silueta",
-                "Crea Puntos Focales",
-                "Diseño de Outfits Armónicos",
-            ],
             hotmartLink: "https://pay.hotmart.com/O99463899F",
-            id: "prod_disenate",
         },
         {
             slug: "disena-tu-voz",
-            title: "Curso Conquista",
-            subtitle: "Diseña tu Voz",
-            price: "$40 USD",
-            instructor: "Roger Murillo",
-            level: "Intermedio / Comunicación",
-            duration: "Online / A tu ritmo",
-            description:
-                "Domina la comunicación verbal y no verbal. Desarrolla tu magnetismo personal, mejora tu postura y presencia escénica, y aprende a usar tu voz como una herramienta de autoridad para proyectar confianza absoluta en cada interacción.",
-            syllabus: [
-                "Los Pilares de la Presencia Escénica.",
-                "Lenguaje Corporal de Alto Estatus.",
-                "Tono, Ritmo y Proyección Vocal.",
-                "Micro-expresiones y Decodificación.",
+            number: "03",
+            tag: "Comunicación",
+            title: "Conquista",
+            subtitle: "Diseña tu voz.",
+            priceUsd: 40,
+            duration: "6 semanas",
+            lessons: 24,
+            level: "Intermedio",
+            heroLineA: "Tu voz también",
+            heroLineB: "es imagen.",
+            overview:
+                "Domina la comunicación verbal y no verbal. Desarrolla tu magnetismo personal, mejora tu postura y presencia escénica, y aprende a usar tu voz como herramienta de autoridad para proyectar confianza absoluta en cada interacción.",
+            forWho: [
+                "Líderes que deben hablar en público con autoridad",
+                "Emprendedores que venden con su presencia",
+                "Profesionales que quieren dominar su lenguaje corporal",
+                "Quienes sienten que su mensaje no se escucha",
+            ],
+            modules: [
+                { n: "01", title: "Pilares de la presencia escénica", summary: "Cómo entrar a un espacio y ser notado sin decir palabra." },
+                { n: "02", title: "Lenguaje corporal de alto estatus", summary: "Las posturas y gestos que el cerebro lee como autoridad." },
+                { n: "03", title: "Tono, ritmo y proyección vocal", summary: "Tu voz como instrumento. Cómo afinar su impacto." },
+                { n: "04", title: "Micro-expresiones y decodificación", summary: "Leer lo que el otro no dice. Adaptar tu mensaje en tiempo real." },
+                { n: "05", title: "Conversaciones de alto impacto", summary: "Del networking al board meeting. Estructura y presencia." },
+            ],
+            outcomes: [
+                "Potenciar tu voz como herramienta de autoridad",
+                "Dominar el lenguaje corporal de liderazgo",
+                "Ganar confianza absoluta al hablar en público",
+                "Proyectar magnetismo en cualquier entorno",
             ],
             image: "/images/course-conquista.jpg",
-            benefits: [
-                "Potencia tu Voz",
-                "Lenguaje Corporal de Líder",
-                "Gana Confianza Absoluta",
-            ],
             hotmartLink: "https://pay.hotmart.com/U99476935H",
-            id: "prod_conquista",
         },
         {
             slug: "el-correcto-uso-del-color",
-            title: "Curso Destaca",
-            subtitle: "El Correcto Uso del Color",
-            price: "$40 USD",
-            instructor: "Adriana Garzón",
-            level: "Profesional / Color",
-            duration: "Online / A tu ritmo",
-            description:
+            number: "04",
+            tag: "Color",
+            title: "Destaca",
+            subtitle: "El correcto uso del color.",
+            priceUsd: 40,
+            duration: "5 semanas",
+            lessons: 20,
+            level: "Profesional",
+            heroLineA: "El color no es magia.",
+            heroLineB: "Es física.",
+            overview:
                 "El color no es magia, es física. Aprende a crear combinaciones impactantes, comprende la psicología detrás de cada tono y descubre cómo usar el color para influir en la percepción de los demás y comunicar mensajes poderosos.",
-            syllabus: [
-                "Teoría del Color Aplicada a la Imagen.",
-                "Psicología del Color en Negocios.",
-                "Combinaciones Armónicas (Círculo Cromático).",
-                "Temperatura y Contraste Personal.",
+            forWho: [
+                "Quienes ya hicieron test de colorimetría y quieren profundizar",
+                "Profesionales que negocian y quieren usar el color estratégicamente",
+                "Amantes del estilo que quieren entender el por qué de cada tono",
+                "Creativos que trabajan con imagen de marca propia",
+            ],
+            modules: [
+                { n: "01", title: "Teoría del color aplicada", summary: "Del círculo cromático a tu guardarropa real." },
+                { n: "02", title: "Psicología del color en negocios", summary: "Qué comunica cada tono y cuándo usarlo." },
+                { n: "03", title: "Combinaciones armónicas", summary: "Análogos, complementarios y tríadas. Reglas y excepciones." },
+                { n: "04", title: "Temperatura y contraste personal", summary: "Por qué un azul te favorece y otro te apaga." },
+                { n: "05", title: "Color estratégico por contexto", summary: "Negociación, seducción, autoridad. Un color para cada misión." },
+            ],
+            outcomes: [
+                "Dominar la psicología del color aplicada a imagen",
+                "Crear combinaciones impactantes sin improvisar",
+                "Elegir el color según el contexto y la intención",
+                "Influir en la percepción del otro con tu estética",
             ],
             image: "/images/course-destaca.jpg",
-            benefits: [
-                "Domina la Psicología del Color",
-                "Crea Combinaciones Impactantes",
-                "Influye con tu Estética",
-            ],
             hotmartLink: "https://pay.hotmart.com/W99484170E",
-            id: "prod_destaca",
         },
     ];
 
@@ -116,227 +158,143 @@ export async function getStaticPaths() {
 }
 
 const { course } = Astro.props;
-
-// 2. SCHEMA DYNAMIC (SEO EDUCATIVO)
-const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    name: course.title,
-    description: course.description,
-    provider: {
-        "@type": "Organization",
-        name: "Roger Murillo Academy",
-        sameAs: "https://rogermurillo.co",
-    },
-    offers: {
-        "@type": "Offer",
-        category: "Paid",
-        priceCurrency: "USD",
-        price: course.price.replace(/\D/g, ""),
-    },
-    hasCourseInstance: {
-        "@type": "CourseInstance",
-        courseMode: "Online",
-        instructor: {
-            "@type": "Person",
-            name: course.instructor,
-        },
-    },
-};
 ---
 
 <MainLayout
-    title={`${course.title} | Academia Roger Murillo`}
-    description={course.description}
-    schema={JSON.stringify(courseSchema)}
+    title={`${course.title} · Curso ${course.number} | Academia Roger Murillo`}
+    description={course.overview}
 >
-    <!-- HEADER DE VENTA (Sticky CTA en móvil) -->
-    <div
-        class="fixed bottom-0 left-0 w-full bg-white border-t border-neutral-200 p-4 z-50 md:hidden flex justify-between items-center shadow-[0_-5px_20px_rgba(0,0,0,0.1)]"
-    >
-        <div>
-            <span class="text-xs text-neutral-500 block">Precio total</span>
-            <span class="font-bold text-brand-black text-xl"
-                >{course.price}</span
-            >
-        </div>
-        <a
-            href={`${course.hotmartLink}${course.hotmartLink.includes("?") ? "&" : "?"}src=rogermurillo_website_mobile_sticky`}
-            class="bg-brand-primary text-white px-6 py-2 font-bold uppercase text-xs tracking-widest rounded-sm"
-        >
-            Comprar
-        </a>
-    </div>
 
-    <section
-        class="pt-32 pb-16 bg-brand-black text-white relative overflow-hidden"
-    >
-        <!-- Fondo decorativo sutil -->
-        <div
-            class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-neutral-900 to-transparent opacity-50"
-        >
-        </div>
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+        .num-huge{font-style:italic;line-height:.8;position:absolute;pointer-events:none;user-select:none}
+        .mod-row{transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .mod-row:hover{background:#0a0a0a;color:white;padding-left:2rem}
+        .mod-row:hover .mod-num{color:var(--color-brand-primary,#C41230)}
+        .mod-num{transition:color .5s}
+    </style>
 
-        <div
-            class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row gap-12 items-center"
-        >
-            <!-- Columna de Texto -->
-            <div class="w-full md:w-1/2">
-                <div class="flex items-center gap-4 mb-6">
-                    <span
-                        class="px-3 py-1 border border-brand-primary text-brand-primary text-[10px] font-bold uppercase tracking-widest rounded-sm bg-brand-primary/10"
-                    >
-                        {course.level}
-                    </span>
-                    <span class="text-neutral-400 text-sm flex items-center gap-2">
-                        <span>👨🏫</span>
-                        {course.instructor}
-                    </span>
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white relative overflow-hidden min-h-screen flex flex-col justify-center">
+        <span class="num-huge font-serif text-[38vw] -right-[6%] top-[10%]" style="color:rgba(196,18,48,.05)">{course.number}</span>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Curso {course.number} · {course.tag}</p>
+            </div>
+            <h1 class="font-serif leading-[0.85] text-brand-black">
+                <AnimatedTitleWords text={course.heroLineA} class="block text-5xl md:text-7xl lg:text-8xl" />
+                <AnimatedTitleWords text={course.heroLineB} class="block text-5xl md:text-7xl lg:text-8xl italic text-brand-primary pl-[6%]" delay={300} />
+            </h1>
+            <div class="mt-16 grid md:grid-cols-12 gap-8 items-end">
+                <div class="md:col-span-6 border-l-2 border-brand-primary pl-8">
+                    <p class="text-lg font-light text-neutral-700 leading-relaxed">{course.overview}</p>
                 </div>
+                <div class="md:col-span-5 md:col-start-8 flex flex-wrap gap-8">
+                    <div>
+                        <span class="font-serif italic text-4xl text-brand-black block leading-none">{course.duration.split(' ')[0]}</span>
+                        <span class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-2 block">Semanas</span>
+                    </div>
+                    <div>
+                        <span class="font-serif italic text-4xl text-brand-black block leading-none">{course.lessons}</span>
+                        <span class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-2 block">Lecciones</span>
+                    </div>
+                    <div>
+                        <span class="font-serif italic text-4xl text-brand-black block leading-none">${course.priceUsd}</span>
+                        <span class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-2 block">USD</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 flex gap-4 flex-wrap">
+                <a href={course.hotmartLink} target="_blank" rel="noopener" class="bg-brand-black text-white px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Inscribirme →</a>
+                <a href="#programa" class="px-10 py-4 text-[11px] tracking-[0.25em] uppercase text-brand-black border border-neutral-300 hover:border-brand-black transition-colors duration-500">Ver programa</a>
+            </div>
+        </div>
+    </section>
 
-                <h1 class="font-serif text-4xl md:text-6xl mb-4 leading-tight">
-                    {course.title}
-                </h1>
-                <p
-                    class="text-xl text-gray-300 font-light italic mb-8 border-l-2 border-brand-primary pl-4"
-                >
-                    "{course.subtitle}"
-                </p>
+    <!-- PARA QUIÉN -->
+    <section class="py-32 md:py-40 bg-neutral-50 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+                <div class="lg:col-span-5">
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Para quién</p>
+                    <h2 class="font-serif text-5xl md:text-6xl leading-[0.92] text-brand-black">¿Este curso<br/>es para <span class="italic text-neutral-400">ti?</span></h2>
+                </div>
+                <div class="lg:col-span-7 space-y-8">
+                    {course.forWho.map((item, i) => (
+                        <div class="reveal flex gap-6 border-t border-neutral-200 pt-8" style={`--delay:${i * 0.08}s`}>
+                            <span class="font-serif italic text-brand-primary text-2xl shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                            <p class="text-lg text-neutral-700 font-light leading-relaxed">{item}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="hidden md:flex gap-6 items-center">
-                    <a
-                        href={course.hotmartLink}
-                        class="bg-brand-primary text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all shadow-lg shadow-brand-primary/20 rounded-sm"
-                    >
-                        Inscribirse Ahora - {course.price}
+    <!-- PROGRAMA -->
+    <section id="programa" class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="max-w-2xl mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Programa</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.92] text-brand-black">{course.modules.length} módulos.<br/><span class="italic text-neutral-400">Una metodología.</span></h2>
+            </div>
+            <div class="border-t border-neutral-200">
+                {course.modules.map((m) => (
+                    <a href={course.hotmartLink} target="_blank" rel="noopener" class="mod-row flex items-start gap-8 py-8 px-4 border-b border-neutral-200 cursor-pointer">
+                        <span class="mod-num font-serif italic text-3xl text-neutral-300 shrink-0 w-16">{m.n}</span>
+                        <div class="flex-1">
+                            <h3 class="font-serif text-2xl md:text-3xl mb-2">{m.title}</h3>
+                            <p class="text-sm font-light leading-relaxed opacity-70">{m.summary}</p>
+                        </div>
+                        <span class="text-[10px] tracking-[0.3em] uppercase shrink-0 mt-3">→</span>
                     </a>
-                    <span
-                        class="text-xs text-gray-500 uppercase tracking-widest"
-                        >Acceso Inmediato</span
-                    >
-                </div>
-            </div>
-
-            <!-- Columna de Imagen (Hero Shot) -->
-            <div class="w-full md:w-1/2">
-                <div
-                    class="relative aspect-video bg-gray-800 rounded-sm overflow-hidden border border-white/10 shadow-2xl group"
-                >
-                    <!-- Aquí iría la imagen real o un video trailer -->
-                    <div
-                        class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/20 transition-colors cursor-pointer z-10"
-                    >
-                        <span
-                            class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-105 transition-transform text-white"
-                        >
-                            <PlayCircle className="w-8 h-8 fill-current" />
-                        </span>
-                    </div>
-                    <img
-                        src={course.image}
-                        alt={course.title}
-                        class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-                    />
-                </div>
+                ))}
             </div>
         </div>
     </section>
 
-    <!-- CONTENIDO: SYLLABUS Y BENEFICIOS -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-16">
-                <!-- Izquierda: Lo que aprenderás -->
-                <div class="w-full lg:w-2/3">
-                    <h2 class="font-serif text-3xl text-brand-black mb-8">
-                        Descripción del Programa
-                    </h2>
-                    <p
-                        class="text-slate-600 text-lg leading-relaxed mb-12 font-light"
-                    >
-                        {course.description}
-                    </p>
-
-                    <h3
-                        class="font-bold text-xs uppercase tracking-widest text-brand-black mb-6 border-b border-gray-100 pb-2"
-                    >
-                        Temario (Syllabus)
-                    </h3>
-
-                    <div class="space-y-4">
-                        {
-                            course.syllabus.map((item, index) => (
-                                <div class="flex items-start gap-4 p-4 bg-gray-50 hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-gray-100 rounded-sm">
-                                    <span class="text-brand-primary font-serif text-xl font-bold">
-                                        0{index + 1}
-                                    </span>
-                                    <p class="text-slate-700 font-medium">
-                                        {item}
-                                    </p>
-                                </div>
-                            ))
-                        }
+    <!-- RESULTADOS -->
+    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+        <span class="num-huge font-serif text-[30vw] -left-[6%] -bottom-[15%]" style="color:rgba(255,255,255,.04)">→</span>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="max-w-3xl mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Al terminar</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.92]">Lo que te <span class="italic text-neutral-500">llevas.</span></h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                {course.outcomes.map((o, i) => (
+                    <div class="reveal border-l-2 border-brand-primary pl-6" style={`--delay:${i * 0.1}s`}>
+                        <span class="font-serif italic text-brand-primary text-xl block mb-3">{String(i + 1).padStart(2, '0')}</span>
+                        <p class="text-lg font-light text-white/80 leading-relaxed">{o}</p>
                     </div>
-                </div>
-
-                <!-- Derecha: Sidebar de Compra (Sticky en Desktop) -->
-                <div class="w-full lg:w-1/3">
-                    <div
-                        class="sticky top-32 bg-brand-gray p-8 border border-gray-200 rounded-sm"
-                    >
-                        <h3 class="font-serif text-2xl text-brand-black mb-6">
-                            Tu Inscripción Incluye:
-                        </h3>
-                        <ul class="space-y-4 mb-8">
-                            {
-                                course.benefits.map((benefit) => (
-                                    <li class="flex items-center gap-3 text-sm text-slate-600">
-                                        <span class="text-brand-primary">
-                                            ✓
-                                        </span>{" "}
-                                        {benefit}
-                                    </li>
-                                ))
-                            }
-                            <li
-                                class="flex items-center gap-3 text-sm text-slate-600"
-                            >
-                                <span class="text-brand-primary">✓</span> Soporte
-                                por Email
-                            </li>
-                        </ul>
-
-                        <div class="text-center mb-6">
-                            <span
-                                class="text-3xl font-serif text-brand-black block mb-1"
-                                >{course.price}</span
-                            >
-                            <span
-                                class="text-xs text-gray-400 uppercase tracking-widest line-through"
-                                >Precio Normal: 150 USD</span
-                            >
-                        </div>
-
-                        <!-- BOTÓN DE HOTMART OPTIMIZADO -->
-                        <HotmartButton
-                            link={course.hotmartLink}
-                            price={course.price}
-                        />
-
-                        <!-- Logos de tarjetas para confianza visual -->
-                        <div
-                            class="mt-6 flex justify-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all items-center"
-                        >
-                            <!-- Usamos Iconos Lucide como Placeholder elegante -->
-                            <div
-                                class="flex items-center gap-1 text-xs font-bold text-gray-500 uppercase tracking-widest"
-                            >
-                                <CreditCard className="w-4 h-4" /> Tarjetas / PayPal
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     </section>
+
+    <!-- CTA COMPRAR -->
+    <section id="comprar" class="py-32 md:py-40 bg-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Empieza hoy</p>
+            <h2 class="font-serif text-5xl md:text-7xl leading-[0.92] text-brand-black mb-8">Una decisión.<br/><span class="italic text-neutral-400">Un antes y un después.</span></h2>
+            <p class="text-lg font-light text-neutral-600 leading-relaxed max-w-xl mx-auto mb-10">Acceso inmediato. De por vida. Ritmo propio. Comunidad privada de estudiantes.</p>
+            <div class="flex items-baseline justify-center gap-4 mb-12">
+                <span class="font-serif italic text-6xl md:text-8xl text-brand-black">${course.priceUsd}</span>
+                <span class="text-sm tracking-[0.2em] uppercase text-neutral-400">USD · pago único</span>
+            </div>
+            <a href={course.hotmartLink} target="_blank" rel="noopener" class="inline-block bg-brand-primary text-white px-14 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-black transition-colors duration-500">Inscribirme ahora →</a>
+            <p class="mt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-400">Garantía de 7 días · 100% reembolsable</p>
+        </div>
+    </section>
+
+    <!-- VOLVER -->
+    <section class="py-16 border-t border-neutral-200 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl flex justify-between items-center">
+            <a href="/academia" class="text-[11px] tracking-[0.25em] uppercase text-neutral-500 hover:text-brand-black transition-colors">← Todos los cursos</a>
+            <a href="/contacto" class="text-[11px] tracking-[0.25em] uppercase text-neutral-500 hover:text-brand-black transition-colors">¿Dudas? Contáctanos →</a>
+        </div>
+    </section>
+
 </MainLayout>
