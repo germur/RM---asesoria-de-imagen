@@ -30,6 +30,8 @@ const geoSchema = JSON.stringify({
         .eco-title{transition:color .5s}
         .marquee{display:flex;gap:5rem;white-space:nowrap;animation:marquee 40s linear infinite}
         @keyframes marquee{to{transform:translateX(-50%)}}
+        .brand-logo{filter:grayscale(1) brightness(0);opacity:.25;transition:opacity .4s}
+        .brand-logo:hover{opacity:.6}
         .pillar-num{transition:all .5s}
         .stat-num{font-style:italic}
     </style>
@@ -63,24 +65,16 @@ const geoSchema = JSON.stringify({
     <section class="py-12 border-y border-neutral-200 bg-white overflow-hidden">
         <div class="marquee">
             <div class="flex gap-20 items-center shrink-0">
-                <span class="font-serif italic text-2xl text-neutral-300">L'Oréal</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
-                <span class="font-serif italic text-2xl text-neutral-300">Kérastase</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
-                <span class="font-serif italic text-2xl text-neutral-300">Zara</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
-                <span class="font-serif italic text-2xl text-neutral-300">Olaplex</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
+                <img src="/images/brands/loreal.svg" alt="L'Oréal" class="brand-logo h-6 md:h-7 w-auto" loading="lazy" />
+                <span class="font-serif italic text-2xl text-neutral-300">Kérastase Paris</span>
+                <span class="font-serif italic text-2xl text-neutral-300 tracking-[0.25em] uppercase">Zara</span>
+                <img src="/images/brands/olaplex.svg" alt="Olaplex" class="brand-logo h-6 md:h-7 w-auto" loading="lazy" />
             </div>
             <div class="flex gap-20 items-center shrink-0" aria-hidden="true">
-                <span class="font-serif italic text-2xl text-neutral-300">L'Oréal</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
-                <span class="font-serif italic text-2xl text-neutral-300">Kérastase</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
-                <span class="font-serif italic text-2xl text-neutral-300">Zara</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
-                <span class="font-serif italic text-2xl text-neutral-300">Olaplex</span>
-                <span class="font-serif italic text-2xl text-neutral-300">·</span>
+                <img src="/images/brands/loreal.svg" alt="" class="brand-logo h-6 md:h-7 w-auto" loading="lazy" />
+                <span class="font-serif italic text-2xl text-neutral-300">Kérastase Paris</span>
+                <span class="font-serif italic text-2xl text-neutral-300 tracking-[0.25em] uppercase">Zara</span>
+                <img src="/images/brands/olaplex.svg" alt="" class="brand-logo h-6 md:h-7 w-auto" loading="lazy" />
             </div>
         </div>
     </section>
