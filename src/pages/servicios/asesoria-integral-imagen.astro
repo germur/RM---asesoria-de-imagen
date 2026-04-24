@@ -41,9 +41,9 @@ const schema = JSON.stringify({
         /* Opened state */
         .doors-open .door-left{transform:translateX(-101%)}
         .doors-open .door-right{transform:translateX(101%)}
-        /* Hide hero content before doors open so reveal feels real */
-        #umbral .container{opacity:0;transition:opacity 1.2s ease .8s}
-        .doors-open #umbral .container{opacity:1}
+        /* No opacity hiding — the doors themselves cover the content,
+           so if JS never runs, the text is still visible beneath them
+           (but the doors are translucent-lite, so we keep them opaque). */
 
         /* Chapter sidebar */
         .chapter-nav{position:fixed;left:2rem;top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;gap:1.25rem}
@@ -65,11 +65,22 @@ const schema = JSON.stringify({
         <a href="#inversion" data-target="inversion">Inversión</a>
     </nav>
 
-    <script>
-        // Trigger the door-opening effect shortly after load
-        window.addEventListener('load', () => {
-            setTimeout(() => document.body.classList.add('doors-open'), 350);
-        });
+    <script is:inline>
+        // Trigger the door-opening effect as soon as possible
+        (function () {
+            const open = () => {
+                requestAnimationFrame(() => {
+                    setTimeout(() => document.body.classList.add('doors-open'), 200);
+                });
+            };
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', open, { once: true });
+            } else {
+                open();
+            }
+            // Safety fallback: nunca dejar las puertas cerradas
+            setTimeout(() => document.body.classList.add('doors-open'), 1500);
+        })();
     </script>
 
     <script>
