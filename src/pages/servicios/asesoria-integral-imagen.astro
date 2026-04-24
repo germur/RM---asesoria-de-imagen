@@ -27,23 +27,44 @@ const schema = JSON.stringify({
         .num-huge{font-style:italic;color:rgba(196,18,48,.08);line-height:.8;position:absolute;pointer-events:none;user-select:none}
         .tag{display:inline-block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:6px 14px;border:1px solid currentColor;border-radius:999px}
 
-        /* Door opening effect */
+        /* Door opening effect — pure CSS, no JS */
         .door-wrap{position:absolute;inset:0;z-index:20;pointer-events:none;overflow:hidden}
-        .door{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(180deg,#181818 0%,#0a0a0a 100%);transform-origin:center;transition:transform 1.6s cubic-bezier(.76,0,.24,1);box-shadow:inset 0 0 80px rgba(0,0,0,.7)}
-        .door::before{content:"";position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(201,17,30,.4) 40%,rgba(201,17,30,.4) 60%,transparent)}
-        .door-left{left:0;transform:translateX(0)}
-        .door-left::before{right:0}
-        .door-right{right:0;transform:translateX(0)}
-        .door-right::before{left:0}
-        .door-handle{position:absolute;top:50%;width:2px;height:60px;background:rgba(201,17,30,.7);box-shadow:0 0 12px rgba(201,17,30,.5);transform:translateY(-50%)}
-        .door-left .door-handle{right:18px}
-        .door-right .door-handle{left:18px}
-        /* Opened state */
-        .doors-open .door-left{transform:translateX(-101%)}
-        .doors-open .door-right{transform:translateX(101%)}
-        /* No opacity hiding — the doors themselves cover the content,
-           so if JS never runs, the text is still visible beneath them
-           (but the doors are translucent-lite, so we keep them opaque). */
+        .door{
+            position:absolute;top:0;bottom:0;width:50%;
+            background:
+                /* Red center seam */
+                linear-gradient(90deg,transparent calc(100% - 2px),rgba(201,17,30,.6) 100%),
+                /* Vertical wood grain */
+                repeating-linear-gradient(180deg,rgba(255,255,255,.02) 0 2px,transparent 2px 60px),
+                /* Base gradient — darker than hero bg so doors visible */
+                linear-gradient(135deg,#1a1a1a 0%,#0f0f0f 50%,#050505 100%);
+            box-shadow:inset 0 0 120px rgba(0,0,0,.8), 0 0 40px rgba(0,0,0,.6);
+            transform-origin:center;
+        }
+        .door-left{left:0;animation:doorOpenLeft 1.8s cubic-bezier(.76,0,.24,1) .5s both}
+        .door-right{right:0;animation:doorOpenRight 1.8s cubic-bezier(.76,0,.24,1) .5s both;
+            background:
+                linear-gradient(90deg,rgba(201,17,30,.6) 0%,transparent 2px),
+                repeating-linear-gradient(180deg,rgba(255,255,255,.02) 0 2px,transparent 2px 60px),
+                linear-gradient(225deg,#1a1a1a 0%,#0f0f0f 50%,#050505 100%);
+        }
+        .door-handle{
+            position:absolute;top:50%;width:4px;height:80px;
+            background:linear-gradient(180deg,#C9111E,#7a0a12);
+            box-shadow:0 0 20px rgba(201,17,30,.8),inset 0 1px 0 rgba(255,255,255,.2);
+            transform:translateY(-50%);
+            border-radius:2px;
+        }
+        .door-left .door-handle{right:22px}
+        .door-right .door-handle{left:22px}
+        @keyframes doorOpenLeft{
+            0%{transform:translateX(0)}
+            100%{transform:translateX(-101%)}
+        }
+        @keyframes doorOpenRight{
+            0%{transform:translateX(0)}
+            100%{transform:translateX(101%)}
+        }
 
         /* Chapter sidebar */
         .chapter-nav{position:fixed;left:2rem;top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;gap:1.25rem}
@@ -64,24 +85,6 @@ const schema = JSON.stringify({
         <a href="#sesion" data-target="sesion">Sesión</a>
         <a href="#inversion" data-target="inversion">Inversión</a>
     </nav>
-
-    <script is:inline>
-        // Trigger the door-opening effect as soon as possible
-        (function () {
-            const open = () => {
-                requestAnimationFrame(() => {
-                    setTimeout(() => document.body.classList.add('doors-open'), 200);
-                });
-            };
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', open, { once: true });
-            } else {
-                open();
-            }
-            // Safety fallback: nunca dejar las puertas cerradas
-            setTimeout(() => document.body.classList.add('doors-open'), 1500);
-        })();
-    </script>
 
     <script>
         // Active chapter highlight + dark/light nav color based on section bg
