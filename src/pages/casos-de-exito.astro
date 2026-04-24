@@ -1,57 +1,123 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 
 const seoData = {
     title: "Casos de Éxito · Transformaciones Reales | Roger Murillo Asesoría de Imagen",
     description:
-        "Conoce las historias reales de transformación de nuestros clientes. Proceso completo de consultoría de imagen a puerta cerrada en Bogotá.",
+        "Historias reales de transformación de imagen. Conoce el proceso completo a puerta cerrada con Roger Murillo y Adriana Garzón en Bogotá.",
 };
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Casos de Éxito",
-    description: "Historias de transformación de imagen personal y ejecutiva.",
-    provider: { "@type": "ProfessionalService", name: "Roger Murillo & Adriana Garzón" },
+    description: "Historias reales de transformación de imagen personal y ejecutiva.",
 });
 
+// ───── CASOS (placeholder, reemplazar con historias reales) ─────
 const casos = [
     {
-        slug: "carlos-ejecutivo",
+        num: "01",
+        slug: "carlos",
         nombre: "Carlos M.",
         cargo: "Director Financiero",
         sector: "Banca & Finanzas",
-        resumen: "Llegó sintiéndose invisible en las juntas directivas. Su ropa era cara pero no comunicaba autoridad.",
-        desafio: "Carlos ocupaba un cargo de alta dirección, pero su imagen no reflejaba su posición. Usaba trajes de buena marca sin coherencia visual: colores que no correspondían a su paleta, cortes de cabello genéricos y accesorios que restaban en lugar de sumar. En sus propias palabras: 'Sentía que mi presencia no pesaba en la sala'.",
-        proceso: "Comenzamos con un diagnóstico integral: análisis de rostro (morfología ovalada con tendencia angular), colorimetría (Invierno Profundo) y evaluación de su armario actual. El 60% de su ropa no correspondía a su paleta de poder. Diseñamos un código visual ejecutivo con énfasis en estructura, contraste y líneas verticales. Roger diseñó un corte que acentuara su mandíbula y Adriana redefinió su paleta de color completa.",
-        resultado: "En 3 meses, Carlos reportó un cambio radical en cómo lo percibían. Recibió su primer ascenso en 4 años. Su frase: 'Ahora entro a una sala y la gente me escucha antes de que hable'.",
-        duracion: "Consultoría integral + 3 seguimientos",
-        imagen: "/images/service-consulting-full.jpg",
+        edad: 42,
+        duracion: "12 semanas",
+        tagline: "De invisible en la junta, a liderarla.",
+        before: "/images/executive-consulting.webp",
+        after: "/images/roger-portrait-bw.jpg",
+        quote: "Sentía que mi presencia no pesaba en la sala. Mi ropa era cara, pero no comunicaba nada.",
+        story: [
+            {
+                capitulo: "El punto de partida",
+                texto: "Carlos ocupaba un cargo de alta dirección desde hacía cuatro años, pero las promociones no llegaban. Trajes de marcas reconocidas, zapatos italianos, relojes caros. Nada le funcionaba. El problema no estaba en el precio: estaba en la coherencia.",
+            },
+            {
+                capitulo: "El diagnóstico",
+                texto: "Rostro ovalado con tendencia angular. Estación: Invierno Profundo. El 60% de su armario pertenecía a paletas cálidas — exactamente las que apagaban su piel. Estaba literalmente invirtiendo en verse peor.",
+            },
+            {
+                capitulo: "La transformación",
+                texto: "Roger diseñó un corte que acentuara su mandíbula. Adriana redefinió completamente su paleta con énfasis en contraste y líneas verticales. Reconstruimos su armario desde cero: 22 piezas estratégicas en lugar de 80 aleatorias.",
+            },
+        ],
+        stats: [
+            { num: "60%", label: "Armario descartado" },
+            { num: "22", label: "Piezas estratégicas" },
+            { num: "1", label: "Ascenso en 90 días" },
+        ],
+        outcome: "Ahora entro a una sala y la gente me escucha antes de que hable.",
+        color: "#C41230",
     },
     {
-        slug: "valentina-emprendedora",
+        num: "02",
+        slug: "valentina",
         nombre: "Valentina R.",
         cargo: "CEO & Fundadora",
         sector: "Tecnología",
-        resumen: "Quería proyectar liderazgo sin perder su esencia femenina. Se sentía atrapada entre 'verse seria' y 'verse ella'.",
-        desafio: "Valentina había fundado su startup 5 años atrás, pero seguía vistiéndose como cuando era empleada. Sentía que debía elegir entre verse 'corporativa' o 'creativa'. Su imagen no transmitía la autoridad que necesitaba en reuniones con inversionistas, y al mismo tiempo temía perder su identidad personal.",
-        proceso: "La clave fue entender que la imagen personal no empieza en la ropa — empieza en la identidad. Trabajamos desde quién es Valentina y hacia dónde va. Adriana identificó su estación (Otoño Cálido) y diseñó una paleta que combinara calidez con sofisticación. Roger trabajó un corte que enmarcara su rostro y proyectara determinación sin rigidez. Creamos un sistema de vestuario modular: 15 piezas que generan más de 40 combinaciones estratégicas.",
-        resultado: "Valentina cerró su ronda de inversión 2 meses después. Nos dijo: 'Por primera vez siento que mi ropa cuenta la misma historia que yo'. Hoy es clienta recurrente para ajustes estacionales.",
-        duracion: "Consultoría integral + guía de estilo + seguimiento trimestral",
-        imagen: "/images/roger-adriana-duo.jpg",
+        edad: 35,
+        duracion: "16 semanas",
+        tagline: "Autoridad sin perder identidad.",
+        before: "/images/service-consulting-full.jpg",
+        after: "/images/roger-adriana-duo.jpg",
+        quote: "Creí que tenía que elegir entre verme seria o verme yo. Descubrí que era una falsa dicotomía.",
+        story: [
+            {
+                capitulo: "El punto de partida",
+                texto: "Cinco años liderando su startup, pero vistiéndose como cuando era empleada junior. En rondas de inversión se sentía invisible. Oscilaba entre el modo 'corporativo genérico' y el modo 'creativa millennial'. Ninguno le pertenecía.",
+            },
+            {
+                capitulo: "El diagnóstico",
+                texto: "Trabajamos desde la identidad, no desde la ropa. Estación Otoño Cálido — calidez con sofisticación. Rostro corazón: necesitaba enmarcar y proyectar determinación sin rigidez. Su estilo auténtico: autoridad suave, liderazgo cálido.",
+            },
+            {
+                capitulo: "La transformación",
+                texto: "Sistema de vestuario modular: 15 piezas generando más de 40 combinaciones estratégicas. Corte enmarcado por Roger. Paleta cálida sofisticada por Adriana. Códigos de vestimenta diferenciados para inversionistas, equipo y prensa.",
+            },
+        ],
+        stats: [
+            { num: "15", label: "Piezas modulares" },
+            { num: "40+", label: "Combinaciones" },
+            { num: "$", label: "Ronda cerrada en 60 días" },
+        ],
+        outcome: "Por primera vez siento que mi ropa cuenta la misma historia que yo.",
+        color: "#C41230",
     },
     {
-        slug: "andres-transicion",
+        num: "03",
+        slug: "andres",
         nombre: "Andrés L.",
         cargo: "Abogado Senior",
         sector: "Legal",
-        resumen: "Pasaba por un divorcio y sentía que necesitaba reinventarse. Su imagen era un reflejo de una vida que ya no era la suya.",
-        desafio: "Andrés llegó en un momento de transición personal profunda. Había perdido 15 kilos, se había divorciado y sentía que su reflejo en el espejo no correspondía con el hombre que estaba construyendo. Su armario estaba lleno de ropa que le quedaba grande y de un estilo que ya no lo representaba.",
-        proceso: "Priorizamos la intimidad del proceso. Esto no era solo un cambio de look — era un acompañamiento. En el estudio a puerta cerrada, Andrés pudo hablar con honestidad sobre quién quería ser. Hicimos diagnóstico completo: rostro cuadrado con líneas fuertes, estación Verano Suave. Roger diseñó un corte que suavizara sus ángulos y Adriana creó una paleta que reflejara calma y renovación. Reestructuramos su armario desde cero.",
-        resultado: "Andrés volvió 6 semanas después y nos dijo: 'Me miro al espejo y por fin me reconozco'. Hoy refiere a colegas del bufete y viene cada 6 semanas para mantenimiento de corte.",
-        duracion: "Consultoría integral + renovación de armario + mantenimiento mensual",
-        imagen: "/images/executive-consulting.webp",
+        edad: 48,
+        duracion: "8 semanas",
+        tagline: "Un reflejo que vuelva a reconocerse.",
+        before: "/images/roger-adriana-duo.jpg",
+        after: "/images/executive-consulting.webp",
+        quote: "Había perdido 15 kilos y un matrimonio. Mi armario seguía siendo de un hombre que ya no existía.",
+        story: [
+            {
+                capitulo: "El punto de partida",
+                texto: "Andrés llegó en una transición personal profunda. Divorcio reciente, cambio corporal, sensación de no pertenecer a su propia imagen. El estudio a puerta cerrada importó tanto como el diagnóstico: necesitaba un espacio seguro antes que un corte.",
+            },
+            {
+                capitulo: "El diagnóstico",
+                texto: "Rostro cuadrado con líneas fuertes. Estación Verano Suave — necesitaba paletas que suavizaran sin opacar. Roger diseñó un corte que atenuara los ángulos. Adriana seleccionó una paleta que reflejara calma y renovación.",
+            },
+            {
+                capitulo: "La transformación",
+                texto: "Armario reconstruido con proporciones reales de su cuerpo actual. Cortes limpios, cromática serena, texturas naturales. Prioridad: que cada pieza le recordara al hombre que estaba construyendo, no al que había sido.",
+            },
+        ],
+        stats: [
+            { num: "100%", label: "Armario renovado" },
+            { num: "6", label: "Semanas hasta el click" },
+            { num: "∞", label: "Reconocerse de nuevo" },
+        ],
+        outcome: "Me miro al espejo y por fin me reconozco.",
+        color: "#C41230",
     },
 ];
 ---
@@ -60,103 +126,482 @@ const casos = [
     title={seoData.title}
     description={seoData.description}
     schema={schema}
+    navbarTheme="dark"
 >
-    <!-- Hero -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl text-center">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Casos de Éxito</p>
+    <!-- Progress bar top -->
+    <div id="rm-progress" class="fixed top-0 left-0 right-0 h-[2px] bg-brand-primary z-[80] origin-left scale-x-0"></div>
 
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-brand-black mb-8">
-                Historias reales.<br />
-                <span class="text-neutral-400">Transformaciones reales.</span>
-            </h1>
+    <!-- Floating chapter indicator -->
+    <aside id="rm-chapter-nav" class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-5">
+        {casos.map((c) => (
+            <a
+                href={`#caso-${c.slug}`}
+                class="rm-chapter-dot group flex items-center gap-3"
+                data-target={`caso-${c.slug}`}
+            >
+                <span class="w-8 h-px bg-neutral-500 group-hover:bg-brand-primary transition-colors duration-300"></span>
+                <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-500 group-hover:text-brand-primary transition-colors duration-300">
+                    {c.num}
+                </span>
+            </a>
+        ))}
+    </aside>
 
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-2xl mx-auto">
-                Cada cliente llega con una historia diferente, pero con un denominador
-                común: su imagen no refleja quién es hoy. Aquí contamos cómo los
-                recibimos y cómo salieron.
-            </p>
+    <!-- ───────── HERO — Editorial / Kinetic ───────── -->
+    <section class="relative min-h-screen bg-brand-black text-white overflow-hidden flex items-center pt-24">
+        <!-- Noise / grain -->
+        <div class="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
+             style="background-image: url('/images/noise.png'); background-size: 280px;"></div>
+
+        <!-- Floating display numbers -->
+        <div class="absolute inset-0 pointer-events-none">
+            <span class="hero-float-num absolute top-[12%] right-[8%] font-serif italic text-[22vw] leading-none text-white/[0.04] select-none">
+                03
+            </span>
         </div>
-    </section>
 
-    <!-- Cases -->
-    {casos.map((caso, i) => (
-        <section class={`py-32 md:py-40 ${i % 2 === 0 ? 'bg-neutral-50' : 'bg-white'}`}>
-            <div class="container mx-auto px-6 max-w-6xl">
-                <div class="grid md:grid-cols-12 gap-16 md:gap-24 items-start">
-                    <div class={`md:col-span-5 ${i % 2 !== 0 ? 'md:order-2' : ''}`}>
-                        <img
-                            src={caso.imagen}
-                            alt={`Caso de éxito: ${caso.nombre}`}
-                            class="w-full h-[400px] object-cover grayscale"
-                        />
-                        <div class="mt-6 flex items-center gap-4">
-                            <div class="w-1 h-12 bg-brand-primary"></div>
-                            <div>
-                                <p class="font-serif text-xl text-brand-black">{caso.nombre}</p>
-                                <p class="text-xs tracking-[0.2em] uppercase text-neutral-400">{caso.cargo} · {caso.sector}</p>
-                            </div>
-                        </div>
+        <div class="container mx-auto px-6 max-w-7xl relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-end">
+                <div class="lg:col-span-8">
+                    <div class="flex items-center gap-5 mb-10">
+                        <span class="w-12 h-px bg-brand-primary"></span>
+                        <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-400">
+                            Archivo · Casos de Éxito
+                        </p>
                     </div>
 
-                    <div class={`md:col-span-7 ${i % 2 !== 0 ? 'md:order-1' : ''}`}>
-                        <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">
-                            Caso #{String(i + 1).padStart(2, '0')}
-                        </p>
+                    <h1 class="font-serif leading-[0.88] mb-12">
+                        <span class="hero-line block text-[15vw] md:text-[11vw] lg:text-[9.5vw] text-white">
+                            Historias
+                        </span>
+                        <span class="hero-line block text-[15vw] md:text-[11vw] lg:text-[9.5vw] italic text-neutral-500 pl-[15%]">
+                            que se visten
+                        </span>
+                        <span class="hero-line block text-[15vw] md:text-[11vw] lg:text-[9.5vw] text-brand-primary">
+                            por dentro.
+                        </span>
+                    </h1>
+                </div>
 
-                        <h2 class="font-serif text-3xl md:text-4xl leading-[1.1] text-brand-black mb-6">
-                            {caso.resumen}
-                        </h2>
-
-                        <div class="space-y-8 mt-10">
+                <div class="lg:col-span-4 lg:pb-6">
+                    <p class="text-base md:text-lg text-neutral-400 font-light leading-relaxed max-w-sm mb-10">
+                        Cada cliente llega con una historia distinta. Todos comparten lo mismo:
+                        su imagen dejó de contar la verdad sobre ellos. Aquí te mostramos
+                        cómo los recibimos &mdash; y cómo salieron.
+                    </p>
+                    <div class="flex items-center gap-4 text-[10px] tracking-[0.3em] uppercase text-neutral-500">
+                        <div class="grid grid-cols-2 gap-8 w-full">
                             <div>
-                                <h3 class="text-xs font-medium uppercase tracking-[0.2em] text-brand-black mb-3">El Desafío</h3>
-                                <p class="text-sm text-neutral-500 font-light leading-relaxed">{caso.desafio}</p>
+                                <p class="text-3xl font-serif text-white mb-1">{casos.length}</p>
+                                <p>Casos</p>
                             </div>
                             <div>
-                                <h3 class="text-xs font-medium uppercase tracking-[0.2em] text-brand-black mb-3">El Proceso</h3>
-                                <p class="text-sm text-neutral-500 font-light leading-relaxed">{caso.proceso}</p>
-                            </div>
-                            <div>
-                                <h3 class="text-xs font-medium uppercase tracking-[0.2em] text-brand-black mb-3">El Resultado</h3>
-                                <p class="text-sm text-neutral-500 font-light leading-relaxed">{caso.resultado}</p>
-                            </div>
-                            <div class="pt-4 border-t border-neutral-200">
-                                <p class="text-xs tracking-[0.15em] uppercase text-neutral-400">
-                                    Servicio: {caso.duracion}
-                                </p>
+                                <p class="text-3xl font-serif text-white mb-1">100%</p>
+                                <p>Reales</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-neutral-600">
+                <span class="text-[10px] tracking-[0.4em] uppercase">Desliza</span>
+                <span class="w-px h-10 bg-neutral-700 relative overflow-hidden">
+                    <span class="scroll-hint absolute top-0 left-0 w-full h-full bg-brand-primary"></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ───────── CASOS (cada uno es un "chapter" completo) ───────── -->
+    {casos.map((c, i) => (
+        <article id={`caso-${c.slug}`} class="relative">
+            <!-- ── CHAPTER COVER ── -->
+            <section class="relative min-h-screen flex items-center bg-white overflow-hidden"
+                     data-bg={i % 2 === 0 ? 'light' : 'dark'}>
+                <!-- Massive backdrop number -->
+                <span class="chapter-giant-num absolute -right-[5%] top-1/2 -translate-y-1/2
+                             font-serif text-[70vw] md:text-[48vw] leading-[0.8] text-neutral-100 select-none pointer-events-none">
+                    {c.num}
+                </span>
+
+                <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7">
+                            <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-8 reveal">
+                                Caso {c.num} &middot; {c.sector}
+                            </p>
+                            <h2 class="font-serif text-[9vw] md:text-[6vw] lg:text-[5.2vw] leading-[0.95] text-brand-black mb-10 reveal" style="--delay: 0.1s">
+                                {c.tagline}
+                            </h2>
+                            <div class="flex flex-wrap gap-x-10 gap-y-4 text-[11px] tracking-[0.25em] uppercase text-neutral-500 reveal" style="--delay: 0.2s">
+                                <span><span class="text-brand-black">{c.nombre}</span></span>
+                                <span>{c.cargo}</span>
+                                <span>{c.edad} años</span>
+                                <span>{c.duracion}</span>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5">
+                            <div class="relative aspect-[3/4] overflow-hidden reveal" style="--delay: 0.25s">
+                                <img src={c.before} alt={`Antes: ${c.nombre}`} class="absolute inset-0 w-full h-full object-cover grayscale" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-black/40 to-transparent"></div>
+                                <span class="absolute top-6 left-6 text-[10px] tracking-[0.3em] uppercase text-white/80 bg-black/30 backdrop-blur px-3 py-1.5">
+                                    El antes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── STICKY STORY — imagen fija + texto en scroll ── -->
+            <section class="relative bg-white">
+                <div class="container mx-auto px-6 max-w-7xl">
+                    <div class="grid lg:grid-cols-12 gap-12">
+                        <!-- Sticky image column -->
+                        <div class="lg:col-span-5">
+                            <div class="lg:sticky lg:top-32 h-[60vh] lg:h-[80vh] w-full overflow-hidden relative">
+                                <img src={c.before} alt={c.nombre} class="w-full h-full object-cover grayscale" />
+                                <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
+                                    <span class="text-[10px] tracking-[0.3em] uppercase">{c.nombre}</span>
+                                    <span class="font-serif italic text-sm">{c.num}.0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scrolling text column -->
+                        <div class="lg:col-span-7 py-16 lg:py-32 space-y-32">
+                            <!-- Pull quote -->
+                            <div class="reveal">
+                                <span class="font-serif italic text-brand-primary text-6xl leading-none block mb-6">&ldquo;</span>
+                                <blockquote class="font-serif text-3xl md:text-4xl leading-[1.15] text-brand-black">
+                                    {c.quote}
+                                </blockquote>
+                                <p class="text-[11px] tracking-[0.25em] uppercase text-neutral-400 mt-8">
+                                    &mdash; {c.nombre}, en su primera sesión
+                                </p>
+                            </div>
+
+                            <!-- Chapter cards -->
+                            {c.story.map((step, idx) => (
+                                <div class="reveal">
+                                    <div class="flex items-baseline gap-5 mb-5">
+                                        <span class="font-serif italic text-2xl text-brand-primary">
+                                            {String(idx + 1).padStart(2, '0')}
+                                        </span>
+                                        <span class="h-px flex-1 bg-neutral-200"></span>
+                                        <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                                            Capítulo
+                                        </span>
+                                    </div>
+                                    <h3 class="font-serif text-3xl md:text-4xl text-brand-black mb-6 leading-tight">
+                                        {step.capitulo}
+                                    </h3>
+                                    <p class="text-base md:text-lg text-neutral-600 font-light leading-relaxed max-w-xl">
+                                        {step.texto}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── BEFORE / AFTER INTERACTIVE SLIDER ── -->
+            <section class="relative bg-brand-black text-white py-32 md:py-40 overflow-hidden">
+                <div class="container mx-auto px-6 max-w-7xl mb-16">
+                    <div class="flex items-center gap-5 mb-8">
+                        <span class="w-12 h-px bg-brand-primary"></span>
+                        <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">
+                            La transformación
+                        </p>
+                    </div>
+                    <h3 class="font-serif text-5xl md:text-7xl leading-[0.95] max-w-4xl">
+                        Arrastra. <span class="italic text-neutral-500">Compara.</span>
+                    </h3>
+                </div>
+
+                <div class="container mx-auto px-6 max-w-6xl">
+                    <div class="rm-compare relative aspect-[4/3] md:aspect-[16/9] overflow-hidden select-none cursor-ew-resize" data-compare>
+                        <!-- Before (full) -->
+                        <img src={c.before} alt="Antes" class="absolute inset-0 w-full h-full object-cover grayscale pointer-events-none" />
+                        <!-- After clipped -->
+                        <div class="rm-compare-after absolute inset-0 overflow-hidden pointer-events-none" style="width: 50%">
+                            <img src={c.after} alt="Después" class="absolute inset-0 w-full h-full object-cover" />
+                        </div>
+                        <!-- Labels -->
+                        <span class="absolute top-6 left-6 text-[10px] tracking-[0.3em] uppercase bg-brand-primary text-white px-3 py-1.5 pointer-events-none z-10">
+                            Después
+                        </span>
+                        <span class="absolute top-6 right-6 text-[10px] tracking-[0.3em] uppercase bg-white/20 backdrop-blur text-white px-3 py-1.5 pointer-events-none z-10">
+                            Antes
+                        </span>
+                        <!-- Handle -->
+                        <div class="rm-compare-handle absolute top-0 bottom-0 w-px bg-white pointer-events-none" style="left: 50%">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-2xl">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5">
+                                    <path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-[10px] tracking-[0.3em] uppercase text-neutral-500 mt-8">
+                        Arrastra el control para comparar
+                    </p>
+                </div>
+            </section>
+
+            <!-- ── STATS + OUTCOME ── -->
+            <section class="relative bg-white py-32 md:py-40">
+                <div class="container mx-auto px-6 max-w-7xl">
+                    <div class="grid lg:grid-cols-12 gap-16 items-center">
+                        <div class="lg:col-span-5">
+                            <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-8">
+                                El impacto
+                            </p>
+                            <div class="space-y-12">
+                                {c.stats.map((s, idx) => (
+                                    <div class="rm-stat border-t border-neutral-200 pt-6 flex items-baseline justify-between reveal" style={`--delay: ${idx * 0.1}s`}>
+                                        <span class="font-serif text-[14vw] md:text-[8vw] lg:text-[6vw] leading-[0.9] text-brand-black">
+                                            {s.num}
+                                        </span>
+                                        <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-500 max-w-[140px] text-right">
+                                            {s.label}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 lg:pl-16">
+                            <span class="font-serif italic text-brand-primary text-7xl md:text-8xl leading-none block mb-6">&ldquo;</span>
+                            <blockquote class="font-serif text-3xl md:text-5xl leading-[1.1] text-brand-black reveal">
+                                {c.outcome}
+                            </blockquote>
+                            <div class="mt-12 flex items-center gap-4">
+                                <span class="w-12 h-px bg-brand-primary"></span>
+                                <p class="text-[11px] tracking-[0.3em] uppercase text-neutral-500">
+                                    {c.nombre} &middot; Seis meses después
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider between cases -->
+            {i < casos.length - 1 && (
+                <div class="relative bg-white py-10 border-t border-neutral-100">
+                    <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between text-[10px] tracking-[0.4em] uppercase text-neutral-400">
+                        <span>Fin del caso {c.num}</span>
+                        <span class="flex items-center gap-3">
+                            Siguiente
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    </div>
+                </div>
+            )}
+        </article>
     ))}
 
-    <!-- CTA -->
-    <section class="py-32 md:py-40 bg-brand-black text-white text-center">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] mb-8">
-                ¿Quieres ser el próximo <span class="text-neutral-400">caso de éxito?</span>
-            </h2>
-            <p class="text-lg text-neutral-300 font-light leading-relaxed max-w-xl mx-auto mb-12">
-                Tu transformación comienza con una decisión. Agenda tu consultoría
-                privada y descubre lo que tu imagen puede hacer por ti.
+    <!-- ───────── CTA FINAL ───────── -->
+    <section class="relative bg-brand-black text-white py-32 md:py-48 overflow-hidden">
+        <span class="absolute -bottom-16 -right-10 font-serif italic text-[28vw] leading-[0.8] text-white/[0.03] select-none pointer-events-none">
+            Tu historia
+        </span>
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500 mb-8">
+                ¿Tu capítulo 01?
             </p>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a
-                    href="/contacto"
-                    class="bg-brand-primary text-white px-12 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500"
-                >
+            <h2 class="font-serif text-6xl md:text-8xl leading-[0.95] mb-12 max-w-4xl">
+                Cada historia empieza<br/>
+                con una <span class="italic text-brand-primary">decisión.</span>
+            </h2>
+            <p class="text-lg text-neutral-400 font-light leading-relaxed max-w-xl mb-16">
+                La imagen personal no empieza en la ropa &mdash; empieza en la identidad.
+                Agenda tu consultoría privada y comienza a escribir la tuya.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-5">
+                <a href="/contacto"
+                   class="group inline-flex items-center gap-4 bg-brand-primary text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-brand-black transition-colors duration-500">
                     Agendar Consultoría
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a
-                    href="/servicios"
-                    class="px-12 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white border border-white/20 hover:border-white transition-colors duration-500"
-                >
+                <a href="/servicios"
+                   class="inline-flex items-center gap-4 px-10 py-5 text-[11px] tracking-[0.25em] uppercase text-white border border-white/20 hover:border-white transition-colors duration-500">
                     Ver Servicios
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- ───────── STYLES ───────── -->
+    <style is:global>
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s),
+                        transform 1s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s);
+            will-change: opacity, transform;
+        }
+        .reveal.is-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero lines slide-up */
+        .hero-line {
+            opacity: 0;
+            transform: translateY(100%);
+            animation: heroLineIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .hero-line:nth-child(1) { animation-delay: 0.15s; }
+        .hero-line:nth-child(2) { animation-delay: 0.35s; }
+        .hero-line:nth-child(3) { animation-delay: 0.55s; }
+        @keyframes heroLineIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll hint down animation */
+        .scroll-hint {
+            animation: scrollHint 2.2s ease-in-out infinite;
+        }
+        @keyframes scrollHint {
+            0%   { transform: translateY(-100%); }
+            50%  { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Chapter dot active */
+        .rm-chapter-dot.is-active span:first-child { background: #C41230 !important; width: 48px; }
+        .rm-chapter-dot.is-active span:last-child  { color: #C41230 !important; }
+
+        /* Giant num parallax */
+        .chapter-giant-num {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* Prevent overflow horizontal from giant text */
+        article { overflow: hidden; }
+
+        /* Dynamic padding for hero lines overflow */
+        .hero-line { overflow: hidden; display: block; }
+    </style>
+
+    <!-- ───────── SCRIPTS ───────── -->
+    <script is:inline>
+        // ─── Progress bar ───
+        const progressBar = document.getElementById('rm-progress');
+        const onProgress = () => {
+            const h = document.documentElement;
+            const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+            if (progressBar) progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, scrolled))})`;
+        };
+        window.addEventListener('scroll', onProgress, { passive: true });
+        onProgress();
+
+        // ─── Reveal on intersect ───
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-in');
+                    revealObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // ─── Chapter nav active state ───
+        const dots = document.querySelectorAll('.rm-chapter-dot');
+        const articles = Array.from(document.querySelectorAll('article[id^="caso-"]'));
+        const chapterObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const id = e.target.id;
+                    dots.forEach(d => d.classList.toggle('is-active', d.dataset.target === id));
+                }
+            });
+        }, { threshold: 0.2 });
+        articles.forEach(a => chapterObs.observe(a));
+
+        // ─── Before/After compare sliders ───
+        document.querySelectorAll('[data-compare]').forEach((el) => {
+            const after  = el.querySelector('.rm-compare-after');
+            const handle = el.querySelector('.rm-compare-handle');
+            let dragging = false;
+
+            const setPos = (clientX) => {
+                const rect = el.getBoundingClientRect();
+                let pct = ((clientX - rect.left) / rect.width) * 100;
+                pct = Math.max(0, Math.min(100, pct));
+                after.style.width  = pct + '%';
+                handle.style.left  = pct + '%';
+            };
+
+            const start = (e) => {
+                dragging = true;
+                const x = e.touches ? e.touches[0].clientX : e.clientX;
+                setPos(x);
+            };
+            const move = (e) => {
+                if (!dragging) return;
+                const x = e.touches ? e.touches[0].clientX : e.clientX;
+                setPos(x);
+            };
+            const end = () => { dragging = false; };
+
+            el.addEventListener('mousedown', start);
+            el.addEventListener('touchstart', start, { passive: true });
+            window.addEventListener('mousemove', move);
+            window.addEventListener('touchmove', move, { passive: true });
+            window.addEventListener('mouseup', end);
+            window.addEventListener('touchend', end);
+
+            // Auto demo on first view
+            const demoObs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        let pct = 50;
+                        let dir = -1;
+                        let frames = 0;
+                        const anim = () => {
+                            if (dragging) return;
+                            pct += dir * 0.4;
+                            if (pct <= 25) dir = 1;
+                            if (pct >= 75) dir = -1;
+                            after.style.width = pct + '%';
+                            handle.style.left = pct + '%';
+                            frames++;
+                            if (frames < 180) requestAnimationFrame(anim);
+                            else {
+                                // settle at 50
+                                after.style.width = '50%';
+                                handle.style.left = '50%';
+                            }
+                        };
+                        requestAnimationFrame(anim);
+                        demoObs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            demoObs.observe(el);
+        });
+
+        // ─── Parallax on giant numbers ───
+        const giants = document.querySelectorAll('.chapter-giant-num');
+        const onParallax = () => {
+            giants.forEach(g => {
+                const rect = g.getBoundingClientRect();
+                const vh = window.innerHeight;
+                const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+                g.style.transform = `translateY(calc(-50% + ${progress * -40}px))`;
+            });
+        };
+        window.addEventListener('scroll', onParallax, { passive: true });
+        onParallax();
+    </script>
 </MainLayout>
