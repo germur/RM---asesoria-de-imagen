@@ -178,8 +178,14 @@ const STEPS = [
       @page{margin:18mm 14mm;size:A4}
       html,body{background:#fff !important;color:#000 !important;font-family:Georgia,serif}
       body *{color:#000 !important;background:transparent !important;border-color:rgba(0,0,0,.2) !important;box-shadow:none !important}
+      /* Mata la franja blanca fija que cubría el contenido en cada página */
+      .reto-body{background:#fff !important;--rm-navH:0px !important}
+      .reto-body::before{display:none !important;content:none !important}
+      .wizard{padding-top:0 !important}
+      .wiz-main{padding:0 !important}
       /* Oculta toda la estructura que no sea el dossier */
       header,footer,nav,.no-print,.wiz-side,.wiz-nav,#main-header,#mobile-menu,
+      .wiz-mobile-strip,
       [class*="cookie"],[id*="cookie"],[class*="Cookie"],[id*="Cookie"],
       iframe,.wiz-progress,button{display:none !important}
       /* Expande TODOS los pasos */
@@ -638,8 +644,16 @@ const STEPS = [
       sideItems.forEach(it => it.addEventListener('click', () => goto(Number(it.dataset.goto))));
       pills.forEach(p => p.addEventListener('click', () => goto(Number(p.dataset.goto))));
 
-      // Print
-      const doPrint = () => window.print();
+      // Print — fuerza nombre bonito del PDF y restaura título después
+      const doPrint = () => {
+        const prev = document.title;
+        const firma = (state.firma || '').toString().trim();
+        const base = 'Dossier — Reto Revoluciona Tu Imagen';
+        document.title = firma ? `${base} — ${firma}` : base;
+        const restore = () => { document.title = prev; window.removeEventListener('afterprint', restore); };
+        window.addEventListener('afterprint', restore);
+        setTimeout(() => window.print(), 50);
+      };
       document.getElementById('btnPrintSide')?.addEventListener('click', doPrint);
       document.getElementById('btnPrintEnd')?.addEventListener('click', doPrint);
       document.getElementById('btnResetSide')?.addEventListener('click', () => {

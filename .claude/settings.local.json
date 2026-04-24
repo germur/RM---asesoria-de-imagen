@@ -23,7 +23,30 @@
       "Bash(netstat -ano)",
       "Bash(findstr :4321)",
       "Bash(grep -rn \"navbarTheme\\\\|theme=\" src/pages/*.astro src/pages/servicios/*.astro)",
-      "Bash(powershell -command \"Expand-Archive -Path 'RM asesoria de imagen.zip' -DestinationPath 'RM_extracted' -Force\")"
+      "Bash(powershell -command \"Expand-Archive -Path 'RM asesoria de imagen.zip' -DestinationPath 'RM_extracted' -Force\")",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\ger-mur\\\\Desktop\\\\Revoluciona-tu-imagen-reto\" -Recurse)",
+      "Bash(Select-Object FullName)",
+      "Bash(Format-List)",
+      "Bash(cp \"4-servicios.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/servicios.astro\")",
+      "Bash(cp \"servicios/asesoria-integral-imagen.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/servicios/asesoria-integral-imagen.astro\")",
+      "Bash(cp \"servicios/color-salud-capilar.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/servicios/color-salud-capilar.astro\")",
+      "Bash(cp \"servicios/visagismo-corte.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/servicios/visagismo-corte.astro\")",
+      "Bash(cp \"servicios/peluqueria.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/servicios/peluqueria.astro\")",
+      "Bash(cp \"1-index.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/index.astro\")",
+      "Bash(cp \"3-nosotros.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/nosotros.astro\")",
+      "Bash(cp \"academia.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/academia.astro\")",
+      "Bash(cp \"herramientas.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/herramientas.astro\")",
+      "Bash(cp \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/public/images/Home Hero.jpg\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/public/images/roger-hero.jpg\")",
+      "Bash(cp \"C:/Users/ger-mur/Downloads/Loreal_\\(2\\).svg\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/public/images/brands/loreal.svg\")",
+      "Bash(cp \"C:/Users/ger-mur/Downloads/Olaplex_Logo.svg\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/public/images/brands/olaplex.svg\")",
+      "Bash(cp \"C:/Users/ger-mur/Downloads/Zara_Logo.svg.png\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/public/images/brands/zara.png\")",
+      "Bash(where inkscape *)",
+      "Bash(mkdir -p \"C:/Users/ger-mur/Downloads/RM_extracted_v4\")",
+      "Bash(unzip -o \"C:/Users/ger-mur/Downloads/RM asesoria de imagen \\(3\\).zip\")",
+      "Bash(cp \"C:/Users/ger-mur/Downloads/RM_extracted_v4/cambios/herramientas.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/herramientas.astro\")",
+      "Bash(cp \"C:/Users/ger-mur/Downloads/RM_extracted_v4/cambios/reto-revoluciona-tu-imagen.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/herramientas/reto-revoluciona-tu-imagen.astro\")",
+      "WebFetch(domain:rogermurillo.co)",
+      "WebFetch(domain:rmasesoria.netlify.app)"
     ]
   }
 }
