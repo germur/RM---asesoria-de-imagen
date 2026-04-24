@@ -5,277 +5,571 @@ const navItems = [
     {
         label: "Servicios",
         href: "/servicios",
-        type: "dropdown",
-        items: [
-            { label: "Consultoría Integral", href: "/servicios/asesoria-integral-imagen" },
-            { label: "Color & Salud",         href: "/servicios/color-salud-capilar" },
-            { label: "Visagismo & Corte",     href: "/servicios/visagismo-corte" },
-            { label: "Peluquería",            href: "/servicios/peluqueria" },
-            { label: "Imagen Ejecutiva",      href: "/servicios/imagen-ejecutiva-autoridad" },
-        ]
+        type: "mega",
+        key: "servicios",
     },
     { label: "La Firma",       href: "/nosotros",        type: "simple" },
     { label: "Casos de Éxito", href: "/casos-de-exito",  type: "simple" },
     {
         label: "Academia",
         href: "/academia",
-        type: "dropdown",
-        items: [
-            { label: "Todos los cursos",  href: "/academia" },
-            { label: "Curso Descúbrete",  href: "/academia/curso-descubrete" },
-            { label: "Curso Diseñate",    href: "/academia/crea-tu-iconologia" },
-            { label: "Curso Conquista",   href: "/academia/disena-tu-voz" },
-            { label: "Curso Destaca",     href: "/academia/el-correcto-uso-del-color" },
-            { label: "Libro Oficial",     href: "/libro" },
-        ]
+        type: "mega",
+        key: "academia",
     },
     { label: "Herramientas", href: "/herramientas", type: "simple" },
 ];
+
+const servicios = [
+    { n: "01", label: "Consultoría Integral",  href: "/servicios/asesoria-integral-imagen",   tag: "Flagship",    desc: "Programa completo: diagnóstico, visagismo, color y clóset funcional." },
+    { n: "02", label: "Color & Salud Capilar", href: "/servicios/color-salud-capilar",        tag: "Técnico",     desc: "Colorimetría y recuperación de la fibra con productos de alta gama." },
+    { n: "03", label: "Visagismo & Corte",     href: "/servicios/visagismo-corte",            tag: "Arquitectura",desc: "Geometría facial aplicada. Proporción áurea como guía del corte." },
+    { n: "04", label: "Peluquería de Autor",   href: "/servicios/peluqueria",                 tag: "★ Estrella",  desc: "Corte con tijera, tintura y recuperación. Hombre y mujer.", star: true },
+    { n: "05", label: "Imagen Ejecutiva",      href: "/servicios/imagen-ejecutiva-autoridad", tag: "C-Suite",     desc: "Autoridad y presencia. Para CEOs, directivos y figuras públicas." },
+];
+
+const cursos = [
+    { n: "01", label: "Curso Descúbrete", href: "/academia/curso-descubrete",          word: "Descúbrete", desc: "Fundación: arquetipos, identidad y lenguaje visual personal.", bg: "linear-gradient(135deg,#f0ebe1,#dcd3c1)" },
+    { n: "02", label: "Curso Diseñate",   href: "/academia/crea-tu-iconologia",        word: "Diseñate",   desc: "Cómo construir tu iconología personal y proyectarla en el mundo.", bg: "linear-gradient(135deg,#e8e2d8,#cbc0a8)" },
+    { n: "03", label: "Curso Conquista",  href: "/academia/disena-tu-voz",             word: "Conquista",  desc: "Diseña tu voz y tu autoridad comunicacional.", bg: "linear-gradient(135deg,#2a2020,#0a0a0a)", dark: true },
+    { n: "04", label: "Curso Destaca",    href: "/academia/el-correcto-uso-del-color", word: "Destaca",    desc: "El correcto uso del color, tu estación y tu paleta viva.", bg: "conic-gradient(from 180deg,#C41230 0deg,#f4d9a0 120deg,#2a2a2a 240deg,#C41230 360deg)", dark: true },
+];
 ---
 
-<!-- ─── HEADER ───────────────────────────────────────────────────── -->
-<header
-    id="main-header"
-    class="fixed w-full top-0 z-50 transition-all duration-400"
->
-    <!-- Gradient scrim: da contraste al texto blanco sobre cualquier fondo -->
-    <div
-        class="nav-scrim absolute inset-0 pointer-events-none transition-opacity duration-400"
-        style="background: linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.12) 60%, transparent 100%);"
-    ></div>
+<!-- ─── HEADER ───────────────────────────────────────── -->
+<header id="main-header" class="fixed w-full top-0 z-50">
+    <div class="nav-scrim absolute inset-0 pointer-events-none"
+         style="background:linear-gradient(to bottom,rgba(0,0,0,0.42) 0%,rgba(0,0,0,0.14) 60%,transparent 100%);"></div>
 
-    <div class="relative container mx-auto px-6 h-16 md:h-[72px] flex items-center justify-between">
+    <!-- Micro-barra superior: locator -->
+    <div class="relative border-b border-white/10 text-[10px] tracking-[0.3em] uppercase hidden md:block">
+        <div class="container mx-auto px-6 max-w-[1400px] h-8 flex items-center justify-between">
+            <div class="flex items-center gap-4 micro-text">
+                <span class="live-dot"></span>
+                <span>Bogotá · Colina Campestre</span>
+            </div>
+            <div class="flex items-center gap-6 micro-text">
+                <span>A puerta cerrada · Solo con cita previa</span>
+                <span class="hidden lg:inline">—</span>
+                <span class="hidden lg:inline" id="live-clock">—</span>
+            </div>
+        </div>
+    </div>
 
-        <!-- LOGO -->
+    <div class="relative container mx-auto px-6 max-w-[1400px] h-16 md:h-[72px] flex items-center justify-between">
+
+        <!-- Logo -->
         <a href="/" class="block z-50 flex-shrink-0">
             <img
                 src="/images/logo_rm.png"
                 alt="Roger Murillo Asesoría de Imagen"
-                class="nav-logo h-7 md:h-8 w-auto object-contain transition-all duration-400"
+                class="nav-logo h-7 md:h-8 w-auto object-contain"
             />
         </a>
 
-        <!-- DESKTOP NAV -->
-        <nav class="hidden md:flex items-center gap-9 absolute left-1/2 -translate-x-1/2">
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2" id="nav-desktop">
             {navItems.map((item) => (
-                <div class="relative group h-[72px] flex items-center">
-                    <a
-                        href={item.href}
-                        class="nav-link text-[11px] tracking-[0.18em] uppercase font-light flex items-center gap-1
-                               transition-opacity duration-300 hover:opacity-60"
-                    >
+                item.type === "mega" ? (
+                    <div class="relative flex items-center h-[72px]" data-mega={item.key}>
+                        <a href={item.href}
+                           class="nav-link text-[11px] tracking-[0.22em] uppercase font-light flex items-center gap-1.5"
+                           data-nav-key={item.key}>
+                            {item.label}
+                            <ChevronDown className="w-3 h-3 opacity-50 transition-transform duration-400" />
+                        </a>
+                    </div>
+                ) : (
+                    <a href={item.href}
+                       class="nav-link text-[11px] tracking-[0.22em] uppercase font-light">
                         {item.label}
-                        {item.type === "dropdown" && (
-                            <ChevronDown
-                                className="w-3 h-3 opacity-40 group-hover:rotate-180 transition-transform duration-300 flex-shrink-0"
-                            />
-                        )}
                     </a>
-
-                    <!-- DROPDOWN -->
-                    {item.type === "dropdown" && (
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-56
-                                    bg-white/[0.98] backdrop-blur-sm border border-neutral-100
-                                    opacity-0 invisible pointer-events-none
-                                    group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto
-                                    transition-all duration-200
-                                    translate-y-1 group-hover:translate-y-0
-                                    py-2 shadow-[0_8px_40px_rgba(0,0,0,0.1)]">
-                            {item.items?.map((sub) => (
-                                <a
-                                    href={sub.href}
-                                    class="block px-5 py-2.5 text-[11px] tracking-[0.12em] uppercase
-                                           text-neutral-500 hover:text-brand-primary hover:bg-neutral-50
-                                           transition-colors duration-150"
-                                >
-                                    {sub.label}
-                                </a>
-                            ))}
-                        </div>
-                    )}
-                </div>
+                )
             ))}
         </nav>
 
-        <!-- CTA + MOBILE BTN -->
-        <div class="flex items-center gap-4 z-50 flex-shrink-0">
-            <a
-                href="/contacto"
-                class="nav-cta hidden md:block px-5 py-2 text-[11px] tracking-[0.18em] uppercase
-                       border transition-all duration-300"
-            >
-                Contacto
+        <!-- CTA + mobile -->
+        <div class="flex items-center gap-3 z-50 flex-shrink-0">
+            <a href="/contacto" class="nav-cta hidden md:inline-flex">
+                <span>Reservar</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
             </a>
-
-            <!-- Hamburger -->
-            <button
-                id="mobile-menu-btn"
-                class="nav-mobile-btn md:hidden focus:outline-none p-2.5 transition-colors duration-300"
-                aria-label="Abrir menú"
-            >
+            <button id="mobile-menu-btn" class="nav-mobile-btn md:hidden p-2" aria-label="Menú">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                          d="M4 6h16M4 12h16M4 18h16"/>
+                    <path stroke-linecap="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"/>
                 </svg>
             </button>
         </div>
+    </div>
 
+    <!-- MEGA: SERVICIOS -->
+    <div class="mega-menu" data-mega-panel="servicios">
+        <div class="container mx-auto px-6 max-w-[1400px] py-12">
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-3">
+                    <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">Consultoría · 5 rutas</p>
+                    <h3 class="font-serif text-3xl leading-tight text-brand-black mb-6">
+                        Todas las rutas <span class="italic text-neutral-400">a tu imagen.</span>
+                    </h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">
+                        Atención 1 a 1 en estudio privado. Cada ruta se adapta a tu momento personal y objetivo profesional.
+                    </p>
+                    <a href="/servicios" class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors">
+                        Ver todos los servicios
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="col-span-9 grid grid-cols-3 gap-6">
+                    {servicios.map((s) => (
+                        <a href={s.href} class="mega-card group">
+                            <div class="mega-img ph-editorial mb-4">
+                                <span class="absolute top-3 left-3 text-[9px] tracking-[0.3em] uppercase text-white/60">{s.n}</span>
+                                <span class={`absolute bottom-3 left-3 text-[9px] tracking-[0.3em] uppercase ${s.star ? "text-brand-primary" : "text-white/80"}`}>{s.tag}</span>
+                            </div>
+                            <h4 class="font-serif text-xl text-brand-black mega-title mb-1">{s.label}</h4>
+                            <p class="text-sm text-neutral-500 font-light leading-relaxed">{s.desc}</p>
+                            <span class="inline-flex items-center gap-2 mt-3 text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                                Descubrir <span class="mega-arrow">→</span>
+                            </span>
+                        </a>
+                    ))}
+
+                    <!-- Reservar card -->
+                    <a href="/contacto" class="mega-card group bg-brand-black text-white p-6 flex flex-col justify-between">
+                        <div>
+                            <p class="text-[9px] tracking-[0.3em] uppercase text-brand-primary mb-4">Cupos limitados</p>
+                            <h4 class="font-serif text-2xl text-white mb-3">Máx. 4 cupos / mes.</h4>
+                            <p class="text-sm text-neutral-400 font-light leading-relaxed">Agenda privada. Consulta disponibilidad y reserva tu espacio.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-2 mt-6 text-[10px] tracking-[0.3em] uppercase text-white">
+                            Reservar cita <span class="mega-arrow">→</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MEGA: ACADEMIA -->
+    <div class="mega-menu" data-mega-panel="academia">
+        <div class="container mx-auto px-6 max-w-[1400px] py-12">
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-3">
+                    <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">Academia RM</p>
+                    <h3 class="font-serif text-3xl leading-tight text-brand-black mb-6">
+                        Formación <span class="italic text-neutral-400">asíncrona.</span>
+                    </h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">
+                        Cuatro cursos + un libro oficial. El método RM disponible a tu ritmo, en cualquier parte del mundo.
+                    </p>
+                    <a href="/academia" class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors">
+                        Ver todos los cursos
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-span-9 grid grid-cols-3 gap-6">
+                    {cursos.map((c) => (
+                        <a href={c.href} class="mega-card group">
+                            <div class="mega-img mb-4" style={`background:${c.bg}`}>
+                                <span class={`absolute top-3 left-3 text-[9px] tracking-[0.3em] uppercase ${c.dark ? "text-white/70" : "text-neutral-500"}`}>{c.n}</span>
+                                <span class={`absolute bottom-3 left-3 font-serif italic text-3xl ${c.dark ? "text-white/90" : "text-brand-black/80"}`}>{c.word}</span>
+                            </div>
+                            <h4 class="font-serif text-xl text-brand-black mega-title mb-1">{c.label}</h4>
+                            <p class="text-sm text-neutral-500 font-light leading-relaxed">{c.desc}</p>
+                        </a>
+                    ))}
+                    <a href="/libro" class="mega-card group col-span-2 grid grid-cols-5 gap-6 items-center p-4 border border-neutral-200">
+                        <div class="col-span-2 mega-img" style="background:linear-gradient(135deg,#f4f1ea,#d5cdb9);aspect-ratio:3/4">
+                            <span class="absolute top-3 left-3 text-[9px] tracking-[0.3em] uppercase text-neutral-500">Libro</span>
+                        </div>
+                        <div class="col-span-3">
+                            <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-2">Recién publicado</p>
+                            <h4 class="font-serif text-2xl text-brand-black mega-title mb-2">Libro Oficial</h4>
+                            <p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">El método RM documentado. Tapa dura, 280 páginas.</p>
+                            <span class="inline-flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-brand-black">
+                                Comprar <span class="mega-arrow">→</span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 
-<!-- ─── MOBILE MENU (full-screen dark overlay) ──────────────────── -->
-<div
-    id="mobile-menu"
-    class="fixed inset-0 bg-[#0a0a0a] z-[60]
-           transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]
-           md:hidden flex flex-col"
->
-    <!-- top bar -->
-    <div class="px-6 flex justify-between items-center h-16 border-b border-white/[0.07]">
+<!-- ─── MOBILE MENU ────────────────────────────────── -->
+<div id="mobile-menu"
+     class="fixed inset-0 bg-[#0a0a0a] z-[60] transform translate-x-full md:hidden flex flex-col">
+    <div class="h-16 px-6 flex justify-between items-center border-b border-white/10">
         <span class="text-[10px] tracking-[0.4em] uppercase text-neutral-400">Menú</span>
-        <button
-            id="close-menu-btn"
-            class="text-neutral-500 hover:text-white transition-colors p-2 -mr-2"
-            aria-label="Cerrar menú"
-        >
+        <button id="close-menu-btn" class="text-white/70 p-2" aria-label="Cerrar">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+                <path stroke-linecap="round" stroke-width="1.5" d="M6 6l12 12M6 18L18 6"/>
             </svg>
         </button>
     </div>
-
-    <!-- links -->
-    <div class="flex-1 px-8 py-8 flex flex-col overflow-y-auto">
-        {navItems.map((item) =>
-            item.type === "simple" ? (
-                <a
-                    href={item.href}
-                    class="text-[2rem] font-serif text-white hover:text-neutral-400
-                           transition-colors duration-200 py-5 border-b border-white/[0.06]"
-                >
-                    {item.label}
-                </a>
-            ) : (
-                <div class="border-b border-white/[0.06]">
-                    <button
-                        class="mobile-accordion-btn text-[2rem] font-serif text-white hover:text-neutral-400
-                               transition-colors duration-200 w-full flex justify-between items-center py-5"
-                    >
-                        {item.label}
-                        <ChevronDown className="w-4 h-4 text-neutral-600 transition-transform duration-300 flex-shrink-0" />
-                    </button>
-                    <div class="mobile-accordion-content hidden pl-1 pb-6 space-y-2">
-                        {item.items?.map((sub) => (
-                            <a
-                                href={sub.href}
-                                class="block text-xs text-neutral-500 tracking-[0.15em] uppercase
-                                       hover:text-white transition-colors duration-150 py-2.5"
-                            >
-                                {sub.label}
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            )
-        )}
-
-        <!-- mobile CTA -->
-        <a
-            href="/contacto"
-            class="mt-10 bg-brand-primary text-white text-center py-4
-                   text-[11px] tracking-[0.2em] uppercase hover:opacity-85 transition-opacity"
-        >
+    <div class="flex-1 px-8 py-8 overflow-y-auto">
+        <a href="/servicios"      class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Servicios</a>
+        <a href="/nosotros"       class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">La Firma</a>
+        <a href="/casos-de-exito" class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Casos de Éxito</a>
+        <a href="/academia"       class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Academia</a>
+        <a href="/herramientas"   class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Herramientas</a>
+        <a href="/contacto" class="mt-10 block bg-brand-primary text-white text-center py-4 text-[11px] tracking-[0.2em] uppercase">
             Reservar Consulta
-        </a>
-
-        <!-- Instagram -->
-        <a
-            href="https://www.instagram.com/rogermurilloai/"
-            target="_blank"
-            rel="noopener"
-            class="mt-4 flex items-center justify-center gap-2.5 text-neutral-400
-                   hover:text-neutral-300 transition-colors duration-200 py-3"
-        >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            <span class="text-[11px] tracking-[0.2em] uppercase">@rogermurilloai</span>
         </a>
     </div>
 </div>
 
-<!-- ─── STYLES ────────────────────────────────────────────────────── -->
-<style is:global>
-    /* DEFAULT: transparente + blanco */
-    .nav-logo       { filter: brightness(0) invert(1); }
-    .nav-link       { color: rgba(255,255,255,0.92); }
-    .nav-cta        { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.35); }
-    .nav-cta:hover  { color: white; border-color: rgba(255,255,255,0.8); background-color: rgba(255,255,255,0.08); }
-    .nav-mobile-btn { color: rgba(255,255,255,0.9); }
+<!-- ─── DADO 3D FAB ─────────────────────────────────── -->
+<div id="dice-fab" aria-hidden="true">
+    <span class="dice-hint">¿Listo para jugar?</span>
+    <div class="dice-stage" role="button" tabindex="0" aria-label="Revoluciona tu imagen">
+        <div class="dice">
+            <div class="dice-face f-front"><span class="face-num">01</span><span class="face-label italic">Color</span><span class="face-sub">Paleta</span><span class="face-accent"></span></div>
+            <div class="dice-face f-right"><span class="face-num">02</span><span class="face-label italic">Forma</span><span class="face-sub">Visagismo</span><span class="face-accent"></span></div>
+            <div class="dice-face f-back"><span class="face-num">03</span><span class="face-label italic">Voz</span><span class="face-sub">Comunicación</span><span class="face-accent"></span></div>
+            <div class="dice-face f-left"><span class="face-num">04</span><span class="face-label italic">Estilo</span><span class="face-sub">Lenguaje</span><span class="face-accent"></span></div>
+            <div class="dice-face f-top"><span class="face-num">05</span><span class="face-label italic">Autoridad</span><span class="face-sub">Presencia</span><span class="face-accent"></span></div>
+            <div class="dice-face f-bottom"><span class="face-num">06</span><span class="face-label italic">Tú</span><span class="face-sub">Revoluciona</span><span class="face-accent"></span></div>
+        </div>
+    </div>
+</div>
 
-    /* SCROLLED: frosted glass + oscuro */
-    #main-header.scrolled {
-        background-color: rgba(255,255,255,0.97) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px) !important;
-        border-bottom: 1px solid rgba(0,0,0,0.06) !important;
-        box-shadow: 0 1px 24px rgba(0,0,0,0.05) !important;
+<!-- ─── MODAL: REVOLUCIONA TU IMAGEN ────────────────── -->
+<div id="tool-modal" role="dialog" aria-modal="true" aria-labelledby="tool-modal-title">
+    <div class="tool-modal-card">
+        <button class="tool-close" id="tool-modal-close" aria-label="Cerrar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 6l12 12M6 18L18 6"/>
+            </svg>
+        </button>
+        <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">Herramienta · Gratuita</p>
+        <h3 id="tool-modal-title" class="font-serif text-4xl leading-[1.05] text-[#0a0a0a] mb-5">
+            Revoluciona <span class="italic text-neutral-400">tu imagen.</span>
+        </h3>
+        <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">
+            Test interactivo de 6 minutos. Descubre tu estación de color, tu forma facial y el lenguaje visual que mejor comunica quién eres — basado en el método RM.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+            <a href="/herramientas" class="tool-cta inline-flex items-center justify-center gap-2 px-6 py-3 text-[11px] tracking-[0.2em] uppercase border border-[#0a0a0a] text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white transition-colors duration-400">
+                <span>Empezar test</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+            </a>
+            <button id="tool-modal-dismiss" class="text-[11px] tracking-[0.2em] uppercase text-neutral-500 hover:text-neutral-800 transition-colors px-5 py-3">
+                Ahora no
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ─── STYLES ──────────────────────────────────────── -->
+<style is:global>
+    /* HEADER base (transparente sobre hero oscuro) */
+    #main-header { transition: background .5s, backdrop-filter .5s, border-color .5s, box-shadow .5s; }
+    .nav-scrim   { transition: opacity .5s; }
+    .nav-logo    { filter: brightness(0) invert(1); transition: filter .5s; }
+    .micro-text  { color: rgba(255,255,255,0.55); }
+
+    .nav-link    { color: rgba(255,255,255,0.92); position: relative; transition: color .4s; }
+    .nav-link::after {
+        content: ""; position: absolute; left: 50%; bottom: -6px;
+        width: 0; height: 1px; background: currentColor;
+        transition: width .45s cubic-bezier(.7,0,.3,1), left .45s cubic-bezier(.7,0,.3,1);
     }
-    #main-header.scrolled .nav-scrim      { opacity: 0 !important; }
-    #main-header.scrolled .nav-logo       { filter: brightness(0) !important; }
-    #main-header.scrolled .nav-link       { color: rgb(10,10,10) !important; }
-    #main-header.scrolled .nav-cta        { color: rgb(10,10,10) !important; border-color: rgba(10,10,10,0.2) !important; }
-    #main-header.scrolled .nav-cta:hover  { background-color: rgb(10,10,10) !important; color: white !important; border-color: rgb(10,10,10) !important; }
-    #main-header.scrolled .nav-mobile-btn { color: rgb(10,10,10) !important; }
+    .nav-link:hover::after, .nav-link.is-active::after { width: 100%; left: 0; }
+    .nav-link.is-active::after { background: #C41230; height: 1.5px; }
+    .nav-mobile-btn { color: rgba(255,255,255,0.92); }
+
+    /* CTA fill animado */
+    .nav-cta {
+        position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: .6rem;
+        padding: 10px 22px; border: 1px solid rgba(255,255,255,.35);
+        color: rgba(255,255,255,.92); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+        transition: color .5s, border-color .5s;
+    }
+    .nav-cta::before {
+        content: ""; position: absolute; inset: 0; background: #C41230;
+        transform: scaleY(0); transform-origin: bottom;
+        transition: transform .5s cubic-bezier(.7,0,.3,1); z-index: 0;
+    }
+    .nav-cta:hover { color: #fff; border-color: #C41230; }
+    .nav-cta:hover::before { transform: scaleY(1); transform-origin: top; }
+    .nav-cta > * { position: relative; z-index: 1; }
+
+    /* SCROLLED state */
+    #main-header.scrolled {
+        background: rgba(255,255,255,.97);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(0,0,0,.05);
+        box-shadow: 0 1px 30px rgba(0,0,0,.04);
+    }
+    #main-header.scrolled .nav-scrim   { opacity: 0; }
+    #main-header.scrolled .nav-logo    { filter: brightness(0); }
+    #main-header.scrolled .micro-text  { color: rgba(10,10,10,.55); }
+    #main-header.scrolled .nav-link    { color: #0a0a0a; }
+    #main-header.scrolled .nav-cta     { color: #0a0a0a; border-color: rgba(10,10,10,.2); }
+    #main-header.scrolled .nav-cta:hover { color: #fff; border-color: #C41230; }
+    #main-header.scrolled .nav-mobile-btn { color: #0a0a0a; }
+
+    /* Live dot */
+    .live-dot { position: relative; display: inline-block; width: 6px; height: 6px; border-radius: 999px; background: #C41230; }
+    .live-dot::before {
+        content: ""; position: absolute; inset: 0; border-radius: 999px; background: #C41230;
+        animation: rm-pulse 2s ease-out infinite;
+    }
+    @keyframes rm-pulse { 0% { opacity: .6; transform: scale(1);} 100% { opacity: 0; transform: scale(3);} }
+
+    /* MEGA MENU */
+    .mega-menu {
+        position: absolute; left: 0; right: 0; top: 100%;
+        background: #fff; border-bottom: 1px solid rgba(0,0,0,.05);
+        box-shadow: 0 12px 60px rgba(0,0,0,.08);
+        opacity: 0; visibility: hidden; transform: translateY(-8px);
+        transition: opacity .4s, transform .4s, visibility .4s;
+        z-index: 40; pointer-events: none;
+    }
+    .mega-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .mega-card { position: relative; overflow: hidden; transition: transform .5s cubic-bezier(.7,0,.3,1); }
+    .mega-card .mega-img { aspect-ratio: 4/3; background: #f4f2ee; position: relative; overflow: hidden; transition: transform .8s cubic-bezier(.7,0,.3,1); }
+    .mega-card:hover .mega-img { transform: scale(1.04); }
+    .mega-card .mega-img::after {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, transparent 55%, rgba(10,10,10,.55));
+        opacity: 0; transition: opacity .5s;
+    }
+    .mega-card:hover .mega-img::after { opacity: 1; }
+    .mega-card .mega-title { transition: color .4s; }
+    .mega-card:hover .mega-title { color: #C41230; }
+    .mega-arrow { display: inline-block; transition: transform .4s cubic-bezier(.7,0,.3,1); }
+    .mega-card:hover .mega-arrow { transform: translateX(6px); }
+    .ph-editorial {
+        background:
+            radial-gradient(circle at 30% 30%, rgba(196,18,48,.12), transparent 55%),
+            linear-gradient(135deg, #1a1a1a, #2a2a2a 50%, #3a3a3a);
+    }
+
+    /* Mobile menu open */
+    #mobile-menu { transition: transform .6s cubic-bezier(.76,0,.24,1); }
+    #mobile-menu.is-open { transform: translateX(0); }
+
+    /* ── DICE 3D FAB ────────────────────────────────── */
+    #dice-fab {
+        position: fixed; right: 32px; bottom: 32px; z-index: 55;
+        display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+        opacity: 0; transform: translateY(24px) scale(.92); pointer-events: none;
+        transition: opacity .55s cubic-bezier(.7,0,.3,1), transform .55s cubic-bezier(.7,0,.3,1);
+    }
+    #dice-fab.is-visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .dice-hint {
+        background: rgba(10,10,10,.92); color: #fff; padding: 7px 14px; border-radius: 999px;
+        font-size: 10px; letter-spacing: .3em; text-transform: uppercase; font-weight: 500;
+        white-space: nowrap; backdrop-filter: blur(8px); box-shadow: 0 8px 28px rgba(0,0,0,.2);
+        opacity: 0; transform: translateX(8px);
+        transition: opacity .35s, transform .35s .05s;
+        position: relative; margin-right: 14px;
+    }
+    .dice-hint::after {
+        content: ""; position: absolute; right: -5px; top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+        width: 10px; height: 10px; background: rgba(10,10,10,.92);
+    }
+    #dice-fab:hover .dice-hint { opacity: 1; transform: translateX(0); }
+
+    .dice-stage { width: 112px; height: 112px; perspective: 700px; cursor: pointer; position: relative; }
+    .dice-stage::before {
+        content: ""; position: absolute; left: 50%; top: 100%;
+        transform: translate(-50%, -8px);
+        width: 90px; height: 18px;
+        background: radial-gradient(ellipse, rgba(0,0,0,.35), transparent 70%);
+        filter: blur(4px); z-index: 0; transition: opacity .4s;
+    }
+    .dice-stage:hover::before { opacity: .55; }
+
+    .dice {
+        position: absolute; inset: 0; transform-style: preserve-3d;
+        animation: dice-spin 14s linear infinite;
+        transition: transform .6s cubic-bezier(.7,0,.3,1);
+    }
+    .dice-stage:hover .dice { animation-duration: 6s; }
+    .dice-stage.is-rolling .dice { animation: dice-roll 1.4s cubic-bezier(.4,0,.2,1) forwards; }
+
+    @keyframes dice-spin {
+        0%   { transform: rotateX(-22deg) rotateY(0deg)   rotateZ(0deg); }
+        100% { transform: rotateX(-22deg) rotateY(360deg) rotateZ(0deg); }
+    }
+    @keyframes dice-roll {
+        0%   { transform: rotateX(-22deg)  rotateY(0deg)   rotateZ(0deg)   scale(1); }
+        30%  { transform: rotateX(-200deg) rotateY(180deg) rotateZ(90deg)  scale(1.1); }
+        60%  { transform: rotateX(-380deg) rotateY(400deg) rotateZ(220deg) scale(.95); }
+        100% { transform: rotateX(-560deg) rotateY(720deg) rotateZ(360deg) scale(1); }
+    }
+
+    .dice-face {
+        position: absolute; width: 112px; height: 112px;
+        background: #fff; border: 1px solid rgba(10,10,10,.08);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,.9), inset 0 -8px 16px rgba(0,0,0,.05);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 8px; text-align: center; color: #0a0a0a; border-radius: 14px;
+    }
+    .dice-face .face-num {
+        position: absolute; top: 8px; left: 10px;
+        font-family: 'Playfair Display', serif; font-size: 9px; font-style: italic;
+        color: #C41230; letter-spacing: .08em;
+    }
+    .dice-face .face-label { font-family: 'Playfair Display', serif; font-size: 18px; letter-spacing: -.01em; line-height: 1; }
+    .dice-face .face-sub   { font-size: 7px; letter-spacing: .32em; text-transform: uppercase; color: rgba(10,10,10,.45); margin-top: 6px; }
+    .dice-face .face-accent{ width: 18px; height: 1px; background: #C41230; margin-top: 8px; }
+
+    .dice-face.f-front  { transform: translateZ(56px); }
+    .dice-face.f-back   { transform: rotateY(180deg) translateZ(56px); }
+    .dice-face.f-right  { transform: rotateY( 90deg) translateZ(56px); }
+    .dice-face.f-left   { transform: rotateY(-90deg) translateZ(56px); }
+    .dice-face.f-top    { transform: rotateX( 90deg) translateZ(56px); }
+    .dice-face.f-bottom { transform: rotateX(-90deg) translateZ(56px); }
+
+    @media (max-width: 640px) {
+        #dice-fab { right: 20px; bottom: 20px; }
+        .dice-stage { width: 92px; height: 92px; }
+        .dice-face { width: 92px; height: 92px; }
+        .dice-face.f-front  { transform: translateZ(46px); }
+        .dice-face.f-back   { transform: rotateY(180deg) translateZ(46px); }
+        .dice-face.f-right  { transform: rotateY( 90deg) translateZ(46px); }
+        .dice-face.f-left   { transform: rotateY(-90deg) translateZ(46px); }
+        .dice-face.f-top    { transform: rotateX( 90deg) translateZ(46px); }
+        .dice-face.f-bottom { transform: rotateX(-90deg) translateZ(46px); }
+    }
+
+    /* Tool modal */
+    #tool-modal {
+        position: fixed; inset: 0; z-index: 80;
+        background: rgba(10,10,10,.6);
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        opacity: 0; visibility: hidden;
+        transition: opacity .4s, visibility .4s;
+        display: flex; align-items: center; justify-content: center; padding: 24px;
+    }
+    #tool-modal.is-open { opacity: 1; visibility: visible; }
+    .tool-modal-card {
+        background: #fff; max-width: 560px; width: 100%;
+        padding: 48px 40px; position: relative;
+        transform: scale(.96); transition: transform .4s cubic-bezier(.7,0,.3,1);
+    }
+    #tool-modal.is-open .tool-modal-card { transform: scale(1); }
+    .tool-close {
+        position: absolute; top: 18px; right: 18px;
+        width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+        color: #737373; cursor: pointer; transition: color .3s;
+    }
+    .tool-close:hover { color: #0a0a0a; }
 </style>
 
-<!-- ─── SCRIPT ────────────────────────────────────────────────────── -->
+<!-- ─── SCRIPTS ──────────────────────────────────────── -->
 <script>
     const header   = document.getElementById("main-header");
     const menuBtn  = document.getElementById("mobile-menu-btn");
     const closeBtn = document.getElementById("close-menu-btn");
     const menu     = document.getElementById("mobile-menu");
 
-    // Scroll handler
+    // Scroll state
     const onScroll = () => {
         header?.classList.toggle("scrolled", window.scrollY > 48);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    // Mobile open / close
+    // Mobile menu
     menuBtn?.addEventListener("click", () => {
+        menu?.classList.add("is-open");
         menu?.classList.remove("translate-x-full");
         document.body.style.overflow = "hidden";
     });
     const closeMenu = () => {
+        menu?.classList.remove("is-open");
         menu?.classList.add("translate-x-full");
         document.body.style.overflow = "";
     };
     closeBtn?.addEventListener("click", closeMenu);
-
-    // Close on nav link click
     menu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
 
-    // Mobile accordion
-    document.querySelectorAll<HTMLButtonElement>(".mobile-accordion-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const content = btn.nextElementSibling as HTMLElement;
-            const icon    = btn.querySelector("svg") as SVGElement;
-            if (!content || !icon) return;
-
-            const wasHidden = content.classList.contains("hidden");
-
-            // Close all
-            document.querySelectorAll<HTMLElement>(".mobile-accordion-content")
-                .forEach(c => c.classList.add("hidden"));
-            document.querySelectorAll<SVGElement>(".mobile-accordion-btn svg")
-                .forEach(i => (i.style.transform = ""));
-
-            if (wasHidden) {
-                content.classList.remove("hidden");
-                icon.style.transform = "rotate(180deg)";
-            }
+    // Mega menu hover
+    const triggers = document.querySelectorAll("[data-mega]");
+    const panels   = document.querySelectorAll("[data-mega-panel]");
+    let hoverTimer;
+    const closeAllMegas = () => panels.forEach(p => p.classList.remove("is-open"));
+    triggers.forEach(t => {
+        t.addEventListener("mouseenter", () => {
+            clearTimeout(hoverTimer);
+            const key = (t as HTMLElement).dataset.mega;
+            closeAllMegas();
+            const panel = document.querySelector(`[data-mega-panel="${key}"]`);
+            panel?.classList.add("is-open");
         });
+        t.addEventListener("mouseleave", () => {
+            hoverTimer = setTimeout(closeAllMegas, 140);
+        });
+    });
+    panels.forEach(p => {
+        p.addEventListener("mouseenter", () => clearTimeout(hoverTimer));
+        p.addEventListener("mouseleave", () => { hoverTimer = setTimeout(closeAllMegas, 140); });
+    });
+
+    // Active link based on current path
+    const path = window.location.pathname;
+    document.querySelectorAll<HTMLAnchorElement>(".nav-link").forEach(a => {
+        const href = a.getAttribute("href") || "";
+        if (href !== "/" && path.startsWith(href)) a.classList.add("is-active");
+    });
+
+    // Live clock
+    const clock = document.getElementById("live-clock");
+    const tick = () => {
+        const d = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }));
+        const hh = String(d.getHours()).padStart(2, "0");
+        const mm = String(d.getMinutes()).padStart(2, "0");
+        if (clock) clock.textContent = `${hh}:${mm} BOG`;
+    };
+    tick(); setInterval(tick, 30000);
+
+    // ── Dice FAB ──
+    const diceFab   = document.getElementById("dice-fab");
+    const diceStage = diceFab?.querySelector(".dice-stage") as HTMLElement | null;
+    const toolModal = document.getElementById("tool-modal");
+
+    const onDiceScroll = () => {
+        diceFab?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.35);
+    };
+    window.addEventListener("scroll", onDiceScroll, { passive: true });
+    onDiceScroll();
+
+    const openTool = () => {
+        diceStage?.classList.add("is-rolling");
+        setTimeout(() => {
+            toolModal?.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+        }, 900);
+        setTimeout(() => diceStage?.classList.remove("is-rolling"), 1500);
+    };
+    diceStage?.addEventListener("click", openTool);
+    diceStage?.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openTool(); }
+    });
+
+    const closeTool = () => {
+        toolModal?.classList.remove("is-open");
+        document.body.style.overflow = "";
+    };
+    document.getElementById("tool-modal-close")?.addEventListener("click", closeTool);
+    document.getElementById("tool-modal-dismiss")?.addEventListener("click", closeTool);
+    toolModal?.addEventListener("click", (e) => { if (e.target === toolModal) closeTool(); });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && toolModal?.classList.contains("is-open")) closeTool();
     });
 </script>
