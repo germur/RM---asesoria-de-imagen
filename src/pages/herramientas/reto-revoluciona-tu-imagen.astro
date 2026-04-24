@@ -84,10 +84,22 @@ const STEPS = [
 
     /* WIZARD LAYOUT */
     .wizard{min-height:100vh;display:grid;grid-template-columns:260px 1fr;gap:0;padding-top:var(--rm-navH)}
-    @media(max-width:900px){.wizard{grid-template-columns:1fr;padding-top:120px}.wiz-side{display:none}}
+    @media(max-width:900px){.wizard{grid-template-columns:1fr;padding-top:var(--rm-navH)}.wiz-side{display:none}}
     .wiz-side{background:#050505;border-right:1px solid rgba(255,255,255,.08);padding:40px 24px;position:sticky;top:var(--rm-navH);height:calc(100vh - var(--rm-navH));overflow-y:auto}
-    .wiz-main{padding:40px 40px 120px;max-width:780px;margin:0 auto;width:100%}
-    @media(max-width:900px){.wiz-main{padding:20px 24px 120px}}
+    .wiz-main{padding:40px 40px 140px;max-width:780px;margin:0 auto;width:100%}
+    @media(max-width:900px){.wiz-main{padding:16px 20px 160px}}
+    @media(max-width:480px){.wiz-main{padding:12px 16px 180px}}
+
+    /* MOBILE STEP STRIP */
+    .wiz-mobile-strip{display:none}
+    @media(max-width:900px){
+      .wiz-mobile-strip{display:flex;position:sticky;top:var(--rm-navH);z-index:30;background:#050505;border-bottom:1px solid rgba(255,255,255,.08);padding:10px 12px;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -20px 20px}
+      .wiz-mobile-strip::-webkit-scrollbar{display:none}
+      .wiz-pill{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:8px 12px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);background:transparent;font-family:inherit;cursor:pointer;white-space:nowrap}
+      .wiz-pill.active{border-color:var(--rm-red);background:var(--rm-red);color:#fff}
+      .wiz-pill.done{color:#fff;border-color:rgba(255,255,255,.35)}
+      .wiz-pill-n{font-family:serif;font-style:italic;font-size:11px}
+    }
 
     .step-item{display:flex;align-items:flex-start;gap:12px;padding:10px 8px;cursor:pointer;border-left:2px solid transparent;transition:all .25s;text-align:left;width:100%;background:none;border-right:0;border-top:0;border-bottom:0;font-family:inherit}
     .step-item:hover{background:rgba(255,255,255,.03)}
@@ -105,10 +117,15 @@ const STEPS = [
     @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
     .step-head{margin-bottom:40px}
+    @media(max-width:600px){.step-head{margin-bottom:28px}}
     .step-tag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--rm-red);margin-bottom:12px}
-    .step-title{font-family:serif;font-size:2.5rem;line-height:1;font-weight:400}
-    @media(max-width:600px){.step-title{font-size:2rem}}
+    .step-title{font-family:serif;font-size:2.5rem;line-height:1.05;font-weight:400;word-wrap:break-word;overflow-wrap:break-word;hyphens:auto}
+    @media(max-width:600px){.step-title{font-size:1.75rem;line-height:1.1}}
     .step-sub{font-family:serif;font-style:italic;color:rgba(255,255,255,.5);font-size:1.1rem;margin-top:14px;line-height:1.4}
+    @media(max-width:600px){.step-sub{font-size:1rem}}
+    @media(max-width:600px){.accent-box{padding:20px}.decl{padding:22px;font-size:1rem}.pullq{font-size:1.1rem;padding-left:14px;margin:24px 0}}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    @media(max-width:600px){.two-col{grid-template-columns:1fr;gap:16px}}
 
     .field{margin-bottom:32px}
     .field-label{display:block;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
@@ -116,9 +133,11 @@ const STEPS = [
     .field-hint{font-size:12px;color:rgba(255,255,255,.4);margin-top:6px;font-style:italic}
 
     /* NAV */
-    .wiz-nav{position:fixed;bottom:0;left:260px;right:0;background:rgba(10,10,10,.96);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;z-index:40}
-    @media(max-width:900px){.wiz-nav{left:0;padding:14px 20px}}
+    .wiz-nav{position:fixed;bottom:0;left:260px;right:0;background:rgba(10,10,10,.96);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;z-index:40;padding-bottom:calc(16px + env(safe-area-inset-bottom,0))}
+    @media(max-width:900px){.wiz-nav{left:0;padding:12px 14px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0));gap:8px}.wiz-nav .wiz-count{display:none}.wiz-progress{margin:0 8px}}
+    @media(max-width:480px){.wiz-nav{padding:10px 10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0))}}
     .wiz-btn{padding:14px 28px;font-size:10px;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);color:#fff;background:transparent;cursor:pointer;transition:all .3s;font-family:inherit}
+    @media(max-width:480px){.wiz-btn{padding:11px 14px;font-size:9px;letter-spacing:.18em;flex-shrink:0}}
     .wiz-btn:hover{border-color:#fff;background:rgba(255,255,255,.05)}
     .wiz-btn:disabled{opacity:.25;cursor:not-allowed}
     .wiz-btn.primary{background:var(--rm-red);border-color:var(--rm-red)}
@@ -219,11 +238,21 @@ const STEPS = [
       <!-- ─── MAIN: panels ─── -->
       <main class="wiz-main">
 
+        <!-- Mobile step strip (visible <900px) -->
+        <nav class="wiz-mobile-strip" id="mobileStrip" aria-label="Pasos del reto">
+          {STEPS.map(s => (
+            <button class="wiz-pill" data-goto={s.id}>
+              <span class="wiz-pill-n">{String(s.id).padStart(2,'0')}</span>
+              <span>{s.title}</span>
+            </button>
+          ))}
+        </nav>
+
         <!-- PASO 1 — PORTADA -->
         <section class="step-panel active" data-step="1">
           <p style="font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:24px">Dossier Cinematográfico · Primera Edición</p>
-          <h1 style="font-family:serif;font-size:clamp(2.8rem,7vw,5.5rem);line-height:.9;margin-bottom:8px">Construcción</h1>
-          <h1 style="font-family:serif;font-size:clamp(2.8rem,7vw,5.5rem);line-height:.9;font-style:italic;color:var(--rm-red);margin-bottom:40px">del personaje.</h1>
+          <h1 style="font-family:serif;font-size:clamp(2rem,7vw,5.5rem);line-height:.9;margin-bottom:8px">Construcción</h1>
+          <h1 style="font-family:serif;font-size:clamp(2rem,7vw,5.5rem);line-height:.9;font-style:italic;color:var(--rm-red);margin-bottom:40px">del personaje.</h1>
 
           <div class="pullq">
             "La imagen personal no comienza en la ropa.<br/>Comienza en la identidad."
@@ -499,7 +528,7 @@ const STEPS = [
             <p>Y me comprometo a sostener esta transformación más allá de este reto.</p>
           </div>
 
-          <div class="field" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div class="field two-col" style="margin-top:40px">
             <div>
               <label class="field-label">Firma</label>
               <input type="text" class="fi" data-save="firma" placeholder="Tu nombre completo" />
@@ -573,6 +602,7 @@ const STEPS = [
 
       const panels = document.querySelectorAll('.step-panel');
       const sideItems = document.querySelectorAll('.step-item');
+      const pills = document.querySelectorAll('.wiz-pill');
       const fill = document.getElementById('wizFill');
       const count = document.getElementById('wizCount');
       const btnPrev = document.getElementById('btnPrev');
@@ -587,6 +617,12 @@ const STEPS = [
           it.classList.toggle('active', isActive);
           it.classList.toggle('done', i+1 < current || stepHasData(panels[i]));
         });
+        pills.forEach((p,i) => {
+          const isActive = (i+1) === current;
+          p.classList.toggle('active', isActive);
+          p.classList.toggle('done', i+1 < current || stepHasData(panels[i]));
+          if (isActive) p.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+        });
         fill.style.width = ((current-1) / (TOTAL-1) * 100) + '%';
         count.textContent = String(current).padStart(2,'0') + ' / ' + String(TOTAL).padStart(2,'0');
         btnPrev.disabled = current === 1;
@@ -600,6 +636,7 @@ const STEPS = [
         goto(current + 1);
       });
       sideItems.forEach(it => it.addEventListener('click', () => goto(Number(it.dataset.goto))));
+      pills.forEach(p => p.addEventListener('click', () => goto(Number(p.dataset.goto))));
 
       // Print
       const doPrint = () => window.print();
