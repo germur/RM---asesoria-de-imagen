@@ -215,10 +215,50 @@ const cursos = [
         </button>
     </div>
     <div class="flex-1 px-8 py-8 overflow-y-auto">
-        <a href="/servicios"      class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Servicios</a>
+        <!-- Servicios (expandible) -->
+        <details class="mob-group border-b border-white/10">
+            <summary class="mob-summary">
+                <a href="/servicios" class="text-[2rem] font-serif text-white">Servicios</a>
+                <span class="mob-chev">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+            </summary>
+            <div class="pb-5 pl-1 space-y-2.5">
+                {servicios.map((s) => (
+                    <a href={s.href} class="mob-sub flex items-baseline gap-3">
+                        <span class="font-serif italic text-xs text-neutral-500 w-6">{s.n}</span>
+                        <span>{s.label}</span>
+                        {s.star && <span class="text-brand-primary text-[9px] tracking-[0.3em] uppercase ml-2">★</span>}
+                    </a>
+                ))}
+            </div>
+        </details>
+
         <a href="/nosotros"       class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">La Firma</a>
         <a href="/casos-de-exito" class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Casos de Éxito</a>
-        <a href="/academia"       class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Academia</a>
+
+        <!-- Academia (expandible) -->
+        <details class="mob-group border-b border-white/10">
+            <summary class="mob-summary">
+                <a href="/academia" class="text-[2rem] font-serif text-white">Academia</a>
+                <span class="mob-chev">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+            </summary>
+            <div class="pb-5 pl-1 space-y-2.5">
+                {cursos.map((c) => (
+                    <a href={c.href} class="mob-sub flex items-baseline gap-3">
+                        <span class="font-serif italic text-xs text-neutral-500 w-6">{c.n}</span>
+                        <span>{c.label}</span>
+                    </a>
+                ))}
+                <a href="/libro" class="mob-sub flex items-baseline gap-3">
+                    <span class="font-serif italic text-xs text-neutral-500 w-6">★</span>
+                    <span>Libro Oficial</span>
+                </a>
+            </div>
+        </details>
+
         <a href="/herramientas"   class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Herramientas</a>
         <a href="/contacto" class="mt-10 block bg-brand-primary text-white text-center py-4 text-[11px] tracking-[0.2em] uppercase">
             Reservar Consulta
@@ -359,6 +399,19 @@ const cursos = [
     /* Mobile menu open */
     #mobile-menu { transition: transform .6s cubic-bezier(.76,0,.24,1); }
     #mobile-menu.is-open { transform: translateX(0); }
+
+    /* Mobile collapsibles */
+    .mob-group > summary { list-style: none; cursor: pointer; padding: 1.25rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .mob-group > summary::-webkit-details-marker { display: none; }
+    .mob-group .mob-chev { color: rgba(255,255,255,.4); transition: transform .35s cubic-bezier(.7,0,.3,1); display: inline-flex; }
+    .mob-group[open] .mob-chev { transform: rotate(180deg); color: #C41230; }
+    .mob-sub {
+        display: flex; padding: 8px 0;
+        font-size: 14px; color: rgba(255,255,255,.7);
+        font-weight: 300; letter-spacing: .02em;
+        transition: color .25s, padding-left .3s;
+    }
+    .mob-sub:hover, .mob-sub:active { color: #fff; padding-left: 6px; }
 
     /* ── DICE 3D FAB ────────────────────────────────── */
     #dice-fab {
