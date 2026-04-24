@@ -38,6 +38,12 @@ const geoSchema = JSON.stringify({
 
     <!-- HERO — editorial, negro, líneas grandes -->
     <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden min-h-screen flex flex-col justify-center">
+        <!-- Imagen de fondo difuminada (silueta de vestido morado) -->
+        <div class="hero-bg-img absolute inset-y-0 right-0 w-full md:w-3/5 lg:w-1/2 pointer-events-none select-none" aria-hidden="true">
+            <img src="/images/roger-hero.jpg" alt="" class="w-full h-full object-cover object-center opacity-25 md:opacity-30 mix-blend-luminosity" loading="eager" />
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/70 to-brand-black/20"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-brand-black/40"></div>
+        </div>
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="flex items-center gap-5 mb-14">
                 <span class="w-12 h-px bg-brand-primary"></span>
@@ -227,17 +233,31 @@ const geoSchema = JSON.stringify({
             </div>
 
             <div class="grid md:grid-cols-2 gap-px bg-neutral-200">
-                <div class="bg-neutral-50 p-12 md:p-16">
-                    <p class="tag text-brand-primary mb-8">Perspectiva masculina</p>
-                    <h3 class="font-serif text-3xl md:text-4xl text-brand-black mb-6 mt-8">Roger Murillo</h3>
-                    <p class="text-base text-neutral-600 font-light leading-relaxed mb-8">La lectura desde la autoridad, la presencia ejecutiva y los códigos de poder. Roger analiza cómo tu imagen comunica liderazgo, confianza y competencia.</p>
-                    <a href="/nosotros#roger" class="inline-flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors duration-500">Leer su historia →</a>
+                <div class="bg-neutral-50 p-0 md:p-0 flex flex-col">
+                    <div class="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden">
+                        <img src="/images/roger-portrait-bw.jpg" alt="Roger Murillo, asesor de imagen ejecutiva" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-50 via-neutral-50/0 to-transparent"></div>
+                        <span class="absolute top-6 left-6 w-10 h-px bg-brand-primary"></span>
+                    </div>
+                    <div class="p-10 md:p-12">
+                        <p class="tag text-brand-primary mb-6">Perspectiva masculina</p>
+                        <h3 class="font-serif text-3xl md:text-4xl text-brand-black mb-6 mt-6">Roger Murillo</h3>
+                        <p class="text-base text-neutral-600 font-light leading-relaxed mb-8">La lectura desde la autoridad, la presencia ejecutiva y los códigos de poder. Roger analiza cómo tu imagen comunica liderazgo, confianza y competencia.</p>
+                        <a href="/nosotros#roger" class="inline-flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors duration-500">Leer su historia →</a>
+                    </div>
                 </div>
-                <div class="bg-white p-12 md:p-16">
-                    <p class="tag text-brand-primary mb-8">Perspectiva femenina</p>
-                    <h3 class="font-serif text-3xl md:text-4xl text-brand-black mb-6 mt-8">Adriana Garzón</h3>
-                    <p class="text-base text-neutral-600 font-light leading-relaxed mb-8">La lectura desde la armonía, la coherencia estética y la sensibilidad del color. Certificada por el IDB y el New York Institute.</p>
-                    <a href="/nosotros#adriana" class="inline-flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors duration-500">Leer su historia →</a>
+                <div class="bg-white flex flex-col">
+                    <div class="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden">
+                        <img src="/images/adriana-portrait-bw.jpg" alt="Adriana Garzón, especialista en colorimetría y salud capilar" class="absolute inset-0 w-full h-full object-cover grayscale" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-white/0 to-transparent"></div>
+                        <span class="absolute top-6 left-6 w-10 h-px bg-brand-primary"></span>
+                    </div>
+                    <div class="p-10 md:p-12">
+                        <p class="tag text-brand-primary mb-6">Perspectiva femenina</p>
+                        <h3 class="font-serif text-3xl md:text-4xl text-brand-black mb-6 mt-6">Adriana Garzón</h3>
+                        <p class="text-base text-neutral-600 font-light leading-relaxed mb-8">La lectura desde la armonía, la coherencia estética y la sensibilidad del color. Certificada por el IDB y el New York Institute.</p>
+                        <a href="/nosotros#adriana" class="inline-flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors duration-500">Leer su historia →</a>
+                    </div>
                 </div>
             </div>
         </div>
