@@ -65,6 +65,9 @@ const STEPS = [
   <style is:global>
     :root{--rm-red:#C41230}
     .reto-body{background:#0a0a0a;color:#fff;font-family:inherit}
+    .reto-body{--rm-navH:150px}
+    .reto-body::before{content:"";position:fixed;top:0;left:0;right:0;height:var(--rm-navH);background:#fff;z-index:1;pointer-events:none}
+    @media(max-width:900px){.reto-body{--rm-navH:120px}}
 
     /* INPUTS unificados */
     .fi{background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.18);color:#fff;width:100%;padding:14px 0;font-size:1.05rem;font-weight:300;outline:none;transition:border-color .3s}
@@ -80,11 +83,11 @@ const STEPS = [
     .chip.active{background:var(--rm-red);border-color:var(--rm-red);color:#fff}
 
     /* WIZARD LAYOUT */
-    .wizard{min-height:100vh;display:grid;grid-template-columns:260px 1fr;gap:0}
-    @media(max-width:900px){.wizard{grid-template-columns:1fr}.wiz-side{display:none}}
-    .wiz-side{background:#050505;border-right:1px solid rgba(255,255,255,.08);padding:120px 24px 40px;position:sticky;top:0;height:100vh;overflow-y:auto}
-    .wiz-main{padding:120px 40px 120px;max-width:780px;margin:0 auto;width:100%}
-    @media(max-width:900px){.wiz-main{padding:100px 24px 120px}}
+    .wizard{min-height:100vh;display:grid;grid-template-columns:260px 1fr;gap:0;padding-top:var(--rm-navH)}
+    @media(max-width:900px){.wizard{grid-template-columns:1fr;padding-top:120px}.wiz-side{display:none}}
+    .wiz-side{background:#050505;border-right:1px solid rgba(255,255,255,.08);padding:40px 24px;position:sticky;top:var(--rm-navH);height:calc(100vh - var(--rm-navH));overflow-y:auto}
+    .wiz-main{padding:40px 40px 120px;max-width:780px;margin:0 auto;width:100%}
+    @media(max-width:900px){.wiz-main{padding:20px 24px 120px}}
 
     .step-item{display:flex;align-items:flex-start;gap:12px;padding:10px 8px;cursor:pointer;border-left:2px solid transparent;transition:all .25s;text-align:left;width:100%;background:none;border-right:0;border-top:0;border-bottom:0;font-family:inherit}
     .step-item:hover{background:rgba(255,255,255,.03)}
