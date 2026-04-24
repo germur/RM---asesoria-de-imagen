@@ -183,6 +183,9 @@ const STEPS = [
       .reto-body::before{display:none !important;content:none !important}
       .wizard{padding-top:0 !important}
       .wiz-main{padding:0 !important}
+      /* Mata animaciones/opacity:0 que dejaban los paneles invisibles al imprimir */
+      *,*::before,*::after{animation:none !important;transition:none !important}
+      .step-panel{opacity:1 !important;transform:none !important;visibility:visible !important}
       /* Oculta toda la estructura que no sea el dossier */
       header,footer,nav,.no-print,.wiz-side,.wiz-nav,#main-header,#mobile-menu,
       .wiz-mobile-strip,
