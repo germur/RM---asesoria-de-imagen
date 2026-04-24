@@ -26,10 +26,51 @@ const schema = JSON.stringify({
         .pillar-num{transition:all .5s}
         .num-huge{font-style:italic;color:rgba(196,18,48,.08);line-height:.8;position:absolute;pointer-events:none;user-select:none}
         .tag{display:inline-block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:6px 14px;border:1px solid currentColor;border-radius:999px}
+        /* Chapter sidebar */
+        .chapter-nav{position:fixed;left:2rem;top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;gap:1.25rem}
+        @media (min-width:1280px){.chapter-nav{display:flex}}
+        .chapter-nav a{display:flex;align-items:center;gap:.75rem;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(10,10,10,.35);transition:color .4s;text-decoration:none}
+        .chapter-nav a::before{content:"";width:18px;height:1px;background:currentColor;transition:width .4s}
+        .chapter-nav a.is-active{color:var(--color-brand-primary,#C9111E)}
+        .chapter-nav a.is-active::before{width:36px}
+        .chapter-nav a:hover{color:var(--color-brand-primary,#C9111E)}
+        .chapter-nav.on-dark a{color:rgba(255,255,255,.45)}
+        .chapter-nav.on-dark a.is-active{color:#fff}
     </style>
 
+    <!-- Chapter sidebar (desktop only) -->
+    <nav class="chapter-nav" aria-label="Índice del servicio">
+        <a href="#umbral" data-target="umbral">Umbral</a>
+        <a href="#metodo" data-target="metodo">Método</a>
+        <a href="#sesion" data-target="sesion">Sesión</a>
+        <a href="#inversion" data-target="inversion">Inversión</a>
+    </nav>
+
+    <script>
+        // Active chapter highlight + dark/light nav color based on section bg
+        const sections = ['umbral','metodo','sesion','inversion']
+            .map(id => document.getElementById(id))
+            .filter(Boolean);
+        const links = document.querySelectorAll('.chapter-nav a');
+        const nav = document.querySelector('.chapter-nav');
+
+        const darkSections = new Set(['umbral','inversion']); // bg-brand-black
+
+        const activeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    links.forEach(l => l.classList.toggle('is-active', l.dataset.target === id));
+                    if (nav) nav.classList.toggle('on-dark', darkSections.has(id));
+                }
+            });
+        }, { rootMargin: '-40% 0px -50% 0px' });
+
+        sections.forEach(s => activeObserver.observe(s));
+    </script>
+
     <!-- HERO -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
+    <section id="umbral" class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="flex items-center gap-5 mb-14">
                 <span class="w-12 h-px bg-brand-primary"></span>
@@ -46,7 +87,7 @@ const schema = JSON.stringify({
     </section>
 
     <!-- QUÉ ES -->
-    <section class="py-32 md:py-40 bg-white relative overflow-hidden">
+    <section id="metodo" class="py-32 md:py-40 bg-white relative overflow-hidden">
         <span class="num-huge font-serif text-[28vw] -right-[4%] -top-[8%] absolute">01</span>
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="grid lg:grid-cols-12 gap-12">
@@ -134,7 +175,7 @@ const schema = JSON.stringify({
     </section>
 
     <!-- TIMELINE DE SESIÓN -->
-    <section class="py-32 md:py-40 bg-white">
+    <section id="sesion" class="py-32 md:py-40 bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="max-w-2xl mb-20">
                 <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Cómo es el día</p>
@@ -173,7 +214,7 @@ const schema = JSON.stringify({
     </section>
 
     <!-- INVERSIÓN -->
-    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+    <section id="inversion" class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
         <span class="num-huge font-serif text-[40vw] -left-[10%] top-1/2 -translate-y-1/2 absolute text-white/[0.03]">01</span>
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-end">
