@@ -26,6 +26,25 @@ const schema = JSON.stringify({
         .pillar-num{transition:all .5s}
         .num-huge{font-style:italic;color:rgba(196,18,48,.08);line-height:.8;position:absolute;pointer-events:none;user-select:none}
         .tag{display:inline-block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:6px 14px;border:1px solid currentColor;border-radius:999px}
+
+        /* Door opening effect */
+        .door-wrap{position:absolute;inset:0;z-index:20;pointer-events:none;overflow:hidden}
+        .door{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(180deg,#181818 0%,#0a0a0a 100%);transform-origin:center;transition:transform 1.6s cubic-bezier(.76,0,.24,1);box-shadow:inset 0 0 80px rgba(0,0,0,.7)}
+        .door::before{content:"";position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(201,17,30,.4) 40%,rgba(201,17,30,.4) 60%,transparent)}
+        .door-left{left:0;transform:translateX(0)}
+        .door-left::before{right:0}
+        .door-right{right:0;transform:translateX(0)}
+        .door-right::before{left:0}
+        .door-handle{position:absolute;top:50%;width:2px;height:60px;background:rgba(201,17,30,.7);box-shadow:0 0 12px rgba(201,17,30,.5);transform:translateY(-50%)}
+        .door-left .door-handle{right:18px}
+        .door-right .door-handle{left:18px}
+        /* Opened state */
+        .doors-open .door-left{transform:translateX(-101%)}
+        .doors-open .door-right{transform:translateX(101%)}
+        /* Hide hero content before doors open so reveal feels real */
+        #umbral .container{opacity:0;transition:opacity 1.2s ease .8s}
+        .doors-open #umbral .container{opacity:1}
+
         /* Chapter sidebar */
         .chapter-nav{position:fixed;left:2rem;top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;gap:1.25rem}
         @media (min-width:1280px){.chapter-nav{display:flex}}
@@ -45,6 +64,13 @@ const schema = JSON.stringify({
         <a href="#sesion" data-target="sesion">Sesión</a>
         <a href="#inversion" data-target="inversion">Inversión</a>
     </nav>
+
+    <script>
+        // Trigger the door-opening effect shortly after load
+        window.addEventListener('load', () => {
+            setTimeout(() => document.body.classList.add('doors-open'), 350);
+        });
+    </script>
 
     <script>
         // Active chapter highlight + dark/light nav color based on section bg
@@ -71,6 +97,15 @@ const schema = JSON.stringify({
 
     <!-- HERO -->
     <section id="umbral" class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
+        <!-- Door opening effect -->
+        <div class="door-wrap" aria-hidden="true">
+            <div class="door door-left">
+                <span class="door-handle"></span>
+            </div>
+            <div class="door door-right">
+                <span class="door-handle"></span>
+            </div>
+        </div>
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="flex items-center gap-5 mb-14">
                 <span class="w-12 h-px bg-brand-primary"></span>
