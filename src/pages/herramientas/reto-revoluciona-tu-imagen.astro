@@ -1,0 +1,44 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import RetoApp from "@/components/react/reto/RetoApp";
+
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Reto Revoluciona Tu Imagen — Dossier Cinematográfico",
+    applicationCategory: "LifestyleApplication",
+    operatingSystem: "Web",
+    description: "Workbook interactivo de identidad personal. Define el personaje que eres, toma la decisión de evolucionar y construye la versión más auténtica de ti — en 6 etapas.",
+    provider: {
+        "@type": "ProfessionalService",
+        name: "Roger Murillo Asesoría de Imagen",
+        url: "https://rogermurillo.co",
+    },
+});
+---
+
+<MainLayout
+    title="Reto Revoluciona Tu Imagen · Dossier de Identidad Personal | Roger Murillo"
+    description="Workbook interactivo gratuito. 6 etapas para diagnosticar quién eres hoy, tomar la decisión de evolucionar y construir la versión más auténtica y poderosa de ti mismo."
+    schema={schema}
+    navbarTheme="light"
+>
+    <!-- Intro hero — slim, before the app -->
+    <section class="pt-32 pb-10 md:pt-40 md:pb-12 bg-white border-b border-slate-100">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-4">Herramienta Gratuita</p>
+            <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-brand-black mb-4">
+                Reto: Revoluciona Tu Imagen
+            </h1>
+            <p class="text-base text-neutral-500 font-light leading-relaxed max-w-2xl">
+                Un dossier cinematográfico para construir tu identidad con intención.
+                Tus respuestas se guardan automáticamente en tu navegador — nadie más las ve.
+            </p>
+        </div>
+    </section>
+
+    <!-- The full-height app -->
+    <div class="w-full" style="min-height: calc(100vh - 80px);">
+        <RetoApp client:load />
+    </div>
+</MainLayout>
