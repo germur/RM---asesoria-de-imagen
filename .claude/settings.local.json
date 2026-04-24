@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(node -e \"const sharp = require\\('sharp'\\)\")",
+      "Bash(npm run:*)",
+      "Bash(node -e \"const pkg = require\\('animejs/package.json'\\); console.log\\(pkg.version, pkg.main, pkg.module, pkg.exports\\)\")",
+      "WebFetch(domain:go.hotmart.com)",
+      "WebFetch(domain:hotmart.com)",
+      "Bash(python3 -c ':*)",
+      "Bash(npx kill-port:*)",
+      "Bash(taskkill //F //IM node.exe)",
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:avec-paris.com)",
+      "Bash(npx astro:*)",
+      "Read(//c/Users/ger-mur/Downloads/**)",
+      "Bash(powershell -Command \"Expand-Archive -Path 'drive-download-20260413T121754Z-3-001.zip' -DestinationPath 'brand-manual' -Force\")",
+      "Bash(powershell -Command \"Add-Type -AssemblyName System.IO; [System.IO.File]::ReadAllBytes\\('C:\\\\Users\\\\ger-mur\\\\Downloads\\\\brand-manual\\\\ManualdemarcaRM.pdf'\\) | Select-Object -First 100\")",
+      "Bash(py -3 -c ':*)",
+      "WebFetch(domain:share.google)",
+      "WebFetch(domain:www.google.com)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :4321)",
+      "Bash(grep -rn \"navbarTheme\\\\|theme=\" src/pages/*.astro src/pages/servicios/*.astro)",
+      "Bash(powershell -command \"Expand-Archive -Path 'RM asesoria de imagen.zip' -DestinationPath 'RM_extracted' -Force\")"
+    ]
+  }
+}

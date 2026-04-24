@@ -20,14 +20,15 @@ const servicesSchema = {
         itemListElement: [
             { "@type": "Offer", itemOffered: { "@type": "Service", name: "Consultoría Integral A Puerta Cerrada" } },
             { "@type": "Offer", itemOffered: { "@type": "Service", name: "Diseño de Color y Salud Capilar" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Peluquería & Corte con Tijera" } },
         ],
     },
 };
 ---
 
 <MainLayout
-    title="Consultoría de Imagen · Visagismo · Colorimetría en Bogotá | Roger Murillo"
-    description="Consultoría de imagen integral, visagismo profesional y colorimetría avanzada en Bogotá. Servicio exclusivo a puerta cerrada para directivos, líderes y figuras públicas."
+    title="Consultoría de Imagen · Visagismo · Colorimetría · Peluquería en Bogotá | Roger Murillo"
+    description="Consultoría de imagen integral, visagismo profesional, colorimetría avanzada y peluquería de autor en Bogotá. Servicio exclusivo a puerta cerrada para directivos, líderes y figuras públicas."
     schema={servicesSchema}
 >
     <!-- HERO -->
@@ -82,7 +83,7 @@ const servicesSchema = {
                         >
                             Ver Consultoría Completa
                         </a>
-                        <span class="text-xs text-neutral-600 tracking-[0.15em] uppercase mt-3">
+                        <span class="text-xs text-neutral-500 tracking-[0.15em] uppercase mt-3">
                             Agenda limitada &mdash; 4 cupos/mes
                         </span>
                     </div>
@@ -99,7 +100,7 @@ const servicesSchema = {
         </div>
     </section>
 
-    <!-- SPECIALTIES -->
+    <!-- SPECIALTIES — 4 cards incluyendo Peluquería -->
     <section class="py-32 md:py-40 bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="max-w-xl mb-20">
@@ -109,7 +110,7 @@ const servicesSchema = {
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200">
                 <a href="/servicios/visagismo-corte" class="group bg-white p-10 md:p-12 flex flex-col justify-between min-h-[320px]">
                     <div>
                         <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Roger Murillo</p>
@@ -135,6 +136,22 @@ const servicesSchema = {
                         <p class="text-sm text-neutral-500 leading-relaxed">
                             Diseño de color basado en tu paleta estacional,
                             priorizando la salud integral de la fibra capilar.
+                        </p>
+                    </div>
+                    <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-8">
+                        Ver Detalles <ArrowRight size={14} />
+                    </span>
+                </a>
+
+                <a href="/servicios/peluqueria" class="group bg-white p-10 md:p-12 flex flex-col justify-between min-h-[320px]">
+                    <div>
+                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Roger & Adriana</p>
+                        <h3 class="font-serif text-2xl md:text-3xl text-brand-black mb-5 group-hover:text-brand-primary transition-colors duration-500">
+                            Peluquería
+                        </h3>
+                        <p class="text-sm text-neutral-500 leading-relaxed">
+                            Corte con tijera como servicio estrella. Tintura,
+                            recuperación capilar y colorimetría para hombre y mujer.
                         </p>
                     </div>
                     <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-8">
@@ -227,7 +244,7 @@ const servicesSchema = {
                 {[
                     {
                         q: "¿Por qué \"A Puerta Cerrada\"?",
-                        a: "Para garantizar tu privacidad y nuestra concentración. A diferencia de un salón ruidoso, aquí trabajamos tu imagen estratégica sin interrupciones. Es un espacio de consultoría, no de tránsito."
+                        a: "Porque priorizamos la intimidad. Tu imagen es un proceso personal que requiere confianza y confort. A diferencia de un salón ruidoso, aquí trabajamos tu imagen estratégica sin interrupciones, en un espacio de consultoría, no de tránsito."
                     },
                     {
                         q: "¿Cuál es la diferencia con un corte normal?",

@@ -10,11 +10,13 @@ const navItems = [
             { label: "Consultoría Integral", href: "/servicios/asesoria-integral-imagen" },
             { label: "Color & Salud",         href: "/servicios/color-salud-capilar" },
             { label: "Visagismo & Corte",     href: "/servicios/visagismo-corte" },
+            { label: "Peluquería",            href: "/servicios/peluqueria" },
             { label: "Imagen Ejecutiva",      href: "/servicios/imagen-ejecutiva-autoridad" },
             { label: "Tarifas",               href: "/servicios/precios" },
         ]
     },
-    { label: "La Firma",     href: "/nosotros",    type: "simple" },
+    { label: "La Firma",       href: "/nosotros",        type: "simple" },
+    { label: "Casos de Éxito", href: "/casos-de-exito",  type: "simple" },
     {
         label: "Academia",
         href: "/academia",
@@ -131,7 +133,7 @@ const navItems = [
 >
     <!-- top bar -->
     <div class="px-6 flex justify-between items-center h-16 border-b border-white/[0.07]">
-        <span class="text-[10px] tracking-[0.4em] uppercase text-neutral-600">Menú</span>
+        <span class="text-[10px] tracking-[0.4em] uppercase text-neutral-400">Menú</span>
         <button
             id="close-menu-btn"
             class="text-neutral-500 hover:text-white transition-colors p-2 -mr-2"
@@ -192,7 +194,7 @@ const navItems = [
             href="https://www.instagram.com/rogermurilloai/"
             target="_blank"
             rel="noopener"
-            class="mt-4 flex items-center justify-center gap-2.5 text-neutral-600
+            class="mt-4 flex items-center justify-center gap-2.5 text-neutral-400
                    hover:text-neutral-300 transition-colors duration-200 py-3"
         >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -203,7 +205,7 @@ const navItems = [
     </div>
 </div>
 
-<!-- ─── STYLES (is:global para evitar scoping de Astro) ──────────── -->
+<!-- ─── STYLES ────────────────────────────────────────────────────── -->
 <style is:global>
     /* DEFAULT: transparente + blanco */
     .nav-logo       { filter: brightness(0) invert(1); }
