@@ -1,44 +1,475 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import RetoApp from "@/components/react/reto/RetoApp";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const schema = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Reto Revoluciona Tu Imagen — Dossier Cinematográfico",
-    applicationCategory: "LifestyleApplication",
-    operatingSystem: "Web",
-    description: "Workbook interactivo de identidad personal. Define el personaje que eres, toma la decisión de evolucionar y construye la versión más auténtica de ti — en 6 etapas.",
-    provider: {
-        "@type": "ProfessionalService",
-        name: "Roger Murillo Asesoría de Imagen",
-        url: "https://rogermurillo.co",
-    },
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Reto Revoluciona Tu Imagen",
+  description: "Dossier cinematográfico de construcción de personaje. Herramienta guiada en 4 partes para redefinir tu identidad y tu imagen desde la raíz."
 });
+
+const GENRES = ["Acción","Cine de Intriga","De época","Deporte","Documental","Drama","Fantasía","Fe y Espiritualidad","Cine Independiente","Humor","Musical","Romance","Ciencia Ficción","Terror","Policial","Otro"];
+const RATINGS = ["Apta para todo público","+7","+13","+16","Solo Adultos"];
+const ROLES = [
+  { key:"familia",      label:"Familia",             q:"¿Qué personaje soy aquí?" },
+  { key:"hobbies",      label:"Hobbies",             q:"¿Qué energía proyecto?" },
+  { key:"trabajo",      label:"Trabajo",             q:"¿Soy referente, aprendiz, invisible, indispensable?" },
+  { key:"viajes",       label:"Viajes",              q:"¿Viajo para expandirme o solo por obligación?" },
+  { key:"profesion",    label:"Profesión",           q:"¿Tengo espacio para mi expresión personal?" },
+  { key:"pareja",       label:"Pareja",              q:"¿Qué rol interpreto?" },
+  { key:"amigos",       label:"Amigos",              q:"¿Soy auténtica o interpreto algo distinto?" },
+  { key:"espiritualidad", label:"Espiritualidad",    q:"¿Es parte visible del personaje o es privada y escondida?" },
+  { key:"diversion",    label:"Diversión",           q:"¿Mi personaje sabe disfrutar?" },
+  { key:"crecimiento",  label:"Crecimiento personal", q:"¿Estoy evolucionando o sobreviviendo?" },
+  { key:"educacion",    label:"Educación",           q:"¿Estoy actualizándome acorde al personaje que quiero ser?" },
+];
+const SCENES = [
+  { n:"01", t:"EL LEGADO",      s:"Rol Profesional · Misión" },
+  { n:"02", t:"LA INTIMIDAD",   s:"Rol Pareja · Magnetismo" },
+  { n:"03", t:"LA TRIBU",       s:"Rol Social · Amigos" },
+  { n:"04", t:"EL RECREO",      s:"Rol Hobbies · Yo conmigo" },
+  { n:"05", t:"ESCENA LIBRE",   s:"Define tú" },
+  { n:"06", t:"ESCENA LIBRE",   s:"Define tú" },
+];
+const LEVELS = [
+  { n:"01", t:"Propósito & Trascendencia", s:"El mensaje de la película", q:"¿Para qué existe este personaje en el mundo? ¿A quién sirvo e inspiro cuando me convierto en mi mejor versión?" },
+  { n:"02", t:"Identidad",                 s:"El protagonista",            q:"Yo soy... (usa metáforas o arquetipos, no cargos laborales: \"una creadora de belleza\", \"un puerto seguro\", \"la fuerza que abre caminos\")." },
+  { n:"03", t:"Creencias & Valores",       s:"El subtexto",                q:"¿Me creo merecedora de esa vida en 10 años? ¿Cuál es mi valor innegociable — libertad, coherencia, paz, audacia?" },
+  { n:"04", t:"Capacidades & Habilidades", s:"Las herramientas",           q:"Para ser esa persona en 10 años, ¿qué habilidades (emocionales, intelectuales, de imagen) debo empezar a cultivar HOY?" },
+  { n:"05", t:"Comportamiento",            s:"La acción en pantalla",      q:"Un martes cualquiera dentro de 10 años... ¿cómo saludas? ¿de qué hablas? ¿qué hábitos tiene ese personaje que tú hoy no tienes?" },
+  { n:"06", t:"Entorno",                   s:"El set de rodaje",           q:"Describe el entorno físico que rodea a esa identidad: tu casa, tu oficina, tu ciudad, las personas que te rodean." },
+];
 ---
 
 <MainLayout
-    title="Reto Revoluciona Tu Imagen · Dossier de Identidad Personal | Roger Murillo"
-    description="Workbook interactivo gratuito. 6 etapas para diagnosticar quién eres hoy, tomar la decisión de evolucionar y construir la versión más auténtica y poderosa de ti mismo."
-    schema={schema}
-    navbarTheme="light"
+  title="Reto Revoluciona Tu Imagen · Dossier Cinematográfico | Roger Murillo"
+  description="Construye el personaje que interpretarás los próximos 10 años. Una guía interactiva en 4 partes para redefinir tu identidad y tu imagen desde la raíz."
+  schema={schema}
 >
-    <!-- Intro hero — slim, before the app -->
-    <section class="pt-32 pb-10 md:pt-40 md:pb-12 bg-white border-b border-slate-100">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-4">Herramienta Gratuita</p>
-            <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-brand-black mb-4">
-                Reto: Revoluciona Tu Imagen
-            </h1>
-            <p class="text-base text-neutral-500 font-light leading-relaxed max-w-2xl">
-                Un dossier cinematográfico para construir tu identidad con intención.
-                Tus respuestas se guardan automáticamente en tu navegador — nadie más las ve.
-            </p>
-        </div>
-    </section>
 
-    <!-- The full-height app -->
-    <div class="w-full" style="min-height: calc(100vh - 80px);">
-        <RetoApp client:load />
+  <style>
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+    .reveal.is-in{opacity:1;transform:translateY(0)}
+    .num-huge{font-style:italic;line-height:.8;position:absolute;pointer-events:none;user-select:none}
+    .film-input{background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.15);color:#fff;width:100%;padding:12px 0;font-family:inherit;font-size:1rem;font-weight:300;transition:border-color .3s;outline:none}
+    .film-input:focus{border-bottom-color:var(--color-brand-primary,#C41230)}
+    .film-input::placeholder{color:rgba(255,255,255,0.3);font-style:italic}
+    .film-textarea{background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;width:100%;padding:18px;font-family:inherit;font-size:1rem;font-weight:300;line-height:1.65;resize:vertical;min-height:120px;transition:border-color .3s;outline:none}
+    .film-textarea:focus{border-color:rgba(255,255,255,0.4)}
+    .film-textarea::placeholder{color:rgba(255,255,255,0.28);font-style:italic}
+    .film-input-light{background:transparent;border:0;border-bottom:1px solid rgba(0,0,0,0.15);color:#0a0a0a;width:100%;padding:12px 0;font-family:inherit;font-size:1rem;font-weight:300;transition:border-color .3s;outline:none}
+    .film-input-light:focus{border-bottom-color:var(--color-brand-primary,#C41230)}
+    .film-input-light::placeholder{color:rgba(0,0,0,0.3);font-style:italic}
+    .film-textarea-light{background:rgba(0,0,0,0.015);border:1px solid rgba(0,0,0,0.1);color:#0a0a0a;width:100%;padding:18px;font-family:inherit;font-size:1rem;font-weight:300;line-height:1.65;resize:vertical;min-height:120px;transition:border-color .3s;outline:none}
+    .film-textarea-light:focus{border-color:rgba(0,0,0,0.35)}
+    .film-textarea-light::placeholder{color:rgba(0,0,0,0.3);font-style:italic}
+    .chip{display:inline-flex;align-items:center;padding:8px 16px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);cursor:pointer;transition:all .25s;user-select:none}
+    .chip:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+    .chip.active{background:var(--color-brand-primary,#C41230);border-color:var(--color-brand-primary,#C41230);color:#fff}
+    .chip-light{display:inline-flex;align-items:center;padding:8px 16px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(0,0,0,0.15);color:rgba(0,0,0,0.55);cursor:pointer;transition:all .25s;user-select:none}
+    .chip-light:hover{border-color:#0a0a0a;color:#0a0a0a}
+    .chip-light.active{background:var(--color-brand-primary,#C41230);border-color:var(--color-brand-primary,#C41230);color:#fff}
+    .progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--color-brand-primary,#C41230);z-index:60;transition:width .2s;width:0}
+    .part-tab{padding:18px 8px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);border-top:1px solid transparent;transition:all .3s;cursor:pointer;text-align:center}
+    .part-tab:hover{color:rgba(255,255,255,0.7)}
+    .part-tab.active{color:#fff;border-top-color:var(--color-brand-primary,#C41230)}
+    .scene-card{transition:all .5s cubic-bezier(.16,1,.3,1)}
+    .scene-card:hover{transform:translateY(-4px)}
+    details[open] .chev{transform:rotate(180deg)}
+    .chev{transition:transform .3s}
+    input[type="range"].slider{width:100%;-webkit-appearance:none;appearance:none;height:2px;background:rgba(255,255,255,0.15);outline:none}
+    input[type="range"].slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;background:var(--color-brand-primary,#C41230);cursor:pointer;border-radius:50%}
+    input[type="range"].slider::-moz-range-thumb{width:16px;height:16px;background:var(--color-brand-primary,#C41230);cursor:pointer;border-radius:50%;border:0}
+    @media print{.no-print{display:none !important}.print-break{page-break-before:always}}
+  </style>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- ─── HERO / PORTADA DEL DOSSIER ─── -->
+  <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden min-h-screen flex flex-col justify-center">
+    <span class="num-huge font-serif text-[38vw] -right-[6%] top-[5%]" style="color:rgba(196,18,48,.05)">R</span>
+    <div class="container mx-auto px-6 max-w-6xl relative z-10">
+      <div class="flex items-center gap-5 mb-10">
+        <span class="w-12 h-px bg-brand-primary"></span>
+        <p class="text-[10px] tracking-[0.4em] uppercase text-white/60">Dossier Cinematográfico · Primera Edición</p>
+      </div>
+      <p class="font-serif italic text-sm md:text-base text-white/50 tracking-[0.2em] uppercase mb-8">Construcción del personaje</p>
+      <h1 class="font-serif leading-[0.85] mb-6">
+        <AnimatedTitleWords text="Revoluciona" class="block text-6xl md:text-8xl lg:text-[9rem] text-white" />
+        <AnimatedTitleWords text="tu imagen." class="block text-6xl md:text-8xl lg:text-[9rem] italic text-brand-primary pl-[6%]" delay={300} />
+      </h1>
+      <div class="mt-14 max-w-2xl border-l-2 border-brand-primary pl-8">
+        <p class="text-lg md:text-xl font-light text-white/80 leading-relaxed italic mb-4">"La imagen personal no comienza en la ropa. Comienza en la identidad."</p>
+        <p class="text-sm font-light text-white/50 leading-relaxed">Hoy no comienzas un curso. Comienzas una construcción consciente. Esta guía es tu documento de trabajo: 4 partes, cero prisa. Cada respuesta se guarda en este navegador.</p>
+      </div>
+      <div class="mt-16 flex gap-4 flex-wrap">
+        <a href="#parte-1" class="bg-brand-primary text-white px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-brand-black transition-all duration-500">Comenzar el reto →</a>
+        <button id="btnPrint" class="no-print px-10 py-4 text-[11px] tracking-[0.25em] uppercase text-white border border-white/30 hover:border-white transition-colors duration-500">Imprimir dossier</button>
+      </div>
     </div>
+  </section>
+
+  <!-- ─── MANIFIESTO ─── -->
+  <section class="py-32 md:py-40 bg-brand-black text-white border-t border-white/10">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-8">Manifiesto</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3] font-light">
+        <span class="italic text-white/60">Cada persona interpreta un personaje en la película de su vida.</span><br/><br/>
+        Cuando el personaje no es consciente, la imagen se vuelve improvisada. Aquí no trabajaremos únicamente apariencia. Trabajaremos <span class="text-brand-primary">narrativa</span>, <span class="text-brand-primary">coherencia</span> y <span class="text-brand-primary">presencia</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── PARTE 1: DIAGNÓSTICO ─── -->
+  <section id="parte-1" class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden border-t border-white/10">
+    <span class="num-huge font-serif text-[28vw] -left-[4%] -top-[8%]" style="color:rgba(255,255,255,.04)">01</span>
+    <div class="container mx-auto px-6 max-w-5xl relative z-10">
+      <div class="mb-20">
+        <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Parte 01 · Diagnóstico</p>
+        <h2 class="font-serif text-5xl md:text-7xl leading-[0.92]">La película<br/><span class="italic text-neutral-500">que protagonizas hoy.</span></h2>
+      </div>
+
+      <!-- 1. Título de la película actual -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">01 · Título de la película actual</label>
+        <p class="font-serif italic text-2xl text-white/50 mb-3">Si mi vida hoy fuera una película, se llamaría...</p>
+        <input type="text" class="film-input" data-save="titulo_actual" placeholder="Escribe aquí el título" />
+      </div>
+
+      <!-- 2. Género -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-6">02 · Género de la película</label>
+        <div class="flex flex-wrap gap-3" data-chips="genero_actual">
+          {GENRES.map(g => <span class="chip" data-val={g}>{g}</span>)}
+        </div>
+      </div>
+
+      <!-- 3. Audiencia -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-3">03 · Audiencia de tu película</label>
+        <p class="text-xs text-white/40 mb-6">Revisa el contenido sexual, lenguaje y violencia que aparece hoy en tu vida.</p>
+        <div class="flex flex-wrap gap-3" data-chips="audiencia">
+          {RATINGS.map(r => <span class="chip" data-val={r}>{r}</span>)}
+        </div>
+      </div>
+
+      <!-- 4. Personaje actual -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">04 · El personaje que interpreto hoy</label>
+        <p class="font-serif italic text-xl text-white/50 mb-3">Nombre simbólico del personaje</p>
+        <input type="text" class="film-input mb-10" data-save="personaje_nombre" placeholder='Ej. "La guerrera cansada", "El rey silencioso"' />
+        <p class="font-serif italic text-xl text-white/50 mb-3">¿Cómo vive? ¿Cómo se muestra? ¿Qué energía proyecta?</p>
+        <textarea class="film-textarea" data-save="personaje_descripcion" placeholder="Describe honestamente..."></textarea>
+      </div>
+
+      <!-- 5. Valor cinematográfico -->
+      <div class="mb-20 bg-white/[0.03] p-10 border border-white/10">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">05 · Valor cinematográfico del personaje</label>
+        <p class="text-sm text-white/60 font-light leading-relaxed mb-8">Si este personaje fuera un actor/actriz en el mercado internacional, ¿cuál sería su valor en dólares hoy? <em class="text-white/40">No es dinero literal — es percepción, posicionamiento, impacto y coherencia.</em></p>
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="font-serif italic text-6xl md:text-8xl text-brand-primary">US$</span>
+          <input type="text" class="film-input text-5xl md:text-7xl font-serif italic" data-save="valor_actual" placeholder="0" style="font-size:3rem" />
+        </div>
+        <p class="font-serif italic text-lg text-white/50 mb-3">¿Por qué le asignaste este valor?</p>
+        <textarea class="film-textarea mb-6" data-save="valor_actual_razon"></textarea>
+        <p class="font-serif italic text-lg text-white/50 mb-3">¿Qué tendría que cambiar para que su valor se duplicara o triplicara?</p>
+        <textarea class="film-textarea" data-save="valor_actual_multiplicar"></textarea>
+      </div>
+
+      <!-- 6. Roles -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">06 · Roles que protagonizo</label>
+        <p class="text-sm text-white/60 font-light mb-10">Evalúa el personaje que interpretas en cada rol. Honestidad, sin juicios.</p>
+        <div class="space-y-4">
+          {ROLES.map(r => (
+            <details class="border border-white/10 bg-white/[0.02]">
+              <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+                <div>
+                  <p class="text-[10px] tracking-[0.3em] uppercase text-white/40">{r.key.toUpperCase()}</p>
+                  <h4 class="font-serif text-2xl mt-1">{r.label}</h4>
+                </div>
+                <svg class="chev w-4 h-4 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="px-6 pb-6 pt-2">
+                <p class="font-serif italic text-white/60 mb-3">{r.q}</p>
+                <textarea class="film-textarea" data-save={`rol_${r.key}`}></textarea>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <!-- 7. Coherencia -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">07 · Coherencia del personaje</label>
+        <p class="text-sm text-white/60 font-light mb-6">¿Mi imagen externa — ropa, maquillaje, accesorios, postura, presencia — es coherente con el personaje que interpreto?</p>
+        <div class="flex flex-wrap gap-3 mb-6" data-chips="coherencia">
+          <span class="chip" data-val="Sí">Sí</span>
+          <span class="chip" data-val="No">No</span>
+          <span class="chip" data-val="Parcialmente">Parcialmente</span>
+        </div>
+        <textarea class="film-textarea" data-save="coherencia_explica" placeholder="Explica tu respuesta..."></textarea>
+      </div>
+
+      <!-- 8. Lo que ya no me gusta -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">08 · Lo que ya no me gusta de esta película</label>
+        <p class="font-serif italic text-lg text-white/50 mb-3">Escenas que no quiero repetir</p>
+        <textarea class="film-textarea mb-6" data-save="escenas_no_repetir"></textarea>
+        <p class="font-serif italic text-lg text-white/50 mb-3">Actitudes que ya no me representan</p>
+        <textarea class="film-textarea" data-save="actitudes_no_representan"></textarea>
+      </div>
+
+      <!-- 9. Costo de seguir -->
+      <div class="mb-10 bg-gradient-to-br from-brand-primary/10 to-transparent p-10 border-l-4 border-brand-primary">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">09 · El costo de seguir interpretando este personaje 10 años más</label>
+        <p class="font-serif italic text-2xl text-white/70 mb-6">Si nada cambia, dentro de 10 años esta historia será...</p>
+        <textarea class="film-textarea" data-save="costo_10_anios" rows="5" placeholder="Describe ese futuro — sin filtros."></textarea>
+      </div>
+
+      <div class="mt-16 text-center">
+        <a href="#parte-2" class="inline-block bg-brand-primary text-white px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-brand-black transition-all duration-500">Continuar a la decisión →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PARTE 2: DECISIÓN CREATIVA ─── -->
+  <section id="parte-2" class="py-32 md:py-40 bg-brand-primary text-white relative overflow-hidden">
+    <span class="num-huge font-serif text-[28vw] -right-[4%] -top-[8%]" style="color:rgba(255,255,255,.08)">02</span>
+    <div class="container mx-auto px-6 max-w-4xl relative z-10">
+      <div class="mb-20">
+        <p class="text-xs tracking-[0.3em] uppercase text-white/70 mb-6">Parte 02 · Decisión creativa</p>
+        <h2 class="font-serif text-5xl md:text-7xl leading-[0.92]">El punto<br/><span class="italic">de quiebre.</span></h2>
+      </div>
+
+      <div class="mb-16">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-white/80 mb-4">01 · Punto de quiebre</label>
+        <p class="font-serif italic text-2xl text-white mb-6">¿Qué verdad ya no puedo ignorar?</p>
+        <textarea class="film-textarea" data-save="punto_quiebre" rows="4" placeholder="Escribe la verdad que hoy ya no negocia contigo."></textarea>
+      </div>
+
+      <div class="mb-10">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-white/80 mb-4">02 · Decisión</label>
+        <p class="font-serif italic text-2xl text-white mb-6">Ya no quiero seguir interpretando este personaje porque...</p>
+        <textarea class="film-textarea" data-save="decision" rows="6" placeholder="Tu decisión, sin rodeos."></textarea>
+      </div>
+
+      <div class="mt-16 text-center">
+        <a href="#parte-3" class="inline-block bg-white text-brand-primary px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-black hover:text-white transition-all duration-500">Construir el nuevo personaje →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PARTE 3: NUEVO PERSONAJE ─── -->
+  <section id="parte-3" class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+    <span class="num-huge font-serif text-[28vw] -left-[4%] top-[6%]" style="color:rgba(255,255,255,.04)">03</span>
+    <div class="container mx-auto px-6 max-w-5xl relative z-10">
+      <div class="mb-20">
+        <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Parte 03 · Nuevo personaje</p>
+        <h2 class="font-serif text-5xl md:text-7xl leading-[0.92]">La película<br/><span class="italic text-neutral-500">que comienza hoy.</span></h2>
+      </div>
+
+      <!-- Título + Género nuevo -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">01 · Título de mi nueva película</label>
+        <input type="text" class="film-input mb-12" data-save="titulo_nuevo" placeholder="¿Cómo se llamará?" />
+
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-6">02 · Nuevo género</label>
+        <div class="flex flex-wrap gap-3" data-chips="genero_nuevo">
+          {GENRES.map(g => <span class="chip" data-val={g}>{g}</span>)}
+        </div>
+      </div>
+
+      <!-- Construcción de roles -->
+      <div class="mb-20 bg-white/[0.03] p-8 md:p-12 border border-white/10">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">03 · Construcción de roles</label>
+        <p class="font-serif italic text-lg text-white/50 leading-relaxed mb-10">"Un personaje unidimensional no puede sostener una película interesante durante 10 años. Si tu vida es solo trabajo, tu clóset será solo un uniforme."</p>
+
+        <div class="space-y-10">
+          <div>
+            <p class="text-[10px] tracking-[0.3em] uppercase text-white mb-2">A · Rol de pareja / romance</p>
+            <p class="text-sm text-white/50 font-light mb-4">No se trata de tener pareja, sino de conectar con tu energía magnética.</p>
+            <p class="font-serif italic text-white/70 mb-3">¿Cómo se viste tu nuevo personaje para una cita (consigo misma o con otro)?</p>
+            <textarea class="film-textarea mb-4" data-save="rol_pareja_vestuario"></textarea>
+            <p class="font-serif italic text-white/70 mb-3">¿Qué quieres provocar? (Misterio, cercanía, pasión)</p>
+            <textarea class="film-textarea" data-save="rol_pareja_intencion"></textarea>
+          </div>
+          <div class="border-t border-white/10 pt-10">
+            <p class="text-[10px] tracking-[0.3em] uppercase text-white mb-2">B · Rol social & amigos</p>
+            <p class="text-sm text-white/50 font-light mb-4">La vida fuera de la productividad. El espacio de la risa y la tribu.</p>
+            <p class="font-serif italic text-white/70 mb-3">Ante una invitación inesperada, ¿qué usa tu personaje?</p>
+            <textarea class="film-textarea mb-4" data-save="rol_social_vestuario"></textarea>
+            <p class="font-serif italic text-white/70 mb-3">Actividad que hoy evitas por "no tener qué ponerte" y que decides integrar al guion:</p>
+            <textarea class="film-textarea" data-save="rol_social_actividad"></textarea>
+          </div>
+          <div class="border-t border-white/10 pt-10">
+            <p class="text-[10px] tracking-[0.3em] uppercase text-white mb-2">C · Rol de disfrute & hobbies</p>
+            <p class="text-sm text-white/50 font-light mb-4">El tiempo que no vendes por dinero. Tu espacio de juego.</p>
+            <p class="font-serif italic text-white/70 mb-3">¿Cómo se ve tu personaje cuando está disfrutando puramente?</p>
+            <textarea class="film-textarea mb-4" data-save="rol_disfrute_vestuario"></textarea>
+            <p class="font-serif italic text-white/70 mb-3">El compromiso: ¿qué actividad recreativa requiere que diseñes un nuevo "vestuario" en tu vida real?</p>
+            <textarea class="film-textarea" data-save="rol_disfrute_compromiso"></textarea>
+          </div>
+        </div>
+        <p class="font-serif italic text-sm text-white/40 mt-10 text-center">"Tu película tiene muchas locaciones. No uses el mismo vestuario para todas."</p>
+      </div>
+
+      <!-- 6 Escenas -->
+      <div class="mb-20">
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">04 · Las 6 escenas clave</label>
+        <p class="text-sm text-white/60 font-light mb-10">Diseña el vestuario, escenografía y energía de cada escena.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          {SCENES.map(sc => (
+            <div class="scene-card bg-white/[0.03] border border-white/10 p-8 hover:border-brand-primary">
+              <div class="flex items-baseline gap-4 mb-4">
+                <span class="font-serif italic text-3xl text-brand-primary">{sc.n}</span>
+                <div>
+                  <h4 class="font-serif text-2xl">{sc.t}</h4>
+                  <p class="text-[10px] tracking-[0.25em] uppercase text-white/40 mt-1">{sc.s}</p>
+                </div>
+              </div>
+              <textarea class="film-textarea" data-save={`escena_${sc.n}`} rows="4" placeholder="Describe esta escena..."></textarea>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PARTE 4: PROYECCIÓN 10 AÑOS ─── -->
+  <section id="parte-4" class="py-32 md:py-40 bg-neutral-50 relative overflow-hidden">
+    <span class="num-huge font-serif text-[28vw] -right-[4%] top-[6%]" style="color:rgba(196,18,48,.05)">04</span>
+    <div class="container mx-auto px-6 max-w-5xl relative z-10">
+      <div class="mb-20">
+        <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Parte 04 · Proyección a 10 años</p>
+        <h2 class="font-serif text-5xl md:text-7xl leading-[0.92] text-brand-black">De fantasía<br/><span class="italic text-neutral-400">a fecha de estreno.</span></h2>
+        <p class="font-serif italic text-lg text-neutral-500 mt-10 max-w-2xl">"Un sueño sin estrategia es solo una fantasía. Un guion sin plan de rodaje nunca llega al cine."</p>
+      </div>
+
+      <div class="space-y-6">
+        {LEVELS.map((lv, i) => (
+          <details class="border border-neutral-200 bg-white" open={i === 0}>
+            <summary class="flex items-center justify-between px-8 py-6 cursor-pointer list-none">
+              <div class="flex items-baseline gap-6">
+                <span class="font-serif italic text-3xl text-brand-primary">{lv.n}</span>
+                <div>
+                  <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-1">Nivel {lv.n}</p>
+                  <h4 class="font-serif text-2xl md:text-3xl text-brand-black">{lv.t}</h4>
+                  <p class="text-[11px] tracking-[0.2em] uppercase text-neutral-500 mt-1 italic">{lv.s}</p>
+                </div>
+              </div>
+              <svg class="chev w-4 h-4 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-8 pb-8 pt-2">
+              <p class="font-serif italic text-lg text-neutral-600 mb-4">{lv.q}</p>
+              <textarea class="film-textarea-light" data-save={`nivel_${lv.n}`} rows="5"></textarea>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DECLARACIÓN FINAL ─── -->
+  <section id="declaracion" class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+    <span class="num-huge font-serif text-[28vw] left-1/2 -translate-x-1/2 top-0" style="color:rgba(255,255,255,.03)">✕</span>
+    <div class="container mx-auto px-6 max-w-4xl relative z-10">
+      <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6 text-center">Declaración final</p>
+      <h2 class="font-serif text-4xl md:text-6xl leading-[0.95] text-center mb-16">Contrato<br/><span class="italic text-white/50">con tu nueva versión.</span></h2>
+
+      <div class="bg-white/[0.03] border border-white/10 p-10 md:p-16 space-y-6 font-serif text-lg md:text-xl leading-[1.6] text-white/85">
+        <p>Hoy dejo de vivir mi historia en automático.</p>
+        <p>Reconozco el personaje que he interpretado hasta ahora — con sus luces y sus sombras — y asumo la responsabilidad de su evolución.</p>
+        <p class="italic text-white/70">Decido dejar de repetir escenas que no me representan.<br/>Decido cuestionar los diálogos que me limitan.<br/>Decido elevar el estándar de mi propia narrativa.</p>
+        <p>A partir de este momento, tomo el rol de director/a y protagonista de mi vida. Cada elección que haga — cómo pienso, cómo me presento, cómo me visto, cómo me relaciono — será coherente con la versión de mí que estoy construyendo.</p>
+        <p class="text-brand-primary">No estoy cambiando mi imagen. Estoy redefiniendo mi personaje.</p>
+        <p>Y me comprometo a sostener esta transformación más allá de este reto.</p>
+      </div>
+
+      <div class="mt-16 grid md:grid-cols-2 gap-12">
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase text-white/60 mb-4">Firma</label>
+          <input type="text" class="film-input" data-save="firma" placeholder="Tu nombre completo" />
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase text-white/60 mb-4">Fecha</label>
+          <input type="date" class="film-input" data-save="fecha" />
+        </div>
+      </div>
+
+      <p class="font-serif italic text-center text-white/50 mt-16 text-lg md:text-xl">"No viniste a improvisar tu papel.<br/>Viniste a protagonizar tu propia obra maestra."</p>
+
+      <div class="mt-16 flex flex-col md:flex-row gap-4 justify-center no-print">
+        <button id="btnPrint2" class="bg-brand-primary text-white px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-brand-black transition-all duration-500">Imprimir mi dossier</button>
+        <button id="btnReset" class="px-10 py-4 text-[11px] tracking-[0.25em] uppercase text-white/70 border border-white/20 hover:border-white hover:text-white transition-colors duration-500">Reiniciar todo</button>
+      </div>
+      <p class="text-[10px] tracking-[0.25em] uppercase text-white/40 mt-6 text-center">Tus respuestas se guardan automáticamente en este navegador.</p>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="py-24 md:py-32 bg-white border-t border-neutral-200 no-print">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">¿Listo para el siguiente nivel?</p>
+      <h3 class="font-serif text-3xl md:text-5xl leading-[0.95] text-brand-black mb-8">Este dossier te dio el <span class="italic">guion.</span><br/>Nosotros te ayudamos a <span class="italic text-brand-primary">rodarlo.</span></h3>
+      <a href="/servicios/asesoria-integral-imagen" class="inline-block bg-brand-black text-white px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Agendar consultoría →</a>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function(){
+      const KEY = 'reto_revoluciona_v1';
+      const state = JSON.parse(localStorage.getItem(KEY) || '{}');
+      const save = () => localStorage.setItem(KEY, JSON.stringify(state));
+
+      // Inputs + textareas
+      document.querySelectorAll('[data-save]').forEach(el => {
+        const k = el.getAttribute('data-save');
+        if (state[k] != null) el.value = state[k];
+        el.addEventListener('input', () => { state[k] = el.value; save(); });
+      });
+
+      // Chip groups (single-select)
+      document.querySelectorAll('[data-chips]').forEach(group => {
+        const k = group.getAttribute('data-chips');
+        group.querySelectorAll('.chip, .chip-light').forEach(c => {
+          if (state[k] === c.getAttribute('data-val')) c.classList.add('active');
+          c.addEventListener('click', () => {
+            group.querySelectorAll('.chip, .chip-light').forEach(x => x.classList.remove('active'));
+            c.classList.add('active');
+            state[k] = c.getAttribute('data-val');
+            save();
+          });
+        });
+      });
+
+      // Progress bar
+      const bar = document.getElementById('progressBar');
+      const updateBar = () => {
+        const h = document.documentElement;
+        const p = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight);
+        bar.style.width = (p * 100) + '%';
+      };
+      window.addEventListener('scroll', updateBar, { passive: true });
+      updateBar();
+
+      // Print
+      document.getElementById('btnPrint')?.addEventListener('click', () => window.print());
+      document.getElementById('btnPrint2')?.addEventListener('click', () => window.print());
+
+      // Reset
+      document.getElementById('btnReset')?.addEventListener('click', () => {
+        if (!confirm('¿Borrar todas tus respuestas? Esto no se puede deshacer.')) return;
+        localStorage.removeItem(KEY);
+        location.reload();
+      });
+    })();
+  </script>
+
+  <script>
+    const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
+
 </MainLayout>

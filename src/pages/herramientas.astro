@@ -19,10 +19,15 @@ const schema = JSON.stringify({
   <style>
     .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
     .reveal.is-in{opacity:1;transform:translateY(0)}
-    .tool-card{transition:all .6s cubic-bezier(.16,1,.3,1)}
-    .tool-card:hover{background:#0a0a0a;color:#fff}
+    .tool-card{transition:background-color .6s cubic-bezier(.16,1,.3,1), color .6s cubic-bezier(.16,1,.3,1)}
+    /* HOVER: fondo negro, TODO el texto blanco legible */
+    .tool-card:hover{background:#0a0a0a}
     .tool-card:hover .tool-num{color:var(--color-brand-primary, #C41230)}
-    .tool-card:hover .tool-cta{color:#fff;border-color:#fff}
+    .tool-card:hover .tool-tag{color:var(--color-brand-primary, #C41230) !important}
+    .tool-card:hover .tool-title{color:#fff !important}
+    .tool-card:hover .tool-desc{color:rgba(255,255,255,0.7) !important}
+    .tool-card:hover .tool-cta{color:#fff !important;border-color:rgba(255,255,255,0.35) !important;background:transparent}
+    .tool-card:hover .tool-cta:hover{border-color:#fff !important;background:rgba(255,255,255,0.06)}
   </style>
 
   <!-- HERO -->
@@ -59,11 +64,11 @@ const schema = JSON.stringify({
             <div class="flex items-baseline gap-8 mb-8">
               <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">01</span>
               <div>
-                <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-2">Más usado · Cambio de look con IA</p>
-                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Test de Colorimetría</h3>
+                <p class="tool-tag text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-2">Más usado · Cambio de look con IA</p>
+                <h3 class="tool-title font-serif text-4xl md:text-5xl text-brand-black">Test de Colorimetría</h3>
               </div>
             </div>
-            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+            <p class="tool-desc text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
               ¿Invierno, Verano, Otoño o Primavera? Descubre los colores que iluminan tu piel y cuáles te apagan. Resultado en 2 minutos, sin registro.
             </p>
             <a href="/herramientas/test-colorimetria-online" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Hacer el test →</a>
@@ -80,11 +85,11 @@ const schema = JSON.stringify({
             <div class="flex items-baseline gap-8 mb-8">
               <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">02</span>
               <div>
-                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Visagismo · Geometría facial</p>
-                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Calculadora de Rostro</h3>
+                <p class="tool-tag text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Visagismo · Geometría facial</p>
+                <h3 class="tool-title font-serif text-4xl md:text-5xl text-brand-black">Calculadora de Rostro</h3>
               </div>
             </div>
-            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+            <p class="tool-desc text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
               La forma de tu cara, decodificada con matemáticas. Descubre tu tipo de rostro y qué corte, barba y gafas equilibran tus facciones.
             </p>
             <a href="/herramientas/calculadora-rostro" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Analizar mi rostro →</a>
@@ -101,11 +106,11 @@ const schema = JSON.stringify({
             <div class="flex items-baseline gap-8 mb-8">
               <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">03</span>
               <div>
-                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Morfología · Siluetas estratégicas</p>
-                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Calculadora de Cuerpo</h3>
+                <p class="tool-tag text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Morfología · Siluetas estratégicas</p>
+                <h3 class="tool-title font-serif text-4xl md:text-5xl text-brand-black">Calculadora de Cuerpo</h3>
               </div>
             </div>
-            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+            <p class="tool-desc text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
               Triángulo, Reloj de Arena, Rectángulo... Ingresa tus medidas y aprende qué siluetas de ropa equilibran tu figura real.
             </p>
             <a href="/herramientas/calculadora-tipo-cuerpo" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Calcular ahora →</a>
@@ -122,11 +127,11 @@ const schema = JSON.stringify({
             <div class="flex items-baseline gap-8 mb-8">
               <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">04</span>
               <div>
-                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Autoridad · Presencia · Coherencia</p>
-                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Test de Impacto Ejecutivo</h3>
+                <p class="tool-tag text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Autoridad · Presencia · Coherencia</p>
+                <h3 class="tool-title font-serif text-4xl md:text-5xl text-brand-black">Test de Impacto Ejecutivo</h3>
               </div>
             </div>
-            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+            <p class="tool-desc text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
               Evalúa tu presencia visual como líder: coherencia de marca, autoridad percibida y congruencia entre rol e imagen.
             </p>
             <a href="/herramientas/test-impacto-ejecutivo" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Hacer evaluación →</a>
@@ -143,11 +148,11 @@ const schema = JSON.stringify({
             <div class="flex items-baseline gap-8 mb-8">
               <span class="tool-num font-serif italic text-5xl text-neutral-300 transition-colors">05</span>
               <div>
-                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Reto · 7 días</p>
-                <h3 class="font-serif text-4xl md:text-5xl text-brand-black">Revoluciona Tu Imagen</h3>
+                <p class="tool-tag text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Reto · 7 días</p>
+                <h3 class="tool-title font-serif text-4xl md:text-5xl text-brand-black">Revoluciona Tu Imagen</h3>
               </div>
             </div>
-            <p class="text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
+            <p class="tool-desc text-lg text-neutral-600 font-light leading-relaxed mb-10 max-w-xl">
               7 días, 7 ejercicios prácticos para transformar tu imagen desde la raíz. Guía paso a paso por email.
             </p>
             <a href="/herramientas/reto-revoluciona-tu-imagen" class="tool-cta inline-flex items-center gap-4 px-8 py-4 text-[11px] tracking-[0.25em] uppercase border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Empezar reto →</a>
