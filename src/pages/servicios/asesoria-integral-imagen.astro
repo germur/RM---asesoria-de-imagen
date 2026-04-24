@@ -1,23 +1,17 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
-import { ArrowRight } from "lucide-react";
 
 const seoData = {
-    title: "Consultoría de Imagen Integral · Colorimetría · Visagismo en Bogotá | Roger Murillo",
-    description:
-        "Consultoría de imagen personal integral en Bogotá: análisis de color, visagismo, morfología y diseño capilar en una sesión exclusiva a puerta cerrada. Para ejecutivos y personas en transición.",
+    title: "Consultoría de Imagen Integral · A Puerta Cerrada · Bogotá | Roger Murillo",
+    description: "Consultoría de imagen personal integral en Bogotá: diagnóstico 360°, visagismo, colorimetría y ejecución en una sesión exclusiva a puerta cerrada. Máximo 4 cupos al mes.",
 };
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Consultoría de Imagen Integral",
-    provider: {
-        "@type": "ProfessionalService",
-        name: "Roger Murillo & Adriana Garzón",
-        url: "https://rogermurillo.co",
-    },
+    provider: { "@type": "ProfessionalService", name: "Roger Murillo & Adriana Garzón", url: "https://rogermurillo.co" },
     areaServed: { "@type": "City", name: "Bogotá" },
     description: seoData.description,
 });
@@ -25,221 +19,193 @@ const schema = JSON.stringify({
 
 <MainLayout title={seoData.title} description={seoData.description} schema={schema}>
 
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+        .pillar:hover .pillar-num{color:var(--color-brand-primary);-webkit-text-stroke-color:var(--color-brand-primary)}
+        .pillar-num{transition:all .5s}
+        .num-huge{font-style:italic;color:rgba(196,18,48,.08);line-height:.8;position:absolute;pointer-events:none;user-select:none}
+        .tag{display:inline-block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:6px 14px;border:1px solid currentColor;border-radius:999px}
+    </style>
+
     <!-- HERO -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Signature Service</p>
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-brand-black max-w-4xl mb-8">
-                <AnimatedTitleWords text="Descubre a la persona" class="block" />
-                <AnimatedTitleWords text="que deberías ver en el espejo." class="block text-neutral-400" delay={400} />
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-white/60">Signature · Servicio 01</p>
+            </div>
+            <h1 class="font-serif leading-[0.85]">
+                <AnimatedTitleWords text="A puerta" class="block text-6xl md:text-8xl lg:text-9xl text-white" />
+                <AnimatedTitleWords text="cerrada." class="block text-6xl md:text-8xl lg:text-9xl italic text-brand-primary pl-[8%]" delay={300} />
             </h1>
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-2xl mb-12">
-                Una inmersión total de 360°. Alineamos tu morfología, colorimetría y estilo con quién eres hoy — no con quien eras hace diez años.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="/contacto" class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500 rounded-sm text-center">
-                    Aplicar para Consultoría
-                </a>
-                <a href="/servicios/precios" class="px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-brand-black border border-brand-black/20 hover:border-brand-black transition-colors duration-500 rounded-sm text-center">
-                    Ver Inversión
-                </a>
+            <div class="mt-16 max-w-xl ml-auto border-l-2 border-brand-primary pl-8">
+                <p class="text-lg font-light text-white/70 leading-relaxed">Porque la imagen personal no se diseña en un pasillo. Se construye en silencio, con dos miradas honestas y el tiempo que pida la verdad.</p>
             </div>
-            <p class="mt-8 text-sm text-neutral-400">
-                Agenda limitada — máximo 4 clientes por mes
-            </p>
         </div>
     </section>
 
-    <!-- PARA QUIÉN ES / NO ES -->
-    <section class="py-32 md:py-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Perfil de Cliente</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-20">¿Es para ti?</h2>
-
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24">
-                <div class="md:col-span-6 border-l border-brand-black pl-8">
-                    <h3 class="font-serif text-2xl text-brand-black mb-8">Sí es para ti si…</h3>
-                    <ul class="space-y-5">
-                        {[
-                            "Tu cargo cambió pero tu imagen no ha evolucionado.",
-                            "Estás en una transición: divorcio, nueva empresa, cambio de década.",
-                            "Inviertes en ropa cara pero nada termina de funcionar.",
-                            "Quieres proyectar autoridad antes de abrir la boca.",
-                            "Nunca has tenido un análisis profesional de tu colorimetría ni tu morfología.",
-                            "Valoras la privacidad y la atención exclusiva 1 a 1.",
-                        ].map(item => (
-                            <li class="text-sm text-neutral-500 leading-relaxed">{item}</li>
-                        ))}
-                    </ul>
+    <!-- QUÉ ES -->
+    <section class="py-32 md:py-40 bg-white relative overflow-hidden">
+        <span class="num-huge font-serif text-[28vw] -right-[4%] -top-[8%] absolute">01</span>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Qué es</p>
+                    <h2 class="font-serif text-4xl md:text-6xl leading-[0.95] text-brand-black mb-8">
+                        Una sesión de<br/><span class="italic">estrategia</span><br/>personal.
+                    </h2>
+                    <p class="text-base text-neutral-500 font-light leading-relaxed max-w-md">No es una cita de peluquería. Es la conversación que define cómo quieres ser visto los próximos cinco años — y el plan técnico para llegar ahí.</p>
                 </div>
-                <div class="md:col-span-6 border-l border-neutral-200 pl-8">
-                    <h3 class="font-serif text-2xl text-brand-black mb-8">No es para ti si…</h3>
-                    <ul class="space-y-5">
-                        {[
-                            "Buscas seguir tendencias de temporada, no estrategia.",
-                            "Quieres solo un corte rápido sin diagnóstico.",
-                            "No estás dispuesto a cuestionar tus hábitos de vestir actuales.",
-                            "Esperas resultados de una sola sesión sin implementarlos.",
-                        ].map(item => (
-                            <li class="text-sm text-neutral-500 leading-relaxed">{item}</li>
-                        ))}
-                    </ul>
+                <div class="lg:col-span-7 space-y-16">
+                    <div class="reveal border-l border-neutral-200 pl-8">
+                        <p class="font-serif italic text-brand-primary text-xl mb-4">i.</p>
+                        <h3 class="font-serif text-3xl text-brand-black mb-3">Diagnóstico de 360°</h3>
+                        <p class="text-neutral-600 font-light leading-relaxed">Morfología facial, colorimetría personal, estilo de vida, contexto profesional y cómo te ve el mundo hoy vs. cómo quieres ser visto.</p>
+                    </div>
+                    <div class="reveal border-l border-neutral-200 pl-8" style="--delay:.1s">
+                        <p class="font-serif italic text-brand-primary text-xl mb-4">ii.</p>
+                        <h3 class="font-serif text-3xl text-brand-black mb-3">Dos perspectivas, una ruta</h3>
+                        <p class="text-neutral-600 font-light leading-relaxed">Roger aporta la mirada masculina y técnica del diseño. Adriana, la mirada femenina y estratégica. Tu imagen se valida desde ambos lados.</p>
+                    </div>
+                    <div class="reveal border-l border-neutral-200 pl-8" style="--delay:.2s">
+                        <p class="font-serif italic text-brand-primary text-xl mb-4">iii.</p>
+                        <h3 class="font-serif text-3xl text-brand-black mb-3">Ejecución en el mismo día</h3>
+                        <p class="text-neutral-600 font-light leading-relaxed">El diagnóstico no se queda en papel. Salimos con el corte, el color y la ruta capilar ya iniciados.</p>
+                    </div>
+                    <div class="reveal border-l border-neutral-200 pl-8" style="--delay:.3s">
+                        <p class="font-serif italic text-brand-primary text-xl mb-4">iv.</p>
+                        <h3 class="font-serif text-3xl text-brand-black mb-3">Seguimiento personal</h3>
+                        <p class="text-neutral-600 font-light leading-relaxed">Tres meses de acompañamiento post-sesión. Ajustes, dudas y la ruta del año siguiente.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EL PROCESO -->
+    <!-- TRES PILARES -->
+    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="max-w-2xl mb-24">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Tres pilares</p>
+                <h2 class="font-serif text-5xl md:text-7xl leading-[0.92]">
+                    Lo que protege<br/>el <span class="italic text-neutral-500">umbral.</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12 md:gap-6">
+                <div class="pillar reveal">
+                    <span class="pillar-num font-serif italic text-[12vw] leading-none text-transparent block" style="-webkit-text-stroke:1px rgba(255,255,255,.2)">01</span>
+                    <div class="border-t border-white/20 pt-6 mt-4">
+                        <h3 class="font-serif text-3xl mb-4">Intimidad</h3>
+                        <p class="text-sm text-white/50 font-light leading-relaxed">Un cupo por franja. Sin salas compartidas, sin miradas cruzadas. Tu proceso ocurre en un espacio solo tuyo.</p>
+                    </div>
+                </div>
+                <div class="pillar reveal" style="--delay:.1s">
+                    <span class="pillar-num font-serif italic text-[12vw] leading-none text-transparent block" style="-webkit-text-stroke:1px rgba(255,255,255,.2)">02</span>
+                    <div class="border-t border-white/20 pt-6 mt-4">
+                        <h3 class="font-serif text-3xl mb-4">Confianza</h3>
+                        <p class="text-sm text-white/50 font-light leading-relaxed">Dos consultores certificados. El criterio está sustentado en formación (IDB, New York Institute) y 15 años de trayectoria.</p>
+                    </div>
+                </div>
+                <div class="pillar reveal" style="--delay:.2s">
+                    <span class="pillar-num font-serif italic text-[12vw] leading-none text-transparent block" style="-webkit-text-stroke:1px rgba(255,255,255,.2)">03</span>
+                    <div class="border-t border-white/20 pt-6 mt-4">
+                        <h3 class="font-serif text-3xl mb-4">Confort</h3>
+                        <p class="text-sm text-white/50 font-light leading-relaxed">Estudio privado en Bogotá diseñado para pensar, no para posar. Café, tiempo sin reloj y conversación honesta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="py-32 md:py-40 bg-neutral-50 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <p class="font-serif italic text-4xl md:text-6xl lg:text-7xl leading-[1.05] text-brand-black">
+                <span class="text-brand-primary">"</span>La imagen personal<br/>
+                no empieza en la ropa.<br/>
+                <span class="text-neutral-400">Empieza en la</span> identidad<span class="text-brand-primary">."</span>
+            </p>
+            <div class="mt-12 flex items-center gap-5">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Roger & Adriana · Premisa del estudio</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE DE SESIÓN -->
     <section class="py-32 md:py-40 bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Metodología</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-6">El Proceso Integral</h2>
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-2xl mb-20">Todo en una sola sesión privada. Sin prisa. Sin interrupciones.</p>
+            <div class="max-w-2xl mb-20">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Cómo es el día</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">
+                    Cuatro horas.<br/><span class="italic text-neutral-400">Una transformación.</span>
+                </h2>
+            </div>
+            <div class="space-y-0">
+                <div class="grid md:grid-cols-12 gap-6 py-10 border-t border-neutral-200 reveal">
+                    <div class="md:col-span-2"><p class="font-serif text-3xl italic text-brand-primary">09:00</p></div>
+                    <div class="md:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Bienvenida</p></div>
+                    <div class="md:col-span-7"><p class="font-serif text-2xl text-brand-black mb-2">Café y conversación</p><p class="text-sm text-neutral-500 font-light">No empezamos con cámara ni pruebas. Empezamos sabiendo quién eres.</p></div>
+                </div>
+                <div class="grid md:grid-cols-12 gap-6 py-10 border-t border-neutral-200 reveal">
+                    <div class="md:col-span-2"><p class="font-serif text-3xl italic text-brand-primary">09:45</p></div>
+                    <div class="md:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Diagnóstico</p></div>
+                    <div class="md:col-span-7"><p class="font-serif text-2xl text-brand-black mb-2">Análisis morfológico y cromático</p><p class="text-sm text-neutral-500 font-light">Test con paleta estacional, drapeado y medición de proporciones áureas.</p></div>
+                </div>
+                <div class="grid md:grid-cols-12 gap-6 py-10 border-t border-neutral-200 reveal">
+                    <div class="md:col-span-2"><p class="font-serif text-3xl italic text-brand-primary">11:00</p></div>
+                    <div class="md:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Estrategia</p></div>
+                    <div class="md:col-span-7"><p class="font-serif text-2xl text-brand-black mb-2">Ruta visual a 12 meses</p><p class="text-sm text-neutral-500 font-light">Definimos código de vestuario, ruta de color capilar y geometría facial óptima.</p></div>
+                </div>
+                <div class="grid md:grid-cols-12 gap-6 py-10 border-t border-neutral-200 reveal">
+                    <div class="md:col-span-2"><p class="font-serif text-3xl italic text-brand-primary">12:00</p></div>
+                    <div class="md:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Ejecución</p></div>
+                    <div class="md:col-span-7"><p class="font-serif text-2xl text-brand-black mb-2">Corte, color y visagismo</p><p class="text-sm text-neutral-500 font-light">El diagnóstico se ejecuta ese mismo día. Sales con el cambio ya iniciado.</p></div>
+                </div>
+                <div class="grid md:grid-cols-12 gap-6 py-10 border-t border-b border-neutral-200 reveal">
+                    <div class="md:col-span-2"><p class="font-serif text-3xl italic text-brand-primary">13:00</p></div>
+                    <div class="md:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Cierre</p></div>
+                    <div class="md:col-span-7"><p class="font-serif text-2xl text-brand-black mb-2">Entrega de dossier</p><p class="text-sm text-neutral-500 font-light">Documento personal con tu paleta, tus cortes sugeridos, tu ruta capilar y el checklist del año.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="divide-y divide-neutral-200">
-                {[
-                    {
-                        n: "01",
-                        title: "Colorimetría Avanzada — 12 Estaciones",
-                        body: "Test de telas físicas (Draping) bajo luz natural. Determinamos tu paleta de poder: los colores que iluminan tu piel, neutralizan ojeras e impulsan tu autoridad visual.",
-                    },
-                    {
-                        n: "02",
-                        title: "Visagismo y Geometría Facial",
-                        body: "Análisis craneal y análisis de perfil. Definimos corte, volúmenes, diseño de barba (hombres), estructura de peinado y marcos visuales que potencian tu mirada.",
-                    },
-                    {
-                        n: "03",
-                        title: "Morfología Corporal",
-                        body: "Vestir el cuerpo real, no el ideal. Equilibramos proporciones usando cortes estratégicos, efectos ópticos y reglas de proporción para cada tipo de figura.",
-                    },
-                    {
-                        n: "04",
-                        title: "Diseño y Ejecución Capilar",
-                        body: "Roger y Adriana ejecutan el corte y el color definidos en el diagnóstico. No hay asistentes. Solo los especialistas que analizaron tu caso.",
-                    },
-                    {
-                        n: "05",
-                        title: "Dossier de Imagen Personalizado",
-                        body: "Entregamos un manual digital con tu paleta de colores, siluetas que funcionan para tu cuerpo, reglas de proporción y recomendaciones de guardarropa específicas para tu vida.",
-                    },
-                ].map(step => (
-                    <div class="grid md:grid-cols-12 gap-8 md:gap-16 py-12 first:pt-0">
-                        <div class="md:col-span-2">
-                            <span class="font-serif text-4xl text-neutral-400">{step.n}</span>
-                        </div>
-                        <div class="md:col-span-10">
-                            <h3 class="font-serif text-2xl text-brand-black mb-3">{step.title}</h3>
-                            <p class="text-sm text-neutral-500 leading-relaxed max-w-xl">{step.body}</p>
+    <!-- INVERSIÓN -->
+    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+        <span class="num-huge font-serif text-[40vw] -left-[10%] top-1/2 -translate-y-1/2 absolute text-white/[0.03]">01</span>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-end">
+                <div class="lg:col-span-7">
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-8">Inversión</p>
+                    <h2 class="font-serif text-5xl md:text-7xl leading-[0.92] mb-10">
+                        Un día que<br/><span class="italic text-neutral-500">vale cinco años.</span>
+                    </h2>
+                    <div class="border-t border-white/20 pt-8 max-w-lg">
+                        <p class="text-white/60 font-light leading-relaxed mb-6">La consultoría incluye diagnóstico, ejecución, dossier personal y tres meses de seguimiento. Pago en dos cuotas: depósito del 50% al agendar.</p>
+                        <div class="flex flex-wrap gap-3 text-[10px] tracking-[0.3em] uppercase text-white/50">
+                            <span class="tag">4 horas</span>
+                            <span class="tag">Dossier</span>
+                            <span class="tag">Seguimiento 90d</span>
                         </div>
                     </div>
-                ))}
-            </div>
-        </div>
-    </section>
-
-    <!-- COMPARATIVA -->
-    <section class="py-32 md:py-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Comparativa</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-20">La diferencia es estructural</h2>
-
-            <div class="grid md:grid-cols-2">
-                <div class="bg-white p-10 md:p-16">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-10">Peluquería Tradicional</p>
-                    <ul class="space-y-6">
-                        {[
-                            "Sigue tendencias de temporada",
-                            "Ambiente público, múltiples turnos",
-                            "Corte estándar sin análisis previo",
-                            "El colorista elige el tinte",
-                            "Sin documento de seguimiento",
-                        ].map(i => (
-                            <li class="text-sm text-neutral-400 leading-relaxed">{i}</li>
-                        ))}
-                    </ul>
                 </div>
-                <div class="bg-brand-black p-10 md:p-16">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-10">Roger Murillo</p>
-                    <ul class="space-y-6">
-                        {[
-                            "Estrategia basada en tus rasgos y objetivos",
-                            "Estudio privado, eres el único cliente del día",
-                            "Diagnóstico biométrico antes de tocar la tijera",
-                            "Paleta de color definida por ciencia cromática",
-                            "Dossier digital con tu código visual completo",
-                        ].map(i => (
-                            <li class="text-sm text-neutral-300 leading-relaxed">{i}</li>
-                        ))}
-                    </ul>
+                <div class="lg:col-span-5">
+                    <div class="border border-white/20 p-10 bg-gradient-to-br from-white/[0.03] to-transparent">
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">Solo 4 cupos/mes</p>
+                        <p class="font-serif text-7xl mb-2">Premium</p>
+                        <p class="text-sm text-white/40 mb-10">Cotización personalizada tras valoración inicial gratuita.</p>
+                        <a href="/contacto" class="block text-center bg-brand-primary text-white px-8 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-colors duration-500">Solicitar valoración →</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIAL -->
-    <section class="py-32 md:py-40 bg-white">
-        <div class="container mx-auto px-6 max-w-3xl text-center">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-12">Testimonio</p>
-            <blockquote class="font-serif text-2xl md:text-3xl text-brand-black leading-relaxed mb-10 italic">
-                "Llevaba años sintiendo que algo no cuadraba con mi imagen. Después de la consultoría entendí por qué: estaba vistiendo para quien era hace diez años, no para el cargo que tengo hoy. El dossier que me entregaron cambió la forma en que me veo cada mañana."
-            </blockquote>
-            <p class="text-sm text-brand-black font-medium">Mauricio R.</p>
-            <p class="text-xs text-neutral-400 uppercase tracking-[0.2em] mt-1">Director Comercial · Sector Financiero · Bogotá</p>
-        </div>
-    </section>
-
-    <!-- PRIVACIDAD + EXCLUSIVIDAD -->
-    <section class="py-32 md:py-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Experiencia</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-20">Lo que nos define</h2>
-
-            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
-                <div class="bg-white p-10 md:p-12">
-                    <h3 class="font-serif text-xl text-brand-black mb-4">Privacidad Total</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed">Sin vitrinas a la calle. Sin otros clientes en la sesión. Ideal para figuras públicas y directivos que valoran la discreción.</p>
-                </div>
-                <div class="bg-white p-10 md:p-12">
-                    <h3 class="font-serif text-xl text-brand-black mb-4">Solo los Maestros</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed">Roger y Adriana ejecutan cada paso. Sin asistentes. Sin delegación. La persona que diagnosticó tu caso es la misma que trabaja contigo.</p>
-                </div>
-                <div class="bg-white p-10 md:p-12">
-                    <h3 class="font-serif text-xl text-brand-black mb-4">Sin Esperas</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed">Tu tiempo es tu activo más valioso. Agendamos con márgenes amplios. Cuando llegas, empezamos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section class="py-32 md:py-40 bg-brand-black text-white text-center">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] mb-8">
-                La agenda es limitada.<br />
-                <span class="text-neutral-400 italic">4 cupos por mes.</span>
-            </h2>
-            <p class="text-neutral-300 font-light text-lg leading-relaxed mb-12">
-                No porque sea un truco de marketing, sino porque cada sesión requiere toda nuestra atención. Si estás considerándolo, no lo dejes para después.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                    href="/contacto"
-                    class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500 rounded-sm"
-                >
-                    Solicitar mi Consultoría
-                </a>
-                <a
-                    href="/servicios/precios"
-                    class="inline-flex items-center justify-center gap-3 text-xs tracking-[0.2em] uppercase text-white border border-white/20 hover:border-white px-10 py-4 transition-colors duration-500 rounded-sm"
-                >
-                    Ver Inversión <ArrowRight size={14} />
-                </a>
-            </div>
-            <p class="mt-10 text-xs text-neutral-300">
-                ¿Dudas sobre precios o qué servicio elegir? <a href="/servicios/precios" class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-white hover:text-brand-primary transition-colors duration-500">Ver página de inversión</a>
-            </p>
-        </div>
-    </section>
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
 
 </MainLayout>

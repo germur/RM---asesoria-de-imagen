@@ -21,6 +21,8 @@ const servicesSchema = {
             { "@type": "Offer", itemOffered: { "@type": "Service", name: "Consultoría Integral A Puerta Cerrada" } },
             { "@type": "Offer", itemOffered: { "@type": "Service", name: "Diseño de Color y Salud Capilar" } },
             { "@type": "Offer", itemOffered: { "@type": "Service", name: "Peluquería & Corte con Tijera" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Visagismo & Corte" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Imagen Ejecutiva & Protocolo de Autoridad" } },
         ],
     },
 };
@@ -31,216 +33,224 @@ const servicesSchema = {
     description="Consultoría de imagen integral, visagismo profesional, colorimetría avanzada y peluquería de autor en Bogotá. Servicio exclusivo a puerta cerrada para directivos, líderes y figuras públicas."
     schema={servicesSchema}
 >
+
+    <style>
+        .service-row{transition:all .6s cubic-bezier(.16,1,.3,1)}
+        .service-row:hover{background:#0a0a0a;color:#fff}
+        .service-row:hover .row-num{color:var(--color-brand-primary, #C41230)}
+        .service-row:hover .row-title{transform:translateX(20px)}
+        .service-row .row-title{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+        .tier-card{transition:all .5s}
+        .tier-card:hover{transform:translateY(-6px)}
+        .marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:marquee 40s linear infinite}
+        @keyframes marquee{to{transform:translateX(-50%)}}
+    </style>
+
     <!-- HERO -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex items-center gap-4 mb-8">
-                <span class="w-8 h-px bg-brand-primary"></span>
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-500">Servicios</p>
-            </div>
-            <div class="max-w-4xl">
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-10">
-                    <AnimatedTitleWords text="No vendemos cortes." class="block text-white" />
-                    <AnimatedTitleWords text="Diseñamos reputación." class="block text-neutral-400" delay={400} />
-                </h1>
-                <p class="text-lg md:text-xl text-neutral-300 font-light max-w-2xl leading-relaxed">
-                    Elige el nivel de intervención que tu momento necesita hoy.
-                    Para ejecutivos, para personas en transición y para quienes
-                    simplemente quieren vestirse mejor.
-                </p>
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
+        <span class="absolute -left-[4%] bottom-[5%] font-serif italic text-[26vw] leading-[0.8] text-white/[0.04] select-none pointer-events-none">Oficio</span>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-end">
+                <div class="lg:col-span-9">
+                    <div class="flex items-center gap-5 mb-12">
+                        <span class="w-12 h-px bg-brand-primary"></span>
+                        <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Catálogo · Servicios</p>
+                    </div>
+                    <h1 class="font-serif leading-[0.88]">
+                        <AnimatedTitleWords text="No vendemos" class="block text-6xl md:text-8xl lg:text-9xl text-white" />
+                        <AnimatedTitleWords text="cortes." class="block text-6xl md:text-8xl lg:text-9xl italic text-neutral-500 pl-[10%]" delay={300} />
+                        <AnimatedTitleWords text="Diseñamos reputación." class="block text-6xl md:text-8xl lg:text-9xl text-brand-primary pl-[4%]" delay={500} />
+                    </h1>
+                </div>
+                <div class="lg:col-span-3 lg:pb-8">
+                    <p class="text-base text-neutral-400 font-light leading-relaxed max-w-xs">Seis intervenciones. Un mismo principio: la imagen empieza en la identidad, no en la ropa.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SIGNATURE SERVICE -->
-    <section class="py-32 md:py-40 bg-brand-black text-white">
+    <!-- INDEX ROWS -->
+    <section class="bg-white">
+        <div class="border-b border-neutral-200">
+            <div class="container mx-auto px-6 max-w-6xl py-8 flex items-end justify-between text-[10px] tracking-[0.4em] uppercase text-neutral-400">
+                <span>Índice</span><span>6 servicios</span>
+            </div>
+        </div>
+
+        <a href="/servicios/asesoria-integral-imagen" class="service-row block border-b border-neutral-200">
+            <div class="container mx-auto px-6 max-w-6xl py-12 md:py-16 flex items-center justify-between gap-8">
+                <div class="flex items-baseline gap-10">
+                    <span class="row-num font-serif italic text-2xl text-neutral-300 transition-colors">01</span>
+                    <div>
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">Signature · A puerta cerrada</p>
+                        <h3 class="row-title font-serif text-4xl md:text-6xl leading-[0.95]">Consultoría Integral</h3>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                    <span>4 cupos/mes</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/servicios/color-salud-capilar" class="service-row block border-b border-neutral-200">
+            <div class="container mx-auto px-6 max-w-6xl py-12 md:py-16 flex items-center justify-between gap-8">
+                <div class="flex items-baseline gap-10">
+                    <span class="row-num font-serif italic text-2xl text-neutral-300 transition-colors">02</span>
+                    <div>
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">Adriana Garzón</p>
+                        <h3 class="row-title font-serif text-4xl md:text-6xl leading-[0.95] italic">Color & Salud Capilar</h3>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                    <span>Hombre & mujer</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/servicios/visagismo-corte" class="service-row block border-b border-neutral-200">
+            <div class="container mx-auto px-6 max-w-6xl py-12 md:py-16 flex items-center justify-between gap-8">
+                <div class="flex items-baseline gap-10">
+                    <span class="row-num font-serif italic text-2xl text-neutral-300 transition-colors">03</span>
+                    <div>
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">Roger Murillo</p>
+                        <h3 class="row-title font-serif text-4xl md:text-6xl leading-[0.95]">Visagismo & Corte</h3>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                    <span>Geometría facial</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/servicios/peluqueria" class="service-row block border-b border-neutral-200">
+            <div class="container mx-auto px-6 max-w-6xl py-12 md:py-16 flex items-center justify-between gap-8">
+                <div class="flex items-baseline gap-10">
+                    <span class="row-num font-serif italic text-2xl text-neutral-300 transition-colors">04</span>
+                    <div>
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">Roger & Adriana · Corte con tijera</p>
+                        <h3 class="row-title font-serif text-4xl md:text-6xl leading-[0.95] italic">Peluquería</h3>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                    <span>Tintura · Color · Recuperación</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/servicios/imagen-ejecutiva-autoridad" class="service-row block border-b border-neutral-200">
+            <div class="container mx-auto px-6 max-w-6xl py-12 md:py-16 flex items-center justify-between gap-8">
+                <div class="flex items-baseline gap-10">
+                    <span class="row-num font-serif italic text-2xl text-neutral-300 transition-colors">05</span>
+                    <div>
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">Roger & Adriana</p>
+                        <h3 class="row-title font-serif text-4xl md:text-6xl leading-[0.95]">Imagen Ejecutiva</h3>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                    <span>Protocolo de autoridad</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/servicios/precios" class="service-row block border-b border-neutral-200">
+            <div class="container mx-auto px-6 max-w-6xl py-12 md:py-16 flex items-center justify-between gap-8">
+                <div class="flex items-baseline gap-10">
+                    <span class="row-num font-serif italic text-2xl text-neutral-300 transition-colors">06</span>
+                    <div>
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">Tarifas & inversión</p>
+                        <h3 class="row-title font-serif text-4xl md:text-6xl leading-[0.95] italic">Precios</h3>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-neutral-400">
+                    <span>Desde $25</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <!-- SIGNATURE SHOWCASE -->
+    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
         <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24 items-center">
-                <div class="md:col-span-7">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">Signature Service</p>
-                    <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-8">
-                        Consultoría Integral<br />
-                        <span class="text-neutral-400">"A Puerta Cerrada"</span>
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-8">Signature · 01</p>
+                    <h2 class="font-serif text-5xl md:text-7xl leading-[0.92] mb-10">
+                        Consultoría<br/><span class="italic text-neutral-500">a puerta</span><br/>cerrada.
                     </h2>
-                    <p class="text-lg text-neutral-300 leading-relaxed mb-10 font-light max-w-xl">
-                        Un análisis de 360 grados donde alineamos tu morfología,
-                        colorimetría y objetivos de vida. No es una cita de
-                        peluquería; es una sesión de estrategia donde definimos
-                        tu código visual para los próximos años.
+                    <p class="text-lg text-neutral-400 font-light leading-relaxed max-w-xl mb-12">
+                        Un análisis de 360°. Alineamos morfología, colorimetría y objetivos de vida. No es una cita de peluquería — es una sesión de estrategia donde definimos tu código visual para los próximos años.
                     </p>
-
-                    <div class="space-y-4 mb-12 border-l border-neutral-700 pl-8">
-                        <p class="text-sm text-neutral-300">Diagnóstico biométrico: rostro, colorimetría y morfología.</p>
-                        <p class="text-sm text-neutral-300">Colorimetría avanzada: test de telas y paleta de poder.</p>
-                        <p class="text-sm text-neutral-300">Diseño capilar ejecutado por Roger y Adriana.</p>
-                        <p class="text-sm text-neutral-300">Entrega: dossier digital personalizado.</p>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-5 items-start">
-                        <a
-                            href="/servicios/asesoria-integral-imagen"
-                            class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500"
-                        >
-                            Ver Consultoría Completa
-                        </a>
-                        <span class="text-xs text-neutral-500 tracking-[0.15em] uppercase mt-3">
-                            Agenda limitada &mdash; 4 cupos/mes
-                        </span>
+                    <div class="grid grid-cols-2 gap-6 max-w-md border-t border-neutral-800 pt-8">
+                        <div><p class="font-serif text-4xl text-brand-primary mb-1">360°</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Diagnóstico</p></div>
+                        <div><p class="font-serif text-4xl text-brand-primary mb-1">4</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Cupos/mes</p></div>
                     </div>
                 </div>
-
-                <div class="md:col-span-5">
-                    <img
-                        src="/images/roger-portrait-bw.jpg"
-                        alt="Sesión de consultoría"
-                        class="w-full grayscale"
-                    />
+                <div class="lg:col-span-5">
+                    <img src="/images/roger-portrait-bw.jpg" alt="Sesión de consultoría" class="w-full grayscale" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SPECIALTIES — 4 cards incluyendo Peluquería -->
+    <!-- MARQUEE -->
+    <section class="bg-neutral-50 py-12 overflow-hidden border-y border-neutral-100">
+        <div class="marquee-track text-[8vw] font-serif italic text-neutral-200 leading-none">
+            <span>Visagismo · Colorimetría · Identidad · Autoridad · Estrategia · Confort ·&nbsp;</span>
+            <span>Visagismo · Colorimetría · Identidad · Autoridad · Estrategia · Confort ·&nbsp;</span>
+        </div>
+    </section>
+
+    <!-- PRICING TIERS -->
     <section class="py-32 md:py-40 bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
-            <div class="max-w-xl mb-20">
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Especialidades</p>
-                <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black">
-                    Intervenciones focales.
+            <div class="max-w-2xl mb-20">
+                <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">Tres formas de empezar</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">
+                    Donde <span class="italic text-neutral-400">estás</span><br/>
+                    y hasta donde <span class="italic text-brand-primary">quieres ir.</span>
                 </h2>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200">
-                <a href="/servicios/visagismo-corte" class="group bg-white p-10 md:p-12 flex flex-col justify-between min-h-[320px]">
-                    <div>
-                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Roger Murillo</p>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-black mb-5 group-hover:text-brand-primary transition-colors duration-500">
-                            Visagismo & Corte
-                        </h3>
-                        <p class="text-sm text-neutral-500 leading-relaxed">
-                            Líneas geométricas que compensan tus facciones.
-                            Diagnóstico de estructura ósea y análisis de perfil.
-                        </p>
-                    </div>
-                    <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-8">
-                        Ver Detalles <ArrowRight size={14} />
-                    </span>
-                </a>
-
-                <a href="/servicios/color-salud-capilar" class="group bg-white p-10 md:p-12 flex flex-col justify-between min-h-[320px]">
-                    <div>
-                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Adriana Garzón</p>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-black mb-5 group-hover:text-brand-primary transition-colors duration-500">
-                            Color & Salud Capilar
-                        </h3>
-                        <p class="text-sm text-neutral-500 leading-relaxed">
-                            Diseño de color basado en tu paleta estacional,
-                            priorizando la salud integral de la fibra capilar.
-                        </p>
-                    </div>
-                    <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-8">
-                        Ver Detalles <ArrowRight size={14} />
-                    </span>
-                </a>
-
-                <a href="/servicios/peluqueria" class="group bg-white p-10 md:p-12 flex flex-col justify-between min-h-[320px]">
-                    <div>
-                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Roger & Adriana</p>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-black mb-5 group-hover:text-brand-primary transition-colors duration-500">
-                            Peluquería
-                        </h3>
-                        <p class="text-sm text-neutral-500 leading-relaxed">
-                            Corte con tijera como servicio estrella. Tintura,
-                            recuperación capilar y colorimetría para hombre y mujer.
-                        </p>
-                    </div>
-                    <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-8">
-                        Ver Detalles <ArrowRight size={14} />
-                    </span>
-                </a>
-
-                <a href="/servicios/imagen-ejecutiva-autoridad" class="group bg-white p-10 md:p-12 flex flex-col justify-between min-h-[320px]">
-                    <div>
-                        <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Roger & Adriana</p>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-black mb-5 group-hover:text-brand-primary transition-colors duration-500">
-                            Imagen Ejecutiva
-                        </h3>
-                        <p class="text-sm text-neutral-500 leading-relaxed">
-                            Protocolo visual para liderazgo. Proyecta autoridad
-                            antes de abrir la boca.
-                        </p>
-                    </div>
-                    <span class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-8">
-                        Ver Detalles <ArrowRight size={14} />
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ACADEMIA + RESOURCES -->
-    <section class="py-32 md:py-40 bg-neutral-50">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24 items-start">
-                <div class="md:col-span-5">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Formación</p>
-                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
-                        La Academia Digital
-                    </h2>
-                    <p class="text-lg text-neutral-500 leading-relaxed font-light mb-10">
-                        Cursos, guías y masterclasses para entender las reglas
-                        del color, el corte y el estilo. Desde $25 USD.
-                    </p>
-                    <a
-                        href="/academia"
-                        class="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-brand-black hover:text-brand-primary transition-colors duration-500"
-                    >
-                        Ver Catálogo <ArrowRight size={14} />
-                    </a>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="tier-card border border-neutral-200 p-10 reveal">
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-6">Nivel 01 · Digital</p>
+                    <h3 class="font-serif text-4xl text-brand-black mb-4">Academia</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed mb-10">Cursos, guías y masterclasses para entender las reglas del color, corte y estilo.</p>
+                    <p class="font-serif text-5xl text-brand-black mb-2">$25<span class="text-base text-neutral-400 align-top"> USD</span></p>
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Desde</p>
                 </div>
-
-                <div class="md:col-span-7 space-y-6">
-                    <a href="/libro" class="group flex gap-6 items-center p-6 bg-white hover:bg-brand-black transition-colors duration-500">
-                        <div class="w-20 h-20 bg-neutral-100 group-hover:bg-neutral-800 flex items-center justify-center shrink-0 transition-colors duration-500">
-                            <span class="font-serif text-sm text-brand-black group-hover:text-white transition-colors duration-500">Libro</span>
-                        </div>
-                        <div>
-                            <h3 class="font-serif text-xl text-brand-black group-hover:text-white transition-colors duration-500 mb-1">Revoluciona tu Imagen</h3>
-                            <p class="text-sm text-neutral-500 group-hover:text-neutral-400 transition-colors duration-500">La guía definitiva de imagen estratégica.</p>
-                        </div>
-                    </a>
-
-                    <a href="/herramientas/test-colorimetria-online" class="group flex gap-6 items-center p-6 bg-white hover:bg-brand-black transition-colors duration-500">
-                        <div class="w-20 h-20 bg-brand-primary flex items-center justify-center shrink-0">
-                            <span class="font-serif text-sm text-white">Test</span>
-                        </div>
-                        <div>
-                            <h3 class="font-serif text-xl text-brand-black group-hover:text-white transition-colors duration-500 mb-1">Test de Colorimetría</h3>
-                            <p class="text-sm text-neutral-500 group-hover:text-neutral-400 transition-colors duration-500">Diagnóstico automático con IA. Gratis.</p>
-                        </div>
-                    </a>
-
-                    <a href="/herramientas" class="group flex gap-6 items-center p-6 bg-white hover:bg-brand-black transition-colors duration-500">
-                        <div class="w-20 h-20 bg-neutral-100 group-hover:bg-neutral-800 flex items-center justify-center shrink-0 transition-colors duration-500">
-                            <span class="font-serif text-sm text-brand-black group-hover:text-white transition-colors duration-500">Tools</span>
-                        </div>
-                        <div>
-                            <h3 class="font-serif text-xl text-brand-black group-hover:text-white transition-colors duration-500 mb-1">Herramientas Gratuitas</h3>
-                            <p class="text-sm text-neutral-500 group-hover:text-neutral-400 transition-colors duration-500">Calculadoras de rostro, cuerpo y más.</p>
-                        </div>
-                    </a>
+                <div class="tier-card bg-brand-black text-white p-10 reveal" style="--delay:.1s">
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-6">Nivel 02 · Focal</p>
+                    <h3 class="font-serif text-4xl mb-4">Intervención</h3>
+                    <p class="text-sm text-neutral-400 font-light leading-relaxed mb-10">Visagismo, colorimetría o diseño capilar ejecutado por Roger o Adriana.</p>
+                    <p class="font-serif text-5xl mb-2">A consultar</p>
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Por servicio</p>
+                </div>
+                <div class="tier-card border border-brand-primary p-10 relative reveal" style="--delay:.2s">
+                    <span class="absolute -top-3 left-8 bg-brand-primary text-white text-[9px] tracking-[0.3em] uppercase px-3 py-1">Recomendado</span>
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-6">Nivel 03 · Integral</p>
+                    <h3 class="font-serif text-4xl text-brand-black mb-4">A Puerta Cerrada</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed mb-10">Consultoría 360 con Roger y Adriana. La experiencia completa.</p>
+                    <p class="font-serif text-5xl text-brand-black mb-2">Premium</p>
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Agenda limitada</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section class="py-32 md:py-40 bg-white">
+    <section class="py-32 md:py-40 bg-neutral-50">
         <div class="container mx-auto px-6 max-w-3xl">
             <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6 text-center">FAQ</p>
             <h2 class="font-serif text-4xl text-brand-black mb-16 text-center">Preguntas Frecuentes</h2>
-
-            <div class="space-y-0 divide-y divide-neutral-100">
+            <div class="space-y-0 divide-y divide-neutral-200">
                 {[
                     {
                         q: "¿Por qué \"A Puerta Cerrada\"?",
@@ -260,9 +270,7 @@ const servicesSchema = {
                             <span>{faq.q}</span>
                             <span class="text-neutral-300 group-open:rotate-45 transition-transform text-2xl leading-none">+</span>
                         </summary>
-                        <p class="text-neutral-500 mt-4 text-sm leading-relaxed font-light max-w-2xl">
-                            {faq.a}
-                        </p>
+                        <p class="text-neutral-500 mt-4 text-sm leading-relaxed font-light max-w-2xl">{faq.a}</p>
                     </details>
                 ))}
             </div>
@@ -270,28 +278,22 @@ const servicesSchema = {
     </section>
 
     <!-- CTA -->
-    <section class="py-32 md:py-40 bg-brand-black text-white text-center">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-8">
-                ¿Listo para el cambio?
+    <section class="py-32 md:py-40 bg-white border-t border-neutral-200">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] text-brand-black mb-10">
+                ¿Listo para <span class="italic text-brand-primary">empezar?</span>
             </h2>
-            <p class="text-lg text-neutral-300 font-light mb-14 max-w-lg mx-auto leading-relaxed">
-                Agenda tu consultoría o empieza con nuestras herramientas gratuitas.
-            </p>
+            <p class="text-lg text-neutral-500 font-light max-w-xl mx-auto mb-12">La agenda es limitada. Reserva tu espacio o comienza con el diagnóstico gratuito.</p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a
-                    href="/contacto"
-                    class="bg-brand-primary text-white px-12 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500"
-                >
-                    Agendar Consultoría
-                </a>
-                <a
-                    href="/servicios/precios"
-                    class="px-12 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white border border-white/20 hover:border-white transition-colors duration-500"
-                >
-                    Ver Inversión
-                </a>
+                <a href="/contacto" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Agendar Consultoría →</a>
+                <a href="/herramientas/test-colorimetria-online" class="inline-flex items-center gap-4 px-10 py-5 text-[11px] tracking-[0.25em] uppercase text-brand-black border border-brand-black/20 hover:border-brand-black transition-colors duration-500">Test Gratuito</a>
             </div>
         </div>
     </section>
+
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
 </MainLayout>

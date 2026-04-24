@@ -1,114 +1,175 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { ArrowRight } from "lucide-react";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
-const serviceSchema = {
+const seoData = {
+    title: "Colorimetría Capilar · Salud del Cabello · Color Estratégico en Bogotá | Adriana Garzón",
+    description: "Colorimetría capilar profesional y salud del cabello en Bogotá. Diagnóstico estacional, formulación personalizada con L'Oréal y Kérastase, y recuperación con Olaplex.",
+};
+
+const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Color y Salud Capilar",
-    provider: {
-        "@type": "LocalBusiness",
-        name: "Roger Murillo Asesoría de Imagen",
-        image: "https://rogermurillo.co/images/logo.png"
-    },
-    areaServed: {
-        "@type": "City",
-        name: "Bogotá"
-    },
-    description: "Diagnóstico bioquímico, visagismo y coloración estratégica para CEOs y Ejecutivas."
-};
+    serviceType: "Color y Salud Capilar",
+    provider: { "@type": "ProfessionalService", name: "Adriana Garzón · RM Asesoría de Imagen", url: "https://rogermurillo.co" },
+    areaServed: { "@type": "City", name: "Bogotá" },
+    description: seoData.description,
+});
 ---
 
-<MainLayout
-    title="Colorimetría Capilar · Salud del Cabello · Color Estratégico en Bogotá | Adriana Garzón"
-    description="Colorimetría capilar profesional y salud del cabello en Bogotá. Diagnóstico bioquímico, diseño de color estratégico y visagismo capilar a cargo de Adriana Garzón. Exclusivo a puerta cerrada."
-    schema={JSON.stringify(serviceSchema)}
->
-    <!-- Hero -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Adriana Garzón</p>
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-brand-black max-w-4xl mb-8">
-                Arquitectura Capilar Estratégica
+<MainLayout title={seoData.title} description={seoData.description} schema={schema}>
+
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+        .step-num{font-style:italic;font-size:14vw;line-height:.8;color:transparent;-webkit-text-stroke:1px var(--color-brand-primary, #C41230)}
+        .swatch{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer;transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .swatch:hover{transform:scale(1.05);z-index:5}
+        .swatch-label{position:absolute;bottom:8px;left:8px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:white;mix-blend-mode:difference;font-weight:500}
+        .formula-row{transition:background .4s}
+        .formula-row:hover{background:#fff8f0}
+        .formula-row:hover .formula-ratio{color:var(--color-brand-primary, #C41230)}
+    </style>
+
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-gradient-to-b from-[#fdf8f3] to-[#f5ebe0] relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Adriana Garzón · Servicio 02</p>
+            </div>
+            <h1 class="font-serif leading-[0.85] text-brand-black">
+                <AnimatedTitleWords text="El color" class="block text-6xl md:text-8xl lg:text-9xl" />
+                <AnimatedTitleWords text="dice la verdad" class="block text-6xl md:text-8xl lg:text-9xl italic text-brand-primary pl-[4%]" delay={300} />
+                <AnimatedTitleWords text="sobre tu piel." class="block text-6xl md:text-8xl lg:text-9xl text-neutral-400 pl-[12%]" delay={500} />
             </h1>
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-xl mb-12">
-                Un mal tinte puede envejecerte 10 años y arruinar tu reputación visual. Usamos ciencia, bioquímica y colorimetría para estructurar tu cabello como un activo de poder.
-            </p>
-            <a
-                href="/contacto?ref=capilar"
-                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500"
-            >
-                Agendar Diagnóstico Privado
-                <ArrowRight size={14} />
-            </a>
+            <div class="mt-14 grid lg:grid-cols-3 gap-8 max-w-5xl">
+                <p class="text-base text-neutral-700 font-light leading-relaxed">Colorimetría aplicada al cabello. Donde la ciencia del tono se encuentra con la estructura capilar que te sostiene.</p>
+                <div><p class="font-serif text-5xl text-brand-primary mb-1">12</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Estaciones cromáticas</p></div>
+                <div><p class="font-serif text-5xl text-brand-primary mb-1">L'Oréal · Kérastase</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Casas certificadas</p></div>
+            </div>
         </div>
     </section>
 
-    <!-- Problem -->
+    <!-- PREMISA -->
+    <section class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-10">La premisa</p>
+            <p class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black">
+                Un color mal elegido <span class="italic text-neutral-400">apaga</span> diez años de cuidado capilar.<br/><br/>
+                El correcto <span class="italic text-brand-primary">revela</span> una piel que no sabías que tenías.
+            </p>
+        </div>
+    </section>
+
+    <!-- PALETA 12 ESTACIONES -->
     <section class="py-32 md:py-40 bg-neutral-50">
         <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24">
-                <div class="md:col-span-5">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Problema</p>
-                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black">
-                        Por qué los salones tradicionales están destruyendo tu imagen.
-                    </h2>
+            <div class="flex items-end justify-between flex-wrap gap-8 mb-16">
+                <div class="max-w-xl">
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">La paleta</p>
+                    <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">12 estaciones,<br/><span class="italic text-neutral-400">una tuya.</span></h2>
                 </div>
-                <div class="md:col-span-7 flex items-center">
-                    <div>
-                        <p class="text-lg text-neutral-500 font-light leading-relaxed mb-8">
-                            La peluquería comercial sigue "tendencias". La asesoría de imagen estratégica sigue <strong class="text-brand-black font-medium">ciencia y matemáticas</strong>.
-                        </p>
-                        <p class="text-lg text-neutral-500 font-light leading-relaxed mb-10">
-                            No puedes aplicar un diseño "balayage" genérico a un rostro Diamante con colorimetría Invierno. El resultado es desconexión visual, facciones endurecidas y una percepción de cansancio crónico. Nosotros reparamos ese daño.
-                        </p>
-                        <ul class="space-y-4">
-                            <li class="text-sm text-neutral-500 font-light">
-                                <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Tintes sin análisis de subtono piel.
-                            </li>
-                            <li class="text-sm text-neutral-500 font-light">
-                                <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Decoloraciones extremas que rompen el puente disulfuro del cabello.
-                            </li>
-                            <li class="text-sm text-neutral-500 font-light">
-                                <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Cortes que no corresponden a tu morfología ósea.
-                            </li>
-                        </ul>
-                    </div>
+                <p class="text-sm text-neutral-500 font-light max-w-md">Tu subtono de piel, la profundidad y el croma de tus ojos determinan qué tono capilar te ilumina — y cuáles te apagan.</p>
+            </div>
+            <div class="grid grid-cols-4 md:grid-cols-6 gap-3">
+                <div class="swatch" style="background:#6b3a20"><span class="swatch-label">Otoño cálido</span></div>
+                <div class="swatch" style="background:#8a4825"><span class="swatch-label">Otoño suave</span></div>
+                <div class="swatch" style="background:#a05830"><span class="swatch-label">Otoño profundo</span></div>
+                <div class="swatch" style="background:#c48060"><span class="swatch-label">Primavera cálida</span></div>
+                <div class="swatch" style="background:#d9a080"><span class="swatch-label">Primavera clara</span></div>
+                <div class="swatch" style="background:#e6b090"><span class="swatch-label">Primavera brillante</span></div>
+                <div class="swatch" style="background:#5a3858"><span class="swatch-label">Invierno profundo</span></div>
+                <div class="swatch" style="background:#3a2a4a"><span class="swatch-label">Invierno brillante</span></div>
+                <div class="swatch" style="background:#2a1a30"><span class="swatch-label">Invierno frío</span></div>
+                <div class="swatch" style="background:#7a6878"><span class="swatch-label">Verano suave</span></div>
+                <div class="swatch" style="background:#a89ba0"><span class="swatch-label">Verano claro</span></div>
+                <div class="swatch" style="background:#8a7a88"><span class="swatch-label">Verano frío</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTODO 4 PASOS -->
+    <section class="py-32 md:py-40 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="max-w-2xl mb-24">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">El método</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">Diagnóstico<br/>antes del <span class="italic">color.</span></h2>
+            </div>
+            <div class="space-y-0">
+                <div class="grid lg:grid-cols-12 gap-8 py-12 border-t border-neutral-200 items-start reveal">
+                    <div class="lg:col-span-2"><span class="step-num font-serif">01</span></div>
+                    <div class="lg:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Drapeado</p><p class="font-serif text-2xl text-brand-black">Test estacional</p></div>
+                    <div class="lg:col-span-7"><p class="text-neutral-600 font-light leading-relaxed text-lg">Pruebas con telas cálidas y frías contra tu rostro sin maquillaje. Observamos qué tono te ilumina la piel, qué tono te marca las ojeras y cuál equilibra tu subtono real.</p></div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-8 py-12 border-t border-neutral-200 items-start reveal">
+                    <div class="lg:col-span-2"><span class="step-num font-serif">02</span></div>
+                    <div class="lg:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Análisis capilar</p><p class="font-serif text-2xl text-brand-black">Salud primero</p></div>
+                    <div class="lg:col-span-7"><p class="text-neutral-600 font-light leading-relaxed text-lg">Revisamos porosidad, elasticidad y densidad. Si el cabello no soporta el cambio, primero reparamos — con Olaplex y rutina técnica — antes de tocar color.</p></div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-8 py-12 border-t border-neutral-200 items-start reveal">
+                    <div class="lg:col-span-2"><span class="step-num font-serif">03</span></div>
+                    <div class="lg:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Formulación</p><p class="font-serif text-2xl text-brand-black">Mezcla exacta</p></div>
+                    <div class="lg:col-span-7"><p class="text-neutral-600 font-light leading-relaxed text-lg">Fórmula personalizada en cabina con L'Oréal y Kérastase. Sin recetas de catálogo — cada mezcla se calcula según tu nivel de decoloración previa, subtono y objetivo.</p></div>
+                </div>
+                <div class="grid lg:grid-cols-12 gap-8 py-12 border-t border-b border-neutral-200 items-start reveal">
+                    <div class="lg:col-span-2"><span class="step-num font-serif">04</span></div>
+                    <div class="lg:col-span-3"><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">Ritual en casa</p><p class="font-serif text-2xl text-brand-black">Plan 90 días</p></div>
+                    <div class="lg:col-span-7"><p class="text-neutral-600 font-light leading-relaxed text-lg">Te vas con el cronograma exacto — qué usar cada día, cuándo volver para retoque y cómo proteger el tono del sol, el cloro y el secado.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process -->
-    <section class="py-32 md:py-40 bg-white">
+    <!-- TÉCNICAS -->
+    <section class="py-32 md:py-40 bg-brand-black text-white">
         <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Proceso</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-20">
-                Nuestro Protocolo Clínico-Estético
-            </h2>
-            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">01</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Tricología Express</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Análisis del cuero cabelludo y biología de la hebra capilar. Diagnosticamos el daño estructural para prescribir la química exacta que restaurará su vitalidad.
-                    </p>
+            <div class="max-w-2xl mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Técnicas</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95]">Un color,<br/><span class="italic text-neutral-500">muchas formas.</span></h2>
+            </div>
+            <div class="space-y-0 border-t border-white/20">
+                <div class="formula-row grid md:grid-cols-12 gap-6 py-8 border-b border-white/20 items-baseline">
+                    <div class="md:col-span-4"><p class="font-serif text-3xl">Balayage</p></div>
+                    <div class="md:col-span-6 text-white/50 text-sm font-light">Reflejos a mano alzada. Movimiento natural, raíz orgánica, bajo mantenimiento.</div>
+                    <div class="md:col-span-2 text-right formula-ratio text-[10px] tracking-[0.3em] uppercase text-white/40">Signature</div>
                 </div>
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">02</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Ingeniería de Color</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Uso del Sistema de Munsell para encontrar el nivel exacto de saturación, valor y matiz que neutralice imperfecciones de la tez y potencie la mirada.
-                    </p>
+                <div class="formula-row grid md:grid-cols-12 gap-6 py-8 border-b border-white/20 items-baseline">
+                    <div class="md:col-span-4"><p class="font-serif text-3xl italic">Babylights</p></div>
+                    <div class="md:col-span-6 text-white/50 text-sm font-light">Reflejos ultrafinos que imitan el color del cabello infantil tras el verano.</div>
+                    <div class="md:col-span-2 text-right formula-ratio text-[10px] tracking-[0.3em] uppercase text-white/40">Delicate</div>
                 </div>
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">03</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Diseño Visagista</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Esculpimos el cabello en función de las proporciones matemáticas de tu cráneo. Direccionamos la mirada de tu interlocutor hacia donde queremos.
-                    </p>
+                <div class="formula-row grid md:grid-cols-12 gap-6 py-8 border-b border-white/20 items-baseline">
+                    <div class="md:col-span-4"><p class="font-serif text-3xl">Root Shadow</p></div>
+                    <div class="md:col-span-6 text-white/50 text-sm font-light">Oscurecido de raíz para prolongar el color sin retoque agresivo.</div>
+                    <div class="md:col-span-2 text-right formula-ratio text-[10px] tracking-[0.3em] uppercase text-white/40">Low-maintenance</div>
+                </div>
+                <div class="formula-row grid md:grid-cols-12 gap-6 py-8 border-b border-white/20 items-baseline">
+                    <div class="md:col-span-4"><p class="font-serif text-3xl italic">Color correctivo</p></div>
+                    <div class="md:col-span-6 text-white/50 text-sm font-light">Rescate técnico de procesos anteriores. Recuperación en fases supervisadas.</div>
+                    <div class="md:col-span-2 text-right formula-ratio text-[10px] tracking-[0.3em] uppercase text-white/40">Avanzado</div>
+                </div>
+                <div class="formula-row grid md:grid-cols-12 gap-6 py-8 border-b border-white/20 items-baseline">
+                    <div class="md:col-span-4"><p class="font-serif text-3xl">Olaplex Integral</p></div>
+                    <div class="md:col-span-6 text-white/50 text-sm font-light">Reconstrucción de puentes de disulfuro. Antes, durante y después de cualquier proceso químico.</div>
+                    <div class="md:col-span-2 text-right formula-ratio text-[10px] tracking-[0.3em] uppercase text-white/40">Salud</div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- CTA -->
+    <section class="py-32 md:py-40 bg-[#fdf8f3] border-t border-neutral-200">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] text-brand-black mb-10">¿Y si el color<br/><span class="italic text-brand-primary">correcto</span> ya existe?</h2>
+            <p class="text-lg text-neutral-600 font-light max-w-xl mx-auto mb-12">Empieza con el test de estación cromática. Sin compromiso, sin producto.</p>
+            <a href="/contacto" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Agendar colorimetría →</a>
+        </div>
+    </section>
+
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
 </MainLayout>

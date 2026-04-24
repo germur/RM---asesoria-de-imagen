@@ -1,164 +1,163 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { ArrowRight } from "lucide-react";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const seoData = {
-    title: "Peluquería de Autor · Corte con Tijera · Tintura · Recuperación Capilar | Roger Murillo",
-    description:
-        "Peluquería profesional a puerta cerrada en Bogotá. Corte con tijera, tintura, recuperación capilar y colorimetría para hombre y mujer. Servicio exclusivo con Roger Murillo y Adriana Garzón.",
+    title: "Peluquería de Autor · Corte con Tijera en Bogotá | RM Asesoría de Imagen",
+    description: "Peluquería profesional en Bogotá. Corte 100% con tijera, tintura, color, recuperación capilar con Olaplex y Kérastase. Servicio para hombre y mujer por Roger Murillo y Adriana Garzón.",
 };
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Peluquería de Autor",
-    provider: { "@type": "ProfessionalService", name: "Roger Murillo & Adriana Garzón" },
-    description: "Corte con tijera, tintura, recuperación capilar y colorimetría para hombre y mujer.",
+    serviceType: "Peluquería Profesional",
+    provider: { "@type": "ProfessionalService", name: "Roger Murillo & Adriana Garzón", url: "https://rogermurillo.co" },
+    areaServed: { "@type": "City", name: "Bogotá" },
+    description: seoData.description,
 });
 ---
 
-<MainLayout
-    title={seoData.title}
-    description={seoData.description}
-    schema={schema}
->
-    <!-- Hero -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Peluquería</p>
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-brand-black max-w-3xl mb-8">
-                La tijera como instrumento de precisión.
+<MainLayout title={seoData.title} description={seoData.description} schema={schema}>
+
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+        .service-item{transition:all .5s cubic-bezier(.16,1,.3,1);position:relative}
+        .service-item::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:var(--color-brand-primary, #C41230);transition:width .5s}
+        .service-item:hover{padding-left:48px}
+        .service-item:hover::before{width:32px}
+        .service-item:hover .s-title{color:var(--color-brand-primary, #C41230)}
+        .s-title{transition:color .4s}
+        .star-badge{position:relative}
+        .star-badge::after{content:"★";color:var(--color-brand-primary, #C41230);font-size:.7em;vertical-align:super;margin-left:4px}
+        .num-huge{font-style:italic;line-height:.8;position:absolute;pointer-events:none;user-select:none}
+    </style>
+
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-gradient-to-br from-[#faf7f2] to-[#ede5d8] relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Roger & Adriana · Servicio 04</p>
+            </div>
+            <h1 class="font-serif leading-[0.85] text-brand-black">
+                <AnimatedTitleWords text="La tijera" class="block text-6xl md:text-8xl lg:text-9xl" />
+                <AnimatedTitleWords text="nunca miente." class="block text-6xl md:text-8xl lg:text-9xl italic text-brand-primary pl-[8%]" delay={300} />
             </h1>
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-xl mb-12">
-                No usamos máquina por defecto. El corte con tijera es nuestro servicio estrella
-                porque permite <strong class="text-brand-black font-medium">controlar cada línea, cada ángulo,
-                cada milímetro</strong> según la geometría de tu rostro.
-            </p>
-            <a
-                href="/contacto"
-                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500"
-            >
-                Reservar Cita
-                <ArrowRight size={14} />
-            </a>
+            <div class="mt-14 max-w-xl">
+                <p class="text-base text-neutral-700 font-light leading-relaxed">Peluquería de oficio. Sin máquina en el acabado, sin atajos. El corte se termina a mano, como se hizo siempre — porque solo así se lee el movimiento real del cabello.</p>
+            </div>
+            <p class="mt-8 text-sm text-neutral-400">✂ Servicio estrella · Corte con tijera</p>
         </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="py-32 md:py-40 bg-neutral-50">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="max-w-xl mb-20">
-                <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Servicios</p>
-                <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black">
-                    Todo bajo un mismo techo.
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-px bg-neutral-200">
-                <div class="bg-neutral-50 p-12 md:p-16">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">01</span>
-                    <h3 class="font-serif text-2xl text-brand-black mb-4">Corte con Tijera</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed mb-3">
-                        Nuestro servicio estrella. Cada corte responde a un diagnóstico
-                        previo de visagismo. No seguimos tendencias: diseñamos líneas
-                        que equilibran tus facciones y proyectan tu personalidad.
-                    </p>
-                    <p class="text-xs text-neutral-400 uppercase tracking-[0.15em]">Hombre & Mujer</p>
-                </div>
-
-                <div class="bg-neutral-50 p-12 md:p-16">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">02</span>
-                    <h3 class="font-serif text-2xl text-brand-black mb-4">Tintura & Color</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed mb-3">
-                        Diseño de color basado en tu paleta estacional y colorimetría personal.
-                        Trabajamos con productos de alta gama que priorizan la salud
-                        de la fibra capilar sobre todo.
-                    </p>
-                    <p class="text-xs text-neutral-400 uppercase tracking-[0.15em]">Hombre & Mujer</p>
-                </div>
-
-                <div class="bg-neutral-50 p-12 md:p-16">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">03</span>
-                    <h3 class="font-serif text-2xl text-brand-black mb-4">Recuperación Capilar</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed mb-3">
-                        Tratamientos profesionales para restaurar la salud del cabello.
-                        Diagnóstico del cuero cabelludo, hidratación profunda y
-                        protocolos de reconstrucción.
-                    </p>
-                    <p class="text-xs text-neutral-400 uppercase tracking-[0.15em]">Hombre & Mujer</p>
-                </div>
-
-                <div class="bg-neutral-50 p-12 md:p-16">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">04</span>
-                    <h3 class="font-serif text-2xl text-brand-black mb-4">Colorimetría Aplicada</h3>
-                    <p class="text-sm text-neutral-500 leading-relaxed mb-3">
-                        Antes de tocar tu cabello, analizamos tu temperatura de piel,
-                        tus subtonos y tu estación. El color perfecto no es el que
-                        está de moda: es el que te pertenece.
-                    </p>
-                    <p class="text-xs text-neutral-400 uppercase tracking-[0.15em]">Hombre & Mujer</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Differentiator -->
-    <section class="py-32 md:py-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24 items-center">
-                <div class="md:col-span-7">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Diferencial</p>
-                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
-                        Peluquería con ciencia detrás.
+    <!-- SERVICIO ESTRELLA -->
+    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+        <span class="num-huge font-serif text-[45vw] -left-[12%] top-1/2 -translate-y-1/2 text-white/[0.04]">✂</span>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="text-brand-primary text-xl">★</span>
+                        <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary">Servicio estrella</p>
+                    </div>
+                    <h2 class="font-serif text-5xl md:text-7xl leading-[0.92] mb-10">
+                        Corte<br/><span class="italic">con tijera.</span>
                     </h2>
-                    <p class="text-lg text-neutral-500 font-light leading-relaxed mb-6">
-                        Aquí no entras a "cortarte el pelo". Entras a un estudio privado
-                        donde dos profesionales &mdash;uno con perspectiva masculina, otra con
-                        perspectiva femenina&mdash; analizan tu rostro, tu estilo de vida y
-                        tus objetivos antes de tomar la tijera.
+                    <p class="text-lg text-white/60 font-light leading-relaxed max-w-xl mb-10">
+                        Cada corte se diseña seco, se mide a mano y se termina a tijera abierta. Ningún pelo se iguala con máquina — la máquina corta línea, la tijera corta intención.
                     </p>
-                    <p class="text-base text-neutral-500 font-light leading-relaxed border-l-2 border-brand-primary pl-6 italic">
-                        La imagen personal no empieza en la ropa &mdash; empieza en la identidad.
-                        Y tu cabello es parte fundamental de esa identidad.
-                    </p>
+                    <div class="grid grid-cols-3 gap-6 border-t border-white/20 pt-8 max-w-lg">
+                        <div><p class="font-serif text-3xl text-brand-primary">100%</p><p class="text-[10px] tracking-[0.3em] uppercase text-white/40 mt-1">Tijera</p></div>
+                        <div><p class="font-serif text-3xl text-brand-primary">H+M</p><p class="text-[10px] tracking-[0.3em] uppercase text-white/40 mt-1">Hombre & mujer</p></div>
+                        <div><p class="font-serif text-3xl text-brand-primary">60′</p><p class="text-[10px] tracking-[0.3em] uppercase text-white/40 mt-1">Sesión</p></div>
+                    </div>
                 </div>
-
-                <div class="md:col-span-5">
-                    <div class="space-y-6">
-                        <div class="border-l border-brand-primary pl-8">
-                            <h4 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-2">A puerta cerrada</h4>
-                            <p class="text-sm text-neutral-500 font-light">Intimidad total. Sin esperas. Sin ruido.</p>
-                        </div>
-                        <div class="border-l border-brand-primary pl-8">
-                            <h4 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-2">Doble perspectiva</h4>
-                            <p class="text-sm text-neutral-500 font-light">La visión masculina y femenina trabajando juntas.</p>
-                        </div>
-                        <div class="border-l border-brand-primary pl-8">
-                            <h4 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-2">Productos premium</h4>
-                            <p class="text-sm text-neutral-500 font-light">L'Oréal, Kérastase, Olaplex. Solo lo mejor.</p>
-                        </div>
+                <div class="lg:col-span-5">
+                    <div class="aspect-[4/5] bg-gradient-to-br from-[#1a1a1a] to-[#3a3a3a] relative border border-white/10">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <span class="absolute bottom-6 left-6 font-serif italic text-white/60">Signature cut</span>
+                        <span class="absolute top-6 right-6 text-[10px] tracking-[0.3em] uppercase text-white/60 bg-white/5 backdrop-blur px-3 py-1.5">04 · estrella</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-32 md:py-40 bg-brand-black text-white text-center">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] mb-8">
-                Reserva tu cita <span class="text-neutral-400">de peluquería.</span>
-            </h2>
-            <p class="text-lg text-neutral-300 font-light leading-relaxed max-w-xl mx-auto mb-12">
-                Trabajamos exclusivamente con cita previa. Agenda tu espacio
-                y vive la experiencia "A Puerta Cerrada".
-            </p>
-            <a
-                href="/contacto"
-                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-white hover:text-brand-black transition-colors duration-500"
-            >
-                Agendar Cita <ArrowRight size={14} />
-            </a>
+    <!-- CARTA COMPLETA -->
+    <section class="py-32 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex items-end justify-between flex-wrap gap-6 mb-16">
+                <div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Carta</p>
+                    <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">Todo lo que<br/><span class="italic text-neutral-400">hacemos aquí.</span></h2>
+                </div>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">★ = servicio estrella</p>
+            </div>
+
+            <div class="space-y-0 border-t border-neutral-200">
+                <div class="service-item grid md:grid-cols-12 gap-6 py-8 border-b border-neutral-200 items-baseline cursor-pointer">
+                    <div class="md:col-span-1 font-serif italic text-neutral-300 text-xl">01</div>
+                    <div class="md:col-span-5"><p class="s-title font-serif text-3xl text-brand-black"><span class="star-badge">Corte con tijera</span></p></div>
+                    <div class="md:col-span-4 text-sm text-neutral-500 font-light">Diseño seco + acabado 100% a tijera. H & M.</div>
+                    <div class="md:col-span-2 text-right text-[10px] tracking-[0.3em] uppercase text-neutral-400">60 min</div>
+                </div>
+                <div class="service-item grid md:grid-cols-12 gap-6 py-8 border-b border-neutral-200 items-baseline cursor-pointer">
+                    <div class="md:col-span-1 font-serif italic text-neutral-300 text-xl">02</div>
+                    <div class="md:col-span-5"><p class="s-title font-serif text-3xl text-brand-black">Tintura</p></div>
+                    <div class="md:col-span-4 text-sm text-neutral-500 font-light">Cobertura técnica de cana. L'Oréal profesional.</div>
+                    <div class="md:col-span-2 text-right text-[10px] tracking-[0.3em] uppercase text-neutral-400">90 min</div>
+                </div>
+                <div class="service-item grid md:grid-cols-12 gap-6 py-8 border-b border-neutral-200 items-baseline cursor-pointer">
+                    <div class="md:col-span-1 font-serif italic text-neutral-300 text-xl">03</div>
+                    <div class="md:col-span-5"><p class="s-title font-serif text-3xl text-brand-black italic">Color & reflejos</p></div>
+                    <div class="md:col-span-4 text-sm text-neutral-500 font-light">Balayage, babylights, root shadow. Colorimetría aplicada.</div>
+                    <div class="md:col-span-2 text-right text-[10px] tracking-[0.3em] uppercase text-neutral-400">3–4 h</div>
+                </div>
+                <div class="service-item grid md:grid-cols-12 gap-6 py-8 border-b border-neutral-200 items-baseline cursor-pointer">
+                    <div class="md:col-span-1 font-serif italic text-neutral-300 text-xl">04</div>
+                    <div class="md:col-span-5"><p class="s-title font-serif text-3xl text-brand-black">Recuperación capilar</p></div>
+                    <div class="md:col-span-4 text-sm text-neutral-500 font-light">Olaplex + Kérastase. Reconstrucción estructural profunda.</div>
+                    <div class="md:col-span-2 text-right text-[10px] tracking-[0.3em] uppercase text-neutral-400">75 min</div>
+                </div>
+                <div class="service-item grid md:grid-cols-12 gap-6 py-8 border-b border-neutral-200 items-baseline cursor-pointer">
+                    <div class="md:col-span-1 font-serif italic text-neutral-300 text-xl">05</div>
+                    <div class="md:col-span-5"><p class="s-title font-serif text-3xl text-brand-black italic">Peinado de evento</p></div>
+                    <div class="md:col-span-4 text-sm text-neutral-500 font-light">Matrimonios, galas, sesiones fotográficas.</div>
+                    <div class="md:col-span-2 text-right text-[10px] tracking-[0.3em] uppercase text-neutral-400">45 min</div>
+                </div>
+                <div class="service-item grid md:grid-cols-12 gap-6 py-8 border-b border-neutral-200 items-baseline cursor-pointer">
+                    <div class="md:col-span-1 font-serif italic text-neutral-300 text-xl">06</div>
+                    <div class="md:col-span-5"><p class="s-title font-serif text-3xl text-brand-black">Barba & afeitado</p></div>
+                    <div class="md:col-span-4 text-sm text-neutral-500 font-light">Diseño de barba con visagismo facial.</div>
+                    <div class="md:col-span-2 text-right text-[10px] tracking-[0.3em] uppercase text-neutral-400">40 min</div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- POR QUÉ TIJERA -->
+    <section class="py-32 md:py-40 bg-neutral-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-10 text-center">Por qué tijera</p>
+            <p class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black text-center">
+                La máquina corta <span class="italic text-neutral-400">por cantidad.</span><br/><br/>
+                La tijera corta <span class="italic text-brand-primary">por criterio.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-32 md:py-40 bg-white border-t border-neutral-200">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] text-brand-black mb-10">Un corte<br/>que <span class="italic text-brand-primary">dura.</span></h2>
+            <a href="/contacto" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Reservar corte →</a>
+        </div>
+    </section>
+
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
 </MainLayout>

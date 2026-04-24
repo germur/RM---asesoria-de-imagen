@@ -1,126 +1,185 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { ArrowRight } from "lucide-react";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const seoData = {
-    title: "Imagen Ejecutiva · Marca Personal · Estilo Corporativo en Bogotá | Roger Murillo",
-    description:
-        "Consultoría de imagen ejecutiva en Bogotá para CEOs, directivos y líderes. Alineamos tu presencia visual con tu autoridad y jerarquía real. Servicio exclusivo a puerta cerrada.",
-    h1: "Tu Imagen es tu Tarjeta de Presentación antes de que Digas una Palabra",
+    title: "Imagen Ejecutiva · Protocolo de Autoridad Visual en Bogotá | Roger Murillo",
+    description: "Diseño de imagen ejecutiva en Bogotá para CEOs, fundadores, figuras públicas y líderes. Protocolo visual, código de vestuario por escenario y dossier de autoridad personal.",
 };
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Executive Image Consulting",
-    provider: { "@type": "Person", name: "Roger Murillo" },
-    areaServed: "Bogotá",
+    serviceType: "Imagen Ejecutiva y Protocolo de Autoridad",
+    provider: { "@type": "ProfessionalService", name: "Roger Murillo & Adriana Garzón", url: "https://rogermurillo.co" },
+    areaServed: { "@type": "City", name: "Bogotá" },
     description: seoData.description,
 });
 ---
 
-<MainLayout
-    title={seoData.title}
-    description={seoData.description}
-    schema={schema}
->
-    <!-- Hero -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Imagen Ejecutiva</p>
-            <h1 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black max-w-4xl mb-8">
-                {seoData.h1}
+<MainLayout title={seoData.title} description={seoData.description} schema={schema}>
+
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+        .arrival{transition:all .7s cubic-bezier(.16,1,.3,1)}
+        .arrival:hover{background:#0a0a0a;color:#fff}
+        .arrival:hover .a-num{color:var(--color-brand-primary, #C41230)}
+        .context-chip{border:1px solid rgba(255,255,255,.15);transition:all .4s;cursor:pointer}
+        .context-chip:hover{border-color:var(--color-brand-primary, #C41230);color:var(--color-brand-primary, #C41230);background:rgba(196,18,48,.07)}
+    </style>
+
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image:repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 1px,transparent 18px)"></div>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-white/60">Roger & Adriana · Servicio 05</p>
+            </div>
+            <h1 class="font-serif leading-[0.85]">
+                <AnimatedTitleWords text="La sala se" class="block text-6xl md:text-8xl lg:text-9xl text-white" />
+                <AnimatedTitleWords text="silencia" class="block text-6xl md:text-8xl lg:text-9xl italic text-neutral-500 pl-[6%]" delay={300} />
+                <AnimatedTitleWords text="cuando entras." class="block text-6xl md:text-8xl lg:text-9xl text-brand-primary pl-[2%]" delay={500} />
             </h1>
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-xl mb-12">
-                Para CEOs, Altos Directivos y Políticos. Alineamos tu presencia visual con la jerarquía de tu cargo.
-            </p>
-            <a
-                href="/contacto"
-                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500"
-            >
-                Solicitar Auditoría de Imagen
-                <ArrowRight size={14} />
-            </a>
+            <div class="mt-14 max-w-xl">
+                <p class="text-base text-white/60 font-light leading-relaxed">Protocolo visual para quienes lideran. Tu imagen comunica antes de que abras la boca — diseñamos qué dice.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Problem -->
+    <!-- STATS -->
+    <section class="py-20 bg-white border-b border-neutral-200">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div><p class="font-serif text-6xl text-brand-primary italic mb-2">7s</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Tiempo para formar juicio visual</p></div>
+                <div><p class="font-serif text-6xl text-brand-black italic mb-2">55%</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">De la comunicación es visual</p></div>
+                <div><p class="font-serif text-6xl text-brand-black italic mb-2">38%</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Es tono, gesto y postura</p></div>
+                <div><p class="font-serif text-6xl text-brand-black italic mb-2">7%</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Son las palabras</p></div>
+            </div>
+            <p class="text-xs text-neutral-400 mt-8 font-light italic">Regla de Mehrabian · comunicación no verbal</p>
+        </div>
+    </section>
+
+    <!-- PARA QUIÉN -->
     <section class="py-32 md:py-40 bg-neutral-50">
         <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24">
-                <div class="md:col-span-5">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Problema</p>
-                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black">
-                        ¿Tu apariencia está frenando tu ascenso?
-                    </h2>
+            <div class="max-w-2xl mb-20">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Para quién</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">Quien necesita<br/><span class="italic text-neutral-400">ser leído</span> bien.</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-0 border-t border-neutral-300">
+                <div class="arrival p-10 border-b md:border-r border-neutral-300 reveal">
+                    <p class="a-num font-serif italic text-5xl text-neutral-300 mb-6 transition-colors">01</p>
+                    <h3 class="font-serif text-3xl mb-4">C-Suite & fundadores</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-70">CEOs, socios y fundadores que se presentan ante juntas directivas, inversionistas y prensa.</p>
                 </div>
-                <div class="md:col-span-7 flex items-center">
-                    <ul class="space-y-6">
-                        <li class="text-lg text-neutral-500 font-light leading-relaxed">
-                            <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Tienes la experiencia, pero te confunden con un junior o alguien de menor rango.
-                        </li>
-                        <li class="text-lg text-neutral-500 font-light leading-relaxed">
-                            <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Tu equipo no percibe autoridad inmediata cuando entras a la sala de juntas.
-                        </li>
-                        <li class="text-lg text-neutral-500 font-light leading-relaxed">
-                            <span class="text-brand-black font-medium">--</span>&nbsp;&nbsp;Pierdes tiempo valioso cada mañana decidiendo qué ponerte para reuniones clave.
-                        </li>
-                    </ul>
+                <div class="arrival p-10 border-b border-neutral-300 reveal" style="--delay:.1s">
+                    <p class="a-num font-serif italic text-5xl text-neutral-300 mb-6 transition-colors">02</p>
+                    <h3 class="font-serif text-3xl mb-4">Figuras públicas</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-70">Políticos, conferencistas, periodistas y voceros. Cámara, tarima, entrevistas.</p>
+                </div>
+                <div class="arrival p-10 border-b md:border-r border-neutral-300 md:border-b-0 reveal" style="--delay:.2s">
+                    <p class="a-num font-serif italic text-5xl text-neutral-300 mb-6 transition-colors">03</p>
+                    <h3 class="font-serif text-3xl mb-4">Transiciones</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-70">Ascensos, nuevo cargo, nueva empresa. Cuando tu imagen aún no alcanzó tu posición.</p>
+                </div>
+                <div class="arrival p-10 reveal" style="--delay:.3s">
+                    <p class="a-num font-serif italic text-5xl text-neutral-300 mb-6 transition-colors">04</p>
+                    <h3 class="font-serif text-3xl mb-4">Abogados & consultores</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-70">Profesionales cuyo servicio se vende, ante todo, por autoridad percibida.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process -->
+    <!-- PROTOCOLOS -->
+    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="max-w-2xl mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Protocolos</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95]">Diseñamos<br/><span class="italic text-neutral-500">para el contexto.</span></h2>
+            </div>
+            <p class="text-white/60 font-light max-w-2xl mb-12">Cada escenario tiene su código. Construimos el tuyo para que la ropa, el cabello y el gesto hablen el mismo idioma que la sala.</p>
+            <div class="flex flex-wrap gap-3">
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Junta directiva</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Pitch con inversionistas</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Entrevista TV</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Keynote</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Negociación</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Audiencia judicial</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Gala & protocolo</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Cóctel corporativo</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">LinkedIn / fotografía</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Campaña política</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Rueda de prensa</span>
+                <span class="context-chip px-5 py-3 text-sm text-white/70">Reunión internacional</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUÉ TE LLEVAS -->
     <section class="py-32 md:py-40 bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Proceso</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-20">
-                Tres Fases de Transformación
-            </h2>
-            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">01</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Auditoría Semiótica</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Analizamos qué comunica tu ropa actual. ¿Transmites accesibilidad o poder? ¿Rigidez o innovación?
-                    </p>
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Qué te llevas</p>
+                    <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">Tu <span class="italic">manual</span><br/>de autoridad.</h2>
+                    <p class="text-base text-neutral-500 font-light leading-relaxed mt-8 max-w-md">Un dossier personal impreso y digital, diseñado para consulta rápida antes de cada compromiso de alto impacto.</p>
                 </div>
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">02</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Estrategia de Color</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Psicología del color aplicada a negocios. Aprende a usar el azul para negociar y el gris para mediar.
-                    </p>
+                <div class="lg:col-span-7 space-y-0">
+                    <div class="grid grid-cols-12 gap-4 py-8 border-t border-neutral-200 items-baseline reveal">
+                        <div class="col-span-1 font-serif italic text-neutral-300">i.</div>
+                        <div class="col-span-11"><p class="font-serif text-2xl text-brand-black">Paleta personal de autoridad</p><p class="text-sm text-neutral-500 font-light mt-1">5 tonos base + 3 de acento, con combinaciones validadas por contexto.</p></div>
+                    </div>
+                    <div class="grid grid-cols-12 gap-4 py-8 border-t border-neutral-200 items-baseline reveal">
+                        <div class="col-span-1 font-serif italic text-neutral-300">ii.</div>
+                        <div class="col-span-11"><p class="font-serif text-2xl text-brand-black">Código de vestuario por escenario</p><p class="text-sm text-neutral-500 font-light mt-1">Junta / pitch / cámara / evento. Qué sí, qué nunca, qué opcional.</p></div>
+                    </div>
+                    <div class="grid grid-cols-12 gap-4 py-8 border-t border-neutral-200 items-baseline reveal">
+                        <div class="col-span-1 font-serif italic text-neutral-300">iii.</div>
+                        <div class="col-span-11"><p class="font-serif text-2xl text-brand-black">Geometría facial y corte óptimo</p><p class="text-sm text-neutral-500 font-light mt-1">Dos opciones — formal & semiformal — ya ejecutadas durante la sesión.</p></div>
+                    </div>
+                    <div class="grid grid-cols-12 gap-4 py-8 border-t border-neutral-200 items-baseline reveal">
+                        <div class="col-span-1 font-serif italic text-neutral-300">iv.</div>
+                        <div class="col-span-11"><p class="font-serif text-2xl text-brand-black">Guía de prendas de inversión</p><p class="text-sm text-neutral-500 font-light mt-1">Cápsula de 12 prendas que resuelven el 80% de tus compromisos.</p></div>
+                    </div>
+                    <div class="grid grid-cols-12 gap-4 py-8 border-t border-b border-neutral-200 items-baseline reveal">
+                        <div class="col-span-1 font-serif italic text-neutral-300">v.</div>
+                        <div class="col-span-11"><p class="font-serif text-2xl text-brand-black">Protocolo no verbal</p><p class="text-sm text-neutral-500 font-light mt-1">Postura, gesto, saludo. Lo que la ropa sola no comunica.</p></div>
+                    </div>
                 </div>
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">03</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Armario de Poder</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Creación de cápsulas eficientes. Menos ropa, más impacto. Preparado para viajes y juntas imprevistas.
-                    </p>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="py-32 md:py-40 bg-neutral-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <p class="font-serif italic text-4xl md:text-6xl leading-[1.08] text-brand-black">
+                <span class="text-brand-primary">"</span>La ropa no <span class="text-neutral-400">te hace</span> líder.<br/>
+                Te <span class="text-brand-primary">deja serlo</span> sin<br/>
+                estorbar.<span class="text-brand-primary">"</span>
+            </p>
+            <div class="mt-12 flex items-center gap-5">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Premisa del protocolo</p>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-32 md:py-40 bg-brand-black text-white">
-        <div class="container mx-auto px-6 max-w-6xl text-center">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Descúbrelo</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-white mb-8">
-                ¿Tu imagen proyecta liderazgo real?
-            </h2>
-            <p class="text-lg text-neutral-300 font-light leading-relaxed max-w-xl mx-auto mb-12">
-                Haz nuestro test rápido de colorimetría y descubre si tu paleta de color está alineada con tu rol.
-            </p>
-            <a
-                href="/herramientas/test-colorimetria-online"
-                class="inline-flex items-center gap-3 px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white border border-white/20 hover:border-white transition-colors duration-500"
-            >
-                Haz el Test de 2 Minutos
-                <ArrowRight size={14} />
-            </a>
+    <section class="py-32 md:py-40 bg-brand-black text-white border-t border-white/10">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] mb-10">Que la sala te <span class="italic text-brand-primary">crea</span><br/>antes de escucharte.</h2>
+            <p class="text-lg text-white/60 font-light max-w-xl mx-auto mb-12">Solicita una valoración de perfil ejecutivo — confidencial y sin costo.</p>
+            <a href="/contacto" class="inline-flex items-center gap-4 bg-brand-primary text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-colors duration-500">Agendar valoración →</a>
         </div>
     </section>
+
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
 </MainLayout>

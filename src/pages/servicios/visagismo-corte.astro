@@ -1,124 +1,158 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { ArrowRight } from "lucide-react";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const seoData = {
-    title: "Visagismo · Corte según Rostro · Diseño de Barba en Bogotá | Roger Murillo",
-    description:
-        "Visagismo profesional en Bogotá: corte de cabello según la geometría del rostro y diseño de barba a medida. El corte correcto para tu tipo de cara, ejecutado a puerta cerrada.",
-    h1: "Ingeniería Estética aplicada a tu Rostro",
+    title: "Visagismo & Corte Profesional · Geometría Facial en Bogotá | Roger Murillo",
+    description: "Visagismo profesional y corte basado en proporción áurea en Bogotá. Análisis de geometría facial para encontrar el corte que equilibra tu rostro. Por Roger Murillo.",
 };
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Visagismo y Corte",
-    provider: { "@type": "Person", name: "Roger Murillo" },
-    description: "Estudio geométrico del rostro para diseño de corte y barba.",
+    serviceType: "Visagismo y Corte Profesional",
+    provider: { "@type": "ProfessionalService", name: "Roger Murillo · RM Asesoría de Imagen", url: "https://rogermurillo.co" },
+    areaServed: { "@type": "City", name: "Bogotá" },
+    description: seoData.description,
 });
 ---
 
-<MainLayout
-    title={seoData.title}
-    description={seoData.description}
-    schema={schema}
->
-    <!-- Hero -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Visagismo</p>
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-brand-black max-w-3xl mb-8">
-                {seoData.h1}
+<MainLayout title={seoData.title} description={seoData.description} schema={schema}>
+
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+        .face-shape{transition:all .5s cubic-bezier(.16,1,.3,1);cursor:pointer}
+        .face-shape:hover{transform:translateY(-6px)}
+        .face-shape:hover .face-svg{stroke:var(--color-brand-primary, #C41230)}
+        .face-shape:hover .face-name{color:var(--color-brand-primary, #C41230)}
+        .face-svg{stroke:#0a0a0a;transition:stroke .4s}
+        .tool-card{transition:all .5s}
+        .tool-card:hover{background:#0a0a0a;color:#fff}
+        .tool-card:hover .tool-num{color:var(--color-brand-primary, #C41230)}
+        .num-huge{font-style:italic;color:rgba(196,18,48,.08);line-height:.8;position:absolute;pointer-events:none;user-select:none}
+        .blueprint-grid{background-image:linear-gradient(rgba(10,10,10,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,10,.04) 1px,transparent 1px);background-size:32px 32px}
+    </style>
+
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white relative overflow-hidden blueprint-grid">
+        <svg class="absolute right-0 top-1/2 -translate-y-1/2 w-[55vw] h-[90vh] opacity-[0.12] pointer-events-none" viewBox="0 0 400 600">
+            <circle cx="200" cy="200" r="160" fill="none" stroke="#0a0a0a" stroke-width="0.5"/>
+            <circle cx="200" cy="200" r="120" fill="none" stroke="#C41230" stroke-width="0.5" stroke-dasharray="2 3"/>
+            <polygon points="200,40 320,200 200,360 80,200" fill="none" stroke="#0a0a0a" stroke-width="0.5"/>
+            <line x1="80" y1="200" x2="320" y2="200" stroke="#0a0a0a" stroke-width="0.3"/>
+            <line x1="200" y1="40" x2="200" y2="360" stroke="#0a0a0a" stroke-width="0.3"/>
+            <text x="210" y="48" font-family="Playfair Display" font-size="10" fill="#C41230" font-style="italic">φ</text>
+        </svg>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Roger Murillo · Servicio 03</p>
+            </div>
+            <h1 class="font-serif leading-[0.85] text-brand-black">
+                <AnimatedTitleWords text="La cara" class="block text-6xl md:text-8xl lg:text-9xl" />
+                <AnimatedTitleWords text="es arquitectura." class="block text-6xl md:text-8xl lg:text-9xl italic text-brand-primary pl-[6%]" delay={300} />
+                <AnimatedTitleWords text="El corte, su plano." class="block text-6xl md:text-8xl lg:text-9xl text-neutral-400 pl-[2%]" delay={500} />
             </h1>
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-xl mb-12">
-                No cortamos cabello, <strong class="text-brand-black font-medium">equilibramos facciones</strong>. El visagismo es el estudio geométrico de tu rostro para potenciar tus rasgos dominantes y disimular asimetrías.
-            </p>
-            <a
-                href="/contacto"
-                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500"
-            >
-                Reservar Cita de Diseño
-                <ArrowRight size={14} />
-            </a>
+            <div class="mt-14 grid lg:grid-cols-3 gap-10 max-w-5xl">
+                <p class="text-base text-neutral-700 font-light leading-relaxed lg:col-span-2">Visagismo aplicado: estudiamos la geometría de tu rostro — proporciones áureas, ángulos, líneas óseas — antes de tomar la tijera.</p>
+                <div><p class="font-serif text-6xl text-brand-primary mb-1">φ</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Proporción áurea como guía</p></div>
+            </div>
         </div>
     </section>
 
-    <!-- Problem -->
+    <!-- 5 GEOMETRÍAS -->
     <section class="py-32 md:py-40 bg-neutral-50">
         <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-12 gap-16 md:gap-24">
-                <div class="md:col-span-5">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Problema</p>
-                    <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black">
-                        ¿Por qué ese corte de moda no te queda bien?
-                    </h2>
+            <div class="max-w-2xl mb-20">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Cinco geometrías</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">No hay corte<br/><span class="italic text-neutral-400">universal.</span></h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="face-shape text-center reveal">
+                    <svg class="face-svg w-full h-48" viewBox="0 0 100 130" fill="none" stroke-width="1.2"><ellipse cx="50" cy="65" rx="38" ry="52"/></svg>
+                    <p class="face-name font-serif text-xl text-brand-black mt-3">Óvalo</p>
+                    <p class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-1">Canon</p>
                 </div>
-                <div class="md:col-span-7 flex items-center">
-                    <p class="text-lg text-neutral-500 font-light leading-relaxed">
-                        La respuesta es matemática: <strong class="text-brand-black font-medium">porque no respeta tu estructura ósea.</strong> Un corte diseñado para un rostro ovalado puede desequilibrar por completo un rostro cuadrado o diamante. Nosotros analizamos tus líneas mandibulares, la altura de tu frente y la separación de tus ojos antes de tocar la tijera.
-                    </p>
+                <div class="face-shape text-center reveal" style="--delay:.1s">
+                    <svg class="face-svg w-full h-48" viewBox="0 0 100 130" fill="none" stroke-width="1.2"><path d="M20 30 L80 30 L80 100 L50 120 L20 100 Z"/></svg>
+                    <p class="face-name font-serif text-xl text-brand-black mt-3">Cuadrada</p>
+                    <p class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-1">Carácter</p>
+                </div>
+                <div class="face-shape text-center reveal" style="--delay:.2s">
+                    <svg class="face-svg w-full h-48" viewBox="0 0 100 130" fill="none" stroke-width="1.2"><path d="M30 20 L70 20 L90 65 L70 110 L30 110 L10 65 Z"/></svg>
+                    <p class="face-name font-serif text-xl text-brand-black mt-3">Diamante</p>
+                    <p class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-1">Estructura</p>
+                </div>
+                <div class="face-shape text-center reveal" style="--delay:.3s">
+                    <svg class="face-svg w-full h-48" viewBox="0 0 100 130" fill="none" stroke-width="1.2"><ellipse cx="50" cy="65" rx="32" ry="55"/></svg>
+                    <p class="face-name font-serif text-xl text-brand-black mt-3">Alargada</p>
+                    <p class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-1">Verticalidad</p>
+                </div>
+                <div class="face-shape text-center reveal" style="--delay:.4s">
+                    <svg class="face-svg w-full h-48" viewBox="0 0 100 130" fill="none" stroke-width="1.2"><path d="M20 50 L35 20 L65 20 L80 50 L75 100 L50 115 L25 100 Z"/></svg>
+                    <p class="face-name font-serif text-xl text-brand-black mt-3">Corazón</p>
+                    <p class="text-[10px] tracking-[0.2em] uppercase text-neutral-400 mt-1">Suavidad</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process -->
+    <!-- PULL QUOTE -->
+    <section class="py-32 md:py-40 bg-brand-black text-white relative overflow-hidden">
+        <span class="num-huge font-serif text-[45vw] -right-[8%] top-1/2 -translate-y-1/2 absolute text-white/[0.04]">φ</span>
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <p class="font-serif italic text-4xl md:text-6xl leading-[1.08]">
+                <span class="text-brand-primary">"</span>Antes de cortar, <span class="text-neutral-500">medimos.</span><br/>
+                Antes de medir, <span class="text-neutral-500">observamos.</span><br/>
+                Antes de observar, <span class="text-brand-primary">escuchamos.</span><span class="text-brand-primary">"</span>
+            </p>
+            <div class="mt-12 flex items-center gap-5">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.3em] uppercase text-white/60">Roger Murillo · Técnica de visagismo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERRAMIENTAS -->
     <section class="py-32 md:py-40 bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">El Proceso</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-20">
-                El Ritual "Puerta Cerrada"
-            </h2>
-            <div class="grid md:grid-cols-4 gap-px bg-neutral-200">
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">01</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Diagnóstico</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Análisis craneal y facial completo. Medimos proporciones y definimos tu tipo de rostro.
-                    </p>
+            <div class="max-w-2xl mb-16">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">El oficio</p>
+                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black">Herramientas<br/><span class="italic text-neutral-400">que deciden.</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-0 border-t border-neutral-200">
+                <div class="tool-card p-10 border-b md:border-r border-neutral-200 reveal">
+                    <p class="tool-num font-serif italic text-5xl text-neutral-300 mb-6 transition-colors">01</p>
+                    <h3 class="font-serif text-3xl mb-4">Tijera</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-70">Corte seco, control absoluto de la línea. Ningún corte se termina con máquina.</p>
                 </div>
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">02</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Lavado Spa</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Preparación del cabello con productos profesionales. Limpieza profunda del cuero cabelludo.
-                    </p>
+                <div class="tool-card p-10 border-b md:border-r border-neutral-200 reveal" style="--delay:.1s">
+                    <p class="tool-num font-serif italic text-5xl text-neutral-300 mb-6 transition-colors">02</p>
+                    <h3 class="font-serif text-3xl mb-4">Navaja</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-70">Desfilado a navaja para movimiento y textura — donde el corte pide respirar.</p>
                 </div>
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">03</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Corte Precisión</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Técnica geométrica aplicada. Cada corte responde a la estructura ósea de tu rostro.
-                    </p>
-                </div>
-                <div class="bg-white p-10">
-                    <span class="font-serif text-4xl text-brand-primary block mb-6">04</span>
-                    <h3 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-4">Educación</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed">
-                        Te enseñamos a peinar y mantener tu corte. Autonomía total desde el día uno.
-                    </p>
+                <div class="tool-card p-10 border-b border-neutral-200 reveal" style="--delay:.2s">
+                    <p class="tool-num font-serif italic text-5xl text-neutral-300 mb-6 transition-colors">03</p>
+                    <h3 class="font-serif text-3xl mb-4">Ojo clínico</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-70">15 años leyendo rostros. Ningún algoritmo sustituye la observación directa.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Calculadora -->
-    <section class="py-32 md:py-40 bg-brand-black text-white">
-        <div class="container mx-auto px-6 max-w-6xl text-center">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Herramienta Gratuita</p>
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-white mb-8">
-                ¿No sabes cuál es tu tipo de rostro?
-            </h2>
-            <p class="text-lg text-neutral-300 font-light leading-relaxed max-w-xl mx-auto mb-12">
-                Usa nuestra Calculadora de Visagismo con IA antes de agendar. Es gratis.
-            </p>
-            <a
-                href="/herramientas/calculadora-rostro"
-                class="inline-flex items-center gap-3 px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white border border-white/20 hover:border-white transition-colors duration-500"
-            >
-                Usar Calculadora Facial
-                <ArrowRight size={14} />
-            </a>
+    <!-- CTA -->
+    <section class="py-32 md:py-40 bg-neutral-50 border-t border-neutral-200">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] text-brand-black mb-10">Tu rostro ya<br/>tiene la <span class="italic text-brand-primary">respuesta.</span></h2>
+            <p class="text-lg text-neutral-600 font-light max-w-xl mx-auto mb-12">Agenda tu diagnóstico visagista con Roger.</p>
+            <a href="/contacto" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">Agendar visagismo →</a>
         </div>
     </section>
+
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
 </MainLayout>
