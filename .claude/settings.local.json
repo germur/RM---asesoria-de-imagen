@@ -48,7 +48,12 @@
       "WebFetch(domain:rogermurillo.co)",
       "WebFetch(domain:rmasesoria.netlify.app)",
       "Bash(unzip -q \"RM asesoria de imagen \\(4\\).zip\" -d RM_extracted_v5)",
-      "Bash(unzip -q \"RM asesoria de imagen \\(5\\).zip\" -d RM_extracted_v6)"
+      "Bash(unzip -q \"RM asesoria de imagen \\(5\\).zip\" -d RM_extracted_v6)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'fix\\(productos\\): wrap in MainLayout so Tailwind/Navbar/Footer render correctly *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'fix\\(peluqueria\\): restore editorial cream hero with '\\\\''La tijera nunca miente'\\\\'' + scissors *)",
+      "Bash(git commit -m 'feat\\(peluqueria\\): add giant scissors graphics to hero \\(SVG + ✂ glyph\\) *)"
     ]
   }
 }
