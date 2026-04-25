@@ -1,5 +1,6 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 import { ArrowRight } from "lucide-react";
 
 const seoData = {
@@ -23,24 +24,32 @@ const schema = JSON.stringify({
     schema={schema}
 >
     <!-- Hero -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">Peluquería</p>
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] text-brand-black max-w-3xl mb-8">
-                La tijera como instrumento de precisión.
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-gradient-to-br from-[#faf7f2] to-[#ede5d8] relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Roger & Adriana · Servicio 04</p>
+            </div>
+            <h1 class="font-serif leading-[0.85] text-brand-black">
+                <AnimatedTitleWords text="La tijera" class="block text-6xl md:text-8xl lg:text-9xl" />
+                <AnimatedTitleWords text="nunca miente." class="block text-6xl md:text-8xl lg:text-9xl italic text-brand-primary pl-[8%]" delay={300} />
             </h1>
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-xl mb-12">
-                No usamos máquina por defecto. El corte con tijera es nuestro servicio estrella
-                porque permite <strong class="text-brand-black font-medium">controlar cada línea, cada ángulo,
-                cada milímetro</strong> según la geometría de tu rostro.
-            </p>
-            <a
-                href="/contacto"
-                class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500"
-            >
-                Reservar Cita
-                <ArrowRight size={14} />
-            </a>
+            <div class="mt-14 max-w-xl">
+                <p class="text-base text-neutral-700 font-light leading-relaxed">
+                    Peluquería de oficio. Sin máquina en el acabado, sin atajos. El corte se termina a mano,
+                    como se hizo siempre — porque solo así se lee el movimiento real del cabello.
+                </p>
+            </div>
+            <div class="mt-10 flex items-center gap-8">
+                <a
+                    href="/contacto"
+                    class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500"
+                >
+                    Reservar Cita
+                    <ArrowRight size={14} />
+                </a>
+                <p class="text-sm text-neutral-400">✂ Servicio estrella · Corte con tijera</p>
+            </div>
         </div>
     </section>
 
