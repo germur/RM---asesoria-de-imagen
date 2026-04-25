@@ -3,8 +3,7 @@
 // Vitrina editorial · Roger Murillo
 // Versión inicial: showroom sin carrito. CTAs a WhatsApp con mensaje pre-cargado.
 // Migrable: PRODUCTS array → Shopify/Stripe sin cambiar el render.
-import Navbar from "../components/ui/Navbar.astro";
-import Footer from "../components/ui/Footer.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 const WA_NUMBER = "573214189010";
 
@@ -37,19 +36,7 @@ const PRODUCTS = [
 const fmt = (n) => "$ " + n.toLocaleString("es-CO");
 ---
 
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Productos · Roger Murillo</title>
-  <meta name="description" content="Curaduría RM: Alfaparf, L'Oréal Professionnel y Kerastase. Los productos que usamos en el estudio." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-<Navbar />
+<MainLayout title="Productos · Roger Murillo" description="Curaduría RM: Alfaparf, L'Oréal Professionnel y Kerastase. Los productos que usamos en el estudio.">
 
 <!-- ─── HERO ───────────────────────────── -->
 <section class="hero py-20 md:py-28">
@@ -238,7 +225,6 @@ const fmt = (n) => "$ " + n.toLocaleString("es-CO");
   </div>
 </section>
 
-<Footer />
 
 <!-- ─── QUICK VIEW MODAL ─────────────── -->
 <div id="quickview" role="dialog" aria-modal="true">
@@ -300,13 +286,8 @@ const fmt = (n) => "$ " + n.toLocaleString("es-CO");
     --cream-2:#ebe3d2;
     --cream-3:#d9d1bf;
   }
-  html,body { background: var(--cream-1); color: var(--brand-black); }
-  body { font-family:'Inter', system-ui, sans-serif; font-weight:300; }
-  .font-serif  { font-family:'Playfair Display', serif; }
-  .text-brand-primary { color: var(--brand-primary); }
-  .text-brand-black   { color: var(--brand-black); }
-  .bg-brand-black     { background: var(--brand-black); }
-  .bg-brand-primary   { background: var(--brand-primary); }
+  /* page-scoped background — only main, not html/body, to avoid breaking navbar/footer */
+  main { background: var(--cream-1); color: var(--brand-black); }
 
   /* HERO */
   .hero { background: var(--brand-black); color:#fff; position:relative; overflow:hidden; }
@@ -640,5 +621,4 @@ document.addEventListener('click', e => {
 });
 </script>
 
-</body>
-</html>
+</MainLayout>
