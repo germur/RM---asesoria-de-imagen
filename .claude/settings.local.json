@@ -47,7 +47,8 @@
       "Bash(cp \"C:/Users/ger-mur/Downloads/RM_extracted_v4/cambios/reto-revoluciona-tu-imagen.astro\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/src/pages/herramientas/reto-revoluciona-tu-imagen.astro\")",
       "WebFetch(domain:rogermurillo.co)",
       "WebFetch(domain:rmasesoria.netlify.app)",
-      "Bash(unzip -q \"RM asesoria de imagen \\(4\\).zip\" -d RM_extracted_v5)"
+      "Bash(unzip -q \"RM asesoria de imagen \\(4\\).zip\" -d RM_extracted_v5)",
+      "Bash(unzip -q \"RM asesoria de imagen \\(5\\).zip\" -d RM_extracted_v6)"
     ]
   }
 }

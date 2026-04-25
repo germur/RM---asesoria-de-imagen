@@ -1,0 +1,644 @@
+---
+// /src/pages/productos.astro
+// Vitrina editorial · Roger Murillo
+// Versión inicial: showroom sin carrito. CTAs a WhatsApp con mensaje pre-cargado.
+// Migrable: PRODUCTS array → Shopify/Stripe sin cambiar el render.
+import Navbar from "../components/ui/Navbar.astro";
+import Footer from "../components/ui/Footer.astro";
+
+const WA_NUMBER = "573214189010";
+
+const PRODUCTS = [
+  // ── Alfaparf ──
+  { id:"alf-01", brand:"Alfaparf", cat:"tratamiento", hair:["seco","teñido"], shape:"tarro",  dark:false, title:"Semi di Lino Reconstruction", sub:"Máscara reconstructora 500ml", price:189000, pricePro:134000, rmPick:true,  studio:true,  desc:"Restaura la fibra capilar desde la primera aplicación. Ideal post-decoloración. Uso semanal." },
+  { id:"alf-02", brand:"Alfaparf", cat:"shampoo",     hair:["teñido"],         shape:"botella",dark:false, title:"Semi di Lino Color Shampoo",  sub:"Protector de color 250ml",     price:98000,  pricePro:68000,  rmPick:false, studio:true,  desc:"Preserva la vibración del color con tecnología UV-shield. Cabellos teñidos." },
+  { id:"alf-03", brand:"Alfaparf", cat:"styling",     hair:["rizado"],         shape:"tubo",   dark:true,  title:"Curls Defining Cream",        sub:"Crema definidora 200ml",       price:112000, pricePro:82000,  rmPick:false, studio:false, desc:"Define sin apelmazar. Hidratación profunda para rizos definidos hasta 48h." },
+  { id:"alf-04", brand:"Alfaparf", cat:"color",       hair:["teñido"],         shape:"tubo",   dark:true,  title:"Evolution of the Color",      sub:"Tinte permanente 60ml",        price:54000,  pricePro:32000,  rmPick:false, studio:true,  desc:"Color de alta fidelidad con tecnología microlight. 60+ tonos disponibles." },
+  { id:"alf-05", brand:"Alfaparf", cat:"tratamiento", hair:["seco"],           shape:"botella",dark:true,  title:"Keratin Liss Fluid",          sub:"Sérum anti-frizz 125ml",       price:145000, pricePro:102000, rmPick:true,  studio:false, desc:"Alisado ligero con keratina hidrolizada. Control del frizz hasta 72h." },
+  { id:"alf-06", brand:"Alfaparf", cat:"styling",     hair:["graso"],          shape:"spray",  dark:false, title:"Volume Boost Spray",          sub:"Spray volumen 200ml",          price:89000,  pricePro:60000,  rmPick:false, studio:false, desc:"Volumen desde la raíz sin residuos. Ideal cabellos finos o con tendencia a aplanarse." },
+
+  // ── L'Oréal Professionnel ──
+  { id:"lor-01", brand:"L'Oréal", cat:"shampoo",     hair:["seco","teñido"],  shape:"botella",dark:false, title:"Absolut Repair Shampoo",      sub:"Shampoo reparador 300ml",      price:115000, pricePro:79000,  rmPick:true,  studio:true,  desc:"Con aminoácidos Gold Quinoa. Reconstrucción molecular para cabellos muy dañados." },
+  { id:"lor-02", brand:"L'Oréal", cat:"tratamiento", hair:["seco"],           shape:"tarro",  dark:true,  title:"Absolut Repair Mask",         sub:"Máscara reparadora 250ml",     price:168000, pricePro:118000, rmPick:true,  studio:true,  desc:"Tratamiento intensivo en 3 minutos. Cabellos severamente sensibilizados." },
+  { id:"lor-03", brand:"L'Oréal", cat:"color",       hair:["teñido"],         shape:"tubo",   dark:false, title:"Majirel Cool Cover",          sub:"Tinte cobertura canas 50ml",   price:48000,  pricePro:28000,  rmPick:false, studio:true,  desc:"100% cobertura de canas con reflejos frios. Resultado natural y duradero." },
+  { id:"lor-04", brand:"L'Oréal", cat:"styling",     hair:["rizado"],         shape:"tubo",   dark:true,  title:"Tecni.Art Curl Contour",      sub:"Crema activa rizos 150ml",     price:92000,  pricePro:64000,  rmPick:false, studio:false, desc:"Hidrata, define y controla el frizz. Hold flexible con brillo natural." },
+  { id:"lor-05", brand:"L'Oréal", cat:"shampoo",     hair:["graso"],          shape:"botella",dark:false, title:"Scalp Advanced Anti-Gras",    sub:"Shampoo purificante 300ml",    price:108000, pricePro:74000,  rmPick:false, studio:true,  desc:"Regula la producción de sebo en el cuero cabelludo. Uso diario sin resecar." },
+  { id:"lor-06", brand:"L'Oréal", cat:"styling",     hair:["seco","teñido"],  shape:"spray",  dark:true,  title:"Infinium Pure Strong",        sub:"Fijador fuerte 500ml",         price:78000,  pricePro:52000,  rmPick:false, studio:true,  desc:"Fijación profesional sin residuos. Listo para peinar de nuevo en segundos." },
+
+  // ── Kerastase ──
+  { id:"ker-01", brand:"Kerastase", cat:"tratamiento", hair:["seco","teñido"], shape:"tarro",  dark:false, title:"Masque Magistral",            sub:"Máscara ultra-nutritiva 200ml",price:245000, pricePro:172000, rmPick:true,  studio:true,  desc:"Cabellos muy secos. Con ceramidas y omega 3. La máscara insignia de Kerastase." },
+  { id:"ker-02", brand:"Kerastase", cat:"shampoo",     hair:["teñido"],         shape:"botella",dark:false, title:"Bain Chromatique",            sub:"Shampoo cabello teñido 250ml", price:165000, pricePro:116000, rmPick:false, studio:true,  desc:"Protege el color hasta 40 días. Nutre y sella la fibra para un brillo espejo." },
+  { id:"ker-03", brand:"Kerastase", cat:"styling",     hair:["seco","teñido"], shape:"spray",  dark:true,  title:"Elixir Ultime Oil",           sub:"Aceite finalizador 100ml",     price:198000, pricePro:138000, rmPick:true,  studio:true,  desc:"Aceite multi-usos. Sérum de noche, leave-in, acabado brillante. El clásico." },
+  { id:"ker-04", brand:"Kerastase", cat:"tratamiento", hair:["seco"],           shape:"botella",dark:true,  title:"Resistance Ciment Thermique", sub:"Sérum reconstructor 150ml",    price:142000, pricePro:99000,  rmPick:false, studio:false, desc:"Protector térmico reconstructor. Fortalece la fibra antes del calor." },
+  { id:"ker-05", brand:"Kerastase", cat:"styling",     hair:["rizado"],         shape:"tubo",   dark:false, title:"Curl Manifesto Cream",        sub:"Crema hidratante 150ml",       price:178000, pricePro:124000, rmPick:false, studio:false, desc:"Hidratación sin peso para rizos definidos y elásticos. Sin parabenos." },
+  { id:"ker-06", brand:"Kerastase", cat:"color",       hair:["teñido"],         shape:"tubo",   dark:true,  title:"Chroma Absolu Booster",       sub:"Booster de color 10ml × 3",    price:89000,  pricePro:58000,  rmPick:false, studio:true,  desc:"Aditivo pre-shampoo que prolonga el color y neutraliza reflejos no deseados." },
+];
+
+const fmt = (n) => "$ " + n.toLocaleString("es-CO");
+---
+
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Productos · Roger Murillo</title>
+  <meta name="description" content="Curaduría RM: Alfaparf, L'Oréal Professionnel y Kerastase. Los productos que usamos en el estudio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<Navbar />
+
+<!-- ─── HERO ───────────────────────────── -->
+<section class="hero py-20 md:py-28">
+  <div class="relative container mx-auto px-6 max-w-[1400px]">
+    <p class="hero-label text-[10px] uppercase text-[#C41230] mb-6">Productos · Curaduría RM</p>
+    <h1 class="font-serif text-5xl md:text-7xl leading-[1.03] mb-6 max-w-3xl">
+      Los productos <span class="italic text-neutral-400">que realmente usamos</span> en el estudio.
+    </h1>
+    <p class="max-w-xl text-sm md:text-base text-neutral-300 font-light leading-relaxed">
+      Una selección curada de Alfaparf, L'Oréal Professionnel y Kerastase — los mismos que recomendamos
+      en consulta. Consulta disponibilidad y reserva por WhatsApp; despachamos en Bogotá y a todo Colombia.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-[11px] tracking-[0.25em] uppercase text-neutral-400">
+      <span>· {PRODUCTS.length} productos</span>
+      <span>· 3 marcas</span>
+      <span>· 4 categorías</span>
+      <span>· Envío nacional</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FILTROS ────────────────────────── -->
+<div class="filter-bar">
+  <div class="container mx-auto px-6 max-w-[1400px] py-5">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center">
+      <div class="search-wrap max-w-md">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.35-4.35"></path>
+        </svg>
+        <input id="search" type="search" class="search-input" placeholder="Buscar producto, marca, necesidad..." />
+      </div>
+      <div class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">
+        <span id="results-count">{PRODUCTS.length}</span> productos
+      </div>
+    </div>
+
+    <div class="mt-4 flex gap-3 overflow-x-auto pb-1">
+      <button class="chip is-active" data-filter="cat" data-value="all">Todos <span class="count">{PRODUCTS.length}</span></button>
+      <button class="chip" data-filter="cat" data-value="tratamiento">Tratamiento</button>
+      <button class="chip" data-filter="cat" data-value="shampoo">Shampoo & Acond.</button>
+      <button class="chip" data-filter="cat" data-value="styling">Styling</button>
+      <button class="chip" data-filter="cat" data-value="color">Color</button>
+    </div>
+
+    <div class="mt-3 flex flex-wrap gap-3">
+      <button class="chip" data-filter="brand" data-value="all">Todas las marcas</button>
+      <button class="chip" data-filter="brand" data-value="Alfaparf">Alfaparf</button>
+      <button class="chip" data-filter="brand" data-value="L'Oréal">L'Oréal Pro</button>
+      <button class="chip" data-filter="brand" data-value="Kerastase">Kerastase</button>
+      <span class="w-px h-6 bg-neutral-200 mx-2 self-center hidden md:block"></span>
+      <button class="chip" data-filter="hair" data-value="all">Todo tipo de cabello</button>
+      <button class="chip" data-filter="hair" data-value="seco">Seco/Dañado</button>
+      <button class="chip" data-filter="hair" data-value="teñido">Teñido</button>
+      <button class="chip" data-filter="hair" data-value="graso">Graso</button>
+      <button class="chip" data-filter="hair" data-value="rizado">Rizado</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── GRID ───────────────────────────── -->
+<main class="container mx-auto px-6 max-w-[1400px] py-12 md:py-16">
+  <div id="grid" class="grid grid-density-3 gap-6">
+    {PRODUCTS.map((p) => (
+      <article class="prod-card" data-id={p.id} data-cat={p.cat} data-brand={p.brand} data-hair={p.hair.join(",")}
+               data-search={`${p.title} ${p.brand} ${p.sub} ${p.desc}`.toLowerCase()}>
+        <div class={`prod-media ${p.dark ? "bg-dark" : ""}`}>
+          <div class="prod-badges">
+            {p.rmPick && <span class="badge-rm">Roger recomienda</span>}
+            {p.studio && <span class="badge-studio">Usado en el estudio</span>}
+          </div>
+          <span class="badge-pro" style="display:none">Pro</span>
+          <div class="prod-svg" data-shape={p.shape} data-dark={p.dark ? "1" : "0"}></div>
+        </div>
+        <div class="prod-body">
+          <span class="prod-brand">{p.brand}</span>
+          <h3 class="prod-title">{p.title}</h3>
+          <p class="prod-sub">{p.sub}</p>
+          <div class="prod-price">{fmt(p.price)}<span class="iva">IVA incl.</span></div>
+          <div class="price-pro">Pro: {fmt(p.pricePro)}</div>
+          <button class="prod-cta" data-wa={`Hola, me interesa ${p.title} (${p.brand}) · ${fmt(p.price)}. ¿Disponibilidad?`}>
+            <svg class="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.42 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+            Consultar
+          </button>
+          <div class="prod-row">
+            <button class="quick" data-quick={p.id}>Quick view</button>
+            <button class="heart" data-fav={p.id} aria-label="Favorito">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+  <div id="empty-state" class="hidden text-center py-20">
+    <p class="font-serif italic text-3xl text-neutral-400 mb-3">Sin resultados.</p>
+    <p class="text-sm text-neutral-500">Prueba con otra combinación de filtros o <button class="underline" id="reset-filters">limpiar filtros</button>.</p>
+  </div>
+</main>
+
+<!-- ─── BUNDLE ─────────────────────────── -->
+<section class="bundle py-20 md:py-24">
+  <div class="relative container mx-auto px-6 max-w-[1400px] grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-[10px] tracking-[0.4em] uppercase text-[#C41230] mb-5">Bundle · Edición limitada</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-[1.05] mb-6">
+        La rutina RM <span class="italic text-neutral-400">en tres pasos.</span>
+      </h2>
+      <p class="text-neutral-400 font-light leading-relaxed mb-8 max-w-md">
+        Shampoo restaurador + tratamiento intensivo + aceite final. La combinación que usamos
+        después de cada consulta de color. Curada para cabello tratado químicamente.
+      </p>
+      <div class="space-y-3 text-sm text-neutral-300 mb-10">
+        <div class="flex gap-3"><span class="text-[#C41230] font-serif italic">01</span>Shampoo Absolut Repair · L'Oréal Professionnel</div>
+        <div class="flex gap-3"><span class="text-[#C41230] font-serif italic">02</span>Máscara Keratine Forte · Alfaparf</div>
+        <div class="flex gap-3"><span class="text-[#C41230] font-serif italic">03</span>Elixir Ultime · Kerastase</div>
+      </div>
+      <div class="flex items-baseline gap-4 mb-8">
+        <span class="font-serif text-3xl">$ 289.000</span>
+        <span class="text-sm line-through text-neutral-500">$ 340.000</span>
+        <span class="text-[10px] tracking-[0.25em] uppercase text-[#C41230]">Ahorra 15%</span>
+      </div>
+      <a href="#" data-wa="Hola, quiero el bundle La Rutina RM (3 productos · $289.000). ¿Disponibilidad?"
+         class="wa-cta inline-flex items-center gap-3 px-7 py-4 bg-white text-black text-[10px] tracking-[0.25em] uppercase hover:bg-[#C41230] hover:text-white transition-colors">
+        Consultar bundle
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.42 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="bundle-bottle flex items-center justify-center p-4"><div class="prod-svg" data-shape="botella" data-dark="1"></div></div>
+      <div class="bundle-bottle flex items-center justify-center p-4 mt-8"><div class="prod-svg" data-shape="tarro" data-dark="1"></div></div>
+      <div class="bundle-bottle flex items-center justify-center p-4"><div class="prod-svg" data-shape="spray" data-dark="1"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REVIEWS ────────────────────────── -->
+<section class="py-20 md:py-24 bg-white">
+  <div class="container mx-auto px-6 max-w-[1200px]">
+    <p class="text-[10px] tracking-[0.4em] uppercase text-[#C41230] mb-5">Testimonios</p>
+    <h2 class="font-serif text-4xl md:text-5xl leading-[1.05] mb-12 max-w-2xl">
+      Lo que dicen <span class="italic text-neutral-400">nuestras clientas.</span>
+    </h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="review">
+        <div class="stars mb-4" set:html={'<svg viewBox=\'0 0 24 24\'><path d=\'M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z\'/></svg>'.repeat(5)} />
+        <p class="font-serif italic text-lg leading-relaxed text-neutral-700 mb-4">"El kit de color que Roger me recomendó me cambió la fibra. Por fin un salón que te dice exactamente qué usar en casa."</p>
+        <p class="text-[11px] tracking-[0.2em] uppercase text-neutral-500">Valentina G. · Bogotá</p>
+      </div>
+      <div class="review">
+        <div class="stars mb-4" set:html={'<svg viewBox=\'0 0 24 24\'><path d=\'M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z\'/></svg>'.repeat(5)} />
+        <p class="font-serif italic text-lg leading-relaxed text-neutral-700 mb-4">"Llevo dos años con el mismo protocolo que me diseñaron aquí. Mi cabello nunca estuvo mejor."</p>
+        <p class="text-[11px] tracking-[0.2em] uppercase text-neutral-500">María Fernanda A. · Medellín</p>
+      </div>
+      <div class="review">
+        <div class="stars mb-4" set:html={'<svg viewBox=\'0 0 24 24\'><path d=\'M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z\'/></svg>'.repeat(5)} />
+        <p class="font-serif italic text-lg leading-relaxed text-neutral-700 mb-4">"Consultar por WhatsApp fue rapidísimo. Me enviaron foto, precio y me llegó en 2 días."</p>
+        <p class="text-[11px] tracking-[0.2em] uppercase text-neutral-500">Laura C. · Cali</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GUÍA ───────────────────────────── -->
+<section class="guia py-20 md:py-24">
+  <div class="container mx-auto px-6 max-w-[1400px] grid md:grid-cols-[1fr_1.2fr] gap-12 items-center">
+    <div>
+      <p class="text-[10px] tracking-[0.4em] uppercase text-[#C41230] mb-5">¿No sabes qué llevar?</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-[1.05] mb-6">
+        Cada cabello <span class="italic text-neutral-500">es distinto.</span>
+      </h2>
+      <p class="text-neutral-600 font-light leading-relaxed mb-8 max-w-md">
+        Si estás entre dos productos o no sabes qué necesita tu cabello hoy, agenda una
+        consulta de 20 minutos. Sin costo. Te recomendamos exactamente lo que usa tu estilista.
+      </p>
+      <a href="/contacto" class="inline-flex items-center gap-3 px-7 py-4 bg-brand-black text-white text-[10px] tracking-[0.25em] uppercase hover:bg-[#C41230] transition-colors">
+        Agendar consulta gratuita
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-2 gap-3 text-sm">
+      <div class="p-5 bg-white border border-neutral-200"><p class="text-[10px] tracking-[0.3em] uppercase text-[#C41230] mb-2">01</p><p class="font-serif text-lg mb-1">Cabello teñido</p><p class="text-neutral-500 leading-relaxed">Protector de color + máscara nutritiva semanal.</p></div>
+      <div class="p-5 bg-white border border-neutral-200"><p class="text-[10px] tracking-[0.3em] uppercase text-[#C41230] mb-2">02</p><p class="font-serif text-lg mb-1">Cabello seco</p><p class="text-neutral-500 leading-relaxed">Rutina hidratante con aceites + tratamiento profundo.</p></div>
+      <div class="p-5 bg-white border border-neutral-200"><p class="text-[10px] tracking-[0.3em] uppercase text-[#C41230] mb-2">03</p><p class="font-serif text-lg mb-1">Cabello graso</p><p class="text-neutral-500 leading-relaxed">Shampoo purificante + balance en cuero cabelludo.</p></div>
+      <div class="p-5 bg-white border border-neutral-200"><p class="text-[10px] tracking-[0.3em] uppercase text-[#C41230] mb-2">04</p><p class="font-serif text-lg mb-1">Cabello rizado</p><p class="text-neutral-500 leading-relaxed">Styling definidor + antifrizz sin residuos.</p></div>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+<!-- ─── QUICK VIEW MODAL ─────────────── -->
+<div id="quickview" role="dialog" aria-modal="true">
+  <div class="qv-card">
+    <button class="qv-close" id="qv-close" aria-label="Cerrar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M6 18L18 6"></path></svg>
+    </button>
+    <div class="qv-media" id="qv-media"></div>
+    <div class="qv-body" id="qv-body"></div>
+  </div>
+</div>
+
+<!-- ─── TWEAKS ───────────────────────── -->
+<button id="tweaks-toggle" aria-label="Tweaks">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+    <circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"></path>
+  </svg>
+</button>
+<div id="tweaks">
+  <p class="text-[9px] tracking-[0.3em] uppercase text-[#C41230] mb-3 font-medium">Tweaks</p>
+  <div class="tw-section">
+    <span class="tw-label">Modo de tienda</span>
+    <div class="tw-row">
+      <button class="tw-btn is-active" data-mode="retail">Retail</button>
+      <button class="tw-btn" data-mode="pro">Pro (mayorista)</button>
+    </div>
+  </div>
+  <div class="tw-section">
+    <span class="tw-label">Densidad de grid</span>
+    <div class="tw-row">
+      <button class="tw-btn" data-density="2">2 col</button>
+      <button class="tw-btn is-active" data-density="3">3 col</button>
+      <button class="tw-btn" data-density="4">4 col</button>
+    </div>
+  </div>
+  <div class="tw-section">
+    <span class="tw-label">Badges</span>
+    <div class="tw-row">
+      <button class="tw-btn is-active" data-badges="on">Visibles</button>
+      <button class="tw-btn" data-badges="off">Ocultos</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WHATSAPP FLOAT ─────────────── -->
+<a
+  href={`https://wa.me/${WA_NUMBER}?text=Hola%20Roger%2C%20quisiera%20informaci%C3%B3n%20sobre%20productos`}
+  target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"
+>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.42 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</a>
+
+<!-- ═══ STYLES ═══════════════════════════════════════════ -->
+<style is:global>
+  :root {
+    --brand-primary:#C41230;
+    --brand-black:#0a0a0a;
+    --cream-1:#f6f4f0;
+    --cream-2:#ebe3d2;
+    --cream-3:#d9d1bf;
+  }
+  html,body { background: var(--cream-1); color: var(--brand-black); }
+  body { font-family:'Inter', system-ui, sans-serif; font-weight:300; }
+  .font-serif  { font-family:'Playfair Display', serif; }
+  .text-brand-primary { color: var(--brand-primary); }
+  .text-brand-black   { color: var(--brand-black); }
+  .bg-brand-black     { background: var(--brand-black); }
+  .bg-brand-primary   { background: var(--brand-primary); }
+
+  /* HERO */
+  .hero { background: var(--brand-black); color:#fff; position:relative; overflow:hidden; }
+  .hero::before {
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse at 75% 30%, rgba(196,18,48,.22), transparent 45%),
+      repeating-linear-gradient(90deg, transparent 0 14.28%, rgba(255,255,255,.04) 14.28%, rgba(255,255,255,.04) calc(14.28% + 1px), transparent calc(14.28% + 1px) 16%);
+    opacity:.7;
+  }
+  .hero-label { letter-spacing:.4em; }
+
+  /* CARDS */
+  .prod-card { position:relative; background:#fff; transition: transform .5s cubic-bezier(.7,0,.3,1), box-shadow .5s; display:flex; flex-direction:column; }
+  .prod-card:hover { box-shadow: 0 20px 60px rgba(10,10,10,.08); }
+  .prod-card.is-hidden { display:none; }
+  .prod-media { aspect-ratio: 4/5; position:relative; overflow:hidden; background: linear-gradient(180deg, #f6f1e8 0%, #e8ddc7 100%); transition: background .4s; }
+  .prod-media.bg-dark { background: radial-gradient(ellipse at 60% 35%, #2a2020 0%, #0f0a08 80%); }
+  .prod-media svg { position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); transition: transform .8s cubic-bezier(.7,0,.3,1); }
+  .prod-card:hover .prod-media svg { transform: translate(-50%, -50%) scale(1.04); }
+
+  .prod-body { padding: 18px 20px 22px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .prod-brand { font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:rgba(10,10,10,.5); }
+  .prod-title { font-family:'Playfair Display', serif; font-size:18px; line-height:1.15; color:var(--brand-black); transition: color .3s; }
+  .prod-card:hover .prod-title { color: var(--brand-primary); }
+  .prod-sub   { font-size:12px; color:rgba(10,10,10,.55); line-height:1.5; }
+  .prod-price { font-family:'Playfair Display', serif; font-size:17px; color:var(--brand-black); margin-top:6px; }
+  .prod-price .iva { font-family:'Inter', sans-serif; font-size:9px; color:rgba(10,10,10,.45); letter-spacing:.2em; text-transform:uppercase; margin-left:4px; }
+  .prod-cta { margin-top:14px; display:flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid rgba(10,10,10,.15); font-size:10px; letter-spacing:.22em; text-transform:uppercase; transition: all .4s; cursor:pointer; background:#fff; }
+  .prod-cta:hover { background: var(--brand-black); color:#fff; border-color: var(--brand-black); }
+  .prod-cta .wa { width:12px; height:12px; fill:currentColor; }
+
+  .prod-row { display:flex; gap:8px; margin-top:auto; padding-top:12px; }
+  .prod-row .quick { flex:1; font-size:9px; letter-spacing:.22em; text-transform:uppercase; padding:10px; border:1px solid rgba(10,10,10,.1); background:transparent; cursor:pointer; transition: border-color .3s, color .3s; }
+  .prod-row .quick:hover { border-color: var(--brand-black); }
+  .prod-row .heart { width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(10,10,10,.1); cursor:pointer; transition: all .3s; flex-shrink:0; }
+  .prod-row .heart:hover { border-color: var(--brand-primary); }
+  .prod-row .heart svg { width:14px; height:14px; stroke:currentColor; fill:none; transition: all .3s; }
+  .prod-row .heart.is-active { border-color: var(--brand-primary); color:var(--brand-primary); }
+  .prod-row .heart.is-active svg { fill: var(--brand-primary); stroke: var(--brand-primary); }
+
+  .prod-badges { position:absolute; top:12px; left:12px; z-index:3; display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
+  .badge-rm { background: var(--brand-primary); color:#fff; padding: 4px 9px 4px 8px; font-size:9px; letter-spacing:.25em; text-transform:uppercase; display:inline-flex; align-items:center; gap:5px; }
+  .badge-rm::before { content:""; width:5px; height:5px; border-radius:50%; background:#fff; }
+  .badge-studio { background: rgba(10,10,10,.85); color:#fff; padding: 4px 9px; font-size:9px; letter-spacing:.25em; text-transform:uppercase; backdrop-filter: blur(4px); }
+  .badge-pro { position:absolute; top:12px; right:12px; z-index:3; background: #fff; color: var(--brand-black); border:1px solid var(--brand-black); padding: 4px 9px; font-size:9px; letter-spacing:.25em; text-transform:uppercase; }
+
+  .price-pro { display:none; color: var(--brand-primary); font-size:12px; margin-top:2px; }
+  body.mode-pro .price-pro { display:block; }
+  body.mode-pro .prod-price { color: rgba(10,10,10,.4); text-decoration: line-through; font-size:13px; }
+
+  /* FILTROS */
+  .filter-bar { position: sticky; top: 0; z-index: 30; background: rgba(246,244,240,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(10,10,10,.08); }
+  .chip { display:inline-flex; align-items:center; gap:8px; padding:9px 14px; border:1px solid rgba(10,10,10,.15); font-size:10px; letter-spacing:.2em; text-transform:uppercase; background:#fff; cursor:pointer; transition: all .3s; white-space:nowrap; }
+  .chip:hover { border-color: var(--brand-black); }
+  .chip.is-active { background: var(--brand-black); color:#fff; border-color: var(--brand-black); }
+  .chip .count { font-size:9px; opacity:.6; }
+  .search-input { width:100%; padding:12px 16px 12px 42px; border:1px solid rgba(10,10,10,.12); background:#fff; font-size:13px; color:var(--brand-black); font-weight:300; transition: border-color .3s; }
+  .search-input:focus { outline:none; border-color: var(--brand-black); }
+  .search-wrap { position:relative; }
+  .search-wrap > svg { position:absolute; left:14px; top:50%; transform: translateY(-50%); color: rgba(10,10,10,.4); }
+
+  /* GRID density */
+  .grid-density-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-density-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-density-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width:767px) { .grid-density-2, .grid-density-3, .grid-density-4 { grid-template-columns: repeat(2, 1fr); } }
+
+  /* BUNDLE */
+  .bundle { background: var(--brand-black); color:#fff; position:relative; overflow:hidden; }
+  .bundle::before { content:""; position:absolute; inset:0; pointer-events:none; background: radial-gradient(ellipse at 20% 80%, rgba(196,18,48,.25), transparent 50%), linear-gradient(135deg, transparent 60%, rgba(244,217,160,.08) 100%); }
+  .bundle-bottle { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.1); aspect-ratio: 3/4; position:relative; }
+
+  /* QUICK VIEW */
+  #quickview { position: fixed; inset: 0; z-index: 80; background: rgba(10,10,10,.7); backdrop-filter: blur(10px); opacity: 0; visibility: hidden; transition: opacity .4s, visibility .4s; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  #quickview.is-open { opacity: 1; visibility: visible; }
+  .qv-card { background:#fff; width:100%; max-width: 980px; max-height: 90vh; overflow:hidden; display:grid; grid-template-columns: 1fr 1fr; transform: scale(.96) translateY(12px); transition: transform .45s cubic-bezier(.7,0,.3,1); position:relative; }
+  @media (max-width:767px) { .qv-card { grid-template-columns: 1fr; max-height: 94vh; overflow-y:auto; } }
+  #quickview.is-open .qv-card { transform: scale(1) translateY(0); }
+  .qv-close { position: absolute; top: 14px; right: 14px; z-index:3; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.9); color: #0a0a0a; cursor: pointer; }
+  .qv-media { background: var(--cream-2); position:relative; min-height:360px; }
+  .qv-media.dark { background: radial-gradient(ellipse at 60% 35%, #2a2020, #0f0a08 80%); }
+  .qv-media svg { position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); }
+  .qv-body { padding: 40px 36px; overflow-y:auto; }
+
+  .stars { display:inline-flex; gap:2px; }
+  .stars svg { width:14px; height:14px; fill: var(--brand-primary); }
+
+  /* REVIEWS */
+  .review { border-top:1px solid rgba(10,10,10,.1); padding:28px 0; }
+
+  /* GUÍA */
+  .guia { background: var(--cream-2); }
+
+  /* TWEAKS */
+  #tweaks { position: fixed; right: 24px; bottom: 24px; z-index:70; background:#fff; border:1px solid rgba(10,10,10,.1); box-shadow: 0 20px 60px rgba(10,10,10,.12); width: 280px; padding: 18px 18px 16px; transform: translateY(8px); opacity:0; pointer-events:none; transition: opacity .3s, transform .3s; }
+  #tweaks.is-open { opacity:1; transform: translateY(0); pointer-events:auto; }
+  #tweaks-toggle { position: fixed; right: 24px; bottom: 24px; z-index:69; width: 52px; height: 52px; border-radius: 50%; background: var(--brand-black); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow: 0 12px 30px rgba(10,10,10,.2); border:none; transition: transform .3s; }
+  #tweaks-toggle:hover { transform: scale(1.05); }
+  .tw-section { margin-bottom: 14px; }
+  .tw-section:last-child { margin-bottom: 0; }
+  .tw-label { font-size:9px; letter-spacing:.3em; text-transform:uppercase; color: rgba(10,10,10,.5); margin-bottom:8px; display:block; }
+  .tw-row { display:flex; gap:6px; }
+  .tw-btn { flex:1; padding: 7px 4px; font-size:10px; letter-spacing:.15em; text-transform:uppercase; border:1px solid rgba(10,10,10,.15); background:#fff; cursor:pointer; transition: all .3s; }
+  .tw-btn.is-active { background: var(--brand-black); color:#fff; border-color: var(--brand-black); }
+
+  /* WA FLOAT */
+  .wa-float { position: fixed; left: 24px; bottom: 24px; z-index: 60; background: #25D366; color: #fff; width: 52px; height: 52px; border-radius: 50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 30px rgba(37,211,102,.35); transition: transform .3s; }
+  .wa-float:hover { transform: scale(1.08); }
+</style>
+
+<!-- ═══ SCRIPTS ═══════════════════════════════════════════ -->
+<script is:inline define:vars={{ PRODUCTS, WA_NUMBER }}>
+/* SVG factories */
+const SVG = {
+  botella(dark){
+    const fill=dark?'#2a1c18':'#f1e4c8', stroke=dark?'#d4a474':'#8b6f4a', cap=dark?'#0a0606':'#3a2818';
+    return `<svg width="160" height="220" viewBox="0 0 160 220" fill="none">
+      <rect x="62" y="6" width="36" height="26" rx="2" fill="${cap}"/>
+      <path d="M68 32h24l4 18c10 4 18 14 18 28v120c0 8-6 14-14 14H60c-8 0-14-6-14-14V78c0-14 8-24 18-28l4-18z" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+      <rect x="56" y="100" width="48" height="56" fill="none" stroke="${stroke}" stroke-width=".8" opacity=".6"/>
+      <text x="80" y="125" text-anchor="middle" font-family="Playfair Display" font-style="italic" font-size="11" fill="${stroke}">RM</text>
+      <rect x="56" y="134" width="48" height="1.5" fill="#C41230"/>
+      <text x="80" y="148" text-anchor="middle" font-family="Inter" font-size="6" letter-spacing="1.5" fill="${stroke}">NUTRITIVO</text>
+    </svg>`;
+  },
+  tubo(dark){
+    const fill=dark?'#1a1210':'#e8ddc7', stroke=dark?'#d4a474':'#8b6f4a', cap=dark?'#0a0606':'#2a2020';
+    return `<svg width="160" height="220" viewBox="0 0 160 220" fill="none">
+      <path d="M40 8 L120 8 L120 14 L40 14 Z" fill="${cap}"/>
+      <path d="M42 14 L118 14 L124 30 C128 40 128 55 124 70 L120 200 C120 208 114 214 106 214 L54 214 C46 214 40 208 40 200 L36 70 C32 55 32 40 36 30 Z" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+      <rect x="44" y="80" width="72" height="90" fill="none" stroke="${stroke}" stroke-width=".8" opacity=".5"/>
+      <text x="80" y="120" text-anchor="middle" font-family="Playfair Display" font-style="italic" font-size="22" fill="${stroke}">RM</text>
+      <line x1="46" y1="135" x2="114" y2="135" stroke="#C41230" stroke-width="1"/>
+      <text x="80" y="152" text-anchor="middle" font-family="Inter" font-size="6.5" letter-spacing="2" fill="${stroke}">TREATMENT</text>
+    </svg>`;
+  },
+  spray(dark){
+    const fill=dark?'#2a1c18':'#f1e4c8', stroke=dark?'#d4a474':'#8b6f4a', cap=dark?'#0a0606':'#2a2020';
+    return `<svg width="160" height="220" viewBox="0 0 160 220" fill="none">
+      <rect x="68" y="4" width="22" height="10" fill="${cap}"/>
+      <path d="M64 14h32l2 14h-36z" fill="${cap}"/>
+      <rect x="70" y="28" width="20" height="8" fill="${stroke}"/>
+      <rect x="52" y="36" width="56" height="178" rx="4" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+      <rect x="56" y="90" width="48" height="60" fill="none" stroke="${stroke}" stroke-width=".8" opacity=".5"/>
+      <text x="80" y="115" text-anchor="middle" font-family="Playfair Display" font-style="italic" font-size="14" fill="${stroke}">RM</text>
+      <line x1="58" y1="124" x2="102" y2="124" stroke="#C41230" stroke-width=".8"/>
+      <text x="80" y="140" text-anchor="middle" font-family="Inter" font-size="5.5" letter-spacing="1.5" fill="${stroke}">FINISHING SPRAY</text>
+    </svg>`;
+  },
+  tarro(dark){
+    const fill=dark?'#1a1210':'#ebe3d2', stroke=dark?'#d4a474':'#8b6f4a', cap=dark?'#0a0606':'#2a2020';
+    return `<svg width="180" height="220" viewBox="0 0 180 220" fill="none">
+      <ellipse cx="90" cy="42" rx="60" ry="10" fill="${cap}"/>
+      <rect x="30" y="36" width="120" height="14" fill="${cap}"/>
+      <path d="M36 50 L144 50 L148 180 C148 198 138 208 120 210 L60 210 C42 208 32 198 32 180 Z" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+      <rect x="48" y="90" width="84" height="68" fill="none" stroke="${stroke}" stroke-width=".8" opacity=".5"/>
+      <text x="90" y="128" text-anchor="middle" font-family="Playfair Display" font-style="italic" font-size="26" fill="${stroke}">RM</text>
+      <line x1="52" y1="140" x2="128" y2="140" stroke="#C41230" stroke-width="1"/>
+      <text x="90" y="155" text-anchor="middle" font-family="Inter" font-size="7" letter-spacing="2" fill="${stroke}">HAIR MASK</text>
+    </svg>`;
+  }
+};
+
+/* Render placeholder SVGs */
+document.querySelectorAll('.prod-svg').forEach(el => {
+  const shape = el.dataset.shape, dark = el.dataset.dark === '1';
+  if (SVG[shape]) el.innerHTML = SVG[shape](dark);
+});
+
+const fmt = (n) => '$ ' + n.toLocaleString('es-CO');
+const grid = document.getElementById('grid');
+const emptyState = document.getElementById('empty-state');
+const state = {
+  cat:'all', brand:'all', hair:'all', search:'',
+  wishlist: JSON.parse(localStorage.getItem('rm_wishlist') || '[]')
+};
+
+/* Init wishlist hearts */
+state.wishlist.forEach(id => {
+  document.querySelector(`[data-fav="${id}"]`)?.classList.add('is-active');
+});
+
+/* Filters */
+function applyFilters(){
+  const q = state.search.toLowerCase().trim();
+  let visible = 0;
+  document.querySelectorAll('.prod-card').forEach(card => {
+    const cat = card.dataset.cat;
+    const brand = card.dataset.brand;
+    const hair = card.dataset.hair.split(',');
+    const search = card.dataset.search;
+    let show = true;
+    if (state.cat   !== 'all' && cat   !== state.cat)   show = false;
+    if (state.brand !== 'all' && brand !== state.brand) show = false;
+    if (state.hair  !== 'all' && !hair.includes(state.hair)) show = false;
+    if (q && !search.includes(q)) show = false;
+    card.classList.toggle('is-hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('results-count').textContent = visible;
+  emptyState.classList.toggle('hidden', visible !== 0);
+  grid.classList.toggle('hidden', visible === 0);
+}
+
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const f = chip.dataset.filter, v = chip.dataset.value;
+    state[f] = v;
+    document.querySelectorAll(`.chip[data-filter="${f}"]`).forEach(c => c.classList.toggle('is-active', c === chip));
+    applyFilters();
+  });
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  state.search = e.target.value;
+  applyFilters();
+});
+
+document.addEventListener('click', e => {
+  if (e.target.id === 'reset-filters') {
+    state.cat='all'; state.brand='all'; state.hair='all'; state.search='';
+    document.getElementById('search').value = '';
+    document.querySelectorAll('.chip').forEach(c => c.classList.toggle('is-active', c.dataset.value === 'all'));
+    applyFilters();
+  }
+});
+
+/* WhatsApp handlers */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-wa]');
+  if (!t) return;
+  e.preventDefault();
+  const msg = encodeURIComponent(t.dataset.wa);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank', 'noopener');
+});
+
+/* Wishlist */
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-fav]');
+  if (!b) return;
+  const id = b.dataset.fav;
+  const i = state.wishlist.indexOf(id);
+  if (i === -1) state.wishlist.push(id); else state.wishlist.splice(i, 1);
+  localStorage.setItem('rm_wishlist', JSON.stringify(state.wishlist));
+  document.querySelectorAll(`[data-fav="${id}"]`).forEach(el => el.classList.toggle('is-active'));
+});
+
+/* Quick view */
+const qv      = document.getElementById('quickview');
+const qvMedia = document.getElementById('qv-media');
+const qvBody  = document.getElementById('qv-body');
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-quick]');
+  if (!b) return;
+  const p = PRODUCTS.find(x => x.id === b.dataset.quick);
+  if (!p) return;
+  qvMedia.className = 'qv-media ' + (p.dark ? 'dark' : '');
+  qvMedia.innerHTML = SVG[p.shape](p.dark);
+  qvBody.innerHTML = `
+    <p class="text-[10px] tracking-[0.3em] uppercase text-[#C41230] mb-3">${p.brand}</p>
+    <h3 class="font-serif text-3xl leading-tight mb-3">${p.title}</h3>
+    <p class="text-neutral-500 mb-6">${p.sub}</p>
+    <div class="flex items-center gap-2 mb-5">
+      <div class="stars">${'<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>'.repeat(5)}</div>
+      <span class="text-xs text-neutral-500">4.9 · 128 reseñas</span>
+    </div>
+    <p class="text-sm text-neutral-600 leading-relaxed mb-8">${p.desc}</p>
+    <div class="mb-8">
+      <span class="prod-price font-serif text-2xl">${fmt(p.price)}</span>
+      <span class="iva">IVA incl.</span>
+      <div class="price-pro text-[#C41230] text-sm mt-1">Precio Pro: ${fmt(p.pricePro)}</div>
+    </div>
+    <div class="flex gap-3">
+      <button class="flex-1 py-4 bg-brand-black text-white text-[10px] tracking-[0.25em] uppercase" data-wa="Hola, quiero consultar por ${p.title} (${p.brand}) · ${fmt(p.price)}">
+        Consultar por WhatsApp
+      </button>
+      <button class="heart ${state.wishlist.includes(p.id)?'is-active':''} w-14 h-14 border border-neutral-200 flex items-center justify-center" data-fav="${p.id}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="${state.wishlist.includes(p.id) ? '#C41230' : 'none'}" stroke="${state.wishlist.includes(p.id) ? '#C41230' : 'currentColor'}" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+    </div>
+    <div class="mt-8 pt-6 border-t border-neutral-200 grid grid-cols-2 gap-3 text-[11px] text-neutral-500">
+      <div><strong class="text-neutral-800 block text-[10px] tracking-[0.25em] uppercase mb-1">Envío</strong>Nacional · 2-4 días hábiles</div>
+      <div><strong class="text-neutral-800 block text-[10px] tracking-[0.25em] uppercase mb-1">Autenticidad</strong>Importación directa</div>
+    </div>
+  `;
+  qv.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+});
+
+document.getElementById('qv-close').addEventListener('click', () => {
+  qv.classList.remove('is-open'); document.body.style.overflow = '';
+});
+qv.addEventListener('click', e => { if (e.target === qv) { qv.classList.remove('is-open'); document.body.style.overflow = ''; } });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && qv.classList.contains('is-open')) { qv.classList.remove('is-open'); document.body.style.overflow = ''; }
+});
+
+/* Tweaks */
+const tweaksEl = document.getElementById('tweaks');
+const tweaksToggle = document.getElementById('tweaks-toggle');
+tweaksToggle.addEventListener('click', () => {
+  tweaksEl.classList.toggle('is-open');
+  tweaksToggle.style.display = tweaksEl.classList.contains('is-open') ? 'none' : 'flex';
+});
+document.querySelectorAll('[data-mode]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-mode]').forEach(b => b.classList.toggle('is-active', b === btn));
+    document.body.classList.toggle('mode-pro', btn.dataset.mode === 'pro');
+    document.querySelectorAll('.badge-pro').forEach(el => el.style.display = btn.dataset.mode === 'pro' ? 'inline-block' : 'none');
+  });
+});
+document.querySelectorAll('[data-density]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-density]').forEach(b => b.classList.toggle('is-active', b === btn));
+    grid.className = 'grid grid-density-' + btn.dataset.density + ' gap-6';
+  });
+});
+document.querySelectorAll('[data-badges]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-badges]').forEach(b => b.classList.toggle('is-active', b === btn));
+    document.querySelectorAll('.prod-badges').forEach(el => el.style.display = btn.dataset.badges === 'off' ? 'none' : 'flex');
+  });
+});
+document.addEventListener('click', e => {
+  if (tweaksEl.classList.contains('is-open') && !tweaksEl.contains(e.target) && e.target !== tweaksToggle && !tweaksToggle.contains(e.target)) {
+    tweaksEl.classList.remove('is-open');
+    tweaksToggle.style.display = 'flex';
+  }
+});
+</script>
+
+</body>
+</html>
