@@ -53,7 +53,17 @@
       "Bash(git commit -m 'fix\\(productos\\): wrap in MainLayout so Tailwind/Navbar/Footer render correctly *)",
       "Bash(git push *)",
       "Bash(git commit -m 'fix\\(peluqueria\\): restore editorial cream hero with '\\\\''La tijera nunca miente'\\\\'' + scissors *)",
-      "Bash(git commit -m 'feat\\(peluqueria\\): add giant scissors graphics to hero \\(SVG + ✂ glyph\\) *)"
+      "Bash(git commit -m 'feat\\(peluqueria\\): add giant scissors graphics to hero \\(SVG + ✂ glyph\\) *)",
+      "Bash(git commit *)",
+      "Read(//tmp/**)",
+      "Bash(python3 -c ' *)",
+      "Bash(where python *)",
+      "Bash(where python3 *)",
+      "Bash(where node *)",
+      "Bash(C:/Users/ger-mur/AppData/Local/Programs/Python/Python312/python.exe -c ' *)",
+      "Bash(\"C:/Users/ger-mur/AppData/Local/Programs/Python/Python312/python.exe\" -m pip install python-docx openpyxl)",
+      "Bash(cygpath -w \"/tmp/rm_zip/ASESORIA PREMIUM.pdf\")",
+      "Bash(cp \"/tmp/rm_zip/CURSOS PRESENCIALES/CURSO DE AUTOMAQUILLAJE.png\" \"C:/Users/ger-mur/Desktop/RM - Asesoria de Imagen/public/images/curso-automaquillaje-flyer.png\")"
     ]
   }
 }

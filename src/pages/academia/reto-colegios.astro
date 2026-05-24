@@ -1,0 +1,152 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { ArrowRight } from "lucide-react";
+
+const seoData = {
+    title: "Reto Revoluciona Tu Imagen · Edición Colegios | Roger Murillo",
+    description:
+        "Programa de imagen personal para instituciones educativas. Masterclasses para estudiantes, padres y profesores. El paso del uniforme a la vida real.",
+};
+
+const pilares = [
+    {
+        tag: "Los Protagonistas",
+        title: "Para los Estudiantes",
+        items: [
+            { title: "Identidad, no imitación", desc: "Los sacamos del piloto automático en el que imitan a los influencers de turno, reconociendo su singularidad y poder personal." },
+            { title: "El cuerpo como set de rodaje", desc: "Les enseñamos que su cuerpo es el escenario principal. Les invitamos a dejar de juzgar su apariencia bajo ideales inalcanzables." },
+            { title: "Proyección a 10 años", desc: "Aprenderán que la ropa es una herramienta de éxito para asumir la vida adulta: entrevistas universitarias, laborales y de relacionamiento social." },
+        ],
+    },
+    {
+        tag: "Los Guías del Set",
+        title: "Para los Padres",
+        items: [
+            { title: "Decodificando la rebeldía", desc: "Educamos a los padres para que dejen de ver la forma de vestir de sus hijos como un ataque. Les enseñamos iconología básica para entender qué comunican." },
+            { title: "Acompañamiento sin heridas", desc: "Les damos herramientas para comprender esta etapa de experimentación y ayudar a sus hijos a decantar su estilo genuino sin confrontaciones." },
+        ],
+    },
+    {
+        tag: "Los Directores de Actores",
+        title: "Para los Profesores",
+        items: [
+            { title: "Liderazgo visual", desc: "Les enseñamos a usar su imagen a favor de la pedagogía: líneas verticales para autoridad, horizontales para cercanía y empatía." },
+            { title: "Argumentos técnicos", desc: "Respaldo técnico para explicar que exigir el uniforme no es un capricho, sino el entrenamiento visual para dominar el saber estar." },
+        ],
+    },
+];
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+    </style>
+
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-white/60">Academia · Instituciones Educativas</p>
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.88] mb-8">
+                El paso del uniforme<br/><span class="italic text-brand-primary">a la vida real.</span>
+            </h1>
+            <p class="text-lg text-white/60 font-light leading-relaxed max-w-2xl mb-6">
+                Un programa de intervención 360° que abarca a los tres pilares de la institución: estudiantes, padres y profesores.
+            </p>
+            <p class="text-base text-white/40 font-light italic border-l-2 border-brand-primary pl-6 max-w-xl mb-12">
+                "La imagen personal no comienza en la ropa. Comienza en la identidad."
+            </p>
+            <a href="/contacto" class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-white hover:text-brand-black transition-colors duration-500">
+                Solicitar propuesta <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+        </div>
+    </section>
+
+    <!-- EL PROBLEMA -->
+    <section class="py-24 md:py-32 bg-neutral-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6 text-center">El momento de quiebre</p>
+            <p class="font-serif text-2xl md:text-3xl text-brand-black leading-relaxed text-center max-w-3xl mx-auto">
+                Al soltar el uniforme, los jóvenes se enfrentan a un abismo donde no saben cómo pararse frente al mundo. Quedan expuestos a la "pronta moda" que les venden las redes sociales — diseñada para explorar, pero no para establecer identidad.
+            </p>
+        </div>
+    </section>
+
+    <!-- TRES PILARES -->
+    <section class="py-28 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="max-w-xl mb-20">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Tres pilares</p>
+                <h2 class="font-serif text-4xl md:text-5xl leading-[1.05] text-brand-black">
+                    Un programa para toda<br/><span class="italic text-neutral-400">la comunidad educativa.</span>
+                </h2>
+            </div>
+
+            {pilares.map((pilar, pi) => (
+                <div class={`py-16 ${pi > 0 ? 'border-t border-neutral-200' : ''}`}>
+                    <div class="flex items-baseline gap-4 mb-10">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-brand-primary">{pilar.tag}</span>
+                        <h3 class="font-serif text-3xl text-brand-black">{pilar.title}</h3>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {pilar.items.map((item, i) => (
+                            <div class="reveal border-l-2 border-brand-primary pl-6" style={`--delay:${i * 0.1}s`}>
+                                <h4 class="text-sm font-medium uppercase tracking-[0.15em] text-brand-black mb-3">{item.title}</h4>
+                                <p class="text-sm text-neutral-500 font-light leading-relaxed">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <!-- PROPUESTA -->
+    <section class="py-24 md:py-32 bg-neutral-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">La propuesta</p>
+                    <h3 class="font-serif text-3xl md:text-4xl text-brand-black mb-6 leading-snug">Masterclasses + libro oficial</h3>
+                    <ul class="space-y-3 text-sm text-neutral-600 font-light">
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Masterclasses presenciales para estudiantes, padres y profesores</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Libro físico "Revoluciona tu Imagen" para cada alumno</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Diagnóstico de identidad y proyecto de vida</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Adaptable al calendario escolar</li>
+                    </ul>
+                </div>
+                <div class="border-2 border-brand-primary p-10 text-center">
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-4">Para instituciones educativas</p>
+                    <p class="font-serif text-3xl text-brand-black mb-6">Propuesta personalizada</p>
+                    <p class="text-sm text-neutral-500 font-light mb-8">Adaptamos el programa al tamaño y necesidades de su institución.</p>
+                    <a href="/contacto" class="block bg-brand-primary text-white px-8 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-black transition-colors duration-500">
+                        Agendar reunión →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 md:py-32 bg-brand-black text-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <p class="font-serif italic text-3xl md:text-4xl leading-snug mb-8">
+                "Todos en su comunidad educativa merecen entender que<br/>
+                <span class="text-brand-primary">no vinieron a improvisar su papel."</span>
+            </p>
+            <a href="/contacto" class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-white hover:text-brand-black transition-colors duration-500">
+                Contactar <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+        </div>
+    </section>
+
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
+</MainLayout>

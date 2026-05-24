@@ -1,0 +1,152 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { ArrowRight } from "lucide-react";
+
+const seoData = {
+    title: "Curso de Automaquillaje Profesional · 5 Clases Presenciales | Roger Murillo",
+    description:
+        "Aprende a maquillarte como una profesional en 5 clases presenciales. Estudio morfológico, test de color, técnicas paso a paso y ocasiones de uso. Curso personalizado o grupal en Bogotá.",
+};
+
+const clases = [
+    {
+        n: "01",
+        title: "Tu rostro, tu mapa",
+        desc: "Estudio morfológico facial para descubrir tus rasgos armónicos y qué corregir. Test de color para encontrar tu paleta ideal: base de maquillaje, sombras y estilo personal. Conectar con tu esencia y transmitirla a través del maquillaje.",
+    },
+    {
+        n: "02",
+        title: "Bases y técnica",
+        desc: "Hábitos saludables para cuidar tu rostro: rutina antiedad y desmaquillado correcto. Técnica profesional paso a paso con todos los tipos de pincel. Prácticas en papel milimetrado y maniquí de látex para no dañar tu piel.",
+    },
+    {
+        n: "03",
+        title: "La mirada perfecta",
+        desc: "Técnicas prácticas para maquillar tus ojos: expresión, combinaciones de color y la mirada perfecta. Aprenderás a maquillar pestañas y diseñar cejas profesionalmente.",
+    },
+    {
+        n: "04",
+        title: "Piel y contorno",
+        desc: "Domina los diferentes tipos de base. Contorno facial según tu morfología. Brush y diseño de pómulos. Puntos de luz y técnica profesional para maquillar tu boca.",
+    },
+    {
+        n: "05",
+        title: "Ocasiones de uso",
+        desc: "Práctica integral de toda la técnica. Maquillaje cotidiano perfecto en 5 minutos, maquillaje protocolario para trabajar, y maquillaje de fiesta completamente elaborado.",
+    },
+];
+---
+
+<MainLayout title={seoData.title} description={seoData.description}>
+
+    <style>
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1) var(--delay,0s),transform 1s cubic-bezier(.16,1,.3,1) var(--delay,0s)}
+        .reveal.is-in{opacity:1;transform:translateY(0)}
+    </style>
+
+    <!-- HERO -->
+    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-gradient-to-br from-[#fce4ec] to-[#f8bbd0] relative overflow-hidden">
+        <span class="absolute right-[5%] top-[15%] font-serif italic text-[25vw] leading-none text-brand-primary/[0.06] pointer-events-none select-none">💄</span>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex items-center gap-5 mb-14">
+                <span class="w-12 h-px bg-brand-primary"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase text-brand-black/50">Academia · Presencial</p>
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.88] text-brand-black mb-8">
+                Curso de<br/><span class="italic text-brand-primary">Automaquillaje.</span>
+            </h1>
+            <p class="text-lg text-brand-black/60 font-light leading-relaxed max-w-2xl mb-6">
+                El rostro es la parte desnuda que mostramos todo el tiempo y nuestro conector número uno para transmitir mensajes. Maquillarse no es vanidad: es el principal medio de mostrar tu riqueza personal.
+            </p>
+            <p class="text-sm text-brand-black/40 uppercase tracking-[0.2em] mb-12">5 clases · 3 horas cada una · Una vez por semana</p>
+            <a href="/contacto" class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-brand-black transition-colors duration-500">
+                Inscribirme <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+        </div>
+    </section>
+
+    <!-- LAS 5 CLASES -->
+    <section class="py-28 md:py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="max-w-xl mb-20">
+                <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Programa</p>
+                <h2 class="font-serif text-4xl md:text-5xl leading-[1.05] text-brand-black">
+                    5 semanas para dominar<br/><span class="italic text-neutral-400">tu mejor cara.</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-1 gap-0">
+                {clases.map((c, i) => (
+                    <div class="grid md:grid-cols-12 gap-6 py-10 border-t border-neutral-200 reveal" style={`--delay:${i * 0.05}s`}>
+                        <div class="md:col-span-2">
+                            <span class="font-serif text-4xl italic text-brand-primary">{c.n}</span>
+                        </div>
+                        <div class="md:col-span-3">
+                            <p class="font-serif text-2xl text-brand-black">{c.title}</p>
+                        </div>
+                        <div class="md:col-span-7">
+                            <p class="text-sm text-neutral-600 font-light leading-relaxed">{c.desc}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- INCLUYE -->
+    <section class="py-24 md:py-32 bg-neutral-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-6">Materiales incluidos</p>
+                    <h3 class="font-serif text-3xl text-brand-black mb-6">Todo lo que necesitas para practicar.</h3>
+                    <ul class="space-y-3 text-sm text-neutral-600 font-light">
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Papel milimetrado para prácticas</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Maniquí de látex</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Lápices y difuminadores profesionales</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-primary mt-0.5">✓</span> Guía de tu paleta de color personal</li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <div class="border-2 border-brand-primary p-8 relative">
+                        <span class="absolute -top-3 right-6 bg-brand-primary text-white text-[9px] tracking-[0.3em] uppercase px-3 py-1">VIP</span>
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-3">Curso personalizado</p>
+                        <p class="font-serif text-4xl text-brand-black mb-2">$450,000 <span class="text-xl text-neutral-400">COP</span></p>
+                        <p class="text-sm text-neutral-500 mb-6">Tú sola con la instructora. Atención 100% personalizada.</p>
+                        <a href="/contacto" class="block text-center bg-brand-primary text-white px-8 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-black transition-colors duration-500">
+                            Reservar →
+                        </a>
+                    </div>
+                    <div class="border border-neutral-200 p-8">
+                        <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-3">Curso grupal</p>
+                        <p class="font-serif text-4xl text-brand-black mb-2">$350,000 <span class="text-xl text-neutral-400">COP</span></p>
+                        <p class="text-sm text-neutral-500 mb-6">Grupos pequeños. Aprendes con otras personas.</p>
+                        <a href="/contacto" class="block text-center bg-brand-black text-white px-8 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">
+                            Inscribirme →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 md:py-32 bg-brand-black text-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="font-serif text-4xl md:text-5xl leading-[1.05] mb-8">
+                Tu mejor cara<br/><span class="italic text-neutral-500">empieza aquí.</span>
+            </h2>
+            <p class="text-lg text-white/60 font-light leading-relaxed max-w-xl mx-auto mb-12">
+                A través del maquillaje cuentas quién eres, muestras tu nivel de feminidad y de conexión contigo misma. Expresas tu amor propio y tu mejor cara para mostrar al mundo.
+            </p>
+            <a href="/contacto" class="inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-white hover:text-brand-black transition-colors duration-500">
+                Quiero inscribirme <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+        </div>
+    </section>
+
+    <script>
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target) } }), { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
+</MainLayout>
