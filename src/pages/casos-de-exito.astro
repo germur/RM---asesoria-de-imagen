@@ -15,108 +15,74 @@ const schema = JSON.stringify({
     description: "Historias reales de transformación de imagen personal y ejecutiva.",
 });
 
-// ───── CASOS (placeholder, reemplazar con historias reales) ─────
+// ───── CASOS REALES ─────
 const casos = [
     {
         num: "01",
-        slug: "carlos",
-        nombre: "Carlos M.",
-        cargo: "Director Financiero",
-        sector: "Banca & Finanzas",
-        edad: 42,
-        duracion: "12 semanas",
-        tagline: "De invisible en la junta, a liderarla.",
-        before: "/images/executive-consulting.webp",
-        after: "/images/roger-portrait-bw.jpg",
-        quote: "Sentía que mi presencia no pesaba en la sala. Mi ropa era cara, pero no comunicaba nada.",
+        slug: "nubia",
+        nombre: "Nubia González",
+        cargo: "Profesional",
+        sector: "Empoderamiento Personal",
+        edad: null,
+        duracion: "Consultoría Integral",
+        tagline: "He ganado amor propio.",
+        before: "/images/casos/nubia-antes.jpg",
+        after: "/images/casos/nubia-despues-1.jpg",
+        quote: "No me sentía cómoda, ni contenta, ni complacida con mi imagen. Pensaba que era una mujer gorda, que nada me quedaba bien.",
         story: [
             {
                 capitulo: "El punto de partida",
-                texto: "Carlos ocupaba un cargo de alta dirección desde hacía cuatro años, pero las promociones no llegaban. Trajes de marcas reconocidas, zapatos italianos, relojes caros. Nada le funcionaba. El problema no estaba en el precio: estaba en la coherencia.",
+                texto: "Nubia usaba ropa impecable y maquillaje suave, pero no se sentía plena. Pensaba que todo lo bonito era para otras mujeres, no para ella. Cuando buscaba algo parecido a lo que veía en otras, no encajaba con su cuerpo y se sentía mal. Su objetivo: sentirse cómoda consigo misma.",
             },
             {
-                capitulo: "El diagnóstico",
-                texto: "Rostro ovalado con tendencia angular. Estación: Invierno Profundo. El 60% de su armario pertenecía a paletas cálidas — exactamente las que apagaban su piel. Estaba literalmente invirtiendo en verse peor.",
+                capitulo: "El encuentro",
+                texto: "Encontró a Roger y Adriana en Instagram. Vio el video de otra clienta — el antes y después fue encantador y decisivo. Se puso en contacto, pidió permiso en el trabajo, fue a la cita y supo desde el primer momento que quería este proceso con ellos.",
             },
             {
                 capitulo: "La transformación",
-                texto: "Roger diseñó un corte que acentuara su mandíbula. Adriana redefinió completamente su paleta con énfasis en contraste y líneas verticales. Reconstruimos su armario desde cero: 22 piezas estratégicas en lugar de 80 aleatorias.",
+                texto: "El mayor descubrimiento fue que sí es una mujer bonita, que la realidad no estaba tan alejada del concepto que tenía de sí misma. Ganó amor propio: quererse, honrar y respetar su cuerpo, reconocer frente al espejo a la mujer que es y puede llegar a ser.",
             },
         ],
         stats: [
-            { num: "60%", label: "Armario descartado" },
-            { num: "22", label: "Piezas estratégicas" },
-            { num: "1", label: "Ascenso en 90 días" },
+            { num: "100%", label: "Amor propio recuperado" },
+            { num: "1", label: "Decisión que cambió todo" },
+            { num: "∞", label: "Confianza ganada" },
         ],
-        outcome: "Ahora entro a una sala y la gente me escucha antes de que hable.",
+        outcome: "El cambio de imagen me impulsó y me dio más confianza en mí misma. Adriana y Roger se han ganado un lugar en mi corazón.",
         color: "#C41230",
     },
     {
         num: "02",
-        slug: "valentina",
-        nombre: "Valentina R.",
-        cargo: "CEO & Fundadora",
-        sector: "Tecnología",
-        edad: 35,
-        duracion: "16 semanas",
-        tagline: "Autoridad sin perder identidad.",
-        before: "/images/service-consulting-full.jpg",
-        after: "/images/roger-adriana-duo.jpg",
-        quote: "Creí que tenía que elegir entre verme seria o verme yo. Descubrí que era una falsa dicotomía.",
+        slug: "karen",
+        nombre: "Karen Vergara",
+        cargo: "Profesional",
+        sector: "Crecimiento Personal",
+        edad: null,
+        duracion: "Consultoría Integral",
+        tagline: "Vivir el ahora y dejar atrás el pasado.",
+        before: "/images/casos/karen-1.png",
+        after: "/images/casos/karen-3.png",
+        quote: "Decidí hacerme una asesoría de imagen para que mi ser interior se mostrara externamente y mostrar al mundo lo que realmente soy.",
         story: [
             {
                 capitulo: "El punto de partida",
-                texto: "Cinco años liderando su startup, pero vistiéndose como cuando era empleada junior. En rondas de inversión se sentía invisible. Oscilaba entre el modo 'corporativo genérico' y el modo 'creativa millennial'. Ninguno le pertenecía.",
+                texto: "Karen sabía que era persona y como mujer tenía mucho que dar, pero muchas veces no sabemos cómo ser nosotros mismos y mostrarlo al mundo. Necesitaba que su exterior reflejara su verdadera identidad interior.",
             },
             {
                 capitulo: "El diagnóstico",
-                texto: "Trabajamos desde la identidad, no desde la ropa. Estación Otoño Cálido — calidez con sofisticación. Rostro corazón: necesitaba enmarcar y proyectar determinación sin rigidez. Su estilo auténtico: autoridad suave, liderazgo cálido.",
+                texto: "Eligió a Roger y Adriana porque ellos realizan un estudio profundo del ser de la persona para poder mostrar externamente, sin que se pierda la identidad ni la esencia. No un cambio superficial, sino una transformación desde adentro.",
             },
             {
                 capitulo: "La transformación",
-                texto: "Sistema de vestuario modular: 15 piezas generando más de 40 combinaciones estratégicas. Corte enmarcado por Roger. Paleta cálida sofisticada por Adriana. Códigos de vestimenta diferenciados para inversionistas, equipo y prensa.",
+                texto: "Descubrió que tenía muchos aspectos bonitos para dar al mundo. Que podía compartir cosas con la gente que realmente la valora. Con la asesoría logró conocerse más a sí misma, saber qué quiere para su presente y futuro, y mostrar al mundo lo que es desde el amor.",
             },
         ],
         stats: [
-            { num: "15", label: "Piezas modulares" },
-            { num: "40+", label: "Combinaciones" },
-            { num: "$", label: "Ronda cerrada en 60 días" },
+            { num: "100%", label: "Identidad auténtica" },
+            { num: "1", label: "Nuevo comienzo" },
+            { num: "∞", label: "Gratitud" },
         ],
-        outcome: "Por primera vez siento que mi ropa cuenta la misma historia que yo.",
-        color: "#C41230",
-    },
-    {
-        num: "03",
-        slug: "andres",
-        nombre: "Andrés L.",
-        cargo: "Abogado Senior",
-        sector: "Legal",
-        edad: 48,
-        duracion: "8 semanas",
-        tagline: "Un reflejo que vuelva a reconocerse.",
-        before: "/images/roger-adriana-duo.jpg",
-        after: "/images/executive-consulting.webp",
-        quote: "Había perdido 15 kilos y un matrimonio. Mi armario seguía siendo de un hombre que ya no existía.",
-        story: [
-            {
-                capitulo: "El punto de partida",
-                texto: "Andrés llegó en una transición personal profunda. Divorcio reciente, cambio corporal, sensación de no pertenecer a su propia imagen. El estudio a puerta cerrada importó tanto como el diagnóstico: necesitaba un espacio seguro antes que un corte.",
-            },
-            {
-                capitulo: "El diagnóstico",
-                texto: "Rostro cuadrado con líneas fuertes. Estación Verano Suave — necesitaba paletas que suavizaran sin opacar. Roger diseñó un corte que atenuara los ángulos. Adriana seleccionó una paleta que reflejara calma y renovación.",
-            },
-            {
-                capitulo: "La transformación",
-                texto: "Armario reconstruido con proporciones reales de su cuerpo actual. Cortes limpios, cromática serena, texturas naturales. Prioridad: que cada pieza le recordara al hombre que estaba construyendo, no al que había sido.",
-            },
-        ],
-        stats: [
-            { num: "100%", label: "Armario renovado" },
-            { num: "6", label: "Semanas hasta el click" },
-            { num: "∞", label: "Reconocerse de nuevo" },
-        ],
-        outcome: "Me miro al espejo y por fin me reconozco.",
+        outcome: "Guardo una infinita gratitud con Adriana y Roger porque me ayudaron a llenar mi vida de mucha luz, de color, de felicidad.",
         color: "#C41230",
     },
 ];
@@ -156,7 +122,7 @@ const casos = [
         <!-- Floating display numbers -->
         <div class="absolute inset-0 pointer-events-none">
             <span class="hero-float-num absolute top-[12%] right-[8%] font-serif italic text-[22vw] leading-none text-white/[0.04] select-none">
-                03
+                02
             </span>
         </div>
 
@@ -238,7 +204,7 @@ const casos = [
                             <div class="flex flex-wrap gap-x-10 gap-y-4 text-[11px] tracking-[0.25em] uppercase text-neutral-500 reveal" style="--delay: 0.2s">
                                 <span><span class="text-brand-black">{c.nombre}</span></span>
                                 <span>{c.cargo}</span>
-                                <span>{c.edad} años</span>
+                                {c.edad && <span>{c.edad} años</span>}
                                 <span>{c.duracion}</span>
                             </div>
                         </div>
