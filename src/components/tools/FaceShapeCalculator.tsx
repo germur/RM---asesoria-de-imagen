@@ -284,7 +284,7 @@ function Result({ shapeKey, shape, onReset }: { shapeKey: string; shape: ShapeDa
 
             {/* CTA */}
             <a
-                href="/servicios/visagismo-corte"
+                href="/servicios/peluqueria"
                 className="flex items-center justify-between px-6 py-4 bg-brand-black text-white
                            text-xs uppercase tracking-[0.18em] hover:bg-brand-primary transition-colors duration-300"
             >
