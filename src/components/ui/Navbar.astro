@@ -67,7 +67,7 @@ const cursos = [
         </a>
 
         <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2" id="nav-desktop">
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-10 absolute left-1/2 -translate-x-1/2" id="nav-desktop">
             {navItems.map((item) => (
                 item.type === "mega" ? (
                     <div class="relative flex items-center h-[72px]" data-mega={item.key}>
@@ -89,13 +89,13 @@ const cursos = [
 
         <!-- CTA + mobile -->
         <div class="flex items-center gap-3 z-50 flex-shrink-0">
-            <a href="/contacto" class="nav-cta hidden md:inline-flex">
+            <a href="/contacto" class="nav-cta hidden lg:inline-flex">
                 <span>Reservar</span>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                     <path d="M5 12h14M13 6l6 6-6 6"/>
                 </svg>
             </a>
-            <button id="mobile-menu-btn" class="nav-mobile-btn md:hidden p-2" aria-label="Menú">
+            <button id="mobile-menu-btn" class="nav-mobile-btn lg:hidden p-2" aria-label="Menú">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"/>
                 </svg>
@@ -663,7 +663,7 @@ const cursos = [
 
     /* ── DICE 3D FAB ────────────────────────────────── */
     #dice-fab {
-        position: fixed; right: 32px; bottom: 32px; z-index: 55;
+        position: fixed; right: 32px; bottom: 32px; z-index: 45;
         display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
         opacity: 0; transform: translateY(24px) scale(.92); pointer-events: none;
         transition: opacity .55s cubic-bezier(.7,0,.3,1), transform .55s cubic-bezier(.7,0,.3,1);
