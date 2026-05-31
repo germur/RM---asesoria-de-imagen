@@ -8,11 +8,12 @@ interface Props {
     description: string;
     image?: string;
     schema?: string;
+    noindex?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder-1.jpg", schema } = Astro.props;
+const { title, description, image = "/blog-placeholder-1.jpg", schema, noindex = false } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -20,6 +21,8 @@ const { title, description, image = "/blog-placeholder-1.jpg", schema } = Astro.
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+
+{noindex && <meta name="robots" content="noindex, follow" />}
 
 <!-- Font preloads (optional with @fontsource, but good for CLS) -->
 
