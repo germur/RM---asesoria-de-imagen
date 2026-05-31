@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloquear artefactos de build y rutas sin valor SEO
+Disallow: /_astro/
+Disallow: /404
+
+Sitemap: https://rogermurillo.co/sitemap-index.xml

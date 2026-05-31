@@ -1,32 +1,58 @@
-# -----------------------------------------------------------
-# ESTRATEGIA MAES: MAPA DE REDIRECCIONES 301 (PERMANENTES)
-# -----------------------------------------------------------
+# =============================================================
+# MAPA DE REDIRECCIONES 301 · WordPress (viejo) -> Astro (nuevo)
+# URLs viejas recuperadas de la navegacion real del sitio
+# WooCommerce + LearnDash archivado (web.archive.org, ene-2025).
+# Netlify procesa de arriba a abajo: primera coincidencia gana.
+# Destinos CON barra final para evitar cadenas de 301.
+# =============================================================
 
-# 1. LAS JOYAS (Tráfico de Alta Autoridad -> High Ticket)
-# La antigua URL de servicios generales ahora va directo a la Consultoría Premium
-/asesoria-de-imagen/           /servicios/asesoria-integral  301
+# -- 1. CONSULTORIA / SERVICIOS (alta autoridad -> high ticket) --
+/asesoria-de-imagen-exclusiva/                  /servicios/asesoria-integral-imagen/   301!
+/programa-de-coaching-personalizado/            /servicios/asesoria-integral-imagen/   301!
+/asesoria-de-imagen/programa-de-coaching/       /servicios/asesoria-integral-imagen/   301!
+/asesoria-de-imagen/servicios-para-personas-2/  /servicios/   301!
+/asesoria-de-imagen/servicios-para-personas/    /servicios/   301!
+/asesoria-de-imagen/contacto/                   /contacto/    301!
+/asesoria-de-imagen/nosotros/                   /nosotros/    301!
+/asesoria-de-imagen/*                           /servicios/   301!
+/asesoria-de-imagen/                            /servicios/   301!
 
-# La antigua academia se consolida en el nuevo Hub de Educación
-/rmai-academia/                /academia                     301
-/curso-revoluciona-tu-imagen/  /academia                     301
+# -- 2. ACADEMIA / CURSOS (LearnDash -> Hub nuevo) --
+# Mapeo por nombre: Descubrete, Disenate, Conquista, Destaca
+/courses/curso-descubrete/   /academia/curso-descubrete/          301!
+/courses/curso-disenate/     /academia/crea-tu-iconologia/        301!
+/courses/curso-conquista/    /academia/disena-tu-voz/             301!
+/courses/curso-destaca/      /academia/el-correcto-uso-del-color/ 301!
+/courses/*                   /academia/   301!
+/curso-revoluciona-tu-imagen/                     /academia/   301!
+/rmai-academia/los-cuatro-pilares-de-la-imagen/   /academia/   301!
+/rmai-academia/              /academia/   301!
+/acceder/                    /academia/   301!
+/registrarse/                /academia/   301!
 
-# El libro (Lead Magnet) mantiene su relevancia
-/libro/                        /libro                        301
+# -- 3. PELUQUERIA (servicios tecnicos -> pagina unica) --
+/peluqueria/*    /servicios/peluqueria/   301!
+/peluqueria/     /servicios/peluqueria/   301!
+/blog/balayage-tendencias/   /servicios/peluqueria/   301!
 
-# 2. EL LASTRE (Tráfico de Peluquería -> Servicios Técnicos)
-# Quien busque "corte" llega a "Visagismo" (Filtro de precio y calidad)
-/peluqueria/arquitectura-de-corte/  /servicios/visagismo-corte  301
-/peluqueria/maquillaje/             /servicios                  301
-/peluqueria/peinado/                /servicios                  301
+# -- 4. TIENDA / CHECKOUT (WooCommerce -> catalogo / libro) --
+/checkouts/libro-fisico/                          /libro/      301!
+/checkouts/curso-completo-revoluciona-tu-imagen/  /academia/   301!
+/checkouts/*    /academia/   301!
+/tienda/        /academia/   301!
+/checkout       /academia/   301!
 
-# Quien busque "color/balayage" llega a "Colorimetría y Salud"
-/peluqueria/diseno-de-color/        /servicios/color-capilar    301
-/peluqueria/reparacion-capilar/     /servicios/color-capilar    301
-/blog/balayage-tendencias/          /servicios/color-capilar    301
+# -- 5. LEGALES --
+/aviso-legal/             /legales/terminos/      301!
+/terminos-y-condiciones/  /legales/terminos/      301!
+/cookies/                 /legales/privacidad/    301!
+/privacy-policy/          /legales/privacidad/    301!
 
-# Redirección genérica de seguridad para cualquier otra URL vieja de peluquería
-/peluqueria/*                       /servicios                  301
+# -- 6. RAICES MISMO SLUG (asegurar barra final, evitar cadena) --
+/servicios     /servicios/    301!
+/libro         /libro/        301!
+/legales       /legales/privacidad/   301!
+/legales/      /legales/privacidad/   301!
 
-# 3. GESTIÓN DE ERRORES (SPA Fallback & 404)
-# Si una ruta no existe, mostrar la página de error personalizada que diseñamos
-/*                                  /404                        404
+# NOTA: el 404 lo sirve Netlify con dist/404.html automaticamente.
+# No se usa catch-all /* para no interferir con assets ni rutas validas.
