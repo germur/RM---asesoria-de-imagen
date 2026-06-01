@@ -124,7 +124,10 @@
       "Bash(grep -oE \">[^<]{15,}<\")",
       "Bash(grep -vE \"^\\\\s*$\")",
       "Bash(grep -c 'object Object' dist/__TRACKED_VAR__/index.html)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(ls -la public/*.svg public/*.png public/*.ico public/favicon*)",
+      "Bash(node -e \"const s=require\\('sharp'\\);s\\('public/images/logo_rm.png'\\).metadata\\(\\).then\\(m=>console.log\\(m.width+'x'+m.height+', '+m.format\\)\\)\")",
+      "Bash(node -e ' *)"
     ]
   }
 }
