@@ -34,32 +34,47 @@ const {
     faq,
     tag,
     studentCount,
+    workload,
 } = frontmatter;
+
+// Instructor(es): soporta "Roger Murillo & Adriana Garzón"
+const instructorList = (instructor || "")
+    .split(/\s*&\s*/)
+    .filter(Boolean)
+    .map((name) => ({ "@type": "Person", name }));
+
+const canonical = new URL(Astro.url.pathname, "https://rogermurillo.co").href;
+const absImage = image ? new URL(image, "https://rogermurillo.co").href : undefined;
 
 const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
     name: title,
     description: description,
+    url: canonical,
+    inLanguage: "es",
+    ...(absImage ? { image: absImage } : {}),
+    ...(subtitle ? { teaches: subtitle } : {}),
     provider: {
         "@type": "Organization",
-        name: "Roger Murillo Academy",
-        sameAs: "https://rogermurillo.co",
+        "@id": "https://rogermurillo.co/#organization",
+        name: "Roger Murillo Asesoría de Imagen",
+        url: "https://rogermurillo.co",
     },
     offers: {
         "@type": "Offer",
         price: price.replace(/[^0-9]/g, ""),
         priceCurrency: "USD",
-        url: buyLink || "#",
+        category: "Paid",
+        url: buyLink || "https://rogermurillo.co/academia/",
         availability: "https://schema.org/InStock",
     },
     hasCourseInstance: {
         "@type": "CourseInstance",
-        courseMode: "Online",
-        instructor: {
-            "@type": "Person",
-            name: instructor,
-        },
+        courseMode: "online",
+        // courseWorkload se emite solo si el curso define su duracion real (ISO 8601, ej "PT3H")
+        ...(workload ? { courseWorkload: workload } : {}),
+        ...(instructorList.length ? { instructor: instructorList } : {}),
     },
 };
 ---

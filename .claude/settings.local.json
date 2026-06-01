@@ -127,7 +127,8 @@
       "Bash(python -c ' *)",
       "Bash(ls -la public/*.svg public/*.png public/*.ico public/favicon*)",
       "Bash(node -e \"const s=require\\('sharp'\\);s\\('public/images/logo_rm.png'\\).metadata\\(\\).then\\(m=>console.log\\(m.width+'x'+m.height+', '+m.format\\)\\)\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(grep -nE 'instructor:|buyLink:|image:|originalPrice:|studentCount:|price:' src/pages/academia/__TRACKED_VAR__.astro)"
     ]
   }
 }
