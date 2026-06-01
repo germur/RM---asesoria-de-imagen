@@ -27,6 +27,15 @@ const { title, description, image = "/blog-placeholder-1.jpg", schema, noindex =
 
 {noindex && <meta name="robots" content="noindex, follow" />}
 
+<!-- Google tag (gtag.js) · GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FCTXLT7Y2"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8FCTXLT7Y2');
+</script>
+
 <!-- Font preloads (optional with @fontsource, but good for CLS) -->
 
 <!-- Canonical URL -->
