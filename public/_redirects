@@ -13,20 +13,33 @@
 /asesoria-de-imagen/servicios-para-personas-2/  /servicios/   301!
 /asesoria-de-imagen/servicios-para-personas/    /servicios/   301!
 /asesoria-de-imagen/contacto/                   /contacto/    301!
+# Subpaginas de equipo (con impresiones reales en GSC) -> /nosotros/
+/asesoria-de-imagen/nosotros/roger-murillo/     /nosotros/    301!
+/asesoria-de-imagen/nosotros/adriana-garzon/    /nosotros/    301!
 /asesoria-de-imagen/nosotros/                   /nosotros/    301!
 /asesoria-de-imagen/*                           /servicios/   301!
 /asesoria-de-imagen/                            /servicios/   301!
 
-# -- 2. ACADEMIA / CURSOS (LearnDash -> Hub nuevo) --
+# -- 2. ACADEMIA / CURSOS / TIENDA WP (estructura real /rmai-academia/) --
 # Mapeo por nombre: Descubrete, Disenate, Conquista, Destaca
 /courses/curso-descubrete/   /academia/curso-descubrete/          301!
 /courses/curso-disenate/     /academia/crea-tu-iconologia/        301!
 /courses/curso-conquista/    /academia/disena-tu-voz/             301!
 /courses/curso-destaca/      /academia/el-correcto-uso-del-color/ 301!
 /courses/*                   /academia/   301!
-/curso-revoluciona-tu-imagen/                     /academia/   301!
-/rmai-academia/los-cuatro-pilares-de-la-imagen/   /academia/   301!
+# Cursos y productos que vivian bajo /rmai-academia/ (datos GSC)
+/rmai-academia/curso-descubrete/                       /academia/curso-descubrete/          301!
+/rmai-academia/curso-disenate/                         /academia/crea-tu-iconologia/        301!
+/rmai-academia/curso-destaca/                          /academia/el-correcto-uso-del-color/ 301!
+/rmai-academia/curso-conquista/                        /academia/disena-tu-voz/             301!
+/rmai-academia/asesoria-de-imagen-exclusiva/           /servicios/asesoria-integral-imagen/ 301!
+/rmai-academia/libro-fisico-revoluciona-tu-imagen/     /libro/                 301!
+/rmai-academia/shampoo-kirkland-con-minoxidil/         /productos/             301!
+/rmai-academia/wc-donation-bono-servicios-de-peluqueria/  /servicios/peluqueria/   301!
+/rmai-academia/los-cuatro-pilares-de-la-imagen/        /academia/   301!
+/rmai-academia/*                                       /academia/   301!
 /rmai-academia/              /academia/   301!
+/curso-revoluciona-tu-imagen/   /academia/   301!
 /acceder/                    /academia/   301!
 /registrarse/                /academia/   301!
 
