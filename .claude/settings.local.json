@@ -120,7 +120,11 @@
       "Bash(node scripts/optimize-images.mjs)",
       "Bash(grep -n 'alt=\"Antes\"\\\\|alt=\"Después\"\\\\|alt={`Antes\\\\|alt={`Después' src/pages/casos-de-exito.astro)",
       "Bash(rm -f scripts/optimize-images.mjs)",
-      "Bash(rmdir scripts *)"
+      "Bash(rmdir scripts *)",
+      "Bash(grep -oE \">[^<]{15,}<\")",
+      "Bash(grep -vE \"^\\\\s*$\")",
+      "Bash(grep -c 'object Object' dist/__TRACKED_VAR__/index.html)",
+      "Bash(python -c ' *)"
     ]
   }
 }

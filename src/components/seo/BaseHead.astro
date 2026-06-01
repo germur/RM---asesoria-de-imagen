@@ -7,13 +7,78 @@ interface Props {
     title: string;
     description: string;
     image?: string;
-    schema?: string;
+    schema?: string | object;
     noindex?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = "/blog-placeholder-1.jpg", schema, noindex = false } = Astro.props;
+
+// ─── Entidad global: Organization + WebSite ───
+// Es la "entidad ancla" que Google y los LLMs usan para identificar la marca.
+// Se emite en TODAS las paginas. Otros schemas pueden referenciarla via @id.
+const ORG_ID = "https://rogermurillo.co/#organization";
+const globalSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": ["ProfessionalService", "Organization"],
+            "@id": ORG_ID,
+            name: "Roger Murillo Asesoría de Imagen",
+            alternateName: "Roger Murillo Image Advisors",
+            url: "https://rogermurillo.co",
+            logo: {
+                "@type": "ImageObject",
+                url: "https://rogermurillo.co/images/logo_rm.png",
+            },
+            image: "https://rogermurillo.co/images/roger-adriana-duo.webp",
+            description:
+                "Consultoría de imagen personal y ejecutiva a puerta cerrada en Bogotá. Especialistas en visagismo, colorimetría y estilo estratégico.",
+            telephone: "+573214189010",
+            email: "contacto@rogermurillo.co",
+            priceRange: "$$$",
+            address: {
+                "@type": "PostalAddress",
+                streetAddress: "Calle 163 B No. 48-80, Local 208, Edificio Britalia Comercial y Empresarial",
+                addressLocality: "Bogotá",
+                addressRegion: "Cundinamarca",
+                addressCountry: "CO",
+            },
+            areaServed: [
+                { "@type": "City", name: "Bogotá" },
+                { "@type": "Country", name: "Colombia" },
+            ],
+            knowsAbout: [
+                "Asesoría de imagen",
+                "Visagismo",
+                "Colorimetría",
+                "Imagen ejecutiva",
+                "Estilo personal",
+                "Peluquería de autor",
+            ],
+            founder: [
+                { "@type": "Person", name: "Roger Murillo", "@id": "https://rogermurillo.co/nosotros/#roger" },
+                { "@type": "Person", name: "Adriana Garzón", "@id": "https://rogermurillo.co/nosotros/#adriana" },
+            ],
+            openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                opens: "09:00",
+                closes: "19:00",
+            },
+            sameAs: ["https://www.instagram.com/rogermurilloai/"],
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://rogermurillo.co/#website",
+            url: "https://rogermurillo.co",
+            name: "Roger Murillo Asesoría de Imagen",
+            inLanguage: "es",
+            publisher: { "@id": ORG_ID },
+        },
+    ],
+};
 ---
 
 <!-- Global Metadata -->
@@ -60,26 +125,10 @@ const { title, description, image = "/blog-placeholder-1.jpg", schema, noindex =
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-{schema ? (
-    <script type="application/ld+json" set:html={schema} />
-) : (
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            "name": "Roger Murillo - Consultoría de Imagen",
-            "image": "https://rogermurillo.co/logo-og.jpg",
-            "url": "https://rogermurillo.co",
-            "priceRange": "$$$",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Bogotá",
-                "addressCountry": "CO"
-            },
-            "sameAs": [
-                "https://instagram.com/rogermurillo",
-                "https://linkedin.com/in/rogermurillo"
-            ]
-        }
-    </script>
+<!-- Entidad global (Organization + WebSite) en todas las paginas -->
+<script type="application/ld+json" set:html={JSON.stringify(globalSchema)} />
+
+<!-- Schema especifico de la pagina. Acepta string (JSON) u objeto. -->
+{schema && (
+    <script type="application/ld+json" set:html={typeof schema === "string" ? schema : JSON.stringify(schema)} />
 )}

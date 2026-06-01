@@ -4,15 +4,44 @@ import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const organizationSchema = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Roger Murillo & Adriana Garzón - Consultoría de Imagen",
-    url: "https://rogermurillo.co/nosotros",
-    image: "https://rogermurillo.co/images/roger-adriana-duo.webp",
-    founder: [
-        { "@type": "Person", name: "Roger Murillo", jobTitle: "Director Creativo & Estratega de Imagen", description: "Especialista en Visagismo y Arquitectura Facial." },
-        { "@type": "Person", name: "Adriana Garzón", jobTitle: "Consultora Senior & Especialista en Colorimetría", description: "Experta en salud capilar y diseño de color. Certificada por el IDB y el New York Institute." },
+    "@graph": [
+        {
+            "@type": "AboutPage",
+            "@id": "https://rogermurillo.co/nosotros/#aboutpage",
+            url: "https://rogermurillo.co/nosotros/",
+            about: { "@id": "https://rogermurillo.co/#organization" },
+            mainEntity: [
+                { "@id": "https://rogermurillo.co/nosotros/#roger" },
+                { "@id": "https://rogermurillo.co/nosotros/#adriana" },
+            ],
+        },
+        {
+            "@type": "Person",
+            "@id": "https://rogermurillo.co/nosotros/#roger",
+            name: "Roger Murillo",
+            jobTitle: "Director Creativo & Estratega de Imagen",
+            description: "Asesor de imagen con más de 35 años de experiencia. Especialista en visagismo, arquitectura facial y peluquería de autor.",
+            image: "https://rogermurillo.co/images/roger-portrait-bw.webp",
+            worksFor: { "@id": "https://rogermurillo.co/#organization" },
+            knowsAbout: ["Visagismo", "Arquitectura facial", "Asesoría de imagen", "Peluquería de autor", "Imagen ejecutiva"],
+            sameAs: ["https://www.instagram.com/rogermurilloai/"],
+        },
+        {
+            "@type": "Person",
+            "@id": "https://rogermurillo.co/nosotros/#adriana",
+            name: "Adriana Garzón",
+            jobTitle: "Consultora Senior & Especialista en Colorimetría",
+            description: "Especialista en colorimetría, salud capilar y diseño de color, con más de 22 años de experiencia.",
+            image: "https://rogermurillo.co/images/adriana-portrait-bw.webp",
+            worksFor: { "@id": "https://rogermurillo.co/#organization" },
+            knowsAbout: ["Colorimetría", "Salud capilar", "Diseño de color", "Asesoría de imagen"],
+            alumniOf: [
+                { "@type": "EducationalOrganization", name: "IDB Barcelona" },
+                { "@type": "EducationalOrganization", name: "New York Institute" },
+            ],
+            sameAs: ["https://www.instagram.com/rogermurilloai/"],
+        },
     ],
-    description: "Firma de consultoría de imagen estratégica en Bogotá. Especialistas en visagismo, colorimetría y proyección ejecutiva.",
 });
 ---
 

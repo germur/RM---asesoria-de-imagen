@@ -3,27 +3,52 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 const contactSchema = {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    mainEntity: {
-        "@type": "LocalBusiness",
-        name: "Roger Murillo Asesoría de Imagen",
-        image: "https://rogermurillo.co/logo.png",
-        telephone: "+573214189010",
-        email: "contacto@rogermurillo.co",
-        address: {
-            "@type": "PostalAddress",
-            streetAddress: "Calle 163 B No. 48-80 Local 208, Edificio Britalia Comercial y Empresarial",
-            addressLocality: "Bogotá",
-            addressRegion: "Cundinamarca",
-            addressCountry: "CO",
+    "@graph": [
+        {
+            "@type": "ContactPage",
+            "@id": "https://rogermurillo.co/contacto/#contactpage",
+            name: "Contacto · Roger Murillo Asesoría de Imagen",
+            about: { "@id": "https://rogermurillo.co/#organization" },
         },
-        openingHoursSpecification: {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-            opens: "09:00",
-            closes: "19:00",
+        {
+            "@type": "FAQPage",
+            "@id": "https://rogermurillo.co/contacto/#faq",
+            mainEntity: [
+                {
+                    "@type": "Question",
+                    name: "¿Cuál es el costo de la valoración inicial?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "La valoración tiene un costo que funciona como depósito. Si decides tomar el servicio completo, este valor se deduce del total.",
+                    },
+                },
+                {
+                    "@type": "Question",
+                    name: "¿Puedo ir acompañado o acompañada?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: 'Debido al protocolo "A Puerta Cerrada", priorizamos la privacidad del cliente. Se permite un acompañante máximo si es estrictamente necesario.',
+                    },
+                },
+                {
+                    "@type": "Question",
+                    name: "¿Cómo debo ir vestido o vestida?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Ven como te vistes normalmente en tu día a día. Esto nos ayuda a tener un punto de partida real para el diagnóstico.",
+                    },
+                },
+                {
+                    "@type": "Question",
+                    name: "¿Atienden fuera de Bogotá?",
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Por la naturaleza del servicio presencial, atendemos exclusivamente en el estudio. Sin embargo, ofrecemos sesiones virtuales complementarias para clientes activos.",
+                    },
+                },
+            ],
         },
-    },
+    ],
 };
 ---
 

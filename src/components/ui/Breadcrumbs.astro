@@ -23,7 +23,25 @@ const isDark = theme === 'dark';
 const textClass = isDark ? "text-gray-300" : "text-gray-500";
 const hoverClass = isDark ? "hover:text-white" : "hover:text-brand-primary";
 const activeClass = isDark ? "text-white" : "text-brand-primary";
+
+// ─── BreadcrumbList schema (SEO + LLMs) ───
+const SITE = "https://rogermurillo.co";
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
+        ...segments.map((segment, index) => ({
+            "@type": "ListItem",
+            position: index + 2,
+            name: (routeNames[segment] || segment.replace(/-/g, " ")).replace(/\b\w/g, (c) => c.toUpperCase()),
+            item: `${SITE}/${segments.slice(0, index + 1).join("/")}/`,
+        })),
+    ],
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
 <nav aria-label="Breadcrumb" class="absolute top-20 left-0 w-full z-40">
     <div class="container mx-auto px-6 py-4">
