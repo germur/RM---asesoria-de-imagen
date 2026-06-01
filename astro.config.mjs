@@ -24,7 +24,10 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !SITEMAP_EXCLUDE.has(page),
+      // Excluir thin content: stubs, gracias, y blog programatico (noindex)
+      filter: (page) =>
+        !SITEMAP_EXCLUDE.has(page) &&
+        !page.includes('/blog/estilo/'),
     }),
   ],
   vite: {

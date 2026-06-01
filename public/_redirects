@@ -48,6 +48,10 @@
 /cookies/                 /legales/privacidad/    301!
 /privacy-policy/          /legales/privacidad/    301!
 
+# -- PAGINAS ELIMINADAS (guias vacias) -> articulo real de visagismo --
+/guia-estilo/visagismo/*   /academia/visagismo/tipos-rostro-hombre/   301!
+/guia-estilo/*             /academia/visagismo/tipos-rostro-hombre/   301!
+
 # -- 6. RAICES MISMO SLUG (asegurar barra final, evitar cadena) --
 /servicios     /servicios/    301!
 /libro         /libro/        301!
