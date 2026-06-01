@@ -108,7 +108,19 @@
       "Bash(curl -s --max-time 30 \"https://rogermurillo.co/robots.txt\")",
       "Bash(curl -s --max-time 30 \"https://rogermurillo.co/sitemap-0.xml\")",
       "Bash(curl -s -o /dev/null -w '%{http_code}' https://rogermurillo.co/__TRACKED_VAR__/)",
-      "Bash(curl -s -o /dev/null -w '%{http_code}' https://rogermurillo.co/herramientas/__TRACKED_VAR__/)"
+      "Bash(curl -s -o /dev/null -w '%{http_code}' https://rogermurillo.co/herramientas/__TRACKED_VAR__/)",
+      "Bash(powershell -Command \"Expand-Archive -Path 'https___rogermurillo.co_-Performance-on-Search-2026-05-31.zip' -DestinationPath 'GSC_DATA' -Force\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | type: %{content_type} | size: %{size_download}b\\\\n\" \"https://rogermurillo.co/sitemap-index.xml\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | type: %{content_type} | size: %{size_download}b\\\\n\" \"https://rogermurillo.co/sitemap-0.xml\")",
+      "Bash(curl -s \"https://rogermurillo.co/robots.txt\")",
+      "Bash(curl -s \"https://rogermurillo.co/sitemap-index.xml\")",
+      "Bash(awk '{mb=$1/1048576; printf \"%.2f MB\\\\t%s\\\\n\", mb, $2}')",
+      "Bash(grep -rl '/images/__TRACKED_VAR__.jpg\\\\|images/__TRACKED_VAR__\\\\.jpg' src)",
+      "Bash(grep -rnE \"/images/\\\\\\\\\\\\$\\\\{|images/.*\\\\\\\\\\\\$\\\\{|\\\\`/images\" src)",
+      "Bash(node scripts/optimize-images.mjs)",
+      "Bash(grep -n 'alt=\"Antes\"\\\\|alt=\"Después\"\\\\|alt={`Antes\\\\|alt={`Después' src/pages/casos-de-exito.astro)",
+      "Bash(rm -f scripts/optimize-images.mjs)",
+      "Bash(rmdir scripts *)"
     ]
   }
 }
