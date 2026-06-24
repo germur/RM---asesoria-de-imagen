@@ -65,11 +65,10 @@
 /guia-estilo/visagismo/*   /academia/visagismo/tipos-rostro-hombre/   301!
 /guia-estilo/*             /academia/visagismo/tipos-rostro-hombre/   301!
 
-# -- 6. RAICES MISMO SLUG (asegurar barra final, evitar cadena) --
-/servicios     /servicios/    301!
-/libro         /libro/        301!
-/legales       /legales/privacidad/   301!
-/legales/      /legales/privacidad/   301!
+# -- 6. /legales sin index -> privacidad (NO usar reglas X -> X/ con !,
+#       Netlify ya agrega la barra final solo y el ! crea bucle infinito) --
+/legales       /legales/privacidad/   301
+/legales/      /legales/privacidad/   301
 
 # NOTA: el 404 lo sirve Netlify con dist/404.html automaticamente.
 # No se usa catch-all /* para no interferir con assets ni rutas validas.
