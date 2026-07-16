@@ -179,25 +179,29 @@ const contactSchema = {
                 </div>
 
                 <div class="lg:col-span-8">
-                    <form id="rm-form" class="relative">
+                    <form id="rm-form" class="relative" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contacto" />
+                        <p class="hidden" aria-hidden="true"><label>No llenar: <input name="bot-field" /></label></p>
+                        <input type="hidden" name="objetivos" id="f-goals-hidden" />
+                        <input type="hidden" name="horario" id="f-slot-hidden" />
                         <!-- STEP 1 -->
                         <div class="form-step" data-step="1">
                             <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 01 &mdash; Sobre ti</p>
                             <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
                                 <div class="rm-field">
-                                    <input type="text" id="f-name" placeholder=" " autocomplete="name"/>
+                                    <input type="text" id="f-name" name="nombre" placeholder=" " autocomplete="name" required/>
                                     <label for="f-name">Nombre completo</label>
                                 </div>
                                 <div class="rm-field">
-                                    <input type="email" id="f-email" placeholder=" " autocomplete="email"/>
+                                    <input type="email" id="f-email" name="email" placeholder=" " autocomplete="email" required/>
                                     <label for="f-email">Correo electrónico</label>
                                 </div>
                                 <div class="rm-field">
-                                    <input type="tel" id="f-phone" placeholder=" " autocomplete="tel"/>
+                                    <input type="tel" id="f-phone" name="telefono" placeholder=" " autocomplete="tel"/>
                                     <label for="f-phone">Teléfono / WhatsApp</label>
                                 </div>
                                 <div class="rm-field select-field">
-                                    <select id="f-age">
+                                    <select id="f-age" name="edad">
                                         <option value="" disabled selected></option>
                                         <option>25 &mdash; 34</option>
                                         <option>35 &mdash; 44</option>
@@ -240,7 +244,7 @@ const contactSchema = {
                                 </label>
                             </div>
                             <div class="rm-field">
-                                <textarea id="f-context" placeholder=" " rows="4"></textarea>
+                                <textarea id="f-context" name="contexto" placeholder=" " rows="4"></textarea>
                                 <label for="f-context">Contexto (opcional)</label>
                             </div>
                             <div class="flex justify-between mt-14">
@@ -263,7 +267,7 @@ const contactSchema = {
                                 <button type="button" class="time-slot border border-neutral-200 py-3 text-[11px] tracking-[0.2em] uppercase">Noche</button>
                             </div>
                             <div class="rm-field">
-                                <input type="text" id="f-date" placeholder=" "/>
+                                <input type="text" id="f-date" name="fecha_tentativa" placeholder=" "/>
                                 <label for="f-date">Fecha tentativa (ej: 15 de mayo)</label>
                             </div>
                             <label class="flex items-start gap-3 mt-8 text-sm text-neutral-500 font-light cursor-pointer">
@@ -531,9 +535,34 @@ const contactSchema = {
 
     const form = document.getElementById('rm-form');
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            goTo(4);
+
+            // Recolectar chips de objetivos y horario en los campos ocultos
+            const goals = Array.from(document.querySelectorAll('#goals input:checked')).map(i => i.value);
+            document.getElementById('f-goals-hidden').value = goals.join(', ');
+            const slot = document.querySelector('#slots .time-slot.selected');
+            document.getElementById('f-slot-hidden').value = slot ? slot.textContent.trim() : '';
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Enviando…';
+
+            try {
+                const data = new URLSearchParams(new FormData(form));
+                const res = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: data.toString(),
+                });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                goTo(4);
+            } catch (err) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                alert('No pudimos enviar tu solicitud. Por favor intenta de nuevo o escríbenos por WhatsApp: +57 321 418 9010');
+            }
         });
     }
 </script>
