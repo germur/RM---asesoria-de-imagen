@@ -1,6 +1,7 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import seasons from "../../data/color_seasons.json"; // Importamos la data que ya creamos
+import reports from "../../data/seasons.json"; // Informes ejecutivos por estación (/resultados/)
 
 const seoData = {
     title: "Las 12 Estaciones de Colorimetría | Guía Completa Roger Murillo",
@@ -36,7 +37,7 @@ const seoData = {
                             .map((s) => (
                                 <li>
                                     <a
-                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        href={`/herramientas/colorimetria/${s.slug}/`}
                                         class="group flex items-center justify-between text-muted-foreground hover:text-primary"
                                     >
                                         {s.name}{" "}
@@ -61,7 +62,7 @@ const seoData = {
                             .map((s) => (
                                 <li>
                                     <a
-                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        href={`/herramientas/colorimetria/${s.slug}/`}
                                         class="group flex items-center justify-between text-muted-foreground hover:text-primary"
                                     >
                                         {s.name}{" "}
@@ -86,7 +87,7 @@ const seoData = {
                             .map((s) => (
                                 <li>
                                     <a
-                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        href={`/herramientas/colorimetria/${s.slug}/`}
                                         class="group flex items-center justify-between text-muted-foreground hover:text-primary"
                                     >
                                         {s.name}{" "}
@@ -111,7 +112,7 @@ const seoData = {
                             .map((s) => (
                                 <li>
                                     <a
-                                        href={`/herramientas/colorimetria/${s.slug}`}
+                                        href={`/herramientas/colorimetria/${s.slug}/`}
                                         class="group flex items-center justify-between text-muted-foreground hover:text-primary"
                                     >
                                         {s.name}{" "}
@@ -123,6 +124,33 @@ const seoData = {
                             ))
                     }
                 </ul>
+            </div>
+        </div>
+
+        <!-- Informes ejecutivos por estación -->
+        <div class="mt-24 pt-16 border-t border-gray-200 text-left">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold tracking-widest text-[#d4af37] uppercase">
+                    Informes de imagen ejecutiva
+                </span>
+                <h2 class="text-3xl md:text-4xl font-serif text-primary mt-4">
+                    Tu estación, aplicada al vestuario profesional
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                {reports.map((r) => (
+                    <a
+                        href={`/resultados/${r.slug}/`}
+                        class="group block p-6 border border-gray-200 rounded-lg hover:border-[#d4af37] hover:shadow-md transition-all"
+                    >
+                        <h3 class="text-xl font-serif text-primary mb-2 group-hover:text-[#d4af37] transition-colors">
+                            {r.title}
+                        </h3>
+                        <span class="text-sm text-muted-foreground">
+                            Ver informe <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                        </span>
+                    </a>
+                ))}
             </div>
         </div>
     </section>

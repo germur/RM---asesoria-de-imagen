@@ -17,6 +17,16 @@ const routeNames: Record<string, string> = {
 // No mostrar breadcrumbs en home (la raíz no lleva breadcrumb)
 if (pathname === "/") return null;
 
+// Rutas intermedias que SI existen como pagina propia. El resto de los
+// segmentos son solo agrupadores en la URL (ej. /herramientas/colorimetria/)
+// y se muestran como texto, no como enlace, para no apuntar a un 404.
+const HUB_ROUTES = new Set([
+    "/servicios/",
+    "/academia/",
+    "/herramientas/",
+    "/blog/",
+]);
+
 const { theme = 'dark' } = Astro.props;
 const isDark = theme === 'dark';
 
@@ -31,12 +41,17 @@ const breadcrumbSchema = {
     "@type": "BreadcrumbList",
     itemListElement: [
         { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
-        ...segments.map((segment, index) => ({
-            "@type": "ListItem",
-            position: index + 2,
-            name: (routeNames[segment] || segment.replace(/-/g, " ")).replace(/\b\w/g, (c) => c.toUpperCase()),
-            item: `${SITE}/${segments.slice(0, index + 1).join("/")}/`,
-        })),
+        ...segments.map((segment, index) => {
+            const route = `/${segments.slice(0, index + 1).join("/")}/`;
+            const isLast = index === segments.length - 1;
+            return {
+                "@type": "ListItem",
+                position: index + 2,
+                name: (routeNames[segment] || segment.replace(/-/g, " ")).replace(/\b\w/g, (c) => c.toUpperCase()),
+                // Solo declaramos `item` cuando la URL existe de verdad
+                ...(isLast || HUB_ROUTES.has(route) ? { item: `${SITE}${route}` } : {}),
+            };
+        }),
     ],
 };
 ---
@@ -61,8 +76,9 @@ const breadcrumbSchema = {
         {
             segments.map((segment, index) => {
                 const isLast = index === segments.length - 1;
-                const href = `/${segments.slice(0, index + 1).join("/")}`;
+                const href = `/${segments.slice(0, index + 1).join("/")}/`;
                 const name = routeNames[segment] || segment.replace(/-/g, " ");
+                const isLinkable = !isLast && HUB_ROUTES.has(href);
 
                 return (
                     <>
@@ -70,20 +86,20 @@ const breadcrumbSchema = {
                             <CaretRight size={12} weight="bold" />
                         </li>
                         <li>
-                            {isLast ? (
-                                <span
-                                    class={`${activeClass} font-bold`}
-                                    aria-current="page"
-                                >
-                                    {name}
-                                </span>
-                            ) : (
+                            {isLinkable ? (
                                 <a
                                     href={href}
                                     class={`${hoverClass} transition-colors`}
                                 >
                                     {name}
                                 </a>
+                            ) : (
+                                <span
+                                    class={isLast ? `${activeClass} font-bold` : undefined}
+                                    aria-current={isLast ? "page" : undefined}
+                                >
+                                    {name}
+                                </span>
                             )}
                         </li>
                     </>

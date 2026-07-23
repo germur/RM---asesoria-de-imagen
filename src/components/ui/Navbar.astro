@@ -4,34 +4,34 @@ import { ChevronDown } from "lucide-react";
 const navItems = [
     {
         label: "Servicios",
-        href: "/servicios",
+        href: "/servicios/",
         type: "mega",
         key: "servicios",
     },
-    { label: "La Firma",       href: "/nosotros",        type: "simple" },
-    { label: "Casos de Éxito", href: "/casos-de-exito",  type: "simple" },
+    { label: "La Firma",       href: "/nosotros/",        type: "simple" },
+    { label: "Casos de Éxito", href: "/casos-de-exito/",  type: "simple" },
     {
         label: "Academia",
-        href: "/academia",
+        href: "/academia/",
         type: "mega",
         key: "academia",
     },
-    { label: "Herramientas", href: "/herramientas", type: "simple" },
+    { label: "Herramientas", href: "/herramientas/", type: "simple" },
 ];
 
 const servicios = [
-    { n: "01", label: "Consultoría Integral",  href: "/servicios/asesoria-integral-imagen",   tag: "Flagship",    desc: "Programa premium de 11 fases: coaching, visagismo, color, rutas de compra y acompañamiento VIP.",  cover: "cover-integral"  },
-    { n: "02", label: "Peluquería de Autor",   href: "/servicios/peluqueria",                 tag: "★ Estrella",  desc: "Corte, color, visagismo, reconstrucción capilar y diagnóstico con capilógrafo.", star: true,       cover: "cover-peluqueria"},
-    { n: "03", label: "Imagen Ejecutiva",      href: "/servicios/imagen-ejecutiva-autoridad", tag: "C-Suite",     desc: "Protocolo de autoridad visual para CEOs, directivos y figuras públicas.",                         cover: "cover-ejecutiva" },
+    { n: "01", label: "Consultoría Integral",  href: "/servicios/asesoria-integral-imagen/",   tag: "Flagship",    desc: "Programa premium de 11 fases: coaching, visagismo, color, rutas de compra y acompañamiento VIP.",  cover: "cover-integral"  },
+    { n: "02", label: "Peluquería de Autor",   href: "/servicios/peluqueria/",                 tag: "★ Estrella",  desc: "Corte, color, visagismo, reconstrucción capilar y diagnóstico con capilógrafo.", star: true,       cover: "cover-peluqueria"},
+    { n: "03", label: "Imagen Ejecutiva",      href: "/servicios/imagen-ejecutiva-autoridad/", tag: "C-Suite",     desc: "Protocolo de autoridad visual para CEOs, directivos y figuras públicas.",                         cover: "cover-ejecutiva" },
 ];
 
 const cursos = [
-    { n: "01", label: "Curso Descúbrete", href: "/academia/curso-descubrete",          word: "Descúbrete", desc: "Fundación: arquetipos, identidad y lenguaje visual personal.",           cover: "cover-descubrete", dark: false },
-    { n: "02", label: "Curso Diseñate",   href: "/academia/crea-tu-iconologia",        word: "Diseñate",   desc: "Cómo construir tu iconología personal y proyectarla en el mundo.",       cover: "cover-disenate",   dark: false },
-    { n: "03", label: "Curso Conquista",  href: "/academia/disena-tu-voz",             word: "Conquista",  desc: "Diseña tu voz y tu autoridad comunicacional.",                           cover: "cover-conquista",  dark: true  },
-    { n: "04", label: "Curso Destaca",    href: "/academia/el-correcto-uso-del-color", word: "Destaca",    desc: "El correcto uso del color, tu estación y tu paleta viva.",               cover: "cover-destaca",    dark: true  },
-    { n: "05", label: "Reto Presencial",  href: "/academia/reto-presencial",           word: "Presencial", desc: "9 clases en vivo, grupos de máx. 10 personas en Bogotá.",               cover: "cover-reto",       dark: true  },
-    { n: "06", label: "Automaquillaje",   href: "/academia/curso-automaquillaje",      word: "Maquillaje", desc: "5 semanas de técnica profesional paso a paso.",                          cover: "cover-maquillaje", dark: false },
+    { n: "01", label: "Curso Descúbrete", href: "/academia/curso-descubrete/",          word: "Descúbrete", desc: "Fundación: arquetipos, identidad y lenguaje visual personal.",           cover: "cover-descubrete", dark: false },
+    { n: "02", label: "Curso Diseñate",   href: "/academia/crea-tu-iconologia/",        word: "Diseñate",   desc: "Cómo construir tu iconología personal y proyectarla en el mundo.",       cover: "cover-disenate",   dark: false },
+    { n: "03", label: "Curso Conquista",  href: "/academia/disena-tu-voz/",             word: "Conquista",  desc: "Diseña tu voz y tu autoridad comunicacional.",                           cover: "cover-conquista",  dark: true  },
+    { n: "04", label: "Curso Destaca",    href: "/academia/el-correcto-uso-del-color/", word: "Destaca",    desc: "El correcto uso del color, tu estación y tu paleta viva.",               cover: "cover-destaca",    dark: true  },
+    { n: "05", label: "Reto Presencial",  href: "/academia/reto-presencial/",           word: "Presencial", desc: "9 clases en vivo, grupos de máx. 10 personas en Bogotá.",               cover: "cover-reto",       dark: true  },
+    { n: "06", label: "Automaquillaje",   href: "/academia/curso-automaquillaje/",      word: "Maquillaje", desc: "5 semanas de técnica profesional paso a paso.",                          cover: "cover-maquillaje", dark: false },
 ];
 ---
 
@@ -89,7 +89,7 @@ const cursos = [
 
         <!-- CTA + mobile -->
         <div class="flex items-center gap-3 z-50 flex-shrink-0">
-            <a href="/contacto" class="nav-cta hidden lg:inline-flex">
+            <a href="/contacto/" class="nav-cta hidden lg:inline-flex">
                 <span>Reservar</span>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                     <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -115,7 +115,7 @@ const cursos = [
                     <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">
                         Atención 1 a 1 en estudio privado. Cada ruta se adapta a tu momento personal y objetivo profesional.
                     </p>
-                    <a href="/servicios" class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors">
+                    <a href="/servicios/" class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors">
                         Ver todos los servicios
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -140,7 +140,7 @@ const cursos = [
                     ))}
 
                     <!-- Reservar card -->
-                    <a href="/contacto" class="mega-card group bg-brand-black text-white p-6 flex flex-col justify-between">
+                    <a href="/contacto/" class="mega-card group bg-brand-black text-white p-6 flex flex-col justify-between">
                         <div>
                             <p class="text-[9px] tracking-[0.3em] uppercase text-brand-primary mb-4">Cupos limitados</p>
                             <h4 class="font-serif text-2xl text-white mb-3">Máx. 4 cupos / mes.</h4>
@@ -167,7 +167,7 @@ const cursos = [
                     <p class="text-sm text-neutral-500 font-light leading-relaxed mb-8">
                         Cuatro cursos + un libro oficial. El método RM disponible a tu ritmo, en cualquier parte del mundo.
                     </p>
-                    <a href="/academia" class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors">
+                    <a href="/academia/" class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black hover:text-brand-primary transition-colors">
                         Ver todos los cursos
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -186,7 +186,7 @@ const cursos = [
                             <p class="text-sm text-neutral-500 font-light leading-relaxed">{c.desc}</p>
                         </a>
                     ))}
-                    <a href="/libro" class="mega-card group col-span-2 grid grid-cols-5 gap-6 items-center p-4 border border-neutral-200">
+                    <a href="/libro/" class="mega-card group col-span-2 grid grid-cols-5 gap-6 items-center p-4 border border-neutral-200">
                         <div class="col-span-2 mega-img" style="background:linear-gradient(135deg,#f4f1ea,#d5cdb9);aspect-ratio:3/4">
                             <span class="absolute top-3 left-3 text-[9px] tracking-[0.3em] uppercase text-neutral-500">Libro</span>
                         </div>
@@ -219,7 +219,7 @@ const cursos = [
     <div class="flex-1 px-8 py-8 overflow-y-auto">
         <details class="mob-group border-b border-white/10">
             <summary class="mob-summary">
-                <a href="/servicios" class="text-[2rem] font-serif text-white">Servicios</a>
+                <a href="/servicios/" class="text-[2rem] font-serif text-white">Servicios</a>
                 <span class="mob-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
             </summary>
             <div class="pb-5 pl-1 space-y-2.5">
@@ -233,12 +233,12 @@ const cursos = [
             </div>
         </details>
 
-        <a href="/nosotros"       class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">La Firma</a>
-        <a href="/casos-de-exito" class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Casos de Éxito</a>
+        <a href="/nosotros/"       class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">La Firma</a>
+        <a href="/casos-de-exito/" class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Casos de Éxito</a>
 
         <details class="mob-group border-b border-white/10">
             <summary class="mob-summary">
-                <a href="/academia" class="text-[2rem] font-serif text-white">Academia</a>
+                <a href="/academia/" class="text-[2rem] font-serif text-white">Academia</a>
                 <span class="mob-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span>
             </summary>
             <div class="pb-5 pl-1 space-y-2.5">
@@ -248,15 +248,15 @@ const cursos = [
                         <span>{c.label}</span>
                     </a>
                 ))}
-                <a href="/libro" class="mob-sub flex items-baseline gap-3">
+                <a href="/libro/" class="mob-sub flex items-baseline gap-3">
                     <span class="font-serif italic text-xs text-neutral-500 w-6">★</span>
                     <span>Libro Oficial</span>
                 </a>
             </div>
         </details>
 
-        <a href="/herramientas"   class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Herramientas</a>
-        <a href="/contacto" class="mt-10 block bg-brand-primary text-white text-center py-4 text-[11px] tracking-[0.2em] uppercase">
+        <a href="/herramientas/"   class="block text-[2rem] font-serif text-white py-5 border-b border-white/10">Herramientas</a>
+        <a href="/contacto/" class="mt-10 block bg-brand-primary text-white text-center py-4 text-[11px] tracking-[0.2em] uppercase">
             Reservar Consulta
         </a>
     </div>
@@ -293,7 +293,7 @@ const cursos = [
             Test interactivo de 6 minutos. Descubre tu estación de color, tu forma facial y el lenguaje visual que mejor comunica quién eres — basado en el método RM.
         </p>
         <div class="flex flex-col sm:flex-row gap-3">
-            <a href="/herramientas" class="tool-cta inline-flex items-center justify-center gap-2 px-6 py-3 text-[11px] tracking-[0.2em] uppercase border border-[#0a0a0a] text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white transition-colors duration-400">
+            <a href="/herramientas/" class="tool-cta inline-flex items-center justify-center gap-2 px-6 py-3 text-[11px] tracking-[0.2em] uppercase border border-[#0a0a0a] text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white transition-colors duration-400">
                 <span>Empezar test</span>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                     <path d="M5 12h14M13 6l6 6-6 6"/>

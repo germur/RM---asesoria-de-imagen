@@ -32,10 +32,10 @@ const { slug } = Astro.params;
 
 // Redirect slugs that have a real page to avoid dead-ends
 const redirects: Record<string, string> = {
-  'analizador-rostro': '/herramientas/calculadora-rostro',
-  'simulador-siluetas': '/herramientas/calculadora-tipo-cuerpo',
-  'calculadora-cuerpo': '/herramientas/calculadora-tipo-cuerpo',
-  'test-colorimetria': '/herramientas/test-colorimetria-online',
+  'analizador-rostro': '/herramientas/calculadora-rostro/',
+  'simulador-siluetas': '/herramientas/calculadora-tipo-cuerpo/',
+  'calculadora-cuerpo': '/herramientas/calculadora-tipo-cuerpo/',
+  'test-colorimetria': '/herramientas/test-colorimetria-online/',
 };
 if (redirects[slug]) {
   return Astro.redirect(redirects[slug], 301);
@@ -96,7 +96,7 @@ const formattedName = slug.split('-').map((word: string) => word.charAt(0).toUpp
             </div>
 
             <a
-                href="/herramientas"
+                href="/herramientas/"
                 class="text-xs uppercase tracking-[0.2em] text-neutral-400 hover:text-brand-black transition-colors duration-500"
             >
                 &larr; Volver al Laboratorio

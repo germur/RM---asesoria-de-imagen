@@ -478,7 +478,7 @@ export default function ImpactTest() {
 
                 {/* CTA */}
                 <a
-                    href="/contacto"
+                    href="/contacto/"
                     className="flex items-center justify-between px-6 py-4 bg-brand-primary text-white
                                text-xs uppercase tracking-[0.18em] hover:bg-brand-black transition-colors duration-300"
                 >
