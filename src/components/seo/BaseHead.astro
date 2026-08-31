@@ -102,6 +102,29 @@ const globalSchema = {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-8FCTXLT7Y2');
+
+  // ─── Eventos clave (conversiones) ───
+  // Delegacion global: cubre todos los CTAs del sitio sin tocarlos uno a uno.
+  // Marcar en GA4 como "eventos clave": contacto_whatsapp, contacto_telefono,
+  // click_agendar, form_contacto_enviado, click_comprar_curso.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var ubicacion = a.dataset.ctaLocation || (location.pathname || '/');
+
+    if (href.indexOf('wa.me') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+      gtag('event', 'contacto_whatsapp', { pagina: ubicacion, destino: href });
+    } else if (href.indexOf('tel:') === 0) {
+      gtag('event', 'contacto_telefono', { pagina: ubicacion });
+    } else if (href.indexOf('mailto:') === 0) {
+      gtag('event', 'contacto_email', { pagina: ubicacion });
+    } else if (/^\/contacto\/?($|[#?])/.test(href)) {
+      gtag('event', 'click_agendar', { pagina: ubicacion });
+    } else if (href.indexOf('pay.hotmart.com') !== -1 || href.indexOf('hotmart.com') !== -1) {
+      gtag('event', 'click_comprar_curso', { pagina: ubicacion, destino: href });
+    }
+  }, { passive: true });
 </script>
 
 <!-- Font preloads (optional with @fontsource, but good for CLS) -->

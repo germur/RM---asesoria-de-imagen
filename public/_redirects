@@ -48,7 +48,27 @@
 /peluqueria/     /servicios/peluqueria/   301!
 /blog/balayage-tendencias/   /servicios/peluqueria/   301!
 
+# -- 3b. RUTAS LMS (LearnDash) que seguian en 404 --
+/instructors/*   /nosotros/   301!
+/instructors     /nosotros/   301!
+/lessons/*       /academia/   301!
+/lessons         /academia/   301!
+/quizzes/*       /academia/   301!
+/quizzes         /academia/   301!
+/topic/*         /academia/   301!
+/lesson/*        /academia/   301!
+/certificates/*  /academia/   301!
+/profile/*       /academia/   301!
+
 # -- 4. TIENDA / CHECKOUT (WooCommerce -> catalogo / libro) --
+/mi-cuenta/*     /contacto/   301!
+/mi-cuenta       /contacto/   301!
+/carrito/*       /academia/   301!
+/carrito         /academia/   301!
+/finalizar-compra/*  /academia/   301!
+/producto/*      /productos/  301!
+/product/*       /productos/  301!
+/shop/*          /productos/  301!
 /checkouts/libro-fisico/                          /libro/      301!
 /checkouts/curso-completo-revoluciona-tu-imagen/  /academia/   301!
 /checkouts/*    /academia/   301!

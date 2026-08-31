@@ -3,17 +3,70 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const seoData = {
-    title: "Consultoría de Imagen Integral · A Puerta Cerrada · Bogotá | Roger Murillo",
-    description: "Consultoría de imagen personal integral en Bogotá: diagnóstico 360°, visagismo, colorimetría y ejecución en una sesión exclusiva a puerta cerrada. Máximo 4 cupos al mes.",
+    title: "Asesoría de Imagen Personal en Bogotá · Programa Integral | Roger Murillo",
+    description: "Asesoría de imagen personal en Bogotá: 11 fases con visagismo, colorimetría, armario y acompañamiento 1 a 1. Estudio privado, máximo 4 cupos al mes. Conoce el proceso y la inversión.",
 };
+
+// FAQ · construida solo con datos que ya estan en esta pagina
+const faqs = [
+    {
+        q: "¿Cuánto cuesta una asesoría de imagen personal?",
+        a: "El programa integral tiene una inversión de $1.650 USD (aprox. $6.500.000 COP, sujeto a la TRM del día). Se paga en dos momentos: un abono inicial de $500 USD que da inicio a la Fase I, y el saldo de $1.150 USD al aprobar el informe de diagnóstico.",
+    },
+    {
+        q: "¿Qué incluye la asesoría de imagen integral?",
+        a: "Es un programa de 11 fases que cubre diagnóstico de identidad, visagismo, colorimetría, morfología corporal, auditoría y depuración de armario, rutas de compra y acompañamiento personalizado, hasta la entrega del dossier final de imagen.",
+    },
+    {
+        q: "¿Cuánto dura el proceso completo?",
+        a: "Es un acompañamiento por fases, no una sesión suelta. El ritmo se ajusta a cada persona y avanza a medida que se completan y aprueban las etapas del proceso, comenzando por el diagnóstico.",
+    },
+    {
+        q: "¿Dónde se realiza la asesoría?",
+        a: "En el estudio privado a puerta cerrada en Bogotá: Calle 163 B No. 48-80, Local 208, Edificio Britalia Comercial y Empresarial. La agenda es limitada a un máximo de 4 cupos al mes para garantizar dedicación total.",
+    },
+    {
+        q: "¿La asesoría es para hombres y para mujeres?",
+        a: "Para ambos. El programa se diseña sobre la identidad, la morfología y los objetivos de cada persona, sin importar el género. Trabajamos con ejecutivos, líderes, profesionales y figuras públicas.",
+    },
+    {
+        q: "¿Cómo empiezo?",
+        a: "El primer paso es solicitar una valoración a través del formulario de contacto. En ella evaluamos tu punto de partida y tus objetivos para confirmar si el programa es el adecuado para ti antes de iniciar.",
+    },
+];
 
 const schema = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "Consultoría de Imagen Integral",
-    provider: { "@type": "ProfessionalService", name: "Roger Murillo & Adriana Garzón", url: "https://rogermurillo.co" },
-    areaServed: { "@type": "City", name: "Bogotá" },
-    description: seoData.description,
+    "@graph": [
+        {
+            "@type": "Service",
+            "@id": "https://rogermurillo.co/servicios/asesoria-integral-imagen/#service",
+            name: "Asesoría de Imagen Personal Integral",
+            serviceType: "Asesoría de imagen personal",
+            provider: { "@id": "https://rogermurillo.co/#organization" },
+            areaServed: [
+                { "@type": "City", name: "Bogotá" },
+                { "@type": "Country", name: "Colombia" },
+            ],
+            description: seoData.description,
+            offers: {
+                "@type": "Offer",
+                price: "1650",
+                priceCurrency: "USD",
+                availability: "https://schema.org/LimitedAvailability",
+                url: "https://rogermurillo.co/servicios/asesoria-integral-imagen/",
+            },
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://rogermurillo.co/servicios/asesoria-integral-imagen/#faq",
+            mainEntity: faqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+        },
+    ],
 });
 ---
 
@@ -324,6 +377,34 @@ const schema = JSON.stringify({
                         <p class="text-[9px] text-white/30 mt-4 text-center">*Valor en COP sujeto a TRM del día.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ · responde consultas conversacionales y alimenta citaciones de IA -->
+    <section class="relative bg-white py-32 md:py-40">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6 text-center">Preguntas frecuentes</p>
+            <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black mb-16 text-center">
+                Sobre la <span class="italic text-neutral-400">asesoría.</span>
+            </h2>
+
+            <div class="divide-y divide-neutral-200 border-t border-b border-neutral-200">
+                {faqs.map((f) => (
+                    <details class="group py-8 cursor-pointer">
+                        <summary class="flex justify-between items-start list-none gap-6">
+                            <span class="font-serif text-2xl text-brand-black leading-tight">{f.q}</span>
+                            <span class="text-neutral-300 group-open:rotate-45 transition-transform text-3xl leading-none shrink-0">+</span>
+                        </summary>
+                        <p class="text-base text-neutral-500 font-light leading-relaxed mt-6 max-w-2xl">{f.a}</p>
+                    </details>
+                ))}
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="/contacto/" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">
+                    Agendar mi valoración
+                </a>
             </div>
         </div>
     </section>

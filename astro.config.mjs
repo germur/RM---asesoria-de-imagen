@@ -21,6 +21,9 @@ const SITEMAP_EXCLUDE = new Set([
 
 export default defineConfig({
   site: 'https://rogermurillo.co',
+  // Canonica = con barra final (es la version que mejor rankea en los 7 pares
+  // que Google tenia duplicados). Blinda contra regresiones en enlaces internos.
+  trailingSlash: 'always',
   integrations: [
     react(),
     sitemap({

@@ -512,7 +512,14 @@ const contactSchema = {
         });
     };
     document.querySelectorAll('.next-btn,.prev-btn').forEach(b =>
-        b.addEventListener('click', () => goTo(Number(b.dataset.to)))
+        b.addEventListener('click', () => {
+            const destino = Number(b.dataset.to);
+            // Embudo del formulario: permite ver en que paso abandonan
+            if (b.classList.contains('next-btn') && typeof gtag === 'function') {
+                gtag('event', 'form_contacto_paso', { paso: destino });
+            }
+            goTo(destino);
+        })
     );
     goTo(1);
 
@@ -557,6 +564,13 @@ const contactSchema = {
                     body: data.toString(),
                 });
                 if (!res.ok) throw new Error('HTTP ' + res.status);
+                // Evento clave: solicitud de consultoria enviada con exito
+                if (typeof gtag === 'function') {
+                    gtag('event', 'form_contacto_enviado', {
+                        objetivos: document.getElementById('f-goals-hidden').value,
+                        horario: document.getElementById('f-slot-hidden').value,
+                    });
+                }
                 goTo(4);
             } catch (err) {
                 submitBtn.disabled = false;
