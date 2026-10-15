@@ -1,22 +1,24 @@
 ---
+import CasePhoto from "./CasePhoto.astro";
 const cases = [
     { name: 'Nubia González', image: '/images/casos/nubia-despues-3.webp', href: '/casos-de-exito/#caso-nubia', summary: 'Su proceso de asesoría integral y su experiencia al volver a sentirse cómoda con su imagen.' },
     { name: 'Karen Vergara', image: '/images/casos/karen-3.webp', href: '/casos-de-exito/#caso-karen', summary: 'La búsqueda de una imagen que reflejara su identidad y su momento personal.' },
 ];
 ---
-<section class="py-20 bg-white" aria-label="Historias reales de asesoría integral">
+<section class="real-stories" aria-label="Historias reales de asesoría integral">
     <div class="container mx-auto px-6 max-w-6xl">
-        <h2 class="font-serif text-3xl md:text-5xl mb-6 text-brand-black">Conoce el proceso en historias reales.</h2>
+        <span class="stories-eyebrow">Personas / Procesos / Cambios</span>
+        <h2 class="font-serif text-3xl md:text-5xl mb-6 text-brand-black">La imagen cambia.<br/><em>La historia es tuya.</em></h2>
         <p class="text-neutral-600 max-w-3xl mb-10">Estas fotografías pertenecen a casos de asesoría integral ya publicados por el estudio. Cada historia explica el contexto del proceso completo; no representa el resultado de una cita aislada de peluquería.</p>
-        <div class="grid sm:grid-cols-2 gap-8">
+        <div class="stories-grid">
             {cases.map(item => (
-                <article class="border border-neutral-200">
+                <article class="story-item">
                     <a href={item.href} data-cta-location="casos-servicio" class="block">
-                        <img src={item.image} alt={`${item.name}, caso publicado de asesoría de imagen integral`} width="640" height="800" loading="lazy" decoding="async" class="w-full aspect-[4/5] object-cover object-top" />
+                        <CasePhoto src={item.image} alt={`${item.name}, caso publicado de asesoría de imagen integral`} width="640" height="800" loading="lazy" decoding="async" class="w-full aspect-[4/5] object-cover object-top" />
                         <div class="p-6">
                             <h3 class="font-serif text-2xl text-brand-black mb-3">{item.name}</h3>
                             <p class="text-neutral-600 text-sm leading-relaxed mb-4">{item.summary}</p>
-                            <span class="text-brand-primary underline underline-offset-4">Leer su historia y ver el proceso</span>
+                            <span class="story-action">Leer su historia <span aria-hidden="true">↗</span></span>
                         </div>
                     </a>
                 </article>
@@ -24,3 +26,6 @@ const cases = [
         </div>
     </div>
 </section>
+<style>
+ .real-stories{background:#eeeeee;padding:75px 0}.stories-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#6e6e6e;display:block;margin-bottom:25px}.real-stories h2{font-size:clamp(36px,4vw,53px);line-height:1.08;letter-spacing:-.035em;color:#313131}.real-stories h2 em{color:#717171}.real-stories>div>p{font-size:13px;line-height:1.9;max-width:660px;color:#6a6a6a}.stories-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:start;margin-top:45px}.story-item:nth-child(2){margin-top:85px}.story-item :is(img,svg){aspect-ratio:4/4.4;object-fit:cover;object-position:top;filter:saturate(.8);transition:filter .4s,transform .5s}.story-item a{overflow:hidden}.story-item a:hover :is(img,svg){filter:saturate(1);transform:scale(1.015)}.story-item .p-6{padding:24px 0;border-bottom:1px solid #cecece}.story-item h3{font:33px 'Playfair Display',Georgia,serif;color:#353535}.story-item p{font-size:13px;color:#6d6d6d;max-width:450px}.story-action{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#404040;margin-top:20px}.story-action>span{display:flex;align-items:center;justify-content:center;border:1px solid #a4a4a4;border-radius:50%;width:36px;height:36px;font-size:20px}@media(max-width:650px){.real-stories{padding:45px 0}.stories-grid{grid-template-columns:1fr;gap:30px}.story-item:nth-child(2){margin-top:0}.story-item :is(img,svg){aspect-ratio:4/4.2}}
+</style>

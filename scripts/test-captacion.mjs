@@ -22,7 +22,7 @@ function harness(interest){
  vm.runInNewContext(script,context);
  return{ids,inputs,buttons,name,email,terms,posts,events,submit,ok:()=>{ok=true},send:()=>ids['rm-form'].listeners.submit({preventDefault(){}})};
 }
-for(const [interest,expected] of [['peluqueria','Peluquería'],['integral','Asesoría integral'],['ejecutiva','Imagen ejecutiva'],['colorimetria','Colorimetría'],['visagismo','Visagismo y corte'],['automaquillaje','Curso de automaquillaje'],['curso-colorimetria-profesional','Curso de colorimetría profesional']]){
+for(const [interest,expected] of [['fondo-armario','Fondo de armario y personal shopper'],['peluqueria','Peluquería'],['integral','Asesoría integral'],['ejecutiva','Imagen ejecutiva'],['colorimetria','Colorimetría'],['colorimetria-digital','Colorimetría digital'],['colorimetria-presencial','Colorimetría presencial'],['visagismo','Visagismo y corte'],['automaquillaje','Curso de automaquillaje'],['curso-colorimetria-profesional','Curso de colorimetría profesional']]){
  const h=harness(interest);assert.equal(h.inputs.find(x=>x.value===expected).checked,true);assert.equal(h.ids['f-entry-hidden'].value,'/servicios/peluqueria/');assert.equal(h.ids['f-referrer-hidden'].value,'chatgpt.com');
  h.ids['rm-form'].listeners.input();h.ids['rm-form'].listeners.input();assert.equal(h.events.filter(x=>x[1]==='form_contacto_inicio').length,1);
  h.buttons[0].listeners.click();assert.equal(h.name.reported,true);assert.equal(h.events.filter(x=>x[1]==='form_contacto_paso').length,0);
@@ -35,4 +35,4 @@ for(const [interest,expected] of [['peluqueria','Peluquería'],['integral','Ases
 }
 const unknown=harness('no-validado');assert.equal(unknown.inputs.some(x=>x.checked),false);
 const mixed=harness('curso-colorimetria-profesional');mixed.inputs.find(x=>x.value==='Peluquería').checked=true;mixed.name.invalid=false;mixed.email.invalid=false;mixed.terms.invalid=false;mixed.ok();await mixed.send();assert.equal(mixed.events.find(x=>x[1]==='form_contacto_enviado')[2].tipo_solicitud,'mixta');
-console.log('PASS: 7 inquiry contexts, unknown context, mixed inquiry, attribution, validation, failure/retry, successful submission and duplicate prevention.');
+console.log('PASS: 10 inquiry contexts, unknown context, mixed inquiry, attribution, validation, failure/retry, successful submission and duplicate prevention.');

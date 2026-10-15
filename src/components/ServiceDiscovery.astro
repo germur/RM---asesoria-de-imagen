@@ -1,0 +1,49 @@
+---
+const { routes, current = 'all' } = Astro.props;
+const identities: Record<string, {need:string,image:string,word:string,meta:string}> = {
+    colorimetria:{need:'Quiero entender mis colores',image:'/images/adriana-portrait-bw.webp',word:'Color',meta:'Digital o presencial · Desde $150.000 COP'},
+    hombres:{need:'Quiero resolver mi armario',image:'/images/roger-portrait-bw.webp',word:'Estilo',meta:'A domicilio + compras · $1.600.000 COP'},
+    peluqueria:{need:'Quiero cambiar mi cabello',image:'/images/roger-adriana-duo.webp',word:'Forma',meta:'Corte · Color · Visagismo'},
+    integral:{need:'Quiero un cambio más profundo',image:'/images/service-consulting-full.webp',word:'Identidad',meta:'Once fases · USD 1.650'},
+    ejecutiva:{need:'Quiero trabajar mi imagen profesional',image:'/images/roger-murillo.webp',word:'Presencia',meta:'Contexto profesional · Vestuario · Objetivos'},
+};
+---
+<section class="discovery" data-discovery aria-label="Encuentra tu servicio de asesoría de imagen">
+ <div class="d-wrap">
+  <header class="d-header"><div><span class="d-eyebrow">Servicios / Roger Murillo</span><h2>Tu momento.<br/><em>Tu siguiente paso.</em></h2></div><p>No todos los cambios empiezan igual.<br/>Elige lo que quieres resolver y encuentra<br/> una forma de trabajar tu imagen.</p></header>
+  <div class="d-explorer">
+   <div class="d-menu" role="tablist" aria-label="¿Qué quieres resolver?" aria-orientation="vertical" hidden>
+    <span class="d-menu-label">¿Por dónde empezamos?</span>
+    {routes.map((route:any,i:number)=><button type="button" role="tab" id={`d-${current}-tab-${route.id}`} aria-controls={`d-${current}-panel-${route.id}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1}><span class="d-index">0{i+1}</span><span class="d-choice"><span>{identities[route.id].need}</span><small>{route.title}</small></span><span class="d-arrow" aria-hidden="true">↗</span></button>)}
+    <p class="d-menu-note">Una necesidad puntual o un proceso completo.<br/>Tú eliges desde dónde comenzar.</p>
+   </div>
+   <div class="d-stage">{routes.map((route:any)=><div class="d-panel" id={`d-${current}-panel-${route.id}`} role="tabpanel" aria-labelledby={`d-${current}-tab-${route.id}`}>
+    <div class="d-photo"><img src={identities[route.id].image} alt={`Roger Murillo Image Advisors · ${route.title}`} width="900" height="800" loading="lazy"/><span class="d-word" aria-hidden="true">{identities[route.id].word}</span><span class="d-caption">Roger Murillo Image Advisors</span><span class="d-mark" aria-hidden="true">RM ↗</span></div>
+    <div class="d-information"><span class="d-meta">{identities[route.id].meta}</span><h3>{route.title}</h3><p>{route.description}</p><div class="d-action"><a href={route.href} data-cta-location="comparador-servicios">Explorar {route.title.toLowerCase()}<span aria-hidden="true">↗</span></a><small>Consulta el alcance, el proceso y la disponibilidad.</small></div></div>
+   </div>)}</div>
+  </div>
+  <footer class="d-bottom"><span class="d-bottom-icon" aria-hidden="true">✳</span><p><strong>Si todavía no sabes qué elegir, conversemos.</strong><br/>Cuéntanos qué necesitas y el equipo te orientará.</p><a href="/contacto/">Orientarme con el equipo <span aria-hidden="true">↗</span></a></footer>
+ </div>
+</section>
+<script>
+ document.querySelectorAll<HTMLElement>('[data-discovery]').forEach(root=>{
+  const tabs=Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+  const panels=Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+  const select=(index:number,focus=false)=>{tabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;panels[i].hidden=i!==index;});if(focus)tabs[index].focus();};
+  root.querySelector<HTMLElement>('.d-menu')!.hidden=false;root.classList.add('d-enhanced');select(0);
+  tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>{select(i);if(matchMedia('(max-width:650px)').matches)panels[i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'});});tab.addEventListener('keydown',event=>{if(['ArrowDown','ArrowUp','ArrowRight','ArrowLeft','Home','End'].includes(event.key)){event.preventDefault();select(event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(['ArrowDown','ArrowRight'].includes(event.key)?1:-1)+tabs.length)%tabs.length,true);}});});
+ });
+</script>
+<style>
+ .discovery{background:#e4e4e4;color:#2f2f2f;padding:85px 0 0;border-top:1px solid #cecece}.d-wrap{max-width:1280px;margin:auto;padding:0 48px}
+ .d-header{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:48px}.d-eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#666666;display:block;margin-bottom:26px}.d-header h2{font:clamp(42px,4.7vw,64px)/1.03 'Playfair Display',Georgia,serif;letter-spacing:-.035em}.d-header h2 em{color:#737373}.d-header>p{font-size:13px;line-height:1.9;color:#656565;margin-bottom:3px}
+ .d-explorer{display:grid;grid-template-columns:1fr;gap:46px}.d-enhanced .d-explorer{grid-template-columns:.8fr 1.2fr}.d-menu[hidden],.d-panel[hidden]{display:none}.d-menu-label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#646464;padding:0 0 23px;border-bottom:1px solid #c0c0c0}
+ .d-menu button{width:100%;display:flex;align-items:center;text-align:left;gap:20px;padding:27px 14px 27px 0;border-bottom:1px solid #c0c0c0;cursor:pointer;position:relative;transition:padding .25s,background .25s}.d-index{font:12px Georgia,serif;color:#828282;align-self:flex-start;margin-top:6px}.d-choice{flex:1}.d-choice>span{display:block;font:clamp(21px,2vw,27px)/1.15 'Playfair Display',Georgia,serif;letter-spacing:-.02em;color:#565656}.d-choice small{display:block;font-size:10px;line-height:1.5;color:#6d6d6d;margin-top:9px}
+ .d-arrow{display:flex;align-items:center;justify-content:center;border:1px solid #b6b6b6;border-radius:50%;width:34px;height:34px;font-size:20px;color:#6a6a6a;flex-shrink:0;transition:background .25s,color .25s,transform .25s}.d-menu button[aria-selected=true]{padding-left:18px;background:#d8d8d8}.d-menu button[aria-selected=true]:before{content:'';position:absolute;left:0;top:24px;bottom:24px;width:3px;background:#525252}.d-menu button[aria-selected=true] .d-choice>span{color:#2a2a2a}.d-menu button[aria-selected=true] .d-arrow,.d-menu button:hover .d-arrow{background:#393939;color:#fff;border-color:#393939;transform:rotate(8deg)}.d-menu-note{font-size:11px;line-height:1.9;color:#6e6e6e;margin-top:25px;padding-left:30px}
+ .d-panel{background:#f2f2f2;margin-bottom:20px;scroll-margin-top:115px}.d-photo{height:300px;position:relative;overflow:hidden;background:#393939}.d-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#1a1a1ab3,transparent 65%);pointer-events:none}.d-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(1);transition:transform .6s}.d-panel:hover .d-photo img{transform:scale(1.035)}.d-word{position:absolute;left:27px;bottom:38px;font:italic 65px/.9 'Playfair Display',Georgia,serif;letter-spacing:-.04em;color:#ececec;z-index:1}.d-caption{position:absolute;left:29px;bottom:17px;font-size:8px;letter-spacing:.08em;color:#e3e3e3;z-index:1}.d-mark{position:absolute;right:22px;top:20px;z-index:1;font:16px Georgia,serif;color:#ececec}
+ .d-information{padding:27px 30px 30px}.d-meta{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#686868;margin-bottom:18px;line-height:1.6}.d-information h3{font:31px/1.12 'Playfair Display',Georgia,serif;color:#2c2c2c;letter-spacing:-.02em;margin-bottom:15px}.d-information>p{font-size:13px;line-height:1.9;color:#626262;max-width:520px}.d-action{border-top:1px solid #d2d2d2;padding-top:20px;margin-top:24px}.d-action a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 20px;min-height:54px;background:#3a3a3a;color:#f8f8f8;font-size:12px;line-height:1.4;transition:background .2s}.d-action a:hover{background:#585858}.d-action a>span{font-size:22px}.d-action small{display:block;color:#727272;font-size:10px;line-height:1.8;margin-top:12px}
+ .d-bottom{display:flex;align-items:center;gap:22px;border-top:1px solid #c2c2c2;padding:35px 0;margin-top:35px}.d-bottom-icon{font-size:39px;color:#737373}.d-bottom p{font-size:11px;line-height:1.9;color:#686868;flex:1}.d-bottom strong{color:#3d3d3d;font-weight:500}.d-bottom>a{display:flex;align-items:center;gap:25px;min-height:48px;border-bottom:1px solid #6a6a6a;font-size:11px;color:#3a3a3a}.d-bottom>a>span{font-size:22px}.discovery :is(a,button):focus-visible{outline:3px solid #a8403e;outline-offset:5px}
+ @media(max-width:900px){.d-wrap{padding:0 24px}.d-enhanced .d-explorer{grid-template-columns:.85fr 1.15fr;gap:24px}.d-choice>span{font-size:22px}.d-menu button{gap:12px}.d-information{padding:24px}.d-photo{height:260px}.d-word{font-size:53px}}
+ @media(max-width:650px){.discovery{padding-top:48px}.d-header{display:block;margin-bottom:30px}.d-header>p{margin-top:25px}.d-enhanced .d-explorer{grid-template-columns:1fr;gap:24px}.d-menu-label{padding-bottom:16px}.d-menu button{padding:18px 7px 18px 0}.d-choice>span{font-size:23px}.d-choice small{margin-top:5px}.d-menu-note{display:none}.d-photo{height:250px}.d-information h3{font-size:29px}.d-bottom{flex-wrap:wrap;gap:15px;padding:25px 0}.d-bottom p{min-width:220px}.d-bottom>a{margin-left:48px}.d-menu button[aria-selected=true]{padding-left:13px}}
+ @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>

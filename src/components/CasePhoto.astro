@@ -1,0 +1,8 @@
+---
+interface Props { src:string; alt:string; class?:string; width?:number|string; height?:number|string; loading?:'lazy'|'eager'; decoding?:'async'|'auto'|'sync' }
+const {src,alt,class:className,width=1000,height=1250,loading='lazy',decoding='async',...rest}=Astro.props;
+// The published Karen assets are document layouts. Render only the photograph
+// through an SVG viewport; the original files and photographic content are unchanged.
+const crop=src.endsWith('/karen-1.webp')?{viewBox:'77 202 513 935',w:1364,h:1182}:src.endsWith('/karen-3.webp')?{viewBox:'56 52 490 1000',w:1370,h:1124}:null;
+---
+{crop?<svg {...rest} xmlns="http://www.w3.org/2000/svg" viewBox={crop.viewBox} preserveAspectRatio="xMidYMin slice" class={className} width={width} height={height} role="img" aria-label={alt}><image href={src} x="0" y="0" width={crop.w} height={crop.h} preserveAspectRatio="none"/></svg>:<img {...rest} src={src} alt={alt} class={className} width={width} height={height} loading={loading} decoding={decoding}/>}

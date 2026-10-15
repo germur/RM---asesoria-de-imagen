@@ -1,0 +1,33 @@
+---
+import ColorPaths from '@/components/ColorPaths.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import ColorServices from '@/components/ColorServices.astro';
+import CommercialDetails from '@/components/CommercialDetails.astro';
+import CommercialDesign from '@/components/CommercialDesign.astro';
+import ColorInquiry from '@/components/ColorInquiry.astro';
+const schema = { '@context': 'https://schema.org', '@type': 'Service', name: 'Estudio de colorimetría personal', serviceType: 'Colorimetría digital y presencial', provider: { '@id': 'https://rogermurillo.co/#organization' }, areaServed: { '@type': 'City', name: 'Bogotá' }, url: 'https://rogermurillo.co/servicios/colorimetria-bogota/' };
+---
+<MainLayout title="Colorimetría en Bogotá: estudio presencial e informe digital | Roger Murillo" description="Informe digital de colorimetría por $150.000 COP o sesión presencial en Bogotá por $1.000.000 COP, de 2,5 a 3 horas e informe incluido. Conoce las diferencias." schema={schema} navbarTheme="light" breadcrumbsInFlow>
+    <div class="commercial-page">
+    <article class="pt-36 pb-24 px-6 max-w-5xl mx-auto text-neutral-700 leading-relaxed">
+        <header class="max-w-3xl mb-14">
+            <p class="text-sm text-brand-primary mb-5">Estudio de colorimetría personal</p>
+            <h1 class="font-serif text-4xl md:text-6xl text-brand-black mb-7">Colorimetría en Bogotá: conoce tu paleta y aprende a combinarla</h1>
+            <p class="text-xl">Elige un informe digital con tu paleta personal o una sesión presencial para comparar los colores con textiles y aprender a utilizarlos. Son dos servicios con alcances y precios distintos.</p>
+            <a href="#modalidades" class="inline-block bg-brand-black text-white px-7 py-4 mt-8">Comparar las dos modalidades</a>
+        <div class="service-facts"><span><strong>$150.000 COP</strong> Informe digital</span><span><strong>$1.000.000 COP</strong> Presencial · 2,5–3 horas</span></div><CommercialDesign variant="color" /></header>
+<nav class="commercial-jump" aria-label="En esta página"><a href="#modalidades">Modalidades y precios ↗</a><a href="#proceso">Cómo funciona ↗</a><a href="#consulta">Ubicación y consulta ↗</a></nav>
+        <ColorServices />
+        <section id="proceso" class="max-w-3xl mb-12"><div data-color-process="digital"><h2 class="font-serif text-3xl text-brand-black mb-5">Tu estudio digital, paso a paso</h2><ol class="list-decimal pl-6 space-y-4"><li><strong>Contacto y orientación.</strong> Roger se comunica contigo por WhatsApp y te explica cómo preparar y tomar las fotografías. Puedes resolver tus dudas directamente con él.</li><li><strong>Envío por WhatsApp.</strong> Envías las fotografías siguiendo las indicaciones que recibiste.</li><li><strong>Revisión de las imágenes.</strong> Roger comprueba la luz, el ángulo y la posición. Si alguna fotografía está oscura, inclinada o necesita otra toma, te indica cómo repetirla antes de continuar.</li><li><strong>Análisis e informe.</strong> Con las fotografías revisadas, realiza el estudio y prepara tu informe digital con la paleta y los montajes de círculos cromáticos.</li></ol><p class="mt-5">Es un servicio con atención y análisis personal, no un resultado automático del test de la web. El análisis por fotografías depende de la iluminación y la captura de la cámara; la sesión presencial permite observar los textiles directamente. Consulta el plazo de entrega al coordinar el servicio.</p></div><div data-color-process="presencial" hidden><h2>Tu sesión en el estudio, paso a paso</h2><ol><li><strong>Coordinamos tu cita.</strong> Confirmamos disponibilidad y preparación antes de reservar.</li><li><strong>Comparamos los textiles.</strong> Observas en vivo qué colores te favorecen y cuáles no.</li><li><strong>Aprendes a combinarlos.</strong> Durante aproximadamente 2,5 a 3 horas trabajamos tu paleta y cómo usar el color.</li><li><strong>Recibes tu informe.</strong> La sesión incluye el informe digital con tu paleta y montajes de círculos cromáticos.</li></ol></div></section>
+        <section class="max-w-3xl mb-12"><h2 class="font-serif text-3xl text-brand-black mb-5">¿Qué opción te conviene?</h2><p>Si buscas una referencia documentada de tu paleta mediante un análisis por fotografías, consulta por el informe digital. Si además quieres observar las comparaciones con telas, hacer preguntas y aprender a combinar los colores durante una sesión, elige el estudio presencial. El informe digital ya está incluido en el valor de la sesión presencial.</p></section>
+        <section class="max-w-3xl mb-12"><h2 class="font-serif text-3xl text-brand-black mb-5">¿Es lo mismo que el test gratuito?</h2><p>No. El <a href="/herramientas/test-colorimetria-online/" class="underline text-brand-primary">test online gratuito</a> ofrece una orientación inicial a partir de tus respuestas. No entrega el estudio digital personalizado de pago ni reproduce la comparación presencial de textiles. Puedes explorar también la <a href="/colorimetria/estaciones/" class="underline text-brand-primary">guía de estaciones de colorimetría</a> para familiarizarte con los conceptos.</p></section>
+        <section id="consulta" class="max-w-3xl mb-12"><h2 class="font-serif text-3xl text-brand-black mb-5">Dónde se realiza y cómo consultar</h2><p>La sesión presencial se realiza con cita previa en Calle 163 B No. 48-80, Local 208, Edificio Britalia Comercial y Empresarial, Bogotá. Al escribir, indica si buscas el informe digital de $150.000 COP o la sesión presencial de $1.000.000 COP. El equipo confirma disponibilidad, preparación y condiciones antes de reservar.</p><a href="#consulta-color" class="inline-block bg-brand-black text-white px-7 py-4 mt-7">Consultar colorimetría</a></section>
+    <ColorInquiry />
+    <CommercialDetails variant="color" hideClose />
+    </article>
+    </div>
+    <ColorPaths current="personal" />
+    <nav class="color-related" aria-label="Seguir explorando"><span>Para seguir explorando</span><a href="/colorimetria/estaciones/">Conoce las estaciones de color ↗</a><a href="/servicios/">Ver todos los servicios ↗</a></nav>
+</MainLayout>
+
+<style>.color-related{padding:30px 24px;display:flex;justify-content:center;flex-wrap:wrap;gap:24px;font-size:13px;border-top:1px solid #ddd}.color-related>span{color:#666}.color-related>a{color:#C41230} [data-color-process][hidden]{display:none}</style>

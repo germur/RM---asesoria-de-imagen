@@ -1,4 +1,5 @@
 ---
+import EditorialHero from "@/components/EditorialHero.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 
 const seoData = {
@@ -9,34 +10,11 @@ const seoData = {
 };
 ---
 
-<MainLayout title={seoData.title} description={seoData.description} navbarTheme="light">
-    <section class="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center">
-        <span
-            class="bg-accent/10 text-accent px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
-        >
-            Academia RM
-        </span>
-        <h1
-            class="text-5xl md:text-6xl font-serif text-primary mt-6 mb-8 leading-tight"
-        >
-            {seoData.h1}
-        </h1>
-        <p class="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Explora el sistema de 12 estaciones y su aplicación en asesoría de imagen.
-            Consulta con Academia RM el temario, la modalidad y la disponibilidad de formación.
-        </p>
-        <p class="text-base text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Déjanos tus datos para consultar disponibilidad y recibir información del curso.
-        </p>
-        <a href="/contacto/?interes=curso-colorimetria-profesional#form"
-            data-cta-location="curso-colorimetria-profesional"
-            class="inline-flex items-center justify-center min-h-16 max-w-full px-8 py-4 bg-brand-black text-white hover:bg-brand-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-primary">
-            Solicitar información del curso
-        </a>
-    </section>
-    <section class="px-6 pb-24 max-w-4xl mx-auto space-y-10 text-neutral-700 leading-relaxed">
+<MainLayout title={seoData.title} description={seoData.description} schema={{"@context":"https://schema.org","@type":"Course",name:seoData.h1,description:seoData.description,url:"https://rogermurillo.co/academia/curso-colorimetria-profesional/",provider:{"@id":"https://rogermurillo.co/#organization"}}} navbarTheme="light" breadcrumbsInFlow>
+    <EditorialHero eyebrow="Academia / Formación profesional" title="Curso de colorimetría" emphasis="profesional." description="Consulta la formación en colorimetría para estilistas y asesores de imagen: sistema de doce estaciones y aplicación en la práctica profesional. Solicita temario, modalidad y disponibilidad." image="/images/course-destaca.webp" imageAlt="Fotografía editorial de la academia Roger Murillo" href="/contacto/?interes=curso-colorimetria-profesional#form" action="Solicitar información del curso" />
+    <section class="course-inquiry-content">
         <div><h2 class="font-serif text-3xl text-brand-black mb-4">¿Buscas formación o conocer tu propia paleta?</h2>
-            <p>Esta página está dirigida a quienes quieren consultar formación en colorimetría para su práctica como estilistas o asesores de imagen. Si tu objetivo es descubrir qué colores te gustan cerca del rostro y orientar tu vestuario, empieza por el <a href="/herramientas/test-colorimetria-online/" class="underline text-brand-primary">test gratuito</a> o consulta el <a href="/academia/el-correcto-uso-del-color/" class="underline text-brand-primary">curso El correcto uso del color</a>.</p>
+            <p>Esta página está dirigida a quienes quieren consultar formación en colorimetría para su práctica como estilistas o asesores de imagen. Si tu objetivo es descubrir qué colores te gustan cerca del rostro y orientar tu vestuario, compara el <a href="/servicios/colorimetria-bogota/">estudio de colorimetría personal</a>, explora el <a href="/herramientas/test-colorimetria-online/" class="underline text-brand-primary">test gratuito</a> o consulta el <a href="/academia/el-correcto-uso-del-color/" class="underline text-brand-primary">curso El correcto uso del color</a>.</p>
         </div>
         <div><h2 class="font-serif text-3xl text-brand-black mb-4">Qué confirmar antes de inscribirte</h2>
             <p>Solicita el programa detallado y pregunta por requisitos, materiales, prácticas y acompañamiento. Confirma también modalidad, fechas, duración, inversión y condiciones antes de realizar un pago. El envío de una consulta no constituye una inscripción ni una reserva de plaza.</p>

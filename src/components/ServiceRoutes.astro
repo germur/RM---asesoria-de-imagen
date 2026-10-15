@@ -1,25 +1,13 @@
 ---
+import ServiceDiscovery from './ServiceDiscovery.astro';
 interface Props { current?: string }
 const { current } = Astro.props;
 const routes = [
+    { id: 'colorimetria', title: 'Colorimetría personal', description: 'Informe digital por $150.000 COP o sesión presencial de 2,5 a 3 horas por $1.000.000 COP, con informe incluido.', href: '/servicios/colorimetria-bogota/' },
+    { id: 'hombres', title: 'Asesoría para hombres', description: 'Fondo de armario y personal shopper por $1.600.000 COP. Revisión a domicilio y ruta de compras preparada.', href: '/servicios/asesoria-imagen-hombres-bogota/' },
     { id: 'peluqueria', title: 'Cabello, corte y visagismo', description: 'Quieres revisar tu corte, color o peinado según tu rostro y tu rutina.', href: '/servicios/peluqueria/' },
     { id: 'integral', title: 'Asesoría de imagen integral', description: 'Buscas acompañamiento en color, vestuario, armario y compras, además del cabello.', href: '/servicios/asesoria-integral-imagen/' },
     { id: 'ejecutiva', title: 'Imagen ejecutiva', description: 'Necesitas adaptar tu presencia y vestuario a reuniones, escenarios profesionales o un nuevo cargo.', href: '/servicios/imagen-ejecutiva-autoridad/' },
 ];
 ---
-<section class="bg-neutral-50 py-20 border-y border-neutral-200" aria-label="Elige tu servicio">
-    <div class="container mx-auto px-6 max-w-6xl">
-        <h2 class="font-serif text-3xl md:text-4xl text-brand-black mb-6">Una ruta para lo que necesitas hoy.</h2>
-        <p class="text-neutral-600 max-w-3xl mb-10">Puedes consultar por una necesidad concreta o por un proceso completo. El alcance y la disponibilidad se confirman antes de reservar.</p>
-        <div class="grid md:grid-cols-3 gap-6">
-            {routes.filter(route => route.id !== current).map(route => (
-                <a href={route.href} data-cta-location="comparador-servicios" class="block border border-neutral-200 bg-white p-7 hover:border-brand-primary focus-visible:outline-2 focus-visible:outline-brand-primary">
-                    <h3 class="font-serif text-2xl text-brand-black mb-3">{route.title}</h3>
-                    <p class="text-sm text-neutral-600 leading-relaxed mb-5">{route.description}</p>
-                    <span class="text-sm text-brand-primary underline underline-offset-4">Conocer el servicio</span>
-                </a>
-            ))}
-        </div>
-        <p class="mt-8 text-sm text-neutral-600">Para explorar el color antes de consultar, puedes hacer el <a class="underline text-brand-primary" href="/herramientas/test-colorimetria-online/">test gratuito de colorimetría</a>. Su resultado es orientativo.</p>
-    </div>
-</section>
+<ServiceDiscovery routes={routes.filter(route => route.id !== current)} current={current} />

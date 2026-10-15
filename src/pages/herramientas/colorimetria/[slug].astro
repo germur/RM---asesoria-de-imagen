@@ -9,8 +9,8 @@ const { season } = Astro.props;
 const guide = seasonGuides[season.id];
 const description = `${season.name}: cómo explorar sus colores, combinarlos y compararlos con paletas cercanas. Orientación para ropa, accesorios y maquillaje.`;
 ---
-<MainLayout title={`${season.name}: colores y combinaciones | RM`} description={description}>
-    <article class="max-w-4xl mx-auto px-6 py-20 text-foreground">
+<MainLayout navbarTheme="light" breadcrumbsInFlow title={`${season.name}: colores y combinaciones | RM`} description={description}>
+    <article class="palette-reading">
         <header class="mb-12">
             <a href="/colorimetria/estaciones/" class="text-accent hover:underline">← Explorar las estaciones de color</a>
             <h1 class="text-4xl md:text-5xl font-serif text-primary mt-6 mb-6">{season.name}</h1>
@@ -20,8 +20,8 @@ const description = `${season.name}: cómo explorar sus colores, combinarlos y c
         <section class="mb-12" aria-labelledby="colores">
             <h2 id="colores" class="text-3xl font-serif text-primary mb-4">Colores para empezar a explorar</h2>
             <p class="mb-6 text-muted-foreground">Estas muestras son referencias digitales, no una carta exacta para comprar. La pantalla, la iluminación y el acabado de la tela modifican la percepción del color.</p>
-            <ul class="grid grid-cols-2 md:grid-cols-5 gap-5">
-                {season.palette.best_colors.map((color, index) => <li class="flex flex-col items-center text-center"><span aria-hidden="true" class="w-20 h-20 rounded-full border border-border mb-3" style={{ backgroundColor: color }} /><span class="font-medium">{guide.names[index]}</span><span class="text-xs text-muted-foreground mt-1">{color}</span></li>)}
+            <ul class="palette-strip">
+                {season.palette.best_colors.map((color, index) => <li class="flex flex-col items-center text-center"><span aria-hidden="true" class="palette-swatch" style={{ backgroundColor: color }} /><span class="font-medium">{guide.names[index]}</span><span class="text-xs text-muted-foreground mt-1">{color}</span></li>)}
             </ul>
         </section>
         <section class="mb-12">
@@ -59,4 +59,4 @@ const description = `${season.name}: cómo explorar sus colores, combinarlos y c
             <a href="/contacto/?interes=colorimetria#form" class="inline-block rounded-md bg-primary text-primary-foreground px-6 py-3 font-medium">Consultar sobre colorimetría</a>
         </section>
     </article>
-</MainLayout>
+<section class="palette-service"><h2 class="font-serif text-3xl text-brand-black mb-5">¿Quieres un estudio de tu paleta personal?</h2><p>Conoce el informe digital de $150.000 COP y la sesión presencial en Bogotá de $1.000.000 COP, que incluye el informe y comparación de textiles durante 2,5 a 3 horas.</p><a href="/servicios/colorimetria-bogota/" class="inline-block underline text-brand-primary mt-5">Comparar modalidades de colorimetría</a></section></MainLayout>

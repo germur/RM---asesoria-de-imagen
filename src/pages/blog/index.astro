@@ -1,68 +1,16 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
-import { getCollection } from "astro:content";
-
-const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-
-const seoTitle = "Blog de Imagen y Estilo Ejecutivo | Roger Murillo";
-const seoDesc =
-    "Artículos sobre visagismo, colorimetría y estrategia de imagen para líderes.";
+import MainLayout from '@/layouts/MainLayout.astro';
+import EditorialHero from '@/components/EditorialHero.astro';
+import ResourceCatalog from '@/components/ResourceCatalog.astro';
+import { getCollection } from 'astro:content';
+const posts=(await getCollection('blog')).sort((a,b)=>(b.data.updatedDate||b.data.pubDate).valueOf()-(a.data.updatedDate||a.data.pubDate).valueOf());
+const items=[
+ {href:'/blog/cuanto-cuesta-asesoria-imagen-bogota/',title:'Elegir una asesoría empieza por su alcance',description:'Compara colorimetría, fondo de armario y acompañamiento integral. Qué incluye cada servicio y qué preguntar antes de reservar.',meta:'Guía de contratación / Bogotá',category:'Servicios',image:'/images/roger-portrait-bw.webp'},
+ {href:'/blog/guia-visagismo/',title:'Corte, barba y gafas: una mirada al conjunto',description:'Proporciones, textura y rutina como punto de partida para decidir sin reglas rígidas.',meta:'Guía / Visagismo',category:'Cabello y rostro',motif:'face'},
+ ...posts.map(post=>({href:`/blog/${post.id}/`,title:post.data.title,description:post.data.description,meta:`Lectura / ${(post.data.updatedDate||post.data.pubDate).toLocaleDateString('es-CO',{year:'numeric',month:'long'})}`,category:post.id==='colorimetria'?'Color':post.id==='visagismo'?'Cabello y rostro':'Estilo',...(post.data.heroImage?{image:post.data.heroImage}:{motif:post.id==='colorimetria'?'color':post.id==='visagismo'?'face':'identity'})}))
+];
 ---
-
-<MainLayout title={seoTitle} description={seoDesc} navbarTheme="light">
-    <section class="pt-40 pb-20 px-6">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-            <h1
-                class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4"
-            >
-                Journal
-            </h1>
-            <p class="text-xl text-gray-600">Estrategia, Estilo y Semiótica.</p>
-        </div>
-
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {
-                posts.map((post) => (
-                    <a href={`/blog/${post.id}/`} class="group">
-                        <article class="bg-white border border-stone-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                            <div class="aspect-video overflow-hidden bg-stone-100 relative">
-                                {post.data.heroImage ? (
-                                    <img
-                                        src={post.data.heroImage}
-                                        alt=""
-                                        class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                ) : (
-                                    <div class="w-full h-full flex items-center justify-center text-stone-300 bg-stone-50">
-                                        No Image
-                                    </div>
-                                )}
-                            </div>
-                            <div class="p-6">
-                                <h2 class="text-xl font-serif font-bold text-gray-900 group-hover:text-[#d4af37] transition-colors mb-2">
-                                    {post.data.title}
-                                </h2>
-                                <p class="text-gray-600 text-sm line-clamp-2">
-                                    {post.data.description}
-                                </p>
-                                <div class="mt-4 text-xs text-gray-400">
-                                    {post.data.pubDate.toLocaleDateString(
-                                        "es-co",
-                                        {
-                                            year: "numeric",
-                                            month: "short",
-                                            day: "numeric",
-                                        },
-                                    )}
-                                </div>
-                            </div>
-                        </article>
-                    </a>
-                ))
-            }
-        </div>
-    </section>
-    <section class="px-6 pb-20 max-w-4xl mx-auto"><h2 class="font-serif text-3xl mb-5">Antes de contratar</h2><a class="underline text-brand-primary" href="/blog/cuanto-cuesta-asesoria-imagen-bogota/">Cuánto cuesta una asesoría de imagen y cómo comparar el alcance</a></section>
+<MainLayout title="Blog de Imagen y Estilo Ejecutivo | Roger Murillo" description="Guías prácticas de colorimetría, visagismo, armario y asesoría de imagen. Lecturas para decidir con criterio." navbarTheme="light" breadcrumbsInFlow>
+ <EditorialHero eyebrow="Journal / Ideas que se llevan puestas" title="Observa distinto." emphasis="Elige mejor." description="Guías para llevar el color, las proporciones y el estilo a decisiones reales. Del primer corte al siguiente cambio de vida." />
+ <ResourceCatalog items={items} label="Lecturas de imagen personal" />
 </MainLayout>

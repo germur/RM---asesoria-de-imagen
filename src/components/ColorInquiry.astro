@@ -1,0 +1,37 @@
+<section id="consulta-color" class="color-inquiry" aria-labelledby="color-inquiry-title">
+ <div><span class="cq-label">Tu siguiente paso</span><h2 id="color-inquiry-title">Hablemos de<br/>tu estudio de color.</h2><p>Elige la modalidad y déjanos un correo. El equipo te contactará para coordinar los detalles y confirmar disponibilidad.</p><p class="cq-summary" aria-live="polite" id="color-summary">Informe digital · $150.000 COP</p><small>Enviar esta consulta no confirma una reserva ni requiere un pago.</small></div>
+ <form id="color-inquiry-form" name="contacto" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+ <input type="hidden" name="form-name" value="contacto"/><p hidden><label>No llenar<input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+ <input type="hidden" name="objetivos" value="Colorimetría digital"/><input type="hidden" name="interes_origen" value="colorimetria-digital"/><input type="hidden" name="pagina_entrada" value="/servicios/colorimetria-bogota/"/><input type="hidden" name="referente"/>
+ <label for="color-interest">¿Qué modalidad te interesa?</label><select id="color-interest"><option value="digital">Informe digital · $150.000 COP</option><option value="presencial">Sesión presencial · $1.000.000 COP</option></select>
+ <label for="color-name">Tu nombre</label><input id="color-name" name="nombre" autocomplete="name" required maxlength="120"/>
+ <label for="color-email">Correo para responderte</label><input id="color-email" name="email" type="email" autocomplete="email" required maxlength="254"/>
+ <label for="color-phone">WhatsApp <span>(opcional)</span></label><input id="color-phone" name="telefono" type="tel" autocomplete="tel" maxlength="40"/>
+ <label class="cq-consent"><input type="checkbox" name="consentimiento" value="aceptado" required/><span>Acepto el uso de mis datos para responder esta consulta. <a href="/legales/privacidad/">Política de privacidad</a>.</span></label>
+ <button type="submit">Consultar mi informe digital <span aria-hidden="true">↗</span></button><p id="color-form-status" role="status" aria-live="polite"></p>
+ <noscript><p>También puedes <a href="/contacto/">contactar al equipo aquí</a>.</p></noscript>
+ </form>
+</section>
+<script>
+ const form=document.querySelector<HTMLFormElement>('#color-inquiry-form');
+ if(form){
+ const mode=document.querySelector<HTMLSelectElement>('#color-interest')!;const button=form.querySelector<HTMLButtonElement>('button[type=submit]')!;const status=document.querySelector<HTMLElement>('#color-form-status')!;let busy=false,done=false,started=false;
+ const track=(event:string,extra:Record<string,unknown>={})=>{const w=window as typeof window&{gtag?:(...args:unknown[])=>void};w.gtag?.('event',event,{form_id:'color-inquiry-form',tipo_solicitud:'servicio',modalidad:mode.value,...extra});};
+ const update=()=>{const presencial=mode.value==='presencial';form.querySelector<HTMLInputElement>('[name=objetivos]')!.value=presencial?'Colorimetría presencial':'Colorimetría digital';form.querySelector<HTMLInputElement>('[name=interes_origen]')!.value=`colorimetria-${mode.value}`;document.querySelector('#color-summary')!.textContent=presencial?'Sesión presencial · $1.000.000 COP · Informe incluido':'Informe digital · $150.000 COP';if(!busy&&!done)button.innerHTML=(presencial?'Consultar disponibilidad presencial':'Consultar mi informe digital')+' <span aria-hidden="true">↗</span>';};
+ document.addEventListener('color-mode-change',update);mode.addEventListener('change',update);update();
+ try {
+ const saved=JSON.parse(sessionStorage.getItem('rm_entry_context')||'{}');
+ form.querySelector<HTMLInputElement>('[name=pagina_entrada]')!.value=typeof saved.entry==='string'&&saved.entry.startsWith('/')?saved.entry:'/servicios/colorimetria-bogota/';
+ form.querySelector<HTMLInputElement>('[name=referente]')!.value=typeof saved.referrer==='string'?saved.referrer:(document.referrer?new URL(document.referrer).hostname:'');
+ } catch { /* El envío funciona también con el almacenamiento bloqueado. */ }
+
+ form.addEventListener('input',()=>{if(!started){started=true;track('form_contacto_inicio');}});
+ form.addEventListener('submit',async event=>{event.preventDefault();if(busy||done||!form.reportValidity())return;busy=true;button.disabled=true;mode.disabled=true;button.textContent='Enviando…';status.textContent='';
+ try{const data=new URLSearchParams();new FormData(form).forEach((value,key)=>data.append(key,String(value)));const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data.toString()});if(!response.ok)throw new Error('No enviado');done=true;status.textContent='Recibimos tu consulta. Te contactaremos para coordinar el servicio. La reserva se confirma con el equipo.';button.textContent='Consulta enviada';track('form_contacto_enviado',{objetivos:form.querySelector<HTMLInputElement>('[name=objetivos]')!.value});}
+ catch{status.textContent='No pudimos enviar tu consulta. Tus datos siguen aquí; puedes intentarlo de nuevo o contactar al equipo desde Contacto.';track('form_contacto_error');busy=false;mode.disabled=false;button.disabled=false;update();}
+ });
+ }
+</script>
+<style>
+.color-inquiry{display:grid;grid-template-columns:1fr 1fr;gap:65px;background:#151515;color:white;padding:48px;margin:35px 0 50px;scroll-margin-top:130px}.cq-label{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:#ff738a}.color-inquiry h2{font:42px/1.1 'Playfair Display',Georgia,serif;margin:20px 0}.color-inquiry p{font-size:15px;line-height:1.8;color:#ddd}.color-inquiry small{display:block;font-size:12px;line-height:1.8;color:#ccc}.cq-summary{border-left:3px solid #C41230;padding-left:15px;margin:25px 0}.color-inquiry form>label:not(.cq-consent){display:block;font-size:13px;margin:0 0 8px}.color-inquiry form>input:not([type=hidden]),.color-inquiry select{background:#fff;color:#111;min-height:48px;padding:12px;width:100%;margin-bottom:20px;border:1px solid #bbb;border-radius:2px;font-size:16px}.cq-consent{display:flex;align-items:start;gap:12px;font-size:12px;line-height:1.8;margin:6px 0 20px}.cq-consent input{width:20px;height:20px;flex-shrink:0;margin-top:2px;accent-color:#C41230}.cq-consent a{text-decoration:underline}.color-inquiry button{background:#C41230;color:white;display:flex;justify-content:space-between;gap:20px;padding:18px 22px;min-height:54px;width:100%;font-size:14px;cursor:pointer}.color-inquiry button:disabled{opacity:.7;cursor:default}.color-inquiry :is(input,select,button,a):focus-visible{outline:3px solid #ff738a;outline-offset:3px}#color-form-status{font-size:13px;margin-top:16px}@media(max-width:700px){.color-inquiry{grid-template-columns:1fr;padding:28px 22px;gap:28px}.color-inquiry h2{font-size:34px}}
+</style>

@@ -133,7 +133,7 @@ const globalSchema = {
       gtag('event', 'contacto_email', { pagina: ubicacion });
     } else if (/^\/contacto\/?($|[#?])/.test(href)) {
       var interest = new URL(href, location.origin).searchParams.get('interes');
-      var allowedInterests = ['peluqueria', 'integral', 'ejecutiva', 'colorimetria', 'visagismo', 'automaquillaje', 'curso-colorimetria-profesional'];
+      var allowedInterests = ['peluqueria', 'integral', 'ejecutiva', 'colorimetria', 'colorimetria-digital', 'colorimetria-presencial', 'fondo-armario', 'visagismo', 'automaquillaje', 'curso-colorimetria-profesional'];
       gtag('event', 'click_agendar', { pagina: ubicacion, interes: allowedInterests.includes(interest) ? interest : 'general' });
     } else if (href.indexOf('pay.hotmart.com') !== -1 || href.indexOf('hotmart.com') !== -1) {
       gtag('event', 'click_comprar_curso', { pagina: ubicacion, destino: href });

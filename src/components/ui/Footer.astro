@@ -1,5 +1,7 @@
 ---
 const servicios = [
+    { n: "04", label: "Colorimetría personal", href: "/servicios/colorimetria-bogota/", tag: "Digital y presencial" },
+    { n: "05", label: "Fondo de armario", href: "/servicios/asesoria-imagen-hombres-bogota/", tag: "Personal shopper" },
     { n: "01", label: "Consultoría Integral",  href: "/servicios/asesoria-integral-imagen/",   tag: "Flagship" },
     { n: "02", label: "Peluquería de Autor",   href: "/servicios/peluqueria/",                 tag: "★ Estrella", star: true },
     { n: "03", label: "Imagen Ejecutiva",      href: "/servicios/imagen-ejecutiva-autoridad/", tag: "C-Suite" },
@@ -68,7 +70,7 @@ const servicios = [
                     </a>
                 </div>
                 <div>
-                    {servicios.map((s) => (
+                    {servicios.slice().sort((a,b)=>a.n.localeCompare(b.n)).map((s) => (
                         <a href={s.href} class="footer-service">
                             <span class="flex items-baseline gap-5">
                                 <span class="font-serif italic text-xs text-neutral-600">{s.n}</span>

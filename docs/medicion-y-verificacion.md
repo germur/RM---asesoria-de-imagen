@@ -56,6 +56,16 @@ Las vistas locales y los dominios de previsualización no cargan el tag de GA4. 
 
 - `npm run build`: genera las páginas de producción.
 - `npm run audit:site`: valida destinos de enlaces y recursos locales, JSON-LD, sitemap, canonical y encabezados de las páginas generadas. Reconoce las páginas de redirección estática.
-- `npm run test:captacion`: ejecuta el código real del formulario en un entorno aislado con receptor simulado. Verifica siete contextos, desconocidos, solicitudes mixtas, atribución, validación, consentimiento, fallo/reintento y prevención de duplicados.
+- `npm run test:captacion`: ejecuta el código real del formulario en un entorno aislado con receptor simulado. Verifica diez contextos, desconocidos, solicitudes mixtas, atribución, validación, consentimiento, fallo/reintento y prevención de duplicados.
 
 La ejecución aislada no sustituye la comprobación de entrega del correo en el receptor real. No se han enviado consultas ficticias al propietario.
+
+## Cierre de revisión del 15 de octubre de 2026
+
+- Los clics a contacto distinguen las diez intenciones admitidas, incluidos fondo de armario y colorimetría digital/presencial.
+- El formulario corto de colorimetría conserva la página de entrada de la sesión y el dominio del referente, igual que el formulario de contacto.
+- `node scripts/test-analytics.mjs`: comprueba clasificación, separación de clics y leads, y que GA4 solo cargue en los dominios públicos.
+- `node scripts/test-navigation.mjs`: comprueba los destinos de los enlaces con fragmento en las páginas generadas, además de la auditoría general.
+- El nuevo campo `ciudad` de contacto es opcional y se envía solo al receptor del formulario; no se incluye en Analytics.
+
+La prueba real pendiente debe confirmar tres hechos distintos: aceptación del formulario en Netlify, recepción de la notificación al correo y llegada del evento a GA4. Las pruebas aisladas no demuestran ninguno de esos tres resultados externos. El evento clave ya configurado debe conservarse; no añadir otro evento primario para contar el mismo envío.

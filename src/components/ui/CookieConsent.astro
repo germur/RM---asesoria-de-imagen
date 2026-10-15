@@ -1,16 +1,15 @@
 <div
     id="cookie-banner"
-    class="fixed bottom-0 left-0 w-full bg-black text-white p-6 z-50 transform translate-y-full transition-transform duration-700 shadow-[0_-10px_40px_rgba(0,0,0,0.2)] flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 border-t border-white/10"
+    class="cookie-notice fixed z-50 transform translate-y-full transition-transform duration-300"
 >
     <div class="max-w-3xl text-center md:text-left">
         <p class="text-sm font-light text-gray-300 leading-relaxed">
-            <span class="text-yellow-600 font-bold mr-2"
-                >🍪 Privacidad & Lujo.</span
+            <span class="cookie-title"
+                >Tu privacidad.</span
             >
-            Usamos cookies para mejorar tu experiencia y analizar nuestra estrategia
-            de imagen. Al continuar, aceptas nuestra <a
+            Usamos cookies para analizar las visitas al sitio. Consulta nuestra <a
                 href="/legales/privacidad/"
-                class="underline decoration-yellow-600 hover:text-yellow-600 transition-colors"
+                class="cookie-policy"
                 >política de privacidad</a
             >.
         </p>
@@ -19,12 +18,17 @@
     <div class="flex gap-4 shrink-0">
         <button
             id="accept-cookies"
-            class="bg-yellow-600 text-black px-8 py-3 text-xs uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-colors rounded-sm shadow-lg"
+            class="cookie-accept"
         >
             Aceptar
         </button>
     </div>
 </div>
+<style>
+ .cookie-notice{left:20px;bottom:18px;width:420px;max-width:calc(100vw - 40px);background:#151515;border:1px solid #393939;box-shadow:0 12px 40px #00000033;padding:20px 22px;color:#eeeeee;display:flex;align-items:center;gap:18px;border-radius:4px}
+ .cookie-notice.translate-y-full{transform:translateY(calc(100% + 35px))}
+ .cookie-notice p{font-size:11px;line-height:1.8;color:#dddddd;text-align:left}.cookie-title{display:block;color:#ffffff;font:19px Georgia,serif;margin-bottom:6px}.cookie-policy{text-decoration:underline;text-underline-offset:3px;color:#ff8a9f}.cookie-accept{background:#C41230;color:#fff;padding:12px 15px;min-height:44px;font-size:10px;cursor:pointer}.cookie-accept:hover{background:#a10c25}.cookie-accept:focus-visible{outline:3px solid #ff8a9f;outline-offset:3px}@media(max-width:600px){.cookie-notice{left:12px;bottom:12px;max-width:calc(100vw - 24px);padding:16px;gap:12px}}
+</style>
 
 <script>
     // Lógica de "Vibecoding": Sin plugins pesados, puro JS nativo

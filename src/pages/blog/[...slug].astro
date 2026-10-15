@@ -1,54 +1,16 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
-import MainLayout from "../../layouts/MainLayout.astro";
-
-export async function getStaticPaths() {
-    const posts = await getCollection("blog");
-    return posts.map((post) => ({
-        params: { slug: post.id },
-        props: post,
-    }));
-}
-type Props = CollectionEntry<"blog">;
-
-const post = Astro.props;
-const { Content } = await render(post);
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+export async function getStaticPaths(){return (await getCollection('blog')).map(post=>({params:{slug:post.id},props:post}));}
+type Props=CollectionEntry<'blog'>;
+const post=Astro.props;
+const {Content,headings}=await render(post);
+const date=post.data.updatedDate||post.data.pubDate;
 ---
-
-<MainLayout title={post.data.title} description={post.data.description} navbarTheme="light">
-    <article class="pt-40 pb-20 max-w-3xl mx-auto px-6">
-        <div class="mb-8 text-center">
-            {
-                post.data.heroImage && (
-                    <img
-                        width={1020}
-                        height={510}
-                        src={post.data.heroImage}
-                        alt=""
-                        class="rounded-lg shadow-lg mb-8"
-                    />
-                )
-            }
-            <h1
-                class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4"
-            >
-                {post.data.title}
-            </h1>
-            <div class="text-gray-500 text-sm">
-                <time datetime={post.data.pubDate.toISOString()}>
-                    {
-                        post.data.pubDate.toLocaleDateString("es-co", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        })
-                    }
-                </time>
-            </div>
-        </div>
-
-        <div class="prose prose-stone prose-lg mx-auto">
-            <Content />
-        </div>
-    </article>
+<MainLayout title={post.data.title} description={post.data.description} navbarTheme="light" breadcrumbsInFlow>
+ <article class="reading-article">
+  <header class="reading-heading"><span class="reading-label">Journal / Imagen personal</span><h1>{post.data.title}</h1><p>{post.data.description}</p><time datetime={date.toISOString()}>{post.data.updatedDate?'Actualizado':'Publicado'} el {date.toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'})}</time></header>
+  <nav class="reading-index" aria-label="En esta lectura"><span>En esta lectura</span>{headings.filter(h=>h.depth===2).map(h=><a href={`#${h.slug}`}>{h.text}</a>)}<a href="/blog/">← Todas las lecturas</a></nav>
+  <div class="reading-content"><Content /><a class="reading-back" href="/servicios/">Llevarlo a una asesoría <span aria-hidden="true">↗</span></a></div>
+ </article>
 </MainLayout>

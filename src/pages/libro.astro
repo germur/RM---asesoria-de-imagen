@@ -1,4 +1,6 @@
 ---
+import EditorialHero from "@/components/EditorialHero.astro";
+import PageChapters from "@/components/PageChapters.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 
 // 1. Schema Markup Híbrido (Book + Product)
@@ -23,7 +25,7 @@ const bookSchema = {
             "@type": "Product",
             name: "Ebook: Revoluciona tu Imagen",
             description: "Guía digital de estrategia de imagen personal.",
-            image: "https://rogermurillo.co/images/book-mockup-3d.webp",
+            image: "https://rogermurillo.co/images/book-editorial.svg",
             offers: {
                 "@type": "Offer",
                 price: "19.00",
@@ -41,51 +43,13 @@ const bookSchema = {
 };
 ---
 
-<MainLayout
+<MainLayout navbarTheme="light" breadcrumbsInFlow
     title="Revoluciona tu Imagen · Libro de Imagen Personal · Visagismo y Estilo | Roger Murillo"
     description="El manual definitivo de imagen personal, visagismo y estilo ejecutivo. Aprende a proyectar autoridad, liderazgo y confianza desde la primera página. Descarga inmediata."
     schema={JSON.stringify(bookSchema)}
 >
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
-                <div class="w-full md:w-1/2 flex justify-center">
-                    <img
-                        src="/images/book-cover-3d.webp"
-                        alt="Libro Revoluciona tu Imagen por Roger Murillo"
-                        class="w-3/4 md:w-full max-w-sm"
-                        fetchpriority="high"
-                    />
-                </div>
-
-                <div class="w-full md:w-1/2 text-center md:text-left">
-                    <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
-                        Best Seller Digital
-                    </p>
-
-                    <h1 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
-                        Deja de vestir como un empleado. <br />
-                        <span class="text-neutral-400">Proyecta como un CEO.</span>
-                    </h1>
-
-                    <p class="text-lg text-neutral-500 font-light leading-relaxed mb-10 max-w-lg mx-auto md:mx-0">
-                        El manual definitivo de <strong class="text-brand-black font-medium">visagismo y estrategia de imagen</strong>
-                        que no te ensenan en las escuelas de moda. Ciencia aplicada a tu reputacion.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center">
-                        <a
-                            href="#comprar"
-                            class="bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500 inline-block"
-                        >
-                            Comprar Ahora &mdash; $19 USD
-                        </a>
-                        <span class="text-xs text-neutral-400">Garantia de 30 dias</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <EditorialHero eyebrow="Biblioteca / Roger Murillo" title="Revoluciona tu imagen." emphasis="Empieza por una lectura." description="Una guía de imagen personal, visagismo y estilo para observar tus elecciones y llevar nuevas ideas a tu vestuario. Conoce el contenido del libro y sus condiciones de compra." image="/images/book-editorial.svg" imageAlt="Representación gráfica de Revoluciona tu Imagen, no es la cubierta original" containImage href="#comprar" action="Ver libro y compra · USD 19" />
+    <PageChapters />
 
     <section class="py-32 md:py-40 bg-neutral-50">
         <div class="container mx-auto px-6 max-w-3xl text-center">

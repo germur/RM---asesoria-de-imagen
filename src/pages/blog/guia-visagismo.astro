@@ -1,10 +1,11 @@
 ---
+import VisagismoDecisions from '@/components/VisagismoDecisions.astro';
 import MainLayout from "@/layouts/MainLayout.astro";
 const title = "Visagismo: guía para elegir corte, barba y gafas | Bogotá";
 const description = "Cómo usar proporciones, textura y rutina para elegir corte de cabello, barba y gafas. Guía de visagismo y orientación profesional en Bogotá.";
 ---
-<MainLayout title={title} description={description} navbarTheme="light">
-    <article class="max-w-4xl mx-auto pt-40 pb-20 px-6">
+<MainLayout title={title} description={description} navbarTheme="light" breadcrumbsInFlow>
+    <article class="standalone-reading">
         <header class="mb-12">
             <p class="text-sm uppercase tracking-widest text-muted-foreground">Guía de visagismo</p>
             <h1 class="text-4xl md:text-5xl font-serif text-primary mt-4 mb-6">Cómo elegir corte, barba y gafas con visagismo</h1>
@@ -16,6 +17,7 @@ const description = "Cómo usar proporciones, textura y rutina para elegir corte
                 <p>La forma general es solo una parte. También importan el nacimiento del cabello, su densidad y textura, el largo que deseas conservar, los remolinos y el tiempo que tienes para peinarte. Dos personas con proporciones parecidas pueden necesitar cortes diferentes.</p>
                 <p class="mt-4">Antes de la consulta, reúne dos o tres referencias y explica qué te gusta de cada una: el volumen, el movimiento, el flequillo o el mantenimiento. Una imagen ayuda a conversar; no garantiza que el cabello se comporte igual.</p>
             </section>
+            <VisagismoDecisions />
             <section id="tipos-rostro">
                 <h2 class="text-3xl font-serif text-primary mb-4">Las formas de rostro como punto de partida</h2>
                 <ul class="list-disc pl-6 space-y-3">

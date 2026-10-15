@@ -20,7 +20,7 @@ const { profile, goal } = Astro.props;
 const seoTitle = `Estilo para ${profile.name}: Cómo ${goal.name} | Roger Murillo`;
 ---
 
-<MainLayout
+<MainLayout navbarTheme="light"
     title={seoTitle}
     description={`Estrategia de imagen para ${profile.name} que busca ${goal.name}.`}
     noindex={true}

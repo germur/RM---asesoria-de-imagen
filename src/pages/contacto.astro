@@ -16,26 +16,26 @@ const contactSchema = {
             mainEntity: [
                 {
                     "@type": "Question",
-                    name: "¿Cuál es el costo de la valoración inicial?",
+                    name: "¿Enviar el formulario reserva una cita?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: "La valoración tiene un costo que funciona como depósito. Si decides tomar el servicio completo, este valor se deduce del total.",
+                        text: "No. Primero te contactamos para confirmar el servicio, las condiciones y la disponibilidad. La reserva se coordina después.",
                     },
                 },
                 {
                     "@type": "Question",
-                    name: "¿Puedo ir acompañado o acompañada?",
+                    name: "¿Necesito saber qué servicio contratar?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: 'Debido al protocolo "A Puerta Cerrada", priorizamos la privacidad del cliente. Se permite un acompañante máximo si es estrictamente necesario.',
+                        text: 'No. Puedes elegir «Aún no lo sé» y contarnos qué buscas. El equipo te orientará sobre las opciones.',
                     },
                 },
                 {
                     "@type": "Question",
-                    name: "¿Cómo debo ir vestido o vestida?",
+                    name: "¿Cómo funciona el informe digital de colorimetría?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Ven como te vistes normalmente en tu día a día. Esto nos ayuda a tener un punto de partida real para el diagnóstico.",
+                        text: "Te indicamos por WhatsApp cómo tomar las fotografías y revisamos que sean adecuadas antes de realizar el análisis y preparar tu informe personal.",
                     },
                 },
                 {
@@ -43,7 +43,7 @@ const contactSchema = {
                     name: "¿Atienden fuera de Bogotá?",
                     acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Por la naturaleza del servicio presencial, atendemos exclusivamente en el estudio. Sin embargo, ofrecemos sesiones virtuales complementarias para clientes activos.",
+                        text: "La colorimetría presencial y la peluquería se realizan en el estudio. El fondo de armario incluye visita a domicilio y acompañamiento de compras; consulta cobertura y condiciones. También puedes consultar por el informe digital de colorimetría.",
                     },
                 },
             ],
@@ -58,110 +58,22 @@ const contactSchema = {
     schema={contactSchema}
     navbarTheme="light"
 >
-    <!-- HERO -->
-    <section class="relative min-h-screen bg-white overflow-hidden pt-24 pb-20">
-        <div class="container mx-auto px-6 max-w-7xl h-full">
-            <div class="grid lg:grid-cols-12 gap-12 items-end min-h-[calc(100vh-12rem)]">
-                <div class="lg:col-span-8">
-                    <div class="flex items-center gap-5 mb-12">
-                        <span class="w-12 h-px bg-brand-primary"></span>
-                        <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Contacto &middot; Estudio privado</p>
-                    </div>
-
-                    <h1 class="font-serif leading-[0.88]">
-                        <span class="hero-line block text-[13vw] md:text-[9vw] lg:text-[7.5vw] text-brand-black">Cruza la</span>
-                        <span class="hero-line block text-[13vw] md:text-[9vw] lg:text-[7.5vw] italic text-neutral-400 pl-[10%]">puerta.</span>
-                        <span class="hero-line block text-[13vw] md:text-[9vw] lg:text-[7.5vw] text-brand-primary pl-[25%]">Empezamos.</span>
-                    </h1>
-
-                    <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-xl mt-12">
-                        La transformación comienza con una decisión. Reserva tu espacio en nuestra agenda exclusiva al norte de Bogotá &mdash; y déjanos el resto.
-                    </p>
-                </div>
-
-                <!-- status card -->
-                <div class="lg:col-span-4">
-                    <div class="relative bg-brand-black text-white p-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="relative inline-block w-2 h-2 rounded-full bg-brand-primary pulse-dot"></span>
-                            <span class="text-[10px] tracking-[0.3em] uppercase text-neutral-400">Agenda abierta</span>
-                        </div>
-                        <p class="font-serif text-3xl leading-tight mb-8">
-                            Próximos cupos:<br/>
-                            <span class="italic text-brand-primary">esta semana.</span>
-                        </p>
-                        <div class="space-y-3 border-t border-neutral-800 pt-6 text-sm text-neutral-300 font-light">
-                            <div class="flex justify-between"><span>Lunes &mdash; Sábado</span><span class="text-white">09:00 &mdash; 19:00</span></div>
-                            <div class="flex justify-between"><span>Domingo &amp; festivos</span><span class="text-neutral-500">Cerrado</span></div>
-                        </div>
-                        <a href="#form" class="mt-8 flex items-center justify-between text-[11px] tracking-[0.25em] uppercase border-t border-neutral-800 pt-6 hover:text-brand-primary transition-colors">
-                            <span>Reservar ahora</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT CHANNELS -->
-    <section class="relative bg-neutral-50 py-24 border-y border-neutral-100">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="grid md:grid-cols-3 gap-px bg-neutral-200">
-                <a href="https://wa.me/573214189010" target="_blank" class="group bg-neutral-50 p-12 hover:bg-white transition-colors duration-500">
-                    <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-8">Canal &middot; 01</p>
-                    <h3 class="font-serif text-4xl text-brand-black mb-3">WhatsApp</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed mb-10">
-                        Para dudas rápidas o para conocer disponibilidad inmediata. Respondemos en menos de 2 horas hábiles.
-                    </p>
-                    <span class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black group-hover:text-brand-primary transition-colors">
-                        +57 321 418 9010
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                </a>
-
-                <a href="mailto:contacto@rogermurillo.co" class="group bg-neutral-50 p-12 hover:bg-white transition-colors duration-500">
-                    <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-8">Canal &middot; 02</p>
-                    <h3 class="font-serif text-4xl text-brand-black mb-3">Correo</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed mb-10">
-                        Para briefings corporativos, invitaciones a medios o colaboraciones profesionales con la firma.
-                    </p>
-                    <span class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black group-hover:text-brand-primary transition-colors break-all">
-                        contacto@rogermurillo.co
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                </a>
-
-                <a href="#form" class="group bg-neutral-50 p-12 hover:bg-white transition-colors duration-500">
-                    <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-8">Canal &middot; 03</p>
-                    <h3 class="font-serif text-4xl text-brand-black mb-3">Agenda</h3>
-                    <p class="text-sm text-neutral-500 font-light leading-relaxed mb-10">
-                        Cuéntanos qué servicio o curso necesitas. Te contactaremos para confirmar alcance y disponibilidad antes de reservar.
-                    </p>
-                    <span class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black group-hover:text-brand-primary transition-colors">
-                        Empezar formulario
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-
+    <section class="contact-cover"><div><span class="contact-kicker">CONVERSEMOS / ROGER MURILLO</span><h1>Tu próximo cambio.<br/><em>Empecemos por ti.</em></h1><p>Cabello, color o vestuario. Cuéntanos qué necesitas y acordamos contigo el siguiente paso.</p><a href="#form">Preparar mi consulta <span aria-hidden="true">↘</span></a></div><aside><span class="contact-orbit" aria-hidden="true">RM<span>↗</span></span><p>Una consulta.<br/><em>Un camino propio.</em></p><small>ATENCIÓN CON CITA PREVIA · BOGOTÁ</small></aside></section>
     <!-- FORM -->
-    <section id="form" class="relative bg-white py-32 md:py-40 overflow-hidden">
+    <section id="form" class="contact-form-section relative bg-white overflow-hidden">
         <span class="absolute -right-10 top-10 font-serif italic text-[22vw] leading-[0.8] text-neutral-50 select-none pointer-events-none">Agenda</span>
 
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="grid lg:grid-cols-12 gap-16">
                 <div class="lg:col-span-4 lg:pr-8">
-                    <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">Reserva &middot; 3 pasos</p>
+                    <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">TU CONSULTA · 3 PASOS</p>
                     <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] text-brand-black mb-10">
-                        Calificación <span class="italic text-neutral-400">privada.</span>
+                        Hablemos de <span class="italic text-brand-primary">tu idea.</span>
                     </h2>
                     <p class="text-base text-neutral-500 font-light leading-relaxed mb-10">
-                        Cuéntanos qué servicio o curso te interesa. El equipo revisará tu solicitud y te contactará para confirmar el alcance, la disponibilidad y los pasos para reservar.
+                        Cuéntanos qué buscas. Te contactaremos para confirmar el alcance, la disponibilidad y cómo reservar.
                     </p>
-                    <p id="course-inquiry" class="hidden text-sm text-neutral-600 mb-8" role="status">
+                    <p id="course-inquiry" class="hidden inquiry-context" role="status">
                         Solicitas información del curso de colorimetría profesional. Te contactaremos para compartir los detalles y la disponibilidad; este envío no reserva una plaza.
                     </p>
 
@@ -176,7 +88,7 @@ const contactSchema = {
                         </div>
                         <div class="flex items-center gap-4 step-indicator" data-step="3">
                             <span class="w-10 h-10 border border-neutral-300 rounded-full flex items-center justify-center font-serif italic text-sm step-circle">03</span>
-                            <span class="text-[11px] tracking-[0.25em] uppercase text-neutral-500 step-label">Agendar</span>
+                            <span class="text-[11px] tracking-[0.25em] uppercase text-neutral-500 step-label">Confirmar</span>
                         </div>
                     </div>
                 </div>
@@ -192,30 +104,21 @@ const contactSchema = {
                         <input type="hidden" name="interes_origen" id="f-interest-hidden" />
                         <!-- STEP 1 -->
                         <div class="form-step" data-step="1">
-                            <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 01 &mdash; Sobre ti</p>
+                            <p tabindex="-1" class="form-step-heading text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 01 &mdash; Sobre ti</p>
                             <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
                                 <div class="rm-field">
                                     <input type="text" id="f-name" name="nombre" placeholder=" " autocomplete="name" required/>
-                                    <label for="f-name">Nombre completo</label>
+                                    <label for="f-name">Nombre completo *</label>
                                 </div>
                                 <div class="rm-field">
                                     <input type="email" id="f-email" name="email" placeholder=" " autocomplete="email" required/>
-                                    <label for="f-email">Correo electrónico</label>
+                                    <label for="f-email">Correo electrónico *</label>
                                 </div>
                                 <div class="rm-field">
                                     <input type="tel" id="f-phone" name="telefono" placeholder=" " autocomplete="tel"/>
-                                    <label for="f-phone">Teléfono / WhatsApp</label>
+                                    <label for="f-phone">WhatsApp (opcional)</label>
                                 </div>
-                                <div class="rm-field select-field">
-                                    <select id="f-age" name="edad">
-                                        <option value="" disabled selected></option>
-                                        <option>25 &mdash; 34</option>
-                                        <option>35 &mdash; 44</option>
-                                        <option>45 &mdash; 54</option>
-                                        <option>55+</option>
-                                    </select>
-                                    <label for="f-age">Rango de edad</label>
-                                </div>
+                                <div class="rm-field"><input type="text" id="f-city" name="ciudad" placeholder=" " autocomplete="address-level2"/><label for="f-city">Ciudad (opcional)</label></div>
                             </div>
                             <div class="flex justify-end mt-14">
                                 <button type="button" class="next-btn inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500" data-to="2">
@@ -227,9 +130,14 @@ const contactSchema = {
 
                         <!-- STEP 2 -->
                         <div class="form-step hidden" data-step="2">
-                            <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 02 &mdash; Tu objetivo</p>
-                            <p class="text-[11px] tracking-[0.25em] uppercase text-brand-black mb-5">¿Qué te trae a la firma?</p>
+                            <p tabindex="-1" class="form-step-heading text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 02 &mdash; Tu objetivo</p>
+                            <p class="text-[11px] tracking-[0.25em] uppercase text-brand-black mb-5">¿Qué te trae a la firma?</p><p class="selection-help">Puedes elegir más de una opción o marcar «Aún no lo sé».</p>
                             <div class="grid md:grid-cols-2 gap-3 mb-10" id="goals">
+                                <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors"><input type="checkbox" class="sr-only" value="Colorimetría digital"/> Colorimetría digital</label>
+                                <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors"><input type="checkbox" class="sr-only" value="Colorimetría presencial"/> Colorimetría presencial</label>
+                                <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
+                                    <input type="checkbox" class="sr-only" value="Fondo de armario y personal shopper"/> Fondo de armario y personal shopper
+                                </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
                                     <input type="checkbox" class="sr-only" value="Curso de colorimetría profesional"/> Curso de colorimetría profesional
                                 </label>
@@ -240,22 +148,22 @@ const contactSchema = {
                                     <input type="checkbox" class="sr-only" value="Curso de automaquillaje"/> Curso de automaquillaje
                                 </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
-                                    <input type="checkbox" class="hidden" value="Imagen ejecutiva"/> Imagen ejecutiva
+                                    <input type="checkbox" class="sr-only" value="Imagen ejecutiva"/> Imagen ejecutiva
                                 </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
-                                    <input type="checkbox" class="hidden" value="Colorimetría"/> Colorimetría
+                                    <input type="checkbox" class="sr-only" value="Colorimetría"/> Colorimetría
                                 </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
-                                    <input type="checkbox" class="hidden" value="Visagismo y corte"/> Visagismo y corte
+                                    <input type="checkbox" class="sr-only" value="Visagismo y corte"/> Visagismo y corte
                                 </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
-                                    <input type="checkbox" class="hidden" value="Transición personal"/> Transición personal
+                                    <input type="checkbox" class="sr-only" value="Transición personal"/> Transición personal
                                 </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
-                                    <input type="checkbox" class="hidden" value="Peluquería"/> Peluquería
+                                    <input type="checkbox" class="sr-only" value="Peluquería"/> Peluquería
                                 </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
-                                    <input type="checkbox" class="hidden" value="Otro"/> Aún no lo sé
+                                    <input type="checkbox" class="sr-only" value="Otro"/> Aún no lo sé
                                 </label>
                             </div>
                             <div class="rm-field">
@@ -273,21 +181,21 @@ const contactSchema = {
 
                         <!-- STEP 3 -->
                         <div class="form-step hidden" data-step="3">
-                            <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 03 &mdash; Agendar</p>
-                            <p class="text-[11px] tracking-[0.25em] uppercase text-brand-black mb-5">Preferencia horaria</p>
+                            <p tabindex="-1" class="form-step-heading text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 03 &mdash; Confirmar tu consulta</p>
+                            <p class="text-[11px] tracking-[0.25em] uppercase text-brand-black mb-5">¿Cuándo prefieres que te contactemos?</p><p class="selection-help">Opcional. Es una preferencia de contacto; la cita se acuerda después.</p>
                             <div class="grid grid-cols-3 md:grid-cols-4 gap-2 mb-10" id="slots">
                                 <button type="button" class="time-slot border border-neutral-200 py-3 text-[11px] tracking-[0.2em] uppercase">Mañana</button>
                                 <button type="button" class="time-slot border border-neutral-200 py-3 text-[11px] tracking-[0.2em] uppercase">Mediodía</button>
                                 <button type="button" class="time-slot border border-neutral-200 py-3 text-[11px] tracking-[0.2em] uppercase">Tarde</button>
-                                <button type="button" class="time-slot border border-neutral-200 py-3 text-[11px] tracking-[0.2em] uppercase">Noche</button>
+                                <button type="button" class="time-slot border border-neutral-200 py-3 text-[11px] tracking-[0.2em] uppercase">Sin preferencia</button>
                             </div>
                             <div class="rm-field">
                                 <input type="text" id="f-date" name="fecha_tentativa" placeholder=" "/>
-                                <label for="f-date">Fecha tentativa (ej: 15 de mayo)</label>
+                                <label for="f-date">¿Tienes una fecha en mente? (opcional)</label>
                             </div>
                             <label class="flex items-start gap-3 mt-8 text-sm text-neutral-500 font-light cursor-pointer">
                                 <input type="checkbox" class="mt-1.5" id="f-terms" name="consentimiento" value="aceptado" required/>
-                                <span>Acepto que mi información se use para responder esta consulta y coordinar el servicio o curso solicitado.</span>
+                                <span>Acepto que mi información se use para responder esta consulta y coordinar el servicio o curso solicitado. <a href="/legales/privacidad/" class="privacy-link">Política de privacidad</a>.</span>
                             </label>
                             <div class="flex justify-between mt-14">
                                 <button type="button" class="prev-btn text-[11px] tracking-[0.25em] uppercase text-neutral-500 hover:text-brand-black transition-colors" data-to="2">← Volver</button>
@@ -298,14 +206,14 @@ const contactSchema = {
                             </div>
                         </div>
 
-                        <!-- SUCCESS -->
-                        <div class="form-step hidden text-center py-16" data-step="4">
+                        <p id="form-error" class="form-error hidden" role="alert"></p><p class="form-assurance">Enviar esta consulta no confirma una cita ni realiza un cobro.</p><!-- SUCCESS -->
+                        <div class="form-step hidden text-center py-16" data-step="4" role="status" tabindex="-1">
                             <div class="inline-flex w-20 h-20 rounded-full bg-brand-primary items-center justify-center mb-10">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </div>
                             <h3 class="font-serif text-4xl md:text-5xl text-brand-black mb-6">Recibimos tu solicitud.</h3>
                             <p id="form-success-message" class="text-lg text-neutral-500 font-light leading-relaxed max-w-md mx-auto">
-                                Te contactaremos en menos de 24 horas hábiles para confirmar fecha y depósito de reserva.
+                                Te contactaremos para confirmar el alcance, la disponibilidad y los pasos para reservar.
                             </p>
                         </div>
                     </form>
@@ -314,6 +222,7 @@ const contactSchema = {
         </div>
     </section>
 
+    <section class="contact-next"><div><span class="contact-kicker">DESPUÉS DE ENVIAR</span><h2>Así seguimos<br/><em>la conversación.</em></h2></div><ol><li><b>01</b><div><h3>Revisamos tu consulta.</h3><p>El servicio elegido y lo que nos cuentes orientan la conversación.</p></div></li><li><b>02</b><div><h3>Acordamos los detalles.</h3><p>Te contactamos para confirmar alcance, precio, modalidad y disponibilidad.</p></div></li><li><b>03</b><div><h3>Coordinamos la reserva.</h3><p>Con las condiciones claras, acordamos cómo continuar.</p></div></li></ol><div class="contact-direct"><p>¿Prefieres escribir directamente?</p><a href="https://wa.me/573214189010" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="mailto:contacto@rogermurillo.co">Correo ↗</a></div></section>
     <!-- LOCATION -->
     <section class="relative bg-brand-black text-white py-32 md:py-48 overflow-hidden">
         <div class="container mx-auto px-6 max-w-7xl">
@@ -326,7 +235,7 @@ const contactSchema = {
                 </div>
                 <div class="lg:col-span-5">
                     <p class="text-lg text-neutral-400 font-light leading-relaxed">
-                        Ingreso con código de seguridad. Parqueo interno disponible. Atención exclusivamente con cita previa.
+                        Atención con cita previa. Confirma el lugar y la modalidad de tu servicio antes de desplazarte.
                     </p>
                 </div>
             </div>
@@ -335,7 +244,7 @@ const contactSchema = {
                 <div class="lg:col-span-8 bg-brand-black h-[500px] relative ph-studio">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.1440236850794!2d-74.06593672418667!3d4.745016041270061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f850847721223%3A0x836e954dff5dd886!2sROGER%20MURILLO%20IMAGE%20ADVISORS!5e0!3m2!1sen!2sco!4v1777071797708!5m2!1sen!2sco"
-                        width="100%" height="100%"
+                        title="Ubicación del estudio Roger Murillo en Bogotá" width="100%" height="100%"
                         style="border:0; filter: grayscale(100%) invert(90%) contrast(83%);"
                         allowfullscreen=""
                         loading="lazy"
@@ -372,29 +281,29 @@ const contactSchema = {
             <div class="divide-y divide-neutral-200 border-t border-b border-neutral-200">
                 <details class="group py-8 cursor-pointer">
                     <summary class="flex justify-between items-start list-none gap-6">
-                        <span class="font-serif text-2xl text-brand-black leading-tight">¿Cuál es el costo de la valoración inicial?</span>
+                        <span class="font-serif text-2xl text-brand-black leading-tight">¿Enviar el formulario reserva una cita?</span>
                         <span class="text-neutral-300 group-open:rotate-45 transition-transform text-3xl leading-none shrink-0">+</span>
                     </summary>
                     <p class="text-base text-neutral-500 font-light leading-relaxed mt-6 max-w-2xl">
-                        La valoración tiene un costo que funciona como depósito. Si decides tomar el servicio completo, este valor se deduce del total.
+                        No. Primero te contactamos para confirmar el servicio, las condiciones y la disponibilidad. La reserva se coordina después.
                     </p>
                 </details>
                 <details class="group py-8 cursor-pointer">
                     <summary class="flex justify-between items-start list-none gap-6">
-                        <span class="font-serif text-2xl text-brand-black leading-tight">¿Puedo ir acompañado o acompañada?</span>
+                        <span class="font-serif text-2xl text-brand-black leading-tight">¿Necesito saber qué servicio contratar?</span>
                         <span class="text-neutral-300 group-open:rotate-45 transition-transform text-3xl leading-none shrink-0">+</span>
                     </summary>
                     <p class="text-base text-neutral-500 font-light leading-relaxed mt-6 max-w-2xl">
-                        Debido al protocolo "A Puerta Cerrada", priorizamos la privacidad del cliente. Se permite un acompañante máximo si es estrictamente necesario.
+                        No. Puedes elegir «Aún no lo sé» y contarnos qué buscas. El equipo te orientará sobre las opciones.
                     </p>
                 </details>
                 <details class="group py-8 cursor-pointer">
                     <summary class="flex justify-between items-start list-none gap-6">
-                        <span class="font-serif text-2xl text-brand-black leading-tight">¿Cómo debo ir vestido o vestida?</span>
+                        <span class="font-serif text-2xl text-brand-black leading-tight">¿Cómo funciona el informe digital de colorimetría?</span>
                         <span class="text-neutral-300 group-open:rotate-45 transition-transform text-3xl leading-none shrink-0">+</span>
                     </summary>
                     <p class="text-base text-neutral-500 font-light leading-relaxed mt-6 max-w-2xl">
-                        Ven como te vistes normalmente en tu día a día. Esto nos ayuda a tener un punto de partida real para el diagnóstico.
+                        Te indicamos por WhatsApp cómo tomar las fotografías y revisamos que sean adecuadas antes de realizar el análisis y preparar tu informe personal.
                     </p>
                 </details>
                 <details class="group py-8 cursor-pointer">
@@ -403,7 +312,7 @@ const contactSchema = {
                         <span class="text-neutral-300 group-open:rotate-45 transition-transform text-3xl leading-none shrink-0">+</span>
                     </summary>
                     <p class="text-base text-neutral-500 font-light leading-relaxed mt-6 max-w-2xl">
-                        Por la naturaleza del servicio presencial, atendemos exclusivamente en el estudio. Sin embargo, ofrecemos sesiones virtuales complementarias para clientes activos.
+                        La colorimetría presencial y la peluquería se realizan en el estudio. El fondo de armario incluye visita a domicilio y acompañamiento de compras; consulta cobertura y condiciones. También puedes consultar por el informe digital de colorimetría.
                     </p>
                 </details>
             </div>
@@ -412,6 +321,8 @@ const contactSchema = {
 </MainLayout>
 
 <style>
+.contact-cover{background:#111;color:#fff;display:grid;grid-template-columns:1.2fr 1fr;padding:65px max(24px,calc((100vw - 1180px)/2));gap:55px;align-items:center}.contact-kicker{font-size:10px;letter-spacing:.19em;color:#ec6b80}.contact-cover h1{font:clamp(45px,5.5vw,80px)/1.04 "Playfair Display",serif;margin:28px 0}.contact-cover h1 em,.contact-cover aside em{color:#f06d85}.contact-cover>div>p{max-width:440px;color:#ccc;line-height:1.8;font-size:16px}.contact-cover a{display:inline-flex;gap:35px;background:#C41230;padding:18px 25px;margin-top:25px;font-size:13px}.contact-cover aside{border-left:1px solid #383838;padding:20px 0 20px 55px;position:relative}.contact-cover aside>p{font:35px/1.15 "Playfair Display",serif;margin:28px 0}.contact-cover small{font-size:9px;letter-spacing:.13em;color:#ccc}.contact-orbit{width:145px;height:145px;border:1px solid #c41230;border-radius:50%;display:flex;align-items:center;justify-content:center;font:52px "Playfair Display",serif;position:relative;box-shadow:20px 0 0 -1px #111,20px 0 0 0 #52202a}.contact-orbit span{position:absolute;right:-6px;top:4px;background:#c41230;border-radius:50%;width:42px;height:42px;text-align:center;font:30px sans-serif}.contact-form-section{padding:80px 0;scroll-margin-top:120px}.contact-form-section .lg\:col-span-8{background:#f7f5f2;border:1px solid #e9e4de;padding:35px;min-width:0}.inquiry-context{border-left:3px solid #c41230;padding:18px;background:#f9ecef;color:#702033;font-size:13px;line-height:1.8;margin-bottom:28px}.selection-help{font-size:13px;color:#626262;line-height:1.7;margin:-6px 0 20px}.form-assurance{font-size:12px;line-height:1.8;color:#666;border-top:1px solid #ddd;padding-top:18px;margin-top:28px}.form-error{background:#fff0f1;color:#8e1025;padding:18px;margin-top:20px;font-size:14px;line-height:1.7}.privacy-link{color:#a90d27;text-decoration:underline}.rm-field label{color:#626262}.goal-chip{display:flex;align-items:center;gap:9px;min-height:58px}.goal-chip:has(input:checked)::after{content:'✓';margin-left:auto;color:#f98ca0}.time-slot{letter-spacing:0;font-size:12px;min-height:46px}.contact-next{padding:75px max(24px,calc((100vw - 1120px)/2));display:grid;grid-template-columns:1fr 1.2fr;gap:40px;background:#141414;color:white}.contact-next h2{font:45px/1.1 "Playfair Display",serif;margin-top:25px}.contact-next h2 em{color:#f06d85}.contact-next ol{list-style:none;padding:0}.contact-next li{display:flex;gap:25px;border-bottom:1px solid #333;padding:20px 0}.contact-next li b{color:#f06d85;font-size:12px}.contact-next h3{font:24px "Playfair Display",serif}.contact-next li p{font-size:13px;line-height:1.8;color:#bbb;margin-top:8px}.contact-direct{grid-column:1/-1;display:flex;gap:25px;align-items:center;border-top:1px solid #333;padding-top:25px;font-size:14px;flex-wrap:wrap}.contact-direct a{border-bottom:1px solid #ed6c82;padding:10px 0}.contact-cover a:focus-visible,.contact-direct a:focus-visible,button:focus-visible{outline:3px solid #ed6c82;outline-offset:4px}.form-step-heading:focus{outline:none}.form-step[role=status]:focus{outline:2px solid #c41230;outline-offset:10px}@media(max-width:767px){.contact-cover{grid-template-columns:1fr;padding:40px 24px;gap:25px}.contact-cover aside{display:none}.contact-cover h1{font-size:45px}.contact-form-section{padding:40px 0;scroll-margin-top:80px}.contact-form-section .lg\:col-span-8{padding:24px 18px}.contact-form-section .gap-16{gap:30px}.contact-next{grid-template-columns:1fr;padding:45px 24px;gap:20px}.contact-next h2{font-size:38px}.contact-form-section .next-btn,.contact-form-section button[type=submit]{padding:17px 20px;font-size:10px;letter-spacing:.12em}.contact-form-section .step-indicator{gap:12px}.contact-form-section .step-label{letter-spacing:.12em}}
+
     .hero-line {
         opacity: 0;
         transform: translateY(100%);
@@ -504,6 +415,8 @@ const contactSchema = {
     .time-slot.selected { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
     .time-slot:hover { border-color: #0a0a0a; }
     .goal-chip:focus-within { outline: 2px solid #C41230; outline-offset: 2px; }
+.contact-form-section .rm-field label{color:#626262}.contact-form-section .rm-field input:focus + label,.contact-form-section .rm-field input:not(:placeholder-shown) + label{color:#a90d27}.contact-cover a span{font-variant-emoji:text} @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:767px){.contact-form-section .space-y-4{display:flex;justify-content:space-between;gap:8px;padding-top:18px}.contact-form-section .step-indicator{flex-direction:column;gap:7px;margin:0!important}.contact-form-section .step-label{font-size:9px;letter-spacing:.05em}.contact-form-section h2{font-size:40px;margin-bottom:20px}.contact-form-section .lg\:col-span-4>p{margin-bottom:22px}.contact-form-section .inquiry-context{padding:12px;font-size:12px}.contact-form-section .lg\:col-span-4 .space-y-4{margin-top:18px}}
 </style>
 
 <script is:inline>
@@ -519,6 +432,9 @@ const contactSchema = {
         'peluqueria': 'Peluquería',
         'ejecutiva': 'Imagen ejecutiva',
         'colorimetria': 'Colorimetría',
+        'colorimetria-digital': 'Colorimetría digital',
+        'colorimetria-presencial': 'Colorimetría presencial',
+        'fondo-armario': 'Fondo de armario y personal shopper',
         'visagismo': 'Visagismo y corte',
     };
     const interest = new URLSearchParams(location.search).get('interes');
@@ -575,6 +491,7 @@ const contactSchema = {
                 trackForm('form_contacto_paso', { paso: destino });
             }
             goTo(destino);
+            document.querySelector(`.form-step[data-step="${destino}"] .form-step-heading`)?.focus();
         })
     );
     goTo(1);
@@ -594,7 +511,7 @@ const contactSchema = {
     });
     if (selectedInterest) {
         const notice = document.getElementById('course-inquiry');
-        notice.textContent = `Tu consulta: ${selectedInterest}. Confirma o modifica tu selección en el paso 2. Te contactaremos para compartir el alcance y la disponibilidad; este envío no confirma una reserva.`;
+        notice.textContent = `Tu consulta: ${selectedInterest}. Puedes cambiarla en el paso 2.`;
         notice.classList.remove('hidden');
     }
     document.getElementById('f-interest-hidden').value = selectedInterest || '';
@@ -624,6 +541,7 @@ const contactSchema = {
                 if (!validateStep(n)) return;
             }
             submitting = true;
+            document.getElementById('form-error')?.classList.add('hidden');
 
             // Recolectar chips de objetivos y horario en los campos ocultos
             const goals = Array.from(document.querySelectorAll('#goals input:checked')).map(i => i.value);
@@ -656,12 +574,14 @@ const contactSchema = {
                         horario: document.getElementById('f-slot-hidden').value,
                 });
                 goTo(4);
+                document.querySelector('.form-step[data-step="4"]')?.focus();
             } catch (err) {
                 submitting = false;
                 trackForm('form_contacto_error');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
-                alert('No pudimos enviar tu solicitud. Por favor intenta de nuevo o escríbenos por WhatsApp: +57 321 418 9010');
+                const error = document.getElementById('form-error');
+                if (error) { error.textContent = 'No se pudo enviar. Conservamos tus respuestas: intenta de nuevo o escríbenos por WhatsApp al +57 321 418 9010.'; error.classList.remove('hidden'); }
             }
         });
     }
