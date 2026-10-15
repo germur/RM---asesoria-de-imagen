@@ -1,3 +1,7 @@
+# Alias de contacto observado en GA4. No redirigir errores arbitrarios a inicio.
+/contact /contacto/ 301!
+/contact/ /contacto/ 301!
+
 # =============================================================
 # MAPA DE REDIRECCIONES 301 · WordPress (viejo) -> Astro (nuevo)
 # URLs viejas recuperadas de la navegacion real del sitio

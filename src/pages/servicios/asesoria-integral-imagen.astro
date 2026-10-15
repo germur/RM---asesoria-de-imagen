@@ -1,5 +1,7 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import ServiceRoutes from "@/components/ServiceRoutes.astro";
+import RealCases from "@/components/RealCases.astro";
 import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const seoData = {
@@ -179,11 +181,11 @@ const schema = JSON.stringify({
                 <p class="text-[10px] tracking-[0.4em] uppercase text-white/60">Signature · Servicio 01</p>
             </div>
             <h1 class="font-serif leading-[0.85]">
-                <AnimatedTitleWords text="A puerta" class="block text-5xl md:text-8xl lg:text-9xl text-white" />
-                <AnimatedTitleWords text="cerrada." class="block text-5xl md:text-8xl lg:text-9xl italic text-brand-primary pl-[8%]" delay={300} />
+                <AnimatedTitleWords text="Asesoría de imagen" class="block text-4xl md:text-6xl lg:text-7xl text-white" />
+                <AnimatedTitleWords text="personal en Bogotá." class="block text-4xl md:text-6xl lg:text-7xl italic text-brand-primary" delay={300} />
             </h1>
             <div class="mt-16 max-w-xl ml-auto border-l-2 border-brand-primary pl-8">
-                <p class="text-lg font-light text-white/70 leading-relaxed">Porque la imagen personal no se diseña en un pasillo. Se construye en silencio, con dos miradas honestas y el tiempo que pida la verdad.</p>
+                <p class="text-lg font-light text-white/70 leading-relaxed">Un programa privado de 11 fases con Roger Murillo y Adriana Garzón. Integra visagismo, colorimetría, vestuario, armario y rutas de compra según tus objetivos.</p>
             </div>
         </div>
     </section>
@@ -373,7 +375,7 @@ const schema = JSON.stringify({
                             <p class="text-xs text-white/50"><span class="text-brand-primary font-medium">Abono inicial:</span> $500 USD — inicia Fase I</p>
                             <p class="text-xs text-white/50"><span class="text-brand-primary font-medium">Saldo:</span> $1,150 USD — al aprobar el informe</p>
                         </div>
-                        <a href="/contacto/" class="block text-center bg-brand-primary text-white px-8 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-colors duration-500">Solicitar valoración →</a>
+                        <a href="/contacto/?interes=integral#form" class="block text-center bg-brand-primary text-white px-8 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-colors duration-500">Solicitar valoración →</a>
                         <p class="text-[9px] text-white/30 mt-4 text-center">*Valor en COP sujeto a TRM del día.</p>
                     </div>
                 </div>
@@ -402,7 +404,7 @@ const schema = JSON.stringify({
             </div>
 
             <div class="text-center mt-16">
-                <a href="/contacto/" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">
+                <a href="/contacto/?interes=integral#form" class="inline-flex items-center gap-4 bg-brand-black text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-brand-primary transition-colors duration-500">
                     Agendar mi valoración
                 </a>
             </div>
@@ -414,4 +416,6 @@ const schema = JSON.stringify({
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     </script>
 
+    <RealCases />
+    <ServiceRoutes current="integral" />
 </MainLayout>

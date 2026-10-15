@@ -1,5 +1,6 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import ServiceRoutes from "@/components/ServiceRoutes.astro";
 import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const geoSchema = JSON.stringify({
@@ -197,7 +198,7 @@ const geoSchema = JSON.stringify({
                         <div>
                             <span class="tag text-neutral-500 mb-6">02 · Digital · Gratis</span>
                             <h3 class="eco-title font-serif text-3xl text-brand-black mb-4 mt-6">Test de colorimetría</h3>
-                            <p class="text-sm text-neutral-500 leading-relaxed font-light">Descubre tu paleta estacional con nuestro algoritmo de IA. Invierno, Verano, Otoño o Primavera. En dos minutos.</p>
+                            <p class="text-sm text-neutral-500 leading-relaxed font-light">Descubre tu paleta estacional con nuestro cuestionario orientativo. Invierno, Verano, Otoño o Primavera. En dos minutos.</p>
                         </div>
                         <span class="inline-flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-brand-black group-hover:text-brand-primary transition-colors duration-500 mt-10">Hacer test →</span>
                     </div>
@@ -311,4 +312,5 @@ const geoSchema = JSON.stringify({
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     </script>
 
+    <ServiceRoutes />
 </MainLayout>

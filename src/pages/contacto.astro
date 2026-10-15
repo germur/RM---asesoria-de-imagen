@@ -136,7 +136,7 @@ const contactSchema = {
                     <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-8">Canal &middot; 03</p>
                     <h3 class="font-serif text-4xl text-brand-black mb-3">Agenda</h3>
                     <p class="text-sm text-neutral-500 font-light leading-relaxed mb-10">
-                        El camino directo. Completa el formulario de calificación y reserva tu cita de consultoría privada.
+                        Cuéntanos qué servicio o curso necesitas. Te contactaremos para confirmar alcance y disponibilidad antes de reservar.
                     </p>
                     <span class="inline-flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-brand-black group-hover:text-brand-primary transition-colors">
                         Empezar formulario
@@ -159,7 +159,7 @@ const contactSchema = {
                         Calificación <span class="italic text-neutral-400">privada.</span>
                     </h2>
                     <p class="text-base text-neutral-500 font-light leading-relaxed mb-10">
-                        Este formulario nos ayuda a entender tu contexto antes del primer encuentro. Nada se comparte: es la base para personalizar tu sesión.
+                        Cuéntanos qué servicio o curso te interesa. El equipo revisará tu solicitud y te contactará para confirmar el alcance, la disponibilidad y los pasos para reservar.
                     </p>
                     <p id="course-inquiry" class="hidden text-sm text-neutral-600 mb-8" role="status">
                         Solicitas información del curso de colorimetría profesional. Te contactaremos para compartir los detalles y la disponibilidad; este envío no reserva una plaza.
@@ -187,6 +187,9 @@ const contactSchema = {
                         <p class="hidden" aria-hidden="true"><label>No llenar: <input name="bot-field" /></label></p>
                         <input type="hidden" name="objetivos" id="f-goals-hidden" />
                         <input type="hidden" name="horario" id="f-slot-hidden" />
+                        <input type="hidden" name="pagina_entrada" id="f-entry-hidden" />
+                        <input type="hidden" name="referente" id="f-referrer-hidden" />
+                        <input type="hidden" name="interes_origen" id="f-interest-hidden" />
                         <!-- STEP 1 -->
                         <div class="form-step" data-step="1">
                             <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 01 &mdash; Sobre ti</p>
@@ -229,6 +232,12 @@ const contactSchema = {
                             <div class="grid md:grid-cols-2 gap-3 mb-10" id="goals">
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
                                     <input type="checkbox" class="sr-only" value="Curso de colorimetría profesional"/> Curso de colorimetría profesional
+                                </label>
+                                <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
+                                    <input type="checkbox" class="sr-only" value="Asesoría integral"/> Asesoría integral
+                                </label>
+                                <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
+                                    <input type="checkbox" class="sr-only" value="Curso de automaquillaje"/> Curso de automaquillaje
                                 </label>
                                 <label class="goal-chip cursor-pointer border border-neutral-200 px-5 py-4 text-sm hover:border-brand-black transition-colors">
                                     <input type="checkbox" class="hidden" value="Imagen ejecutiva"/> Imagen ejecutiva
@@ -278,7 +287,7 @@ const contactSchema = {
                             </div>
                             <label class="flex items-start gap-3 mt-8 text-sm text-neutral-500 font-light cursor-pointer">
                                 <input type="checkbox" class="mt-1.5" id="f-terms" name="consentimiento" value="aceptado" required/>
-                                <span>Acepto que mi información se use únicamente para coordinar la consultoría y recibir comunicaciones relacionadas.</span>
+                                <span>Acepto que mi información se use para responder esta consulta y coordinar el servicio o curso solicitado.</span>
                             </label>
                             <div class="flex justify-between mt-14">
                                 <button type="button" class="prev-btn text-[11px] tracking-[0.25em] uppercase text-neutral-500 hover:text-brand-black transition-colors" data-to="2">← Volver</button>
@@ -503,11 +512,27 @@ const contactSchema = {
     let started = false;
     let submitting = false;
     let submitted = false;
-    const isCourseInquiry = new URLSearchParams(location.search).get('interes') === 'curso-colorimetria-profesional';
+    const interests = {
+        'curso-colorimetria-profesional': 'Curso de colorimetría profesional',
+        'automaquillaje': 'Curso de automaquillaje',
+        'integral': 'Asesoría integral',
+        'peluqueria': 'Peluquería',
+        'ejecutiva': 'Imagen ejecutiva',
+        'colorimetria': 'Colorimetría',
+        'visagismo': 'Visagismo y corte',
+    };
+    const interest = new URLSearchParams(location.search).get('interes');
+    const selectedInterest = Object.hasOwn(interests, interest) ? interests[interest] : null;
+    const isCourseInquiry = selectedInterest?.startsWith('Curso ');
+    const getRequestType = () => {
+        const selected = Array.from(document.querySelectorAll('#goals input:checked')).map(input => input.value);
+        const hasCourse = selected.some(value => value.startsWith('Curso '));
+        const hasService = selected.some(value => !value.startsWith('Curso '));
+        return hasCourse ? (hasService ? 'mixta' : 'curso') : 'servicio';
+    };
     const trackForm = (event, params = {}) => {
         if (typeof gtag === 'function') {
-            const courseSelected = document.querySelector('#goals input[value="Curso de colorimetría profesional"]')?.checked;
-            gtag('event', event, { form_id: 'rm-form', tipo_solicitud: courseSelected ? 'curso' : 'servicio', ...params });
+            gtag('event', event, { form_id: 'rm-form', tipo_solicitud: getRequestType(), ...params });
         }
     };
     const validateStep = (n) => {
@@ -563,14 +588,21 @@ const contactSchema = {
             chip.style.color = inp.checked ? '#fff' : '';
             chip.style.borderColor = inp.checked ? '#0a0a0a' : '';
         };
-        if (isCourseInquiry && inp.value === 'Curso de colorimetría profesional') inp.checked = true;
+        if (selectedInterest && inp.value === selectedInterest) inp.checked = true;
         inp.addEventListener('change', updateChip);
         updateChip();
     });
-    if (isCourseInquiry) {
-        document.getElementById('course-inquiry').classList.remove('hidden');
-        document.getElementById('form-success-message').textContent = 'Recibimos tu consulta sobre el curso. Te contactaremos para compartir los detalles y la disponibilidad.';
+    if (selectedInterest) {
+        const notice = document.getElementById('course-inquiry');
+        notice.textContent = `Tu consulta: ${selectedInterest}. Confirma o modifica tu selección en el paso 2. Te contactaremos para compartir el alcance y la disponibilidad; este envío no confirma una reserva.`;
+        notice.classList.remove('hidden');
     }
+    document.getElementById('f-interest-hidden').value = selectedInterest || '';
+    try {
+        const attribution = JSON.parse(sessionStorage.getItem('rm_entry_context') || '{}');
+        document.getElementById('f-entry-hidden').value = attribution.entry || location.pathname;
+        document.getElementById('f-referrer-hidden').value = attribution.referrer || '';
+    } catch { /* El formulario sigue funcionando con almacenamiento bloqueado. */ }
 
     document.querySelectorAll('#slots .time-slot').forEach(s => {
         s.addEventListener('click', () => {
@@ -613,6 +645,11 @@ const contactSchema = {
                 });
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 submitted = true;
+                if (getRequestType() === 'curso') {
+                    document.getElementById('form-success-message').textContent = 'Recibimos tu consulta. Te contactaremos para compartir los detalles y la disponibilidad del curso.';
+                } else {
+                    document.getElementById('form-success-message').textContent = 'Recibimos tu solicitud. Te contactaremos para confirmar el servicio, su disponibilidad y los pasos para reservar.';
+                }
                 // Evento clave: solicitud de consultoria enviada con exito
                 trackForm('form_contacto_enviado', {
                         objetivos: document.getElementById('f-goals-hidden').value,

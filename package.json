@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "audit:site": "node scripts/audit-site.mjs",
+    "test:captacion": "node scripts/test-captacion.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

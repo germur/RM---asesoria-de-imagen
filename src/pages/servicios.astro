@@ -1,5 +1,6 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import ServiceRoutes from "@/components/ServiceRoutes.astro";
 import { ArrowRight } from "lucide-react";
 import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
@@ -249,4 +250,6 @@ const servicesSchema = {
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     </script>
 
+    <section class="px-6 py-16 max-w-4xl mx-auto"><h2 class="font-serif text-3xl mb-5">Compara el alcance antes de reservar</h2><a class="underline text-brand-primary" href="/blog/cuanto-cuesta-asesoria-imagen-bogota/">Qué incluye una asesoría de imagen y cómo consultar su inversión</a></section>
+    <ServiceRoutes current="" />
 </MainLayout>

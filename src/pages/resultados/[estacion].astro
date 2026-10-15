@@ -1,201 +1,32 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PaletteViewer from "../../components/react/PaletteViewer";
-import seasons from "../../data/seasons.json"; // Importamos el JSON
-import { ArrowRight, BookOpen, ShieldCheck, Star } from "lucide-react";
-
-// 1. Generación de Rutas Estáticas (SSG)
+import seasons from "../../data/seasons.json";
 export async function getStaticPaths() {
-    return seasons.map((season) => ({
-        params: { estacion: season.slug },
-        props: { season },
-    }));
+    return seasons.map(season => ({ params: { estacion: season.slug }, props: { season } }));
 }
-
 const { season } = Astro.props;
-
-// 2. SEO & GEO Schema (Para que la IA entienda el reporte)
-const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: `Informe de Imagen Ejecutiva: ${season.title}`,
-    description: season.geo_definition,
-    author: {
-        "@type": "Person",
-        name: "Roger Murillo",
-        jobTitle: "Consultor de Imagen Estratégica",
-    },
-    publisher: {
-        "@type": "Organization",
-        name: "Roger Murillo Consulting",
-        logo: {
-            "@type": "ImageObject",
-            url: "https://rogermurillo.co/logo.png",
-        },
-    },
-    mainEntityOfPage: `https://rogermurillo.co/resultados/${season.slug}`,
-};
+const paletteSlugs = { 'invierno-profundo': 'invierno-profundo', 'verano-suave': 'verano-suave', 'otono-calido': 'otono-verdadero', 'primavera-calida': 'primavera-verdadera' };
+const paletteSlug = paletteSlugs[season.slug];
+const title = `Tu resultado orientativo: ${season.title} | Roger Murillo`;
+const description = `Explora la paleta orientativa ${season.title}, compara colores y conoce cómo solicitar una consulta de colorimetría en Bogotá.`;
+const schema = { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url: `https://rogermurillo.co/resultados/${season.slug}/` };
 ---
-
-<MainLayout
-    title={`Tu Perfil: ${season.title} | Roger Murillo`}
-    description={season.description}
-    schema={JSON.stringify(schema)}
-    class="bg-brand-black"
->
-    <section
-        class="pt-32 pb-20 bg-brand-black text-white text-center relative overflow-hidden"
-    >
-        <div class="absolute top-0 left-0 w-full h-2 bg-brand-primary"></div>
-
-        <div class="container mx-auto px-6 relative z-10 max-w-4xl">
-            <span
-                class="inline-block py-1 px-4 border border-white/20 rounded-sm text-brand-gray text-xs font-bold uppercase tracking-[0.3em] mb-8"
-            >
-                Informe Confidencial
-            </span>
-
-            <h1
-                class="font-serif text-5xl md:text-7xl mb-6 leading-tight text-white"
-            >
-                {season.title}
-            </h1>
-
-            <p
-                class="text-xl md:text-2xl text-brand-primary font-serif italic max-w-2xl mx-auto mb-8"
-            >
-                "{season.archetype}"
-            </p>
-
-            <p
-                class="text-neutral-400 font-light text-sm uppercase tracking-widest"
-            >
-                Diagnóstico generado por Roger Murillo Asesoría de Imagen
-            </p>
-        </div>
+<MainLayout title={title} description={description} schema={schema} navbarTheme="light">
+    <section class="pt-40 pb-16 px-6 bg-neutral-50 text-center">
+        <p class="text-sm uppercase tracking-widest text-brand-primary mb-5">Resultado orientativo del test</p>
+        <h1 class="font-serif text-4xl md:text-6xl text-brand-black mb-6">{season.title}</h1>
+        <p class="max-w-3xl mx-auto text-neutral-600 leading-relaxed">Esta es una propuesta inicial a partir de tus respuestas. El cuestionario agrupa los resultados en cuatro orientaciones y no confirma una de las doce estaciones de un análisis presencial. Tu estación no determina tu personalidad, profesión ni capacidad de liderazgo.</p>
     </section>
-
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="prose prose-lg mx-auto mb-16 text-neutral-500">
-                <div class="flex items-center gap-4 mb-6">
-                    <ShieldCheck className="text-brand-black w-8 h-8" />
-                    <h2 class="font-serif text-3xl text-brand-black m-0">
-                        Análisis de Perfil
-                    </h2>
-                </div>
-
-                <p
-                    class="lead text-xl text-brand-black font-medium leading-relaxed"
-                >
-                    {season.description}
-                </p>
-
-                <div
-                    class="bg-brand-gray p-8 border-l-4 border-brand-primary my-10"
-                >
-                    <h4
-                        class="font-bold text-brand-black uppercase text-xs tracking-widest mb-2"
-                    >
-                        Psicología de tu Imagen
-                    </h4>
-                    <p class="m-0 italic text-neutral-500">{season.psychology}</p>
-                </div>
-
-                <p class="text-sm text-neutral-500">
-                    <strong>Nota Técnica:</strong>
-                    {season.geo_definition}
-                </p>
-            </div>
-
-            <PaletteViewer
-                client:visible
-                colors={season.palette}
-                names={season.palette_names}
-                avoid={season.avoid}
-            />
-
-            <div
-                class="mt-24 p-10 bg-brand-gray text-center relative border-t border-brand-black/5"
-            >
-                <h3 class="font-serif text-3xl text-brand-black mb-4">
-                    ¿El problema?
-                </h3>
-                <p
-                    class="text-lg text-neutral-500 mb-10 max-w-2xl mx-auto font-light"
-                >
-                    Conocer tu paleta es solo el <strong>10%</strong> de la estrategia.
-                    El error común de los perfiles {season.title} es usar los colores
-                    correctos en las telas incorrectas (brillo vs mate) o en cortes
-                    que no favorecen su morfología corporal.
-                </p>
-
-                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                    <div
-                        class="bg-white p-8 shadow-lg border border-gray-100 flex flex-col justify-between hover:border-brand-black transition-colors duration-300"
-                    >
-                        <div>
-                            <div class="flex items-center gap-2 mb-4">
-                                <BookOpen className="w-5 h-5 text-gray-400" />
-                                <span
-                                    class="text-xs font-bold text-neutral-400 uppercase tracking-widest"
-                                    >Autodidacta</span
-                                >
-                            </div>
-                            <h4
-                                class="font-serif text-2xl text-brand-black mb-2"
-                            >
-                                Manual Digital {season.title}
-                            </h4>
-                            <p
-                                class="text-sm text-neutral-500 mb-6 leading-relaxed"
-                            >
-                                PDF descargable con 50+ combinaciones de trajes,
-                                guía de telas y accesorios específicos para tu
-                                estación.
-                            </p>
-                        </div>
-                        <a
-                            href="/libro/"
-                            class="w-full flex items-center justify-center py-4 border border-brand-black text-brand-black font-bold uppercase text-xs tracking-widest hover:bg-brand-black hover:text-white transition-all"
-                        >
-                            Descargar ($19 USD)
-                        </a>
-                    </div>
-
-                    <div
-                        class="bg-brand-black text-white p-8 shadow-2xl flex flex-col justify-between relative overflow-hidden transform md:-translate-y-4 border-t-4 border-brand-primary"
-                    >
-                        <div>
-                            <div class="flex items-center gap-2 mb-4">
-                                <Star
-                                    className="w-5 h-5 text-brand-primary fill-current"
-                                />
-                                <span
-                                    class="text-xs font-bold text-brand-primary uppercase tracking-widest"
-                                    >Recomendado</span
-                                >
-                            </div>
-                            <h4 class="font-serif text-2xl text-white mb-2">
-                                Diseño de Imagen 1 a 1
-                            </h4>
-                            <p
-                                class="text-sm text-neutral-300 mb-6 leading-relaxed"
-                            >
-                                Sesión privada "A Puerta Cerrada" con Roger.
-                                Diagnóstico integral de rostro, cuerpo y
-                                objetivos de carrera.
-                            </p>
-                        </div>
-                        <a
-                            href="/contacto/"
-                            class="w-full flex items-center justify-center py-4 bg-brand-primary text-white font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-brand-primary transition-all shadow-lg shadow-brand-primary/20"
-                        >
-                            Agendar Cita <ArrowRight className="ml-2 w-4" />
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="py-16 px-6 max-w-5xl mx-auto">
+        <h2 class="font-serif text-3xl mb-6 text-brand-black">Colores para empezar a comparar</h2>
+        <p class="text-neutral-600 mb-10">Observa estos colores cerca del rostro con luz uniforme. Las pantallas y la iluminación pueden cambiar su apariencia; no hace falta comprar prendas para hacer una primera comparación.</p>
+        <PaletteViewer client:visible colors={season.palette} names={season.palette_names} avoid={season.avoid} />
+        <div class="grid md:grid-cols-2 gap-8 mt-12">
+            <article class="p-7 border border-neutral-200"><h2 class="font-serif text-2xl mb-4">Explora los matices de tu paleta</h2><p class="text-neutral-600 mb-6">Compara opciones cercanas, neutros y combinaciones antes de tomar una decisión sobre tu vestuario.</p><a href={`/herramientas/colorimetria/paleta-${paletteSlug}/`} class="underline text-brand-primary">Leer la guía de esta paleta</a></article>
+            <article class="p-7 border border-neutral-200"><h2 class="font-serif text-2xl mb-4">Consulta con el estudio</h2><p class="text-neutral-600 mb-6">Si buscas orientación personal sobre colorimetría, consulta el alcance, valor y disponibilidad antes de reservar.</p><a href="/contacto/?interes=colorimetria#form" data-cta-location="resultado-test" class="inline-block bg-brand-black text-white px-6 py-4">Consultar colorimetría en Bogotá</a></article>
         </div>
+        <p class="mt-10 text-neutral-600">¿Tu pregunta es sobre cabello? Conoce la <a href="/servicios/peluqueria/" class="underline text-brand-primary">peluquería con visagismo</a>. Para un proceso de vestuario y armario, revisa la <a href="/servicios/asesoria-integral-imagen/" class="underline text-brand-primary">asesoría integral</a>.</p>
+        <a href="/herramientas/test-colorimetria-online/" class="inline-block mt-8 underline text-neutral-600">Volver al test</a>
     </section>
 </MainLayout>

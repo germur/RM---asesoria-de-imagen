@@ -1,12 +1,12 @@
 # Medición de contactos y herramientas
 
-## Configuración pendiente en GA4
+## Configuración aplicada en GA4 el 15 de octubre de 2026
 
-La publicación de código no configura la propiedad de Analytics. En Administración > Eventos, marcar `form_contacto_enviado` como evento clave después de validar un envío. El cambio se aplica a partir de su activación, no al histórico.
+Se activó `form_contacto_enviado` como evento clave en la propiedad Roger Murillo AI de la cuenta Calvo Creativo. Se guardaron las dimensiones de evento Tipo de solicitud (`tipo_solicitud`), Paso del recorrido (`paso`) y Resultado de colorimetría (`resultado`). El cambio se aplica a partir de su activación, no al histórico. La publicación de código por sí sola no configura Analytics.
 
 No usar `click_agendar`, `form_contacto_inicio` ni `click_comprar_curso` como sustitutos de contactos o ventas. `contacto_whatsapp` registra la apertura del enlace, no una conversación confirmada. Para Ads, mantener las interacciones previas como secundarias y evitar duplicar el envío con otro evento primario.
 
-Registrar `tipo_solicitud` como dimensión personalizada de alcance evento para separar `curso` y `servicio`. Registrar `paso` y `resultado` solo si se necesitan en informes. No enviar nombre, correo, teléfono, mensajes ni respuestas personales a Analytics.
+La dimensión `tipo_solicitud` distingue `curso`, `servicio` y `mixta`. `paso` se interpreta junto al nombre del evento. No enviar nombre, correo, teléfono, mensajes ni respuestas personales a Analytics.
 
 ## Eventos
 
@@ -45,3 +45,17 @@ Las verificaciones locales deben simular las respuestas del receptor para evitar
 - Cruzar página no encontrada, ruta y referente para priorizar enlaces antiguos valiosos.
 - Revisar formularios, citas y ventas por canal, incluyendo ChatGPT y Google Business Profile.
 - Llevar un registro comercial de servicio, origen, fecha, contacto calificado, cita, venta y valor. El acceso a estos datos debe mantenerse fuera del repositorio público.
+
+## Atribución y privacidad del formulario
+
+El formulario incorpora `pagina_entrada` (solo ruta, sin consulta), `referente` (solo dominio) e `interes_origen` (lista cerrada de servicios). El contexto se conserva durante la sesión de la pestaña; no contiene identificadores de usuario. Nombres, correos, teléfonos, texto libre y medidas corporales o faciales no se envían en los eventos añadidos. Los parámetros `objetivos` y `horario` proceden de opciones controladas, no de texto libre.
+
+Las vistas locales y los dominios de previsualización no cargan el tag de GA4. El código conserva los eventos en una cola local para pruebas, sin enviar visitas de desarrollo a la propiedad de producción.
+
+## Pruebas repetibles
+
+- `npm run build`: genera las páginas de producción.
+- `npm run audit:site`: valida destinos de enlaces y recursos locales, JSON-LD, sitemap, canonical y encabezados de las páginas generadas. Reconoce las páginas de redirección estática.
+- `npm run test:captacion`: ejecuta el código real del formulario en un entorno aislado con receptor simulado. Verifica siete contextos, desconocidos, solicitudes mixtas, atribución, validación, consentimiento, fallo/reintento y prevención de duplicados.
+
+La ejecución aislada no sustituye la comprobación de entrega del correo en el receptor real. No se han enviado consultas ficticias al propietario.

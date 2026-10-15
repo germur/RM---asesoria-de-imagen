@@ -1,5 +1,6 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import ServiceRoutes from "@/components/ServiceRoutes.astro";
 import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 
 const seoData = {
@@ -48,18 +49,15 @@ const schema = JSON.stringify({
         </div>
     </section>
 
-    <!-- STATS -->
-    <section class="py-20 bg-white border-b border-neutral-200">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid md:grid-cols-4 gap-12">
-                <div><p class="font-serif text-6xl text-brand-primary italic mb-2">7s</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Tiempo para formar juicio visual</p></div>
-                <div><p class="font-serif text-6xl text-brand-black italic mb-2">55%</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">De la comunicación es visual</p></div>
-                <div><p class="font-serif text-6xl text-brand-black italic mb-2">38%</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Es tono, gesto y postura</p></div>
-                <div><p class="font-serif text-6xl text-brand-black italic mb-2">7%</p><p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">Son las palabras</p></div>
-            </div>
-            <p class="text-xs text-neutral-400 mt-8 font-light italic">Regla de Mehrabian · comunicación no verbal</p>
+    <section class="py-16 bg-white border-b border-neutral-200"><div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="font-serif text-3xl mb-8">Imagen ejecutiva en Bogotá, según tu contexto.</h2>
+        <div class="grid md:grid-cols-3 gap-8 text-neutral-600">
+            <p><strong class="block text-brand-black mb-2">Vestuario profesional</strong>Revisamos prendas, proporciones y combinaciones para los escenarios en los que trabajas.</p>
+            <p><strong class="block text-brand-black mb-2">Presencia personal</strong>Conectamos cabello, color y estilo con la imagen que quieres comunicar.</p>
+            <p><strong class="block text-brand-black mb-2">Una consulta con objetivo</strong>Cuéntanos tu contexto para confirmar el alcance y la propuesta antes de reservar.</p>
         </div>
-    </section>
+        <a href="/contacto/?interes=ejecutiva#form" class="inline-block mt-8 bg-brand-black text-white px-7 py-4">Consultar asesoría ejecutiva</a>
+    </div></section>
 
     <!-- PARA QUIÉN -->
     <section class="py-32 md:py-40 bg-neutral-50">
@@ -173,7 +171,7 @@ const schema = JSON.stringify({
         <div class="container mx-auto px-6 max-w-5xl text-center">
             <h2 class="font-serif text-5xl md:text-7xl leading-[0.95] mb-10">Que la sala te <span class="italic text-brand-primary">crea</span><br/>antes de escucharte.</h2>
             <p class="text-lg text-white/60 font-light max-w-xl mx-auto mb-12">Solicita una valoración de perfil ejecutivo — confidencial y sin costo.</p>
-            <a href="/contacto/" class="inline-flex items-center gap-4 bg-brand-primary text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-colors duration-500">Agendar valoración →</a>
+            <a href="/contacto/?interes=ejecutiva#form" class="inline-flex items-center gap-4 bg-brand-primary text-white px-10 py-5 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-colors duration-500">Agendar valoración →</a>
 
             <p class="mt-14 text-sm text-white/40 font-light">
                 ¿Prefieres entender primero el código?
@@ -187,4 +185,5 @@ const schema = JSON.stringify({
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     </script>
 
+    <ServiceRoutes current="ejecutiva" />
 </MainLayout>

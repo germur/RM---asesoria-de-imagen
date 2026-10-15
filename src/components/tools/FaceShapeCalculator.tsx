@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { trackEvent } from '@/utils/analytics';
 
 // ── Face shape data ────────────────────────────────────────────────────────
 
@@ -150,9 +151,15 @@ export default function FaceShapeCalculator() {
     const [vals, setVals] = useState({ forehead: '', cheekbones: '', jawline: '', faceLength: '' });
     const [shapeKey, setShapeKey] = useState<string | null>(null);
     const [errors, setErrors] = useState<string[]>([]);
+    const started = useRef(false);
 
-    const set = (k: keyof typeof vals) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    const set = (k: keyof typeof vals) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!started.current) {
+            started.current = true;
+            trackEvent('calculadora_rostro_inicio');
+        }
         setVals(v => ({ ...v, [k]: e.target.value }));
+    };
 
     const handleCalculate = () => {
         const f = parseFloat(vals.forehead);
@@ -169,6 +176,7 @@ export default function FaceShapeCalculator() {
 
         setErrors([]);
         setShapeKey(classify(f, c, j, l));
+        trackEvent('calculadora_rostro_completado');
     };
 
     const reset = () => {
