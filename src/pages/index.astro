@@ -7,6 +7,7 @@ import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
 const geoSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://rogermurillo.co/#organization",
     name: "Roger Murillo",
     image: "https://rogermurillo.co/images/roger-hero.webp",
     description: "Asesoría de imagen, peluquería con visagismo, colorimetría y fondo de armario en Bogotá. Conoce a Roger Murillo y Adriana Garzón y consulta tu servicio.",
@@ -17,7 +18,7 @@ const geoSchema = JSON.stringify({
 
 <MainLayout navbarTheme="light"
     title="Asesoría de imagen y peluquería en Bogotá | Roger Murillo"
-    description="Consultoría de imagen personal y ejecutiva a puerta cerrada en Bogotá. Especialistas en visagismo, colorimetría y estilo estratégico para CEOs, directivos y líderes."
+    description="Asesoría de imagen, peluquería con visagismo, colorimetría y fondo de armario en Bogotá. Conoce a Roger Murillo y Adriana Garzón y consulta tu servicio."
     schema={geoSchema}
 >
 

@@ -7,7 +7,7 @@ Rastreo del HTML publicado de las 100 rutas generadas, incluidos documentos de r
 ## Hallazgos y correcciones
 
 - BreadcrumbList: 63 elementos intermedios sin `item` en 43 páginas. Se eliminaron del schema los agrupadores que no tienen página y se renumeraron los elementos. No se crearon URLs vacías para completar las migas.
-- Títulos: se precisó la intención de inicio, servicios, peluquería, colorimetría, asesoría para hombres, La Firma, contacto y libro. Los cuatro cursos con nombres de marca ahora tienen metatítulos descriptivos sin cambiar sus nombres comerciales.
+- Títulos: se precisó la intención de inicio, servicios, peluquería, colorimetría, asesoría para hombres, La Firma, contacto y libro. Los cuatro cursos con nombres de marca ahora tienen metatítulos y H1 descriptivos sin cambiar sus nombres comerciales.
 - Descripciones: se separó la descripción comercial larga de los cursos de su meta description; se resumieron las de La Firma, integral y automaquillaje. No se tratan los umbrales de longitud como límites rígidos de Google ni como factores de ranking.
 - Encabezados: se corrigieron saltos en guías, libro, productos, páginas de confirmación y herramientas, manteniendo sus clases visuales. Se retiraron dos elementos `main` anidados. Un encabezado de resultado inicialmente vacío ahora contiene un texto de reserva descriptivo.
 - Artículos: se añadió Article a cinco lecturas que no lo declaraban y a la guía revisada de color. Fechas solo donde ya existen en la fuente; sin inventar fechas ni adjudicar al fundador textos sin autoría individual confirmada.
@@ -43,3 +43,5 @@ El rastreo de enlaces estáticos no equivale a probar cada interacción o confir
 ## Repetir
 
 Después de `npm run build`, ejecutar `npm run test:release` y `python scripts/audit-onpage.py --local`. Para rastrear el sitio público, ejecutar el mismo script sin `--local`. El rastreo requiere acceso a red y puede verse afectado por cambios o bloqueos externos.
+
+La prueba de resultados enriquecidos de Google no pudo iniciarse en esta sesión porque su servicio reCAPTCHA no conectó. No se presenta la validación interna como si fuera una aprobación de esa herramienta.
