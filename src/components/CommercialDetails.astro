@@ -1,0 +1,25 @@
+---
+interface Props { variant: 'color' | 'wardrobe'; hideClose?: boolean }
+const { variant, hideClose = false } = Astro.props;
+const color = variant === 'color';
+const questions = color ? [
+    {q:'¿Qué necesito para el informe digital?',a:'Roger te contacta por WhatsApp, explica cómo tomar las fotografías y revisa las imágenes. Si necesitas repetir alguna, te orienta antes de realizar el análisis. El plazo de entrega se confirma al coordinar.'},
+    {q:'¿La sesión presencial incluye el informe?',a:'Sí. Los $1.000.000 COP incluyen la sesión de aproximadamente 2,5 a 3 horas con textiles, explicación del uso del color y el informe digital con tu paleta y círculos cromáticos.'},
+    {q:'¿El test gratuito es el estudio de $150.000?',a:'No. El test gratuito ofrece orientación automática a partir de tus respuestas. El servicio digital de pago incluye revisión personal de fotografías y preparación de un informe por Roger.'}
+] : [
+    {q:'¿Tengo que contratar el programa integral?',a:'No. Puedes contratar el fondo de armario y personal shopper por $1.600.000 COP. El programa integral de USD 1.650 es un acompañamiento más amplio de aproximadamente un año.'},
+    {q:'¿En qué zonas se realiza la visita?',a:'En Bogotá y alrededores, incluidos Funza, Cajicá, Chía, Sopó y Tenjo. También se ofrece en otras ciudades, sumando los tiquetes, alojamiento y gastos de desplazamiento acordados antes de contratar.'},
+    {q:'¿Cómo se preparan las compras?',a:'Después de revisar tu ropa, proporciones y afinidad de color, se prepara un inventario. Roger recorre marcas antes de la jornada contigo para seleccionar tiendas acordes con tus necesidades. Confirma por separado el presupuesto para prendas y qué gastos están incluidos.'}
+];
+---
+<section class="commercial-faq" aria-labelledby="preguntas-servicio">
+    <div><span class="section-eyebrow">Antes de decidir</span><h2 id="preguntas-servicio">Resolvamos<br/><em>lo importante.</em></h2><p>Un alcance claro para elegir con tranquilidad.</p></div>
+    <div>{questions.map(item=><details><summary>{item.q}<span aria-hidden="true">+</span></summary><p>{item.a}</p></details>)}</div>
+</section>
+{!hideClose && <section class="commercial-close">
+    <span class="section-eyebrow">El siguiente paso</span>
+    <h2>{color ? 'Dale un lugar al color.' : 'Empieza por lo que ya tienes.'}</h2>
+    <p>{color ? 'Cuéntanos si prefieres el informe digital o una sesión en el estudio. Te orientamos para coordinar tu servicio.' : 'Cuéntanos qué quieres resolver y dónde estás. Coordinamos el alcance de la visita y la jornada de compras.'}</p>
+    <a href={color ? '#consulta-color' : '/contacto/?interes=fondo-armario#form'}>Consultar {color ? 'mi estudio de color' : 'mi fondo de armario'} <span aria-hidden="true">↗</span></a>
+    <span class="close-note">Consulta de disponibilidad · La reserva se confirma con el equipo</span>
+</section>}

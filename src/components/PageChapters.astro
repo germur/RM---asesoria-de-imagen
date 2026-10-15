@@ -1,0 +1,14 @@
+<nav class="page-chapters" aria-label="Recorrer esta página" data-page-chapters hidden><span>En esta página</span><div></div></nav>
+<script>
+ document.querySelectorAll<HTMLElement>('[data-page-chapters]').forEach(nav=>{
+  const container=nav.querySelector('div')!;
+  const sections=Array.from(document.querySelectorAll<HTMLElement>('main > section')).filter(section=>!!section.querySelector('h2')&&!section.querySelector('[data-discovery]'));
+  const headings=sections.map((section,i)=>{const h=section.querySelector('h2')!;section.id ||= `capitulo-${i+1}`;const a=document.createElement('a');a.href=`#${section.id}`;a.textContent=h.textContent?.replace(/\s+/g,' ').trim()||'Explorar';container.append(a);return{section,a};});
+  if(headings.length<2)return;nav.hidden=false;
+  const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){headings.forEach(({section,a})=>{const active=section===entry.target;a.classList.toggle('is-current',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}});},{rootMargin:'-20% 0px -55% 0px'});
+  headings.forEach(({section})=>observer.observe(section));
+ });
+</script>
+<style is:global>
+ .page-chapters{position:sticky;top:106px;z-index:25;background:#f3f3f3fa;backdrop-filter:blur(12px);border-bottom:1px solid #d4d4d4;padding:12px max(24px,calc((100vw - 1184px)/2));display:flex;align-items:center;gap:25px}.page-chapters[hidden]{display:none}.page-chapters>span{flex-shrink:0;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#7e7e7e}.page-chapters>div{display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;min-width:0}.page-chapters a{flex-shrink:0;display:flex;align-items:center;min-height:42px;padding:9px 15px;border-radius:30px;border:1px solid #d0d0d0;font-size:10px;color:#666666;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:background .2s}.page-chapters a:hover,.page-chapters a.is-current{background:#e0e0e0;border-color:#a6a6a6;color:#383838}.page-chapters a:focus-visible{outline:3px solid #a9423b;outline-offset:2px}@media(max-width:767px){.page-chapters{top:65px;padding:9px 18px;gap:0}.page-chapters>span{display:none}.page-chapters a{font-size:10px;max-width:190px}}
+</style>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="900" viewBox="0 0 800 900" role="img" aria-labelledby="title desc">
+ <title id="title">Revoluciona tu Imagen, de Roger Murillo</title><desc id="desc">Representación gráfica editorial del libro, no es la cubierta original.</desc>
+ <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e9e2d3"/><stop offset="1" stop-color="#cfc9b6"/></linearGradient><linearGradient id="cover" x2="1" y2="1"><stop stop-color="#49593d"/><stop offset="1" stop-color="#263322"/></linearGradient><filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="20" dy="30" stdDeviation="23" flood-color="#3d412c" flood-opacity=".3"/></filter></defs>
+ <rect width="800" height="900" fill="url(#bg)"/><circle cx="400" cy="460" r="310" fill="none" stroke="#f5f0e4"/><circle cx="400" cy="460" r="280" fill="none" stroke="#f5f0e4" opacity=".5"/>
+ <g transform="translate(190 135) rotate(-7 210 300)" filter="url(#shadow)"><path d="M10 12 420 0v588L12 614Z" fill="#f1e8d1"/><path d="m410 0 22 16v588l-22-16Z" fill="#d5cbb0"/><rect width="410" height="588" rx="2" fill="url(#cover)"/><path d="M15 0v588" stroke="#9aab7c" opacity=".5"/>
+ <text x="48" y="69" fill="#d8d1b7" font-family="Arial,sans-serif" font-size="11" letter-spacing="3">ROGER MURILLO</text><path d="M48 98h310" stroke="#a6ae8e" opacity=".5"/>
+ <text x="46" y="211" fill="#f3eddb" font-family="Georgia,serif" font-size="49" letter-spacing="-2">Revoluciona</text><text x="46" y="268" fill="#e0d4b5" font-family="Georgia,serif" font-size="52" font-style="italic" letter-spacing="-2">tu Imagen.</text>
+ <circle cx="204" cy="404" r="84" fill="none" stroke="#a3ad82"/><path d="M123 404h163M204 323v163M147 347l115 114M147 461l115-114" stroke="#a3ad82" opacity=".6"/><circle cx="204" cy="404" r="40" fill="none" stroke="#a3ad82"/>
+ <text x="48" y="547" fill="#d8d1b7" font-family="Arial,sans-serif" font-size="9" letter-spacing="2">IMAGEN / ESTILO / CRITERIO</text></g>
+ <text x="400" y="826" text-anchor="middle" fill="#64664f" font-family="Arial,sans-serif" font-size="12">Representación gráfica · no es la cubierta original</text>
+</svg>

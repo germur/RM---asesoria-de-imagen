@@ -44,7 +44,7 @@ if (redirects[slug]) {
 const formattedName = slug.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 ---
 
-<MainLayout
+<MainLayout navbarTheme="light"
     title={`${formattedName} | Herramienta en Beta Privada`}
     description="Esta herramienta se encuentra actualmente en fase de Beta Privada. Solicita acceso anticipado al Laboratorio de Roger Murillo."
     noindex={true}

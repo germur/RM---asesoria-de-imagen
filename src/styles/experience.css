@@ -1,0 +1,58 @@
+/* Shared interaction and reading standards; page compositions retain their own identity. */
+:root{--rm-ink:#2b2b2b;--rm-paper:#eeeeee;--rm-accent:#3a3a3a;--rm-muted:#686868;--rm-line:#d0d0d0;--rm-focus:#b7433e}
+main>section[id]{scroll-margin-top:180px}
+.standalone-reading{max-width:1000px;padding:55px 48px 75px;margin:auto;color:#5d5d5d;font-size:16px;line-height:1.95}
+.standalone-reading>header{border-bottom:1px solid #d2d2d2;padding-bottom:35px;margin-bottom:40px}
+.standalone-reading>header h1{font-size:clamp(35px,4.8vw,60px);line-height:1.1;letter-spacing:-.03em;color:#323232}
+.standalone-reading>header>p{line-height:1.8}.standalone-reading h2{font-size:31px;line-height:1.2;margin:38px 0 18px;color:#3d3d3d}
+.standalone-reading p{line-height:1.95;margin-bottom:15px}.standalone-reading a{color:#404040;text-underline-offset:4px}.standalone-reading li{line-height:1.9}
+.palette-reading{max-width:1184px;padding:45px 48px 70px;margin:auto;color:#606060;background:#f3f3f3}
+.palette-reading>header{max-width:850px;margin-bottom:45px}.palette-reading h1{font-size:clamp(36px,4.5vw,62px);line-height:1.08;color:#383838}.palette-reading>header>p{font-size:15px;line-height:1.9;color:#707070}.palette-reading h2{font-size:30px;color:#404040;line-height:1.2}.palette-reading section{padding-top:30px;border-top:1px solid #d4d4d4;margin-bottom:35px}.palette-reading p{font-size:14px;line-height:1.9;color:#6e6e6e}
+.palette-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:25px}.palette-strip>li{font-size:12px;align-items:stretch!important}.palette-swatch{display:block;height:170px;width:100%;border:1px solid #cccccc;border-radius:90px 90px 4px 4px;margin-bottom:16px;transition:transform .3s}.palette-strip li:hover .palette-swatch{transform:translateY(-7px)}
+.palette-service{background:#e4e4e4;padding:50px max(24px,calc((100vw - 1088px)/2));color:#545454}.palette-service h2{font-size:36px;color:#383838}.palette-service p{font-size:14px;line-height:1.9;max-width:700px}.palette-service a{display:inline-flex;padding:16px 22px;background:#3c3c3c;color:#fff;font-size:12px;margin-top:20px;text-decoration:none}
+.course-inquiry-content{max-width:1184px;margin:auto;padding:55px 48px 70px;display:grid;grid-template-columns:1fr 1fr;gap:35px}.course-inquiry-content>div{border-top:1px solid #d0d0d0;padding-top:25px}.course-inquiry-content h2{font-size:30px;line-height:1.2;color:#3f3f3f}.course-inquiry-content p{font-size:14px;line-height:1.9;color:#6e6e6e}.course-inquiry-content>div>a{color:#3f3f3f}.course-inquiry-content>a{justify-self:start;align-self:start;min-height:52px;font-size:12px}
+@media(max-width:650px){main>section[id]{scroll-margin-top:140px}.standalone-reading{padding:35px 24px 50px}.standalone-reading h2{font-size:28px}.palette-reading{padding:30px 24px 45px}.palette-strip{gap:7px}.palette-swatch{height:110px}.palette-strip>li{font-size:10px}.palette-strip .text-xs{font-size:8px}.palette-service{padding:35px 24px}.course-inquiry-content{padding:35px 24px;grid-template-columns:1fr;gap:28px}}
+html{scroll-padding-top:120px}
+body{overflow-x:clip}
+main{min-width:0}
+main :is(a,button,input,textarea,select,summary):focus-visible{outline:3px solid var(--rm-focus);outline-offset:5px}
+.skip-content{position:fixed;z-index:100;left:16px;top:12px;padding:12px 20px;background:#fff;color:#2a2a2a;transform:translateY(-160%)}
+.skip-content:focus{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1!important;transform:none!important}}
+.reading-article{max-width:1240px;padding:55px 48px 80px;margin:auto;display:grid;grid-template-columns:220px minmax(0,760px);gap:70px;align-items:start}
+.reading-heading{grid-column:1/-1;border-bottom:1px solid var(--rm-line);padding-bottom:40px;max-width:1000px}
+.reading-heading .reading-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#6d6d6d;display:block;margin-bottom:24px}
+.reading-heading h1{font-size:clamp(36px,4.7vw,62px);line-height:1.1;letter-spacing:-.035em;color:var(--rm-ink);max-width:960px}
+.reading-heading>p{font-size:18px;line-height:1.8;max-width:800px;color:#636363;margin-top:22px}
+.reading-heading time{display:block;font-size:11px;letter-spacing:.05em;color:#6c6c6c;margin-top:25px}
+.reading-index{position:sticky;top:135px;border-top:1px solid var(--rm-line);padding-top:20px}
+.reading-index>span{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#6e6e6e;display:block;margin-bottom:15px}
+.reading-index a{display:block;padding:9px 0;font-size:12px;line-height:1.6;color:#5e5e5e;border-bottom:1px solid #dedede}
+.reading-index a:hover{color:#a74138}
+.reading-content{min-width:0;font-size:16px;line-height:1.95;color:#545454}
+.reading-content h2{font-size:32px;line-height:1.2;color:#2c2c2c;margin:45px 0 20px;scroll-margin-top:130px}
+.reading-content h2:first-child{margin-top:0}
+.reading-content h3{font-size:24px;line-height:1.3;color:#383838;margin:32px 0 15px}
+.reading-content p{margin:0 0 22px;line-height:1.95}
+.reading-content :is(ul,ol){padding-left:22px;margin:20px 0 28px}
+.reading-content ul{list-style:disc}.reading-content ol{list-style:decimal}.reading-content li{margin:12px 0;line-height:1.85}
+.reading-content a{color:#3b3b3b;text-decoration:underline;text-decoration-color:#9f9f9f;text-underline-offset:4px}
+.reading-content strong{font-weight:500;color:#303030}
+.reading-content blockquote{border-left:3px solid #808080;padding:20px 28px;background:#e8e8e8;margin:30px 0;font-family:'Playfair Display',Georgia,serif;font-size:23px}
+.reading-back{display:inline-flex;margin-top:35px;min-height:48px;align-items:center;gap:30px;border-bottom:1px solid #757575;font-size:12px;color:#383838}
+body[data-section="legales"] main>section{padding-top:170px;padding-bottom:80px}
+body[data-section="legales"] .prose{font-size:16px;line-height:1.9}body[data-section="legales"] .prose h2{font-size:26px;margin:36px 0 18px}body[data-section="legales"] .prose p{margin-bottom:20px}
+@media(max-width:750px){html{scroll-padding-top:85px}.reading-article{padding:35px 24px 55px;grid-template-columns:1fr;gap:30px}.reading-index{position:static}.reading-heading{padding-bottom:28px}.reading-index a{font-size:13px}.reading-content h2{font-size:29px}.reading-content{font-size:15px}body[data-section="legales"] main>section{padding-top:130px}}
+
+:root{--rm-ink:#111111;--rm-paper:#fafafa;--rm-accent:#C41230;--rm-muted:#606060;--rm-line:#dddddd;--rm-focus:#C41230}
+
+.service-next-links{display:flex;flex-wrap:wrap;justify-content:center;gap:15px 35px;padding:32px 24px;border-top:1px solid #ddd;font-size:13px;color:#C41230}.service-next-links a{display:flex;align-items:center;min-height:44px}.service-next-links a:focus-visible{outline:3px solid #C41230;outline-offset:4px}
+body[data-section=servicios] main>section:not(.sx-hero):not(.sx-journey){scroll-margin-top:125px}
+
+body[data-page="/servicios/asesoria-imagen-hombres-bogota/"] .commercial-page article{padding-top:28px}
+body[data-page="/servicios/asesoria-imagen-hombres-bogota/"] #proceso ol{display:block;background:none;padding:0;list-style:none;counter-reset:wardrobe-step}
+body[data-page="/servicios/asesoria-imagen-hombres-bogota/"] #proceso li{position:relative;background:none;border-bottom:1px solid #ddd;padding:25px 0 25px 65px;counter-increment:wardrobe-step;font-size:15px;line-height:1.9}
+body[data-page="/servicios/asesoria-imagen-hombres-bogota/"] #proceso li:before{content:'0' counter(wardrobe-step);position:absolute;left:0;top:26px;color:#C41230;font:26px Georgia,serif}
+body[data-page="/servicios/asesoria-imagen-hombres-bogota/"] #proceso li strong{display:block;color:#111;margin-bottom:8px}
+
+.reading-content table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.7;margin:25px 0}.reading-content :is(th,td){padding:15px 12px;border-bottom:1px solid #ccc;vertical-align:top;text-align:left}.reading-content th{background:#171717;color:#fff;font-weight:400}.reading-content td{color:#444}@media(max-width:600px){.reading-content table{font-size:12px}.reading-content :is(th,td){padding:12px 7px;overflow-wrap:anywhere}}

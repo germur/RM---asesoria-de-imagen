@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "audit:site": "node scripts/audit-site.mjs",
-    "test:captacion": "node scripts/test-captacion.mjs"
+    "test:captacion": "node scripts/test-captacion.mjs",
+    "test:release": "npm run audit:site && node scripts/test-navigation.mjs && npm run test:captacion && node scripts/test-color-inquiry.mjs && node scripts/test-servicios.mjs && node scripts/test-analytics.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

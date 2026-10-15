@@ -1,0 +1,416 @@
+{
+  "desktopChecks": [
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/",
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/academia/",
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/herramientas/",
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/blog/",
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/colorimetria/estaciones/",
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/servicios/",
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/nosotros/",
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "dice": false,
+      "h1": 1,
+      "overflow": false,
+      "path": "/casos-de-exito/",
+      "width": 1280
+    }
+  ],
+  "mobileChecks": [
+    {
+      "firstHeadingTop": 146,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 207,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/academia/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 207,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/herramientas/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 207,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/blog/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 207,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/blog/colorimetria/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 209,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/blog/guia-visagismo/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 208,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/blog/cuanto-cuesta-asesoria-imagen-bogota/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 207,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/colorimetria/estaciones/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 224,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/servicios/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 216,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/servicios/peluqueria/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 232,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/servicios/asesoria-integral-imagen/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 249,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/servicios/imagen-ejecutiva-autoridad/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 216,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/servicios/colorimetria-bogota/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 234,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/servicios/asesoria-imagen-hombres-bogota/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 160,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/contacto/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 216,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/productos/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 253,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/nosotros/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 241,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/casos-de-exito/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 207,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/libro/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 270,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/academia/curso-descubrete/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 270,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/academia/crea-tu-iconologia/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 270,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/academia/disena-tu-voz/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 270,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/academia/el-correcto-uso-del-color/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 207,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/academia/curso-colorimetria-profesional/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 232,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/academia/curso-automaquillaje/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 232,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/academia/reto-presencial/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 249,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/academia/reto-colegios/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 223,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/herramientas/test-colorimetria-online/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 204,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/herramientas/calculadora-rostro/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 168,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/herramientas/calculadora-tipo-cuerpo/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 223,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/herramientas/test-impacto-ejecutivo/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 264,
+      "h1": 1,
+      "menuBottom": 64,
+      "overflow": false,
+      "path": "/herramientas/reto-revoluciona-tu-imagen/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 235,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/herramientas/colorimetria/paleta-invierno-profundo/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 203,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/resultados/invierno-profundo/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 181,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/visagismo/barba-y-corte/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 221,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/academia/visagismo/tipos-rostro-hombre/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 245,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/academia/colorimetria/colores-para-negociar/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 277,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/imagen-ejecutiva/quiet-luxury/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 130,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/legales/privacidad/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 130,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/legales/terminos/",
+      "width": 390
+    },
+    {
+      "firstHeadingTop": 204,
+      "h1": 1,
+      "menuBottom": 65,
+      "overflow": false,
+      "path": "/mapa-sitio/",
+      "width": 390
+    }
+  ],
+  "interactionChecks": [
+    {
+      "count": 4,
+      "page": "/academia/",
+      "selected": "Cursos online",
+      "wrong": false
+    },
+    {
+      "page": "/colorimetria/estaciones/",
+      "visiblePalettes": 3,
+      "wrong": false
+    },
+    {
+      "page": "/servicios/peluqueria/",
+      "expanded": 2,
+      "chapters": 6
+    }
+  ]
+}

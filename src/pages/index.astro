@@ -1,4 +1,5 @@
 ---
+import EditorialHero from "@/components/EditorialHero.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 import ServiceRoutes from "@/components/ServiceRoutes.astro";
 import AnimatedTitleWords from "@/components/ui/AnimatedTitleWords.astro";
@@ -14,7 +15,7 @@ const geoSchema = JSON.stringify({
 });
 ---
 
-<MainLayout
+<MainLayout navbarTheme="light"
     title="Roger Murillo | Asesor de Imagen Ejecutiva · Visagismo · Colorimetría en Bogotá"
     description="Consultoría de imagen personal y ejecutiva a puerta cerrada en Bogotá. Especialistas en visagismo, colorimetría y estilo estratégico para CEOs, directivos y líderes."
     schema={geoSchema}
@@ -38,35 +39,11 @@ const geoSchema = JSON.stringify({
     </style>
 
     <!-- HERO — editorial, negro, líneas grandes -->
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-brand-black text-white relative overflow-hidden min-h-screen flex flex-col justify-center">
-        <!-- Imagen de fondo difuminada (silueta de vestido morado) -->
-        <div class="hero-bg-img absolute inset-y-0 right-0 w-full md:w-3/5 lg:w-1/2 pointer-events-none select-none" aria-hidden="true">
-            <img src="/images/roger-hero.webp" alt="" class="w-full h-full object-cover object-center opacity-25 md:opacity-30 mix-blend-luminosity" loading="eager" />
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/70 to-brand-black/20"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-brand-black/40"></div>
-        </div>
-        <div class="container mx-auto px-6 max-w-6xl relative z-10">
-            <div class="flex items-center gap-5 mb-14">
-                <span class="w-12 h-px bg-brand-primary"></span>
-                <p class="text-[10px] tracking-[0.4em] uppercase text-white/60">Consultoría de imagen · Bogotá</p>
-            </div>
-            <h1 class="font-serif leading-[0.85]">
-                <AnimatedTitleWords text="Tu imagen" class="block text-5xl md:text-8xl lg:text-9xl text-white" />
-                <AnimatedTitleWords text="es tu activo" class="block text-5xl md:text-8xl lg:text-9xl italic text-neutral-500 pl-[6%]" delay={300} />
-                <AnimatedTitleWords text="más honesto." class="block text-5xl md:text-8xl lg:text-9xl text-brand-primary pl-[2%]" delay={500} />
-            </h1>
-            <div class="mt-16 grid md:grid-cols-12 gap-8">
-                <div class="md:col-span-5 md:col-start-8 border-l-2 border-brand-primary pl-8">
-                    <p class="text-lg font-light text-white/70 leading-relaxed mb-6">Deja de vestir para la persona que eras. Empieza a vestir para la posición que quieres ocupar.</p>
-                    <p class="text-sm text-white/50 font-light italic leading-relaxed mb-10">La imagen personal no empieza en la ropa — empieza en la identidad.</p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="/herramientas/test-colorimetria-online/" class="bg-brand-primary text-white px-10 py-4 text-[11px] tracking-[0.25em] uppercase hover:bg-white hover:text-brand-black transition-all duration-500 text-center">Diagnóstico gratuito</a>
-                        <a href="/servicios/" class="px-10 py-4 text-[11px] tracking-[0.25em] uppercase text-white border border-white/30 hover:border-white transition-colors duration-500 text-center">Servicios</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="home-opening">
+        <EditorialHero eyebrow="Roger Murillo / Adriana Garzón / Bogotá" title="Tu imagen, en tu vida real." emphasis="Un cambio con dirección." description="Cabello, color, vestuario y acompañamiento personal. Encuentra el servicio que responde a lo que necesitas hoy, con atención privada y cita previa." image="/images/roger-portrait-bw.webp" imageAlt="Roger Murillo, asesor de imagen" href="/servicios/" action="Encontrar mi servicio" />
+    </div>
+    <style>.home-opening{padding-top:112px;background:#f5f1e8}@media(max-width:767px){.home-opening{padding-top:72px}}</style>
+    <ServiceRoutes />
 
     <!-- MARQUEE DE MARCAS -->
     <section class="py-12 border-y border-neutral-200 bg-white overflow-hidden">
@@ -312,5 +289,4 @@ const geoSchema = JSON.stringify({
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     </script>
 
-    <ServiceRoutes />
 </MainLayout>

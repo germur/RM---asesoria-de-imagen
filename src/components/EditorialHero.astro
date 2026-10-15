@@ -1,0 +1,15 @@
+---
+interface Props { eyebrow:string; title:string; emphasis:string; description:string; image?:string; imageAlt?:string; href?:string; action?:string; containImage?:boolean }
+const {eyebrow,title,emphasis,description,image,imageAlt='',href,action,containImage=false}=Astro.props;
+---
+<section class:list={['editorial-hero',{'with-image':!!image}]}>
+ <div class="eh-inner"><div class="eh-copy"><span class="eh-eyebrow">{eyebrow}</span><h1>{title}<br/><em>{emphasis}</em></h1><p>{description}</p>{href&&<a href={href}>{action}<span aria-hidden="true">↗</span></a>}</div>{image&&<figure class:list={[{'contain-image':containImage}]}><img src={image} alt={imageAlt} width="900" height="1000"/><figcaption>Roger Murillo Image Advisors</figcaption></figure>}</div>
+</section>
+<style>
+ .editorial-hero{background:#eeeeee;border-bottom:1px solid #d3d3d3;padding:65px 0 70px}.eh-inner{max-width:1280px;padding:0 48px;margin:auto;display:grid;gap:60px}.with-image .eh-inner{grid-template-columns:1.2fr .8fr;align-items:center}.eh-eyebrow{display:block;font-size:10px;letter-spacing:.23em;text-transform:uppercase;color:#686868;margin-bottom:32px}.eh-copy h1{font:clamp(44px,6vw,80px)/1.02 'Playfair Display',Georgia,serif;letter-spacing:-.04em;color:#282828}.eh-copy h1 em{color:#6e6e6e}.eh-copy>p{max-width:570px;color:#666666;font-size:16px;line-height:1.85;margin-top:28px}.eh-copy>a{display:inline-flex;align-items:center;gap:35px;min-height:54px;background:#383838;color:#fafafa;font-size:12px;padding:16px 24px;margin-top:30px;transition:background .2s}.eh-copy>a:hover{background:#585858}.eh-copy>a span{font-size:21px}.eh-inner figure{height:390px;position:relative;background:#d2d2d2;overflow:hidden}.eh-inner img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:grayscale(.5)}.eh-inner figcaption{position:absolute;bottom:0;left:0;right:0;padding:35px 22px 18px;background:linear-gradient(transparent,#000a);font-size:9px;letter-spacing:.1em;color:white}.eh-copy>a:focus-visible{outline:3px solid #b3433f;outline-offset:5px}@media(max-width:700px){.editorial-hero{padding:35px 0 40px}.eh-inner{padding:0 24px;gap:32px}.with-image .eh-inner{grid-template-columns:1fr}.eh-copy h1{font-size:46px}.eh-inner figure{height:280px}.eh-eyebrow{margin-bottom:24px}.eh-copy>p{font-size:15px}}
+</style>
+<style>.eh-inner figure.contain-image img{object-fit:contain;padding:30px}.eh-inner figure.contain-image{background:#dadada}.eh-inner figure.contain-image figcaption{background:none;color:#6c6c6c;font-size:8px}</style>
+
+<style>
+.eh-copy h1 em,.eh-eyebrow{color:#C41230!important}.eh-copy>a{background:#C41230!important;color:#fff!important}.eh-copy>a:hover{background:#a10f28!important}
+</style>

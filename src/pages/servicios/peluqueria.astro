@@ -1,4 +1,8 @@
 ---
+import PageChapters from "@/components/PageChapters.astro";
+import ServiceExperience from '@/components/ServiceExperience.astro';
+import ServicePreparation from '@/components/ServicePreparation.astro';
+import ColorPaths from '@/components/ColorPaths.astro';
 import MainLayout from "@/layouts/MainLayout.astro";
 import ServiceRoutes from "@/components/ServiceRoutes.astro";
 import RealCases from "@/components/RealCases.astro";
@@ -21,7 +25,7 @@ const servicios = [
     {
         n: "02",
         title: "Color, Balayage & Iluminaciones",
-        desc: "Iniciamos con un test de colorimetría estacional para analizar cómo reaccionan tus niveladores naturales (piel, ojos y cabello) ante la luz. Diseñamos científicamente la paleta exacta que ilumina tu rostro. Evaluamos la resistencia de tu fibra capilar para blindar su estructura durante el proceso químico.",
+        desc: "Iniciamos con un test de colorimetría estacional para analizar cómo reaccionan tus niveladores naturales (piel, ojos y cabello) ante la luz. Revisamos el tono que buscas y el estado del cabello para definir una propuesta de color y sus condiciones antes del proceso.",
         sub: "Hombre & Mujer",
     },
     {
@@ -33,14 +37,14 @@ const servicios = [
     {
         n: "04",
         title: "Reconstrucción Capilar",
-        desc: "Cuando tu pelo atraviesa una crisis extrema, los tratamientos convencionales no son suficientes. Utilizamos el capilógrafo para analizar a profundidad el estado real de tu piel cabelluda y fibra capilar. Diseñamos rituales personalizados con células madre, Kérastase y Olaplex para reparar sin rupturas.",
+        desc: "Revisamos el estado y la textura del cabello para orientar los cuidados y tratamientos cosméticos. El equipo confirma las opciones y su alcance según tu caso.",
         sub: "Hombre & Mujer",
     },
     {
         n: "05",
-        title: "Diagnóstico con Capilógrafo",
-        desc: "Usamos un microscopio especializado para evaluar el estado real de tu piel cabelluda, detectando caída, exceso de grasa, caspa o dermatitis. Identificamos deficiencias de proteínas o aminoácidos y definimos científicamente qué procesos químicos puedes realizarte sin exponer tu salud.",
-        sub: "Diagnóstico Clínico",
+        title: "Evaluación con Capilógrafo",
+        desc: "La observación con capilógrafo ayuda a conversar sobre el aspecto del cuero cabelludo y el cabello antes de definir cuidados cosméticos. Esta evaluación no sustituye una consulta dermatológica ni diagnostica enfermedades o deficiencias nutricionales.",
+        sub: "Evaluación cosmética",
     },
     {
         n: "06",
@@ -56,53 +60,18 @@ const diferenciales = [
     { n: "03", title: "Productos premium", desc: "L'Oréal, Kérastase, Olaplex. Solo lo mejor." },
 ];
 const hairFaqs = [{"q": "¿La asesoría de cabello es para hombres y mujeres?", "a": "Sí. El corte y el color se revisan según tu rostro, la textura del cabello, tus preferencias y tu rutina. Puedes consultar por una necesidad capilar sin solicitar el programa integral de imagen."}, {"q": "¿Qué diferencia hay entre un corte y una asesoría de imagen integral?", "a": "La peluquería se centra en el cabello, el corte, el color y el peinado. El programa integral incluye además vestuario, armario, análisis de color, rutas de compra y acompañamiento por fases."}, {"q": "¿Cómo consulto el precio y la disponibilidad?", "a": "Indica qué servicio necesitas al enviar tu solicitud. El equipo confirma el alcance, el valor y la disponibilidad antes de reservar. Los cuatro cupos mensuales anunciados corresponden al programa integral."}, {"q": "¿Dónde se realiza la cita?", "a": "En el estudio de Calle 163 B No. 48-80, Local 208, Edificio Britalia Comercial y Empresarial, Bogotá. La atención es con cita previa."}, {"q": "¿Puedo usar la calculadora de rostro antes de consultar?", "a": "Sí. Es una orientación inicial para conversar sobre tus preferencias. No sustituye la revisión de proporciones, textura y caída del cabello durante la cita."}];
-const hairSchema = {"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Peluquería con asesoría de imagen y visagismo en Bogotá","serviceType":"Peluquería y visagismo","provider":{"@id":"https://rogermurillo.co/#organization"},"areaServed":{"@type":"City","name":"Bogotá"},"url":"https://rogermurillo.co/servicios/peluqueria/"},{"@type":"FAQPage","mainEntity":hairFaqs.map(f=>({"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}}))}]};
+const hairSchema = {"@context":"https://schema.org","@type":"Service","@id":"https://rogermurillo.co/servicios/peluqueria/#service","name":"Peluquería con asesoría de imagen y visagismo en Bogotá","serviceType":"Peluquería y visagismo","provider":{"@id":"https://rogermurillo.co/#organization"},"areaServed":{"@type":"City","name":"Bogotá"},"url":"https://rogermurillo.co/servicios/peluqueria/"};
 
 ---
 
-<MainLayout title={seoData.title} description={seoData.description} schema={hairSchema} navbarTheme="light">
+<MainLayout title={seoData.title} description={seoData.description} schema={hairSchema} navbarTheme="light" breadcrumbsInFlow>
     <div id="rm-progress" class="fixed top-0 left-0 right-0 h-[2px] bg-brand-primary z-[80] origin-left" style="transform:scaleX(0)"></div>
 
     <!-- HERO -->
-    <section class="relative min-h-[92vh] bg-[#faf7f2] overflow-hidden flex items-center pt-28 pb-24">
-        <svg class="absolute right-[-4%] top-[14%] w-[36vw] h-[36vw] scissor opacity-[0.18] pointer-events-none" viewBox="0 0 100 100" fill="none" stroke="#0a0a0a" stroke-width="0.8">
-            <circle cx="28" cy="72" r="13"/>
-            <circle cx="72" cy="72" r="13"/>
-            <line x1="28" y1="72" x2="76" y2="18"/>
-            <line x1="72" y1="72" x2="24" y2="18"/>
-            <circle cx="50" cy="45" r="1.6" fill="#C41230"/>
-        </svg>
-        <div class="absolute left-0 right-0 top-[38%] h-px bg-brand-black/5"></div>
-
-        <div class="container mx-auto px-6 max-w-6xl relative z-10">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="marker"></span>
-                <p class="text-[10px] tracking-[0.4em] uppercase text-neutral-500">Roger Murillo · Servicio · Peluquería</p>
-            </div>
-
-            <h1 class="font-serif leading-[0.92] text-brand-black max-w-4xl">
-                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem]">Peluquería y visagismo</span>
-                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem] italic text-brand-primary">para tu imagen</span>
-                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem] text-neutral-400">en Bogotá.</span>
-            </h1>
-
-            <div class="mt-14 grid lg:grid-cols-12 gap-10 items-end max-w-5xl">
-                <p class="lg:col-span-7 text-base md:text-lg text-neutral-600 font-light leading-relaxed">
-                    No usamos máquina por defecto. El corte con tijera es nuestro servicio estrella
-                    porque permite <strong class="text-brand-black font-medium">controlar cada línea, cada ángulo,
-                    cada milímetro</strong> según la geometría de tu rostro.
-                </p>
-                <div class="lg:col-span-5">
-                    <a href="/contacto/?interes=peluqueria#form" class="cta-btn inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-brand-black">
-                        Reservar Cita
-                        <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] uppercase text-neutral-400">✂ Estudio a puerta cerrada · Bogotá</div>
-    </section>
+    <ServiceExperience service="peluqueria" />
+    <ServiceExperience service="peluqueria" part="journey" />
+    <ColorPaths current="hair" />
+    <PageChapters />
 
     <!-- SERVICES GRID -->
     <section class="bg-neutral-50 py-28 md:py-40">
@@ -115,16 +84,12 @@ const hairSchema = {"@context":"https://schema.org","@graph":[{"@type":"Service"
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-px bg-neutral-200">
-                {servicios.map((s, i) => (
-                    <article class="svc-card bg-neutral-50 p-10 md:p-14 reveal" style={`--delay:${i * 0.05}s`}>
-                        <span class="svc-num block text-5xl md:text-6xl mb-8">{s.n}</span>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-black mb-4 svc-title">{s.title}</h3>
-                        <p class="svc-desc text-sm md:text-[15px] text-neutral-500 font-light leading-relaxed mb-6">{s.desc}</p>
-                        <p class="svc-sub text-[10px] tracking-[0.3em] uppercase text-neutral-400 pt-4 border-t border-neutral-200">{s.sub}</p>
-                    </article>
-                ))}
+            <div class="hair-menu">
+                {servicios.map((service,i)=><details open={i===0}><summary><span class="hair-menu-number">{service.n}</span><span>{service.title}<small>{service.sub}</small></span><span class="hair-menu-plus" aria-hidden="true">+</span></summary><div class="hair-menu-detail"><p>{service.desc}</p><a href="/contacto/?interes=peluqueria#form">Consultar este servicio <span aria-hidden="true">↗</span></a></div></details>)}
             </div>
+            <style>
+                .hair-menu{border-top:1px solid #d3d3d3}.hair-menu details{border-bottom:1px solid #d3d3d3}.hair-menu summary{display:flex;align-items:center;gap:30px;padding:28px 0;cursor:pointer;list-style:none;color:#111111}.hair-menu summary::-webkit-details-marker{display:none}.hair-menu-number{font:15px Georgia,serif;color:#777777;align-self:start;margin-top:6px}.hair-menu summary>span:nth-child(2){flex:1;font:clamp(26px,3vw,38px) 'Playfair Display',Georgia,serif;letter-spacing:-.025em}.hair-menu small{display:block;font:9px/1.6 Arial,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:#626262;margin-top:9px}.hair-menu-plus{font-size:28px;color:#C41230;border:1px solid #d3d3d3;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:transform .2s}.hair-menu details[open] .hair-menu-plus{transform:rotate(45deg)}.hair-menu-detail{padding:0 50px 30px;display:grid;grid-template-columns:1fr auto;gap:35px;align-items:end}.hair-menu-detail p{max-width:700px;font-size:14px;line-height:1.9;color:#555555}.hair-menu-detail a{display:flex;align-items:center;gap:20px;font-size:11px;color:#C41230;border-bottom:1px solid #C41230;padding:12px 0;white-space:nowrap}.hair-menu-detail a>span{font-size:20px}@media(max-width:700px){.hair-menu summary{gap:15px;padding:23px 0}.hair-menu-detail{padding:0 0 25px 30px;grid-template-columns:1fr;gap:12px}.hair-menu-detail a{justify-self:start}}
+            </style>
         </div>
     </section>
 
@@ -155,7 +120,7 @@ const hairSchema = {"@context":"https://schema.org","@graph":[{"@type":"Service"
                     {diferenciales.map((d) => (
                         <div class="diff-row py-7">
                             <p class="text-[10px] tracking-[0.3em] uppercase text-brand-primary mb-2">{d.n}</p>
-                            <h4 class="font-serif text-xl text-brand-black mb-2">{d.title}</h4>
+                            <h3 class="font-serif text-xl text-brand-black mb-2">{d.title}</h3>
                             <p class="text-sm text-neutral-500 font-light leading-relaxed">{d.desc}</p>
                         </div>
                     ))}
@@ -182,12 +147,9 @@ const hairSchema = {"@context":"https://schema.org","@graph":[{"@type":"Service"
             </a>
         </div>
     </section>
-    <section class="py-20 bg-neutral-50"><div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-serif text-3xl md:text-4xl mb-8">Antes de tu cita de peluquería</h2>
-        {hairFaqs.map(f => <details class="border-b border-neutral-300 py-6"><summary class="cursor-pointer font-medium text-lg">{f.q}</summary><p class="text-neutral-600 leading-relaxed mt-4">{f.a}</p></details>)}
-        <p class="mt-8 text-neutral-600">Prepara tus preguntas con la <a href="/blog/guia-visagismo/" class="underline text-brand-primary">guía de visagismo</a> y la <a href="/herramientas/calculadora-rostro/" class="underline text-brand-primary">calculadora de rostro</a>.</p>
-    </div></section>
-    <ServiceRoutes current="peluqueria" />
+    <ServicePreparation service="hair" />
+
+    <nav class="service-next-links" aria-label="Otros servicios"><a href="/servicios/">Comparar todos los servicios ↗</a><a href="/servicios/colorimetria-bogota/">Colorimetría personal ↗</a><a href="/servicios/asesoria-imagen-hombres-bogota/">Fondo de armario para hombres ↗</a></nav>
 </MainLayout>
 
 <style is:global>

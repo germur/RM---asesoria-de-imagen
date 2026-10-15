@@ -1,0 +1,85 @@
+---
+interface Props { variant: 'color' | 'wardrobe' }
+const { variant } = Astro.props;
+const colors = ['#713843','#bc735f','#d7bca2','#53675a','#213d4b','#bba058','#9d4240','#e6ceab','#646b85','#493e52','#aeb6a1','#875e44'];
+---
+<aside class:list={['commercial-art', variant]} aria-label={variant === 'color' ? 'Exploración visual del color' : 'Roger Murillo, asesor de imagen'}>
+    {variant === 'color' ? <>
+        <span class="art-eyebrow">Temperatura · Claridad · Intensidad</span>
+        <div class="color-orbit" aria-hidden="true">{colors.map((color,i)=><span style={`--swatch:${color};--angle:${i*30}deg;--index:${i}`} />)}<div class="orbit-center">Tu color.<br/><em>Tu criterio.</em></div></div>
+        <p class="art-caption">Una paleta para explorar.<br/><span>El estudio encuentra la tuya.</span></p>
+        <span class="art-note">Composición ilustrativa · no es un resultado personal</span>
+    </> : <>
+        <img src="/images/roger-portrait-bw.webp" alt="Roger Murillo, quien realiza la revisión de armario y prepara la ruta de compras" width="800" height="1000" />
+        <div class="portrait-caption"><span>Roger Murillo</span><p>Menos vueltas.<br/><em>Más intención.</em></p></div>
+    </>}
+</aside>
+<style is:global>
+    .commercial-page{background:#f6f6f6;overflow:hidden}
+    .commercial-page [id]{scroll-margin-top:130px}
+    .commercial-page article{max-width:1280px;padding:28px 48px 80px;margin:auto}
+    .commercial-page article>header{position:relative;max-width:none;display:grid;grid-template-columns:1.05fr 1fr;column-gap:70px;align-content:center;min-height:660px;padding:35px 0 70px;margin-bottom:0}
+    .commercial-page article>header> :not(.commercial-art){grid-column:1;max-width:650px}
+    .commercial-page article>header>p:first-child{font-size:11px;letter-spacing:.22em;text-transform:uppercase;border-left:28px solid #c41230;padding-left:15px;margin-bottom:30px}
+    .commercial-page article>header h1{font-size:clamp(42px,4.4vw,70px);line-height:1.03;letter-spacing:-.035em;margin-bottom:28px}
+    .commercial-page article>header>p.text-xl{font-size:17px;line-height:1.8;color:#565656}
+    .commercial-page article a.bg-brand-black{display:inline-flex;align-items:center;justify-content:space-between;gap:25px;min-height:56px;font-size:12px;letter-spacing:.06em;transition:background .2s,transform .2s;text-decoration:none}
+    .commercial-page article a.bg-brand-black:after{content:'↗';font-size:22px}
+    .commercial-page article a.bg-brand-black:hover{background:#a50f29;transform:translateY(-2px)}
+    .commercial-page a:focus-visible,.commercial-page summary:focus-visible{outline:3px solid #c41230;outline-offset:5px}
+    .commercial-art{grid-column:2;grid-row:1 / span 6;position:relative;min-height:540px;align-self:stretch;overflow:hidden;background:#e0e0e0;display:flex;align-items:center;justify-content:center}
+    .art-eyebrow{position:absolute;top:30px;left:28px;font-size:9px;text-transform:uppercase;letter-spacing:.17em;color:#565656}
+    .color-orbit{width:350px;height:350px;position:relative;border:1px solid #bcbcbc;border-radius:50%;background:#f0f0f0;box-shadow:0 25px 65px #42424212}
+    .color-orbit>span{position:absolute;left:calc(50% - 25px);top:calc(50% - 47px);width:50px;height:94px;background:var(--swatch);border-radius:30px 30px 6px 6px;transform:rotate(var(--angle)) translateY(-110px);box-shadow:0 5px 12px #00000012;transition:filter .25s}
+    .color-orbit:hover>span{filter:saturate(1.15)}
+    .orbit-center{position:absolute;inset:115px 65px;text-align:center;font-family:var(--font-serif,Georgia,serif);font-size:27px;line-height:1.15;color:#2f2f2f}
+    .orbit-center em{color:#9d4240}
+    .art-caption{position:absolute;bottom:47px;left:28px;font-size:13px;color:#2f2f2f;line-height:1.5}
+    .art-caption span{color:#656565}
+    .art-note{position:absolute;bottom:18px;left:28px;font-size:9px;color:#656565}
+    .commercial-art.wardrobe{background:#181818}
+    .commercial-art.wardrobe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:grayscale(1)}
+    .portrait-caption{position:absolute;inset:auto 0 0;background:linear-gradient(transparent,#000d);color:white;padding:90px 32px 32px}
+    .portrait-caption>span{font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+    .portrait-caption p{font:38px/1.05 Georgia,serif;margin-top:15px}
+    .commercial-page article>section{max-width:none;margin:0;padding:60px 0;border-top:1px solid #d0d0d0}
+    .commercial-page article>section>h2{font-size:clamp(29px,3vw,40px);letter-spacing:-.02em;max-width:720px;margin-bottom:25px}
+    .commercial-page article>section>p{max-width:780px;font-size:16px;line-height:1.9;color:#565656}
+    .commercial-page #modalidades+div{gap:0;border:1px solid #cacaca;background:white}
+    .commercial-page #modalidades+div>section{border:0;padding:40px;position:relative}
+    .commercial-page #modalidades+div>section+section{background:#181818;color:#d7d7d7}
+    .commercial-page #modalidades+div>section+section h3{color:white}
+    .commercial-page #modalidades+div>section>p.text-2xl{font:44px/1.1 Georgia,serif;color:#c41230;border-bottom:1px solid #cacaca;padding-bottom:25px;margin-bottom:25px}
+    .commercial-page #modalidades+div>section+section>p.text-2xl{color:#d0d0d0;border-color:#ffffff26}
+    .commercial-page #modalidades+div>section+section a{color:#d0d0d0}
+    .commercial-page article>section ol{list-style:none;padding:0;counter-reset:service;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+    .commercial-page article>section ol li{position:relative;padding:65px 28px 30px;background:#e8e8e8;line-height:1.8;color:#565656;margin:0}
+    .commercial-page article>section ol li:before{counter-increment:service;content:'0' counter(service);position:absolute;left:28px;top:16px;font:28px Georgia,serif;color:#818181}
+    .commercial-page article>section ol strong{display:block;color:#171717;margin-bottom:8px;font-weight:500}
+    .commercial-page .commercial-jump{display:flex;gap:12px;border-top:1px solid #d0d0d0;border-bottom:1px solid #d0d0d0;padding:20px 0;flex-wrap:wrap;font-size:12px;color:#484848}
+    .commercial-page .commercial-jump a{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border:1px solid #d0d0d0;border-radius:30px;text-decoration:none;transition:background .2s,color .2s}
+    .commercial-page .commercial-jump a:hover{background:#181818;color:#fff}
+    .service-facts{display:flex;gap:24px;border-top:1px solid #d0d0d0;padding-top:22px;margin-top:28px!important;font-size:11px;line-height:1.7;color:#626262}
+    .service-facts strong{display:block;font-size:14px;color:#1f1f1f;font-weight:500}
+    .commercial-page article>.commercial-faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;padding:70px 0}
+    .section-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9c273a;display:block;margin-bottom:22px}
+    .commercial-faq h2{font:44px/1.12 'Playfair Display',Georgia,serif;color:#191919;margin-bottom:22px}
+    .commercial-faq h2 em{color:#6e6e6e}
+    .commercial-faq>div>p{font-size:14px;color:#626262}
+    .commercial-faq details{border-bottom:1px solid #d0d0d0}
+    .commercial-faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;padding:24px 0;font-size:15px;color:#1c1c1c;list-style:none}
+    .commercial-faq summary::-webkit-details-marker{display:none}
+    .commercial-faq summary span{font-size:25px;font-weight:300;color:#9c273a;transition:transform .2s}
+    .commercial-faq details[open] summary span{transform:rotate(45deg)}
+    .commercial-faq details p{font-size:14px;line-height:1.9;color:#5e5e5e;padding:0 30px 24px 0}
+    .commercial-page article>.commercial-close{position:relative;padding:65px;background:#1e1e1e;color:#ededed;margin-top:20px;border:0}
+    .commercial-close .section-eyebrow{color:#bebebe}
+    .commercial-page article>.commercial-close h2{color:#ededed;font-size:clamp(32px,4vw,52px);max-width:720px}
+    .commercial-page article>.commercial-close p{color:#c8c8c8;max-width:650px}
+    .commercial-close>a{display:inline-flex;align-items:center;justify-content:space-between;gap:30px;background:#ededed;color:#1c1c1c;padding:18px 25px;min-height:56px;margin-top:30px;font-size:13px;transition:background .2s}
+    .commercial-close>a:hover{background:#c2c2c2}
+    .close-note{display:block;margin-top:18px;color:#b4b4b4;font-size:11px}
+    @media(min-width:900px){.commercial-page article>header>a{justify-self:start;align-self:start}}
+    @media(max-width:899px){.commercial-page article{padding:15px 24px 50px}.commercial-page article>header{grid-template-columns:1fr;gap:0;padding-top:20px;min-height:0}.commercial-page article>header h1{font-size:clamp(35px,8vw,52px)}.commercial-art{grid-column:1;grid-row:auto;min-height:440px;margin-top:35px}.commercial-page article>section{padding:40px 0}.commercial-page #modalidades+div>section{padding:28px}.commercial-page article>section ol{grid-template-columns:1fr}.commercial-page article>header> :not(.commercial-art){max-width:none}.commercial-page article>header a{justify-self:start}.color-orbit{transform:scale(.78);flex-shrink:0}.art-caption{bottom:40px}.commercial-page article>.commercial-faq{grid-template-columns:1fr;gap:25px;padding:45px 0}.commercial-page article>.commercial-close{padding:32px 24px}.service-facts{gap:18px;flex-wrap:wrap}.commercial-page #modalidades+div>section>p.text-2xl{font-size:36px}.commercial-page .commercial-jump{gap:8px}.commercial-page .commercial-jump a{font-size:11px;padding:10px 12px}}
+    @media(prefers-reduced-motion:reduce){.commercial-page *{transition:none!important}}
+</style>

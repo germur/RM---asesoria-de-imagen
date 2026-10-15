@@ -40,4 +40,18 @@ Antes de comprar, responde: ¿con qué tres conjuntos lo usaría?, ¿requiere un
 
 Revisa el sistema cuando cambien tus actividades. Un ascenso, un cambio de ciudad o una nueva modalidad de trabajo pueden modificar tus necesidades más que una temporada de moda.
 
-Si buscas acompañamiento para revisar vestuario y compras, consulta el alcance de la [asesoría integral de imagen](/servicios/asesoria-integral-imagen/). Para una necesidad profesional específica, conoce la [asesoría de imagen ejecutiva](/servicios/imagen-ejecutiva-autoridad/) y confirma las condiciones antes de reservar.
+Si quieres ayuda con una visita a tu armario y una jornada de compras preparada, conoce el [fondo de armario y personal shopper para hombres en Bogotá](/servicios/asesoria-imagen-hombres-bogota/), por $1.600.000 COP. Confirma presupuesto de prendas, agenda y gastos adicionales antes de contratar. Para trabajar también otras áreas durante un acompañamiento más amplio, consulta la [asesoría integral de imagen](/servicios/asesoria-integral-imagen/). Para una necesidad profesional específica, conoce la [asesoría de imagen ejecutiva](/servicios/imagen-ejecutiva-autoridad/) y confirma las condiciones antes de reservar.
+
+
+## Un inventario que ayuda a decidir
+
+Este es un **ejemplo didáctico**, no un inventario ni un resultado de un cliente. Sirve para practicar cómo revisar una prenda antes de comprar otra.
+
+| Lo que encuentras | Qué comprobar | Una decisión posible |
+| --- | --- | --- |
+| Una camisa que te gusta, pero casi no usas | Ajuste al sentarte, transparencia y compatibilidad con tus pantalones | Probarla en dos conjuntos completos antes de decidir si falta algo |
+| Dos pantalones del mismo color | Ajuste, estado y ocasiones para las que sirve cada uno | Conservar ambos si cumplen funciones distintas; no comprar un tercero por costumbre |
+| Un blazer que solo combina con un conjunto | Largo, proporciones y nivel de formalidad con otras prendas | Revisar combinaciones y posibles arreglos antes de añadir compras |
+| Zapatos que evitas usar | Comodidad, mantenimiento y actividades de tu semana | Priorizar una necesidad frecuente en vez de una pieza que no usarás |
+
+Fotografía los conjuntos que funcionen y anota por separado los ajustes y las compras pendientes. La lista debe responder a tu rutina, no a un número obligatorio de prendas. Este ejercicio puede ayudarte a preparar una consulta de [fondo de armario](/servicios/asesoria-imagen-hombres-bogota/).

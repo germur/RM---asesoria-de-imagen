@@ -1,4 +1,5 @@
 ---
+import "../styles/experience.css";
 import BaseHead from "../components/seo/BaseHead.astro";
 import Navbar from "../components/ui/Navbar.astro";
 import Footer from "../components/ui/Footer.astro";
@@ -13,6 +14,7 @@ interface Props {
     schema?: string | object;
     navbarTheme?: "light" | "dark";
     noindex?: boolean;
+    breadcrumbsInFlow?: boolean;
 }
 
 const {
@@ -22,6 +24,7 @@ const {
     schema,
     navbarTheme = "dark",
     noindex = false,
+    breadcrumbsInFlow = false,
 } = Astro.props;
 ---
 
@@ -29,26 +32,19 @@ const {
 <html lang="es" class="scroll-smooth">
     <head>
         <BaseHead title={title} description={description} schema={schema} noindex={noindex} />
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-            rel="stylesheet"
-        />
-        <!-- Google Fonts End -->
     </head>
-    <body
+    <body data-page={Astro.url.pathname} data-section={Astro.url.pathname.split("/")[1] || "inicio"}
         class={cn(
             "min-h-screen bg-brand-white text-brand-black font-sans antialiased flex flex-col",
             className,
         )}
     >
+        <a class="skip-content" href="#contenido">Saltar al contenido</a>
         <Navbar theme={navbarTheme} />
 
-        <Breadcrumbs theme={navbarTheme} />
+        <Breadcrumbs theme={navbarTheme} inFlow={breadcrumbsInFlow} />
 
-        <main class="flex-1 w-full relative">
+        <main id="contenido" class="flex-1 w-full relative">
             <slot />
         </main>
 

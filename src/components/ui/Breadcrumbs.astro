@@ -12,6 +12,11 @@ const routeNames: Record<string, string> = {
     contacto: "Contacto",
     libro: "Libro",
     "test-colorimetria": "Test de Color",
+    "colorimetria-bogota": "Colorimetría personal",
+    "asesoria-imagen-hombres-bogota": "Fondo de armario para hombres",
+    "peluqueria": "Peluquería y visagismo",
+    "asesoria-integral-imagen": "Asesoría de imagen integral",
+    "imagen-ejecutiva-autoridad": "Imagen ejecutiva",
 };
 
 // No mostrar breadcrumbs en home (la raíz no lleva breadcrumb)
@@ -27,7 +32,7 @@ const HUB_ROUTES = new Set([
     "/blog/",
 ]);
 
-const { theme = 'dark' } = Astro.props;
+const { theme = 'dark', inFlow = false } = Astro.props;
 const isDark = theme === 'dark';
 
 const textClass = isDark ? "text-gray-300" : "text-gray-500";
@@ -58,7 +63,7 @@ const breadcrumbSchema = {
 
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
-<nav aria-label="Breadcrumb" class="absolute top-20 left-0 w-full z-40">
+<nav aria-label="Breadcrumb" class:list={[inFlow ? 'breadcrumb-flow' : 'breadcrumb-overlay']}>
     <div class="container mx-auto px-6 py-4">
     <ol
         class={`flex items-center space-x-2 text-xs uppercase tracking-widest font-medium ${textClass}`}
@@ -109,3 +114,14 @@ const breadcrumbSchema = {
     </ol>
     </div>
 </nav>
+<style>
+    .breadcrumb-overlay{position:absolute;top:112px;left:0;width:100%;z-index:20}
+    .breadcrumb-overlay>div{padding-top:10px;padding-bottom:10px}
+    .breadcrumb-overlay ol{font-size:10px;flex-wrap:wrap;row-gap:6px;line-height:1.5}
+    @media(max-width:767px){.breadcrumb-overlay{top:72px}.breadcrumb-overlay ol{font-size:9px;letter-spacing:.05em}}
+    .breadcrumb-flow{position:relative;margin-top:112px;background:#faf7f2;border-bottom:1px solid #e3dacf}
+    .breadcrumb-flow>div{max-width:1280px;padding:22px 48px;margin:auto}
+    .breadcrumb-flow ol{flex-wrap:wrap;row-gap:10px;font-size:10px;letter-spacing:.1em;line-height:1.6}
+    .breadcrumb-flow a{display:inline-flex;align-items:center;min-height:24px}
+    @media(max-width:767px){.breadcrumb-flow{margin-top:72px}.breadcrumb-flow>div{padding:18px 24px}.breadcrumb-flow ol{font-size:9px;letter-spacing:.06em}}
+</style>
