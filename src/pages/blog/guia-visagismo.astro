@@ -1,10 +1,11 @@
 ---
 import VisagismoDecisions from '@/components/VisagismoDecisions.astro';
+import { articleSchema } from "@/utils/articleSchema";
 import MainLayout from "@/layouts/MainLayout.astro";
 const title = "Visagismo: guía para elegir corte, barba y gafas | Bogotá";
 const description = "Cómo usar proporciones, textura y rutina para elegir corte de cabello, barba y gafas. Guía de visagismo y orientación profesional en Bogotá.";
 ---
-<MainLayout title={title} description={description} navbarTheme="light" breadcrumbsInFlow>
+<MainLayout schema={articleSchema({path:Astro.url.pathname,headline:"Cómo elegir corte, barba y gafas con visagismo",description})} title={title} description={description} navbarTheme="light" breadcrumbsInFlow>
     <article class="standalone-reading">
         <header class="mb-12">
             <p class="text-sm uppercase tracking-widest text-muted-foreground">Guía de visagismo</p>
@@ -39,7 +40,7 @@ const description = "Cómo usar proporciones, textura y rutina para elegir corte
                 <h2 class="text-3xl font-serif text-primary mb-4">Corte y barba: decidir el volumen en conjunto</h2>
                 <p>La barba modifica el contorno visible, pero su densidad y dirección de crecimiento limitan los diseños posibles. Si buscas alargar visualmente, puedes explorar más longitud en el mentón; si ya percibes mucho largo, quizá prefieras contenerla allí. Son opciones de estilo, no reglas obligatorias.</p>
                 <p class="mt-4">Valora corte y barba juntos: añadir altura arriba y longitud abajo puede producir un efecto distinto al que buscas. Pregunta cómo mantener el diseño en casa y cada cuánto sería conveniente ajustarlo según tu crecimiento.</p>
-                <a href="/academia/visagismo/tipos-rostro-hombre/" class="inline-block mt-4 text-accent hover:underline">Ampliar la guía de rostro, corte y barba →</a>
+                <a href="/academia/visagismo/tipos-rostro-hombre/" class="inline-block mt-4 text-accent hover:underline">Ampliar la guía de rostro, corte y barba →</a><p class="mt-4">Si llevas barba, explora también la <a href="/visagismo/barba-y-corte/" class="text-accent hover:underline">guía para combinar barba y corte según tus proporciones</a>.</p>
             </section>
             <section id="gafas">
                 <h2 class="text-3xl font-serif text-primary mb-4">Gafas: proporción y comodidad además de forma</h2>

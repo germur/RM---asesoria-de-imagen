@@ -36,3 +36,5 @@ Si un tono favorito queda fuera de la paleta que estás explorando, puedes conse
 Fotografía combinaciones completas de prendas que ya tienes y anota qué falta de verdad. Prioriza una pieza que complete varios conjuntos antes que otra aislada. Para cabello o maquillaje, revisa el producto aplicado y el mantenimiento; una muestra digital no anticipa con precisión el resultado.
 
 Si quieres trabajar color, vestuario y contexto profesional en conjunto, conoce la [asesoría integral de imagen](/servicios/asesoria-integral-imagen/) o [consulta qué opción se adapta a tu necesidad](/contacto/?interes=colorimetria#form).
+
+Para preparar una reunión, revisa también [cómo elegir colores para una negociación según el contexto](/academia/colorimetria/colores-para-negociar/). La paleta se integra con el ajuste de las prendas, la ocasión y tu comodidad.

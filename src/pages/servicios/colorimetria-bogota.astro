@@ -5,9 +5,9 @@ import ColorServices from '@/components/ColorServices.astro';
 import CommercialDetails from '@/components/CommercialDetails.astro';
 import CommercialDesign from '@/components/CommercialDesign.astro';
 import ColorInquiry from '@/components/ColorInquiry.astro';
-const schema = { '@context': 'https://schema.org', '@type': 'Service', name: 'Estudio de colorimetría personal', serviceType: 'Colorimetría digital y presencial', provider: { '@id': 'https://rogermurillo.co/#organization' }, areaServed: { '@type': 'City', name: 'Bogotá' }, url: 'https://rogermurillo.co/servicios/colorimetria-bogota/' };
+const schema = { '@context': 'https://schema.org', '@type': 'Service', name: 'Estudio de colorimetría personal', offers: [{ '@type': 'Offer', name: 'Informe digital de colorimetría', price: '150000', priceCurrency: 'COP', url: 'https://rogermurillo.co/servicios/colorimetria-bogota/#modalidades' }, { '@type': 'Offer', name: 'Sesión presencial con informe digital incluido', price: '1000000', priceCurrency: 'COP', url: 'https://rogermurillo.co/servicios/colorimetria-bogota/#modalidades' }], serviceType: 'Colorimetría digital y presencial', provider: { '@id': 'https://rogermurillo.co/#organization' }, areaServed: { '@type': 'City', name: 'Bogotá' }, url: 'https://rogermurillo.co/servicios/colorimetria-bogota/' };
 ---
-<MainLayout title="Colorimetría en Bogotá: estudio presencial e informe digital | Roger Murillo" description="Informe digital de colorimetría por $150.000 COP o sesión presencial en Bogotá por $1.000.000 COP, de 2,5 a 3 horas e informe incluido. Conoce las diferencias." schema={schema} navbarTheme="light" breadcrumbsInFlow>
+<MainLayout title="Colorimetría en Bogotá: digital y presencial | Roger Murillo" description="Informe digital de colorimetría por $150.000 COP o sesión presencial en Bogotá por $1.000.000 COP, de 2,5 a 3 horas e informe incluido. Conoce las diferencias." schema={schema} navbarTheme="light" breadcrumbsInFlow>
     <div class="commercial-page">
     <article class="pt-36 pb-24 px-6 max-w-5xl mx-auto text-neutral-700 leading-relaxed">
         <header class="max-w-3xl mb-14">

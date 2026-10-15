@@ -245,7 +245,7 @@ const STEPS = [
       </aside>
 
       <!-- ─── MAIN: panels ─── -->
-      <main class="wiz-main">
+      <div class="wiz-main">
 
         <!-- Mobile step strip (visible <900px) -->
         <nav class="wiz-mobile-strip" id="mobileStrip" aria-label="Pasos del reto">
@@ -350,7 +350,7 @@ const STEPS = [
               <summary>
                 <div>
                   <p class="step-tl" style="font-size:9px">{r.key.toUpperCase()}</p>
-                  <h4 style="font-family:serif;font-size:1.3rem;margin-top:2px">{r.label}</h4>
+                  <h3 style="font-family:serif;font-size:1.3rem;margin-top:2px">{r.label}</h3>
                 </div>
                 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
@@ -482,7 +482,7 @@ const STEPS = [
                 <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px">
                   <span style="font-family:serif;font-style:italic;font-size:1.8rem;color:var(--rm-red)">{sc.n}</span>
                   <div>
-                    <h4 style="font-family:serif;font-size:1.2rem">{sc.t}</h4>
+                    <h3 style="font-family:serif;font-size:1.2rem">{sc.t}</h3>
                     <p class="step-tl" style="font-size:9px">{sc.s}</p>
                   </div>
                 </div>
@@ -507,7 +507,7 @@ const STEPS = [
                   <span style="font-family:serif;font-style:italic;font-size:1.4rem;color:var(--rm-red)">{lv.n}</span>
                   <div>
                     <p class="step-tl" style="font-size:9px">Nivel {lv.n}</p>
-                    <h4 style="font-family:serif;font-size:1.2rem">{lv.t}</h4>
+                    <h3 style="font-family:serif;font-size:1.2rem">{lv.t}</h3>
                     <p class="step-tl" style="font-size:9px;font-style:italic;color:rgba(255,255,255,.5);text-transform:none;letter-spacing:.08em;margin-top:2px">{lv.s}</p>
                   </div>
                 </div>
@@ -560,7 +560,7 @@ const STEPS = [
 
         <!-- Spacer for fixed nav -->
         <div style="height:80px" class="no-print"></div>
-      </main>
+      </div>
 
       <!-- ─── FIXED NAV ─── -->
       <div class="wiz-nav no-print">

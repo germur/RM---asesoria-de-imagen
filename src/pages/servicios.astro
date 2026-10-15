@@ -11,7 +11,7 @@ const faqs=[
 ];
 const schema={'@context':'https://schema.org','@type':'CollectionPage',name:'Servicios de asesoría de imagen y peluquería en Bogotá',url:'https://rogermurillo.co/servicios/'};
 ---
-<MainLayout title="Asesoría de Imagen en Bogotá · Colorimetría, Armario y Peluquería | Roger Murillo" description="Compara colorimetría digital y presencial, fondo de armario y personal shopper, peluquería, imagen ejecutiva y asesoría integral en Bogotá." schema={schema} navbarTheme="light" breadcrumbsInFlow>
+<MainLayout title="Servicios de imagen y peluquería en Bogotá | Roger Murillo" description="Compara colorimetría digital y presencial, fondo de armario y personal shopper, peluquería, imagen ejecutiva y asesoría integral en Bogotá." schema={schema} navbarTheme="light" breadcrumbsInFlow>
  <ServicesEntry />
  <div id="elegir-servicio" style="scroll-margin-top:125px"><ServiceRoutes /></div>
  <section class="service-decisions"><div><span>Antes de contratar</span><h2>El alcance importa.<br/><em>Tanto como el precio.</em></h2><p>Una sesión de color no incluye lo mismo que una revisión de armario o un acompañamiento de un año. Mira el proceso, los entregables y las condiciones de cada opción.</p><a href="/blog/cuanto-cuesta-asesoria-imagen-bogota/">Leer la guía de alcance y precios <span aria-hidden="true">↗</span></a></div><div class="service-faqs">{faqs.map(faq=><details><summary>{faq.q}<span aria-hidden="true">+</span></summary><p>{faq.a}</p></details>)}</div></section>
