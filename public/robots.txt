@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
 
-# Bloquear artefactos de build y rutas sin valor SEO
-Disallow: /_astro/
+# Los estilos y componentes de /_astro/ deben ser rastreables para renderizar el sitio.
 Disallow: /404
 
 Sitemap: https://rogermurillo.co/sitemap-index.xml

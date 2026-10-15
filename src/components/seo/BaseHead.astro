@@ -105,8 +105,8 @@ const globalSchema = {
 
   // ─── Eventos clave (conversiones) ───
   // Delegacion global: cubre todos los CTAs del sitio sin tocarlos uno a uno.
-  // Marcar en GA4 como "eventos clave": contacto_whatsapp, contacto_telefono,
-  // click_agendar, form_contacto_enviado, click_comprar_curso.
+  // El envío aceptado es el contacto; los clics son señales previas.
+  // Configuración manual de GA4: docs/medicion-y-verificacion.md.
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a');
     if (!a) return;

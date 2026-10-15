@@ -1,6 +1,5 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { Button } from "@/components/ui/button";
 
 const seoData = {
     title: "Curso de Colorimetría Profesional para Asesores | Roger Murillo",
@@ -10,8 +9,8 @@ const seoData = {
 };
 ---
 
-<MainLayout title={seoData.title} description={seoData.description}>
-    <section class="py-24 px-6 max-w-4xl mx-auto text-center">
+<MainLayout title={seoData.title} description={seoData.description} navbarTheme="light">
+    <section class="pt-40 pb-24 px-6 max-w-4xl mx-auto text-center">
         <span
             class="bg-accent/10 text-accent px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
         >
@@ -26,8 +25,13 @@ const seoData = {
             Deja de adivinar. Aprende a diagnosticar con precisión matemática
             usando el sistema de 12 estaciones.
         </p>
-        <Button size="lg" className="bg-primary text-white">
-            Unirme a la Lista de Espera
-        </Button>
+        <p class="text-base text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Déjanos tus datos para consultar disponibilidad y recibir información del curso.
+        </p>
+        <a href="/contacto/?interes=curso-colorimetria-profesional#form"
+            data-cta-location="curso-colorimetria-profesional"
+            class="inline-flex items-center justify-center min-h-16 max-w-full px-8 py-4 bg-brand-black text-white hover:bg-brand-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-primary">
+            Solicitar información del curso
+        </a>
     </section>
 </MainLayout>
