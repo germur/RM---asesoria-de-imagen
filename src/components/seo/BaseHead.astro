@@ -13,7 +13,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder-1.jpg", schema, noindex = false } = Astro.props;
+const { title, description, image = "/images/roger-adriana-duo.webp", schema, noindex = false } = Astro.props;
 
 // ─── Entidad global: Organization + WebSite ───
 // Es la "entidad ancla" que Google y los LLMs usan para identificar la marca.
@@ -96,17 +96,29 @@ const globalSchema = {
 {noindex && <meta name="robots" content="noindex, follow" />}
 
 <!-- Google tag (gtag.js) · GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FCTXLT7Y2"></script>
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8FCTXLT7Y2');
+  // Las vistas previas locales conservan los eventos para probarlos, sin enviarlos a GA4.
+  if (['rogermurillo.co', 'www.rogermurillo.co'].includes(location.hostname)) {
+    var analyticsScript = document.createElement('script');
+    analyticsScript.async = true;
+    analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-8FCTXLT7Y2';
+    document.head.appendChild(analyticsScript);
+    gtag('js', new Date());
+    gtag('config', 'G-8FCTXLT7Y2');
+  }
+  try {
+    if (!sessionStorage.getItem('rm_entry_context')) {
+      var referrerHost = document.referrer ? new URL(document.referrer).hostname : '';
+      sessionStorage.setItem('rm_entry_context', JSON.stringify({ entry: location.pathname, referrer: referrerHost }));
+    }
+  } catch (error) { /* La navegación y los formularios no dependen del almacenamiento. */ }
 
   // ─── Eventos clave (conversiones) ───
   // Delegacion global: cubre todos los CTAs del sitio sin tocarlos uno a uno.
-  // Marcar en GA4 como "eventos clave": contacto_whatsapp, contacto_telefono,
-  // click_agendar, form_contacto_enviado, click_comprar_curso.
+  // El envío aceptado es el contacto; los clics son señales previas.
+  // Configuración manual de GA4: docs/medicion-y-verificacion.md.
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a');
     if (!a) return;
@@ -120,7 +132,9 @@ const globalSchema = {
     } else if (href.indexOf('mailto:') === 0) {
       gtag('event', 'contacto_email', { pagina: ubicacion });
     } else if (/^\/contacto\/?($|[#?])/.test(href)) {
-      gtag('event', 'click_agendar', { pagina: ubicacion });
+      var interest = new URL(href, location.origin).searchParams.get('interes');
+      var allowedInterests = ['peluqueria', 'integral', 'ejecutiva', 'colorimetria', 'visagismo', 'automaquillaje', 'curso-colorimetria-profesional'];
+      gtag('event', 'click_agendar', { pagina: ubicacion, interes: allowedInterests.includes(interest) ? interest : 'general' });
     } else if (href.indexOf('pay.hotmart.com') !== -1 || href.indexOf('hotmart.com') !== -1) {
       gtag('event', 'click_comprar_curso', { pagina: ubicacion, destino: href });
     }

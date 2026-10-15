@@ -1,0 +1,26 @@
+---
+const cases = [
+    { name: 'Nubia González', image: '/images/casos/nubia-despues-3.webp', href: '/casos-de-exito/#caso-nubia', summary: 'Su proceso de asesoría integral y su experiencia al volver a sentirse cómoda con su imagen.' },
+    { name: 'Karen Vergara', image: '/images/casos/karen-3.webp', href: '/casos-de-exito/#caso-karen', summary: 'La búsqueda de una imagen que reflejara su identidad y su momento personal.' },
+];
+---
+<section class="py-20 bg-white" aria-label="Historias reales de asesoría integral">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="font-serif text-3xl md:text-5xl mb-6 text-brand-black">Conoce el proceso en historias reales.</h2>
+        <p class="text-neutral-600 max-w-3xl mb-10">Estas fotografías pertenecen a casos de asesoría integral ya publicados por el estudio. Cada historia explica el contexto del proceso completo; no representa el resultado de una cita aislada de peluquería.</p>
+        <div class="grid sm:grid-cols-2 gap-8">
+            {cases.map(item => (
+                <article class="border border-neutral-200">
+                    <a href={item.href} data-cta-location="casos-servicio" class="block">
+                        <img src={item.image} alt={`${item.name}, caso publicado de asesoría de imagen integral`} width="640" height="800" loading="lazy" decoding="async" class="w-full aspect-[4/5] object-cover object-top" />
+                        <div class="p-6">
+                            <h3 class="font-serif text-2xl text-brand-black mb-3">{item.name}</h3>
+                            <p class="text-neutral-600 text-sm leading-relaxed mb-4">{item.summary}</p>
+                            <span class="text-brand-primary underline underline-offset-4">Leer su historia y ver el proceso</span>
+                        </div>
+                    </a>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>

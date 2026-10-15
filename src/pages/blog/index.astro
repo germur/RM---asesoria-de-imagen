@@ -11,8 +11,8 @@ const seoDesc =
     "Artículos sobre visagismo, colorimetría y estrategia de imagen para líderes.";
 ---
 
-<MainLayout title={seoTitle} description={seoDesc}>
-    <section class="py-20 px-6">
+<MainLayout title={seoTitle} description={seoDesc} navbarTheme="light">
+    <section class="pt-40 pb-20 px-6">
         <div class="max-w-4xl mx-auto text-center mb-16">
             <h1
                 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4"
@@ -25,7 +25,7 @@ const seoDesc =
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {
                 posts.map((post) => (
-                    <a href={`/blog/${post.slug}/`} class="group">
+                    <a href={`/blog/${post.id}/`} class="group">
                         <article class="bg-white border border-stone-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
                             <div class="aspect-video overflow-hidden bg-stone-100 relative">
                                 {post.data.heroImage ? (
@@ -64,4 +64,5 @@ const seoDesc =
             }
         </div>
     </section>
+    <section class="px-6 pb-20 max-w-4xl mx-auto"><h2 class="font-serif text-3xl mb-5">Antes de contratar</h2><a class="underline text-brand-primary" href="/blog/cuanto-cuesta-asesoria-imagen-bogota/">Cuánto cuesta una asesoría de imagen y cómo comparar el alcance</a></section>
 </MainLayout>

@@ -1,11 +1,13 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import ServiceRoutes from "@/components/ServiceRoutes.astro";
+import RealCases from "@/components/RealCases.astro";
 import { ArrowRight } from "lucide-react";
 
 const seoData = {
     title: "Asesoría de Imagen y Cabello en Bogotá · Peluquería con Visagismo | Roger Murillo",
     description:
-        "La única peluquería en Bogotá donde el corte y el color se diseñan con asesoría de imagen: visagismo, colorimetría y diagnóstico capilar. Hombres y mujeres. Agenda tu cita.",
+        "Peluquería con asesoría de imagen en Bogotá: corte, color y visagismo para hombres y mujeres. Atención con cita previa en Colina Campestre.",
     image: "/og-image.jpg",
 };
 
@@ -53,9 +55,12 @@ const diferenciales = [
     { n: "02", title: "Doble perspectiva", desc: "La visión masculina y femenina trabajando juntas." },
     { n: "03", title: "Productos premium", desc: "L'Oréal, Kérastase, Olaplex. Solo lo mejor." },
 ];
+const hairFaqs = [{"q": "¿La asesoría de cabello es para hombres y mujeres?", "a": "Sí. El corte y el color se revisan según tu rostro, la textura del cabello, tus preferencias y tu rutina. Puedes consultar por una necesidad capilar sin solicitar el programa integral de imagen."}, {"q": "¿Qué diferencia hay entre un corte y una asesoría de imagen integral?", "a": "La peluquería se centra en el cabello, el corte, el color y el peinado. El programa integral incluye además vestuario, armario, análisis de color, rutas de compra y acompañamiento por fases."}, {"q": "¿Cómo consulto el precio y la disponibilidad?", "a": "Indica qué servicio necesitas al enviar tu solicitud. El equipo confirma el alcance, el valor y la disponibilidad antes de reservar. Los cuatro cupos mensuales anunciados corresponden al programa integral."}, {"q": "¿Dónde se realiza la cita?", "a": "En el estudio de Calle 163 B No. 48-80, Local 208, Edificio Britalia Comercial y Empresarial, Bogotá. La atención es con cita previa."}, {"q": "¿Puedo usar la calculadora de rostro antes de consultar?", "a": "Sí. Es una orientación inicial para conversar sobre tus preferencias. No sustituye la revisión de proporciones, textura y caída del cabello durante la cita."}];
+const hairSchema = {"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Peluquería con asesoría de imagen y visagismo en Bogotá","serviceType":"Peluquería y visagismo","provider":{"@id":"https://rogermurillo.co/#organization"},"areaServed":{"@type":"City","name":"Bogotá"},"url":"https://rogermurillo.co/servicios/peluqueria/"},{"@type":"FAQPage","mainEntity":hairFaqs.map(f=>({"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}}))}]};
+
 ---
 
-<MainLayout title={seoData.title} description={seoData.description}>
+<MainLayout title={seoData.title} description={seoData.description} schema={hairSchema} navbarTheme="light">
     <div id="rm-progress" class="fixed top-0 left-0 right-0 h-[2px] bg-brand-primary z-[80] origin-left" style="transform:scaleX(0)"></div>
 
     <!-- HERO -->
@@ -76,9 +81,9 @@ const diferenciales = [
             </div>
 
             <h1 class="font-serif leading-[0.92] text-brand-black max-w-4xl">
-                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem]">La tijera</span>
-                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem] italic text-brand-primary">como instrumento</span>
-                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem] text-neutral-400">de precisión.</span>
+                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem]">Peluquería y visagismo</span>
+                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem] italic text-brand-primary">para tu imagen</span>
+                <span class="hero-line block text-5xl md:text-7xl lg:text-[5.6rem] text-neutral-400">en Bogotá.</span>
             </h1>
 
             <div class="mt-14 grid lg:grid-cols-12 gap-10 items-end max-w-5xl">
@@ -88,7 +93,7 @@ const diferenciales = [
                     cada milímetro</strong> según la geometría de tu rostro.
                 </p>
                 <div class="lg:col-span-5">
-                    <a href="/contacto/" class="cta-btn inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-brand-black">
+                    <a href="/contacto/?interes=peluqueria#form" class="cta-btn inline-flex items-center gap-3 bg-brand-primary text-white px-10 py-4 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-brand-black">
                         Reservar Cita
                         <ArrowRight className="w-3.5 h-3.5" />
                     </a>
@@ -123,70 +128,7 @@ const diferenciales = [
         </div>
     </section>
 
-    <!-- GALLERY / PORTAFOLIO -->
-    <section class="py-28 md:py-40 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex items-end justify-between mb-16 gap-10 flex-wrap">
-                <div class="max-w-xl reveal">
-                    <p class="text-[10px] tracking-[0.4em] uppercase text-brand-primary mb-6">Portafolio</p>
-                    <h2 class="font-serif text-4xl md:text-6xl leading-[1] text-brand-black">
-                        El trabajo<br/><span class="italic text-neutral-400">habla por sí solo.</span>
-                    </h2>
-                </div>
-                <p class="text-sm text-neutral-500 font-light max-w-xs reveal" style="--delay:.1s">
-                    Cada pieza del portafolio es un diagnóstico hecho corte.
-                    Mismo cliente, misma cabeza, geometría distinta.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-12 gap-4 md:gap-6">
-                <figure class="col-span-12 md:col-span-7 ph bg-neutral-100 aspect-[4/5] md:aspect-[5/6] relative reveal">
-                    <div class="absolute inset-0 flex items-center justify-center text-neutral-400">
-                        <div class="text-center">
-                            <svg class="mx-auto mb-3 opacity-40" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                                <rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/>
-                            </svg>
-                            <p class="text-[10px] tracking-[0.3em] uppercase">Corte con tijera · Editorial 01</p>
-                        </div>
-                    </div>
-                    <figcaption class="absolute left-6 bottom-6 text-[10px] tracking-[0.3em] uppercase text-brand-black/60">01 / Tijera</figcaption>
-                </figure>
-
-                <div class="col-span-12 md:col-span-5 grid grid-cols-1 gap-4 md:gap-6">
-                    <figure class="ph bg-neutral-100 aspect-[4/3] relative reveal" style="--delay:.1s">
-                        <div class="absolute inset-0 flex items-center justify-center text-neutral-400">
-                            <p class="text-[10px] tracking-[0.3em] uppercase">Color · 02</p>
-                        </div>
-                    </figure>
-                    <figure class="ph bg-neutral-100 aspect-[4/3] relative reveal" style="--delay:.15s">
-                        <div class="absolute inset-0 flex items-center justify-center text-neutral-400">
-                            <p class="text-[10px] tracking-[0.3em] uppercase">Recuperación · 03</p>
-                        </div>
-                    </figure>
-                </div>
-
-                <figure class="col-span-6 md:col-span-4 ph bg-neutral-100 aspect-square relative reveal" style="--delay:.1s">
-                    <div class="absolute inset-0 flex items-center justify-center text-neutral-400">
-                        <p class="text-[10px] tracking-[0.3em] uppercase">Detalle · 04</p>
-                    </div>
-                </figure>
-                <figure class="col-span-6 md:col-span-4 ph bg-neutral-100 aspect-square relative reveal" style="--delay:.15s">
-                    <div class="absolute inset-0 flex items-center justify-center text-neutral-400">
-                        <p class="text-[10px] tracking-[0.3em] uppercase">Proceso · 05</p>
-                    </div>
-                </figure>
-                <figure class="col-span-12 md:col-span-4 ph bg-neutral-100 aspect-square relative reveal" style="--delay:.2s">
-                    <div class="absolute inset-0 flex items-center justify-center text-neutral-400">
-                        <p class="text-[10px] tracking-[0.3em] uppercase">Retrato · 06</p>
-                    </div>
-                </figure>
-            </div>
-
-            <p class="mt-10 text-[10px] tracking-[0.3em] uppercase text-neutral-400 text-center">
-                — Espacio reservado para fotografías del estudio —
-            </p>
-        </div>
-    </section>
+    <RealCases />
 
     <!-- DIFFERENTIATOR -->
     <section class="py-28 md:py-40 bg-white">
@@ -234,12 +176,18 @@ const diferenciales = [
             <p class="text-base md:text-lg text-neutral-400 font-light leading-relaxed max-w-xl mx-auto mb-12">
                 Trabajamos exclusivamente con cita previa. Agenda tu espacio y vive la experiencia "A Puerta Cerrada".
             </p>
-            <a href="/contacto/" class="cta-btn inline-flex items-center gap-3 bg-brand-primary text-white px-12 py-5 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-white hover:text-brand-black">
+            <a href="/contacto/?interes=peluqueria#form" class="cta-btn inline-flex items-center gap-3 bg-brand-primary text-white px-12 py-5 text-[11px] font-medium uppercase tracking-[0.25em] hover:bg-white hover:text-brand-black">
                 Agendar Cita
                 <ArrowRight className="w-3.5 h-3.5" />
             </a>
         </div>
     </section>
+    <section class="py-20 bg-neutral-50"><div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="font-serif text-3xl md:text-4xl mb-8">Antes de tu cita de peluquería</h2>
+        {hairFaqs.map(f => <details class="border-b border-neutral-300 py-6"><summary class="cursor-pointer font-medium text-lg">{f.q}</summary><p class="text-neutral-600 leading-relaxed mt-4">{f.a}</p></details>)}
+        <p class="mt-8 text-neutral-600">Prepara tus preguntas con la <a href="/blog/guia-visagismo/" class="underline text-brand-primary">guía de visagismo</a> y la <a href="/herramientas/calculadora-rostro/" class="underline text-brand-primary">calculadora de rostro</a>.</p>
+    </div></section>
+    <ServiceRoutes current="peluqueria" />
 </MainLayout>
 
 <style is:global>

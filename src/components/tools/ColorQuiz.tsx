@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { determineSeason } from '../../utils/calculateSeason';
+import { trackEvent } from '../../utils/analytics';
 
 // Definimos los tipos para las respuestas
 type QuizState = {
@@ -12,20 +13,20 @@ type QuizState = {
         contrast: 'high' | 'medium' | 'low' | null;
         hairColor: 'dark' | 'light' | null;
     };
-    email: string;
 };
 
 export default function ColorQuiz() {
     const [state, setState] = useState<QuizState>({
         step: 0,
         answers: { undertone: null, contrast: null, hairColor: null },
-        email: '',
     });
 
     const [isAnalyzing, setIsAnalyzing] = useState(false);
+    const finishing = useRef(false);
 
     // Manejador de selección de opciones
     const handleSelect = (key: keyof typeof state.answers, value: any) => {
+        trackEvent('test_colorimetria_paso', { paso: state.step });
         setState(prev => ({
             ...prev,
             answers: { ...prev.answers, [key]: value },
@@ -35,10 +36,9 @@ export default function ColorQuiz() {
 
     // Manejador final (Cálculo y Redirección)
     const handleFinish = async () => {
+        if (finishing.current || !state.answers.undertone || !state.answers.contrast || !state.answers.hairColor) return;
+        finishing.current = true;
         setIsAnalyzing(true);
-
-        // 1. Simulamos "Análisis con IA" para dar valor percibido (UX)
-        await new Promise(resolve => setTimeout(resolve, 2000));
 
         // 2. Calculamos la estación usando tu "Cerebro" del Sprint 2
         // Aseguramos que los valores no sean null (en producción validar mejor)
@@ -47,9 +47,11 @@ export default function ColorQuiz() {
             contrast: state.answers.contrast!,
             hairColor: state.answers.hairColor!
         });
+        trackEvent('test_colorimetria_completado', { resultado: resultSlug });
+        await new Promise(resolve => setTimeout(resolve, 150));
 
         // 3. Redirección a la URL Programática (Silo 2)
-        window.location.href = `/resultados/${resultSlug}`;
+        window.location.href = `/resultados/${resultSlug}/`;
     };
 
     // Variantes de animación para Framer Motion
@@ -82,7 +84,10 @@ export default function ColorQuiz() {
                             </div>
                             <h2 className="text-3xl font-serif font-bold mb-4 text-brand-black">Descubre tu Estación Cromática</h2>
                             <p className="text-neutral-600 mb-8 text-lg">En menos de 2 minutos analizaremos tu piel, ojos y contraste para revelarte la paleta de colores que te hace brillar.</p>
-                            <Button size="lg" onClick={() => setState(s => ({ ...s, step: 1 }))} className="px-8 text-lg">
+                            <Button size="lg" onClick={() => {
+                                trackEvent('test_colorimetria_inicio');
+                                setState(s => ({ ...s, step: 1 }));
+                            }} className="px-8 text-lg">
                                 Iniciar Análisis
                             </Button>
                         </motion.div>
@@ -158,29 +163,22 @@ export default function ColorQuiz() {
                         </motion.div>
                     )}
 
-                    {/* STEP 4: EMAIL GATE + LOADING */}
+                    {/* STEP 4: RESULTADO. El test no almacena ni envía correos. */}
                     {state.step === 4 && (
                         <motion.div key="step4" variants={slideIn} initial="hidden" animate="visible" exit="exit" className="text-center">
                             {!isAnalyzing ? (
                                 <>
                                     <h3 className="text-2xl font-serif mb-4">¡Tu resultado está listo!</h3>
-                                    <p className="text-neutral-600 mb-8">Ingresa tu correo para ver tu paleta personalizada y recibir la guía de estilo.</p>
-                                    <input
-                                        type="email"
-                                        placeholder="tu@email.com"
-                                        className="w-full p-4 border border-neutral-300 rounded-lg mb-4 focus:ring-2 focus:ring-brand-black outline-none"
-                                        value={state.email}
-                                        onChange={(e) => setState(s => ({ ...s, email: e.target.value }))}
-                                    />
-                                    <Button size="lg" className="w-full" onClick={handleFinish} disabled={!state.email.includes('@')}>
+                                    <p className="text-neutral-600 mb-8">Consulta tu estación orientativa y explora tu paleta de colores.</p>
+                                    <Button size="lg" className="w-full" onClick={handleFinish}>
                                         Revelar Mi Estación <ArrowRight className="ml-2 h-4 w-4" />
                                     </Button>
-                                    <p className="text-xs text-neutral-400 mt-4">Respetamos tu privacidad. Cero spam.</p>
+                                    <p className="text-xs text-neutral-400 mt-4">No necesitas dejar tu correo para consultar el resultado.</p>
                                 </>
                             ) : (
                                 <div className="flex flex-col items-center py-10">
                                     <div className="w-12 h-12 border-4 border-neutral-200 border-t-brand-black rounded-full animate-spin mb-6"></div>
-                                    <h3 className="text-xl font-serif animate-pulse">Analizando morfología y color...</h3>
+                                    <h3 className="text-xl font-serif animate-pulse">Preparando tu paleta...</h3>
                                 </div>
                             )}
                         </motion.div>

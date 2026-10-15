@@ -1,107 +1,63 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-
-// 🔴 DATOS DE LA MATRIZ MAESTRA
-const seoData = {
-    title: "Visagismo y Diseño de Rostro en Bogotá | Cortes, Barba y Accesorios",
-    description:
-        "Expertos en Visagismo. Analizamos la geometría de tu rostro para definir el corte de cabello, barba o accesorios perfectos. Armoniza tus facciones con ciencia.",
-    h1: "Visagismo: La Ciencia de la Arquitectura del Rostro",
-};
+const title = "Visagismo: guía para elegir corte, barba y gafas | Bogotá";
+const description = "Cómo usar proporciones, textura y rutina para elegir corte de cabello, barba y gafas. Guía de visagismo y orientación profesional en Bogotá.";
 ---
-
-<MainLayout title={seoData.title} description={seoData.description}>
-    <article class="max-w-4xl mx-auto py-20 px-6">
-        <header class="text-center mb-16">
-            <span
-                class="text-xs font-bold text-muted-foreground uppercase tracking-widest"
-            >
-                Pilar de Conocimiento
-            </span>
-            <h1 class="text-5xl md:text-6xl font-serif text-primary mt-4 mb-8">
-                {seoData.h1}
-            </h1>
-            <p class="text-xl text-muted-foreground leading-relaxed">
-                No existen rostros feos, solo geometrías incomprendidas. El
-                visagismo es el estudio de las líneas, volúmenes y formas de tu
-                cara para potenciar tu belleza natural.
-            </p>
+<MainLayout title={title} description={description} navbarTheme="light">
+    <article class="max-w-4xl mx-auto pt-40 pb-20 px-6">
+        <header class="mb-12">
+            <p class="text-sm uppercase tracking-widest text-muted-foreground">Guía de visagismo</p>
+            <h1 class="text-4xl md:text-5xl font-serif text-primary mt-4 mb-6">Cómo elegir corte, barba y gafas con visagismo</h1>
+            <p class="text-xl text-muted-foreground leading-relaxed">El visagismo relaciona las proporciones del rostro con las líneas y volúmenes del cabello, la barba y los accesorios. Sirve para explorar opciones según tus preferencias; no existe una forma de rostro que todos debamos alcanzar.</p>
         </header>
-
-        <hr class="border-accent/30 my-12" />
-
-        <div class="space-y-16">
+        <div class="space-y-12 leading-relaxed">
+            <section>
+                <h2 class="text-3xl font-serif text-primary mb-4">Qué observar antes de elegir un corte</h2>
+                <p>La forma general es solo una parte. También importan el nacimiento del cabello, su densidad y textura, el largo que deseas conservar, los remolinos y el tiempo que tienes para peinarte. Dos personas con proporciones parecidas pueden necesitar cortes diferentes.</p>
+                <p class="mt-4">Antes de la consulta, reúne dos o tres referencias y explica qué te gusta de cada una: el volumen, el movimiento, el flequillo o el mantenimiento. Una imagen ayuda a conversar; no garantiza que el cabello se comporte igual.</p>
+            </section>
             <section id="tipos-rostro">
-                <h2 class="text-3xl font-serif text-primary mb-6">
-                    Tipos de rostro y sus correcciones
-                </h2>
-                <p class="mb-4">
-                    Identificar si tu rostro es <strong
-                        >Diamante, Cuadrado, Ovalado o Redondo</strong
-                    > es el primer paso. Cada forma tiene una "arquitectura ideal"
-                    que buscamos alcanzar mediante ilusiones ópticas.
-                </p>
-                <a
-                    href="/herramientas/calculadora-rostro/"
-                    class="text-accent font-medium hover:underline"
-                >
-                    → Descubre tu tipo de rostro con nuestra herramienta
-                </a>
+                <h2 class="text-3xl font-serif text-primary mb-4">Las formas de rostro como punto de partida</h2>
+                <ul class="list-disc pl-6 space-y-3">
+                    <li><strong>Redondo:</strong> largo y ancho relativamente próximos, con líneas suaves. Si quieres un efecto de mayor longitud, puedes explorar volumen superior o líneas verticales.</li>
+                    <li><strong>Alargado:</strong> el largo predomina sobre el ancho. Si buscas reducir esa sensación, prueba volumen lateral o un flequillo compatible con tu textura.</li>
+                    <li><strong>Cuadrado:</strong> frente y mandíbula de anchos próximos, con ángulos marcados. Puedes resaltarlos con líneas definidas o suavizar el marco con movimiento.</li>
+                    <li><strong>Diamante:</strong> los pómulos destacan frente a la frente y la mandíbula. La ubicación del volumen permite cambiar el equilibrio visual sin ocultar los rasgos.</li>
+                    <li><strong>Ovalado:</strong> largo algo mayor que ancho y contornos progresivos. Sigue siendo necesario valorar cabello, rutina y preferencias; no implica que cualquier corte funcione igual.</li>
+                </ul>
+                <p class="mt-4">Es habitual encontrar rasgos de más de una categoría. No necesitas encajar exactamente en una para elegir bien.</p>
+                <a href="/herramientas/calculadora-rostro/" class="inline-block mt-4 text-accent hover:underline">Explorar proporciones con la calculadora de rostro →</a>
             </section>
-
+            <section>
+                <h2 class="text-3xl font-serif text-primary mb-4">Por qué una foto no confirma tu tipo de rostro</h2>
+                <p>La cercanía de la cámara, el ángulo, la inclinación de la cabeza y el cabello sobre la frente pueden cambiar las proporciones aparentes. Si vas a medir, mantén la cabeza recta y recoge el cabello sin tensarlo. Repite la medición si pequeñas diferencias cambian el resultado.</p>
+                <p class="mt-4">La calculadora entrega una aproximación basada en las medidas que introduces. No evalúa textura, caída del cabello ni preferencias. Úsala para preparar preguntas, no para descartar estilos de forma automática.</p>
+            </section>
             <section id="barba-corte">
-                <h2 class="text-3xl font-serif text-primary mb-6">
-                    Diseño de barba y corte
-                </h2>
-                <p class="mb-4">
-                    Para los hombres, la barba es maquillaje natural. Una barba
-                    bien diseñada puede crear una mandíbula donde no la hay o
-                    suavizar un mentón demasiado agresivo.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                    {
-                        /* These links serve as future placeholders or can link to the generated pages once fully integrated */
-                    }
-                    <a
-                        href="/academia/visagismo/tipos-rostro-hombre/"
-                        class="block p-4 border border-border rounded-lg hover:border-accent transition-colors"
-                    >
-                        <span class="font-serif block mb-2">Cara Cuadrada</span>
-                        <span class="text-sm text-muted-foreground"
-                            >Cómo suavizar ángulos.</span
-                        >
-                    </a>
-                    <a
-                        href="/academia/visagismo/tipos-rostro-hombre/"
-                        class="block p-4 border border-border rounded-lg hover:border-accent transition-colors"
-                    >
-                        <span class="font-serif block mb-2">Cara Diamante</span>
-                        <span class="text-sm text-muted-foreground"
-                            >Cómo equilibrar pómulos.</span
-                        >
-                    </a>
-                    {
-                        /* More links can be added programmatically or manually as the silo grows */
-                    }
-                </div>
+                <h2 class="text-3xl font-serif text-primary mb-4">Corte y barba: decidir el volumen en conjunto</h2>
+                <p>La barba modifica el contorno visible, pero su densidad y dirección de crecimiento limitan los diseños posibles. Si buscas alargar visualmente, puedes explorar más longitud en el mentón; si ya percibes mucho largo, quizá prefieras contenerla allí. Son opciones de estilo, no reglas obligatorias.</p>
+                <p class="mt-4">Valora corte y barba juntos: añadir altura arriba y longitud abajo puede producir un efecto distinto al que buscas. Pregunta cómo mantener el diseño en casa y cada cuánto sería conveniente ajustarlo según tu crecimiento.</p>
+                <a href="/academia/visagismo/tipos-rostro-hombre/" class="inline-block mt-4 text-accent hover:underline">Ampliar la guía de rostro, corte y barba →</a>
             </section>
-
             <section id="gafas">
-                <h2 class="text-3xl font-serif text-primary mb-6">
-                    Gafas según tu cara
-                </h2>
-                <p>
-                    Las gafas son el accesorio más invasivo porque están SOBRE
-                    tu identidad. Elegir la montura opuesta a tu geometría es la
-                    regla de oro.
-                </p>
-                <div class="mt-4">
-                    <a
-                        href="/academia/visagismo/tipos-rostro-hombre/"
-                        class="text-accent hover:underline"
-                        >Ver guía para rostro Diamante →</a
-                    >
-                </div>
+                <h2 class="text-3xl font-serif text-primary mb-4">Gafas: proporción y comodidad además de forma</h2>
+                <p>La idea de elegir siempre una montura opuesta al rostro es demasiado limitada. Una montura angular puede enfatizar líneas que te gustan; una curva puede dar continuidad. Prueba ambas y observa ancho, altura, grosor y posición respecto de cejas y pómulos.</p>
+                <p class="mt-4">Comprueba el apoyo en el puente, la presión de las varillas y que la montura no roce al sonreír. La adaptación y las necesidades de la lente deben revisarse en la óptica. El color puede explorarse con la <a href="/herramientas/test-colorimetria-online/" class="text-accent hover:underline">herramienta de colorimetría</a>, manteniendo su carácter orientativo.</p>
+            </section>
+            <section>
+                <h2 class="text-3xl font-serif text-primary mb-4">Qué preguntar en una asesoría de visagismo en Bogotá</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>¿Qué opciones funcionan con mi textura y mi tiempo de peinado?</li>
+                    <li>¿Qué efecto producen el largo y el volumen que estamos proponiendo?</li>
+                    <li>¿Qué parte de la referencia se puede adaptar y cuál requiere otro mantenimiento?</li>
+                    <li>¿La consulta incluye corte o se cotiza por separado?</li>
+                    <li>¿Qué debo hacer en casa para conservar el resultado?</li>
+                </ul>
+            </section>
+            <section class="p-8 rounded-xl border border-border bg-muted/20">
+                <h2 class="text-2xl font-serif text-primary mb-4">Consulta una opción para tu cabello y tu rutina</h2>
+                <p>Conoce el <a href="/servicios/peluqueria/" class="text-accent hover:underline">servicio de peluquería</a> o cuéntanos qué cambio buscas. Antes de reservar, confirma alcance, disponibilidad y valor del servicio. Si quieres trabajar también vestuario y color, revisa la <a href="/servicios/asesoria-integral-imagen/" class="text-accent hover:underline">asesoría integral de imagen</a>.</p>
+                <a href="/contacto/?interes=peluqueria#form" class="inline-block mt-6 rounded-md bg-primary text-primary-foreground px-6 py-3 font-medium">Consultar sobre corte y visagismo</a>
             </section>
         </div>
     </article>

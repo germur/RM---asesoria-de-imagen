@@ -1,110 +1,62 @@
 ---
-// 1. Importamos los datos (El Cerebro)
 import seasons from "../../../data/color_seasons.json";
+import { seasonGuides, colorNames } from "../../../data/season_guides";
 import MainLayout from "../../../layouts/MainLayout.astro";
-import { Button } from "@/components/ui/button"; // Shadcn
-
-// 2. getStaticPaths: Le dice a Astro qué páginas construir en el build time
 export async function getStaticPaths() {
-    return seasons.map((season) => ({
-        params: { slug: season.slug },
-        props: { season },
-    }));
+    return seasons.map((season) => ({ params: { slug: season.slug }, props: { season } }));
 }
-
-// 3. Recibimos los datos para ESTA página específica
 const { season } = Astro.props;
-
-// 4. Lógica de colores para Tailwind (Estilos dinámicos)
-const bgStyle = { backgroundColor: season.palette.best_colors[0] + "20" }; // 20 es opacidad hex
+const guide = seasonGuides[season.id];
+const description = `${season.name}: cómo explorar sus colores, combinarlos y compararlos con paletas cercanas. Orientación para ropa, accesorios y maquillaje.`;
 ---
-
-<MainLayout title={season.seo_title} description={season.description}>
-    <section class="py-20 px-4 text-center" style={bgStyle}>
-        <h1
-            class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4"
-        >
-            {season.name}
-        </h1>
-        <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-8 font-light">
-            {season.description}
-        </p>
-
-        <div
-            class="bg-white p-6 rounded-lg shadow-sm max-w-lg mx-auto border border-gray-100"
-        >
-            <p class="text-sm uppercase tracking-widest text-gray-500 mb-2">
-                Diagnóstico
-            </p>
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">
-                ¿Quieres confirmar si esta es tu estación?
-            </h3>
-            <Button className="w-full bg-black text-white hover:bg-gray-800">
-                Agendar Análisis Profesional
-            </Button>
-        </div>
-    </section>
-
-    <section class="py-16 max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-serif mb-8 text-center text-luxury-sand">
-            Tu Paleta de Poder
-        </h2>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {
-                season.palette.best_colors.map((color) => (
-                    <div class="flex flex-col items-center group">
-                        <div
-                            class="w-24 h-24 rounded-full shadow-md mb-2 transition-transform transform group-hover:scale-110"
-                            style={{ backgroundColor: color }}
-                        />
-                        <span class="text-xs text-gray-500 font-mono">
-                            {color}
-                        </span>
-                    </div>
-                ))
-            }
-        </div>
-    </section>
-
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl font-serif mb-6 text-gray-900">
-                Colores que Apagan tu Luz
-            </h2>
-            <p class="mb-6 text-gray-600">
-                Para un perfil {season.name}, estos colores pueden hacerte ver
-                cansado o resaltar imperfecciones:
-            </p>
-            <div class="flex gap-4">
-                {
-                    season.palette.avoid_colors.map((color) => (
-                        <div
-                            class="w-16 h-16 rounded-md shadow-inner"
-                            style={{ backgroundColor: color }}
-                        />
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 max-w-4xl mx-auto px-4">
-        <h2 class="text-2xl font-serif mb-6 text-luxury-sand">
-            Características
-        </h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div>
-                <h3 class="font-semibold text-luxury-gold mb-2">Piel</h3>
-                <p class="text-luxury-sand/80">{season.characteristics.skin}</p>
-            </div>
-            <div>
-                <h3 class="font-semibold text-luxury-gold mb-2">Pelo</h3>
-                <p class="text-luxury-sand/80">{season.characteristics.hair}</p>
-            </div>
-            <div>
-                <h3 class="font-semibold text-luxury-gold mb-2">Ojos</h3>
-                <p class="text-luxury-sand/80">{season.characteristics.eyes}</p>
-            </div>
-        </div>
-    </section>
+<MainLayout title={`${season.name}: colores y combinaciones | RM`} description={description}>
+    <article class="max-w-4xl mx-auto px-6 py-20 text-foreground">
+        <header class="mb-12">
+            <a href="/colorimetria/estaciones/" class="text-accent hover:underline">← Explorar las estaciones de color</a>
+            <h1 class="text-4xl md:text-5xl font-serif text-primary mt-6 mb-6">{season.name}</h1>
+            <p class="text-xl text-muted-foreground leading-relaxed">{guide.focus}</p>
+            <p class="mt-4 leading-relaxed">Esta es una guía de una familia de colores, no un diagnóstico personal. Una estación no se determina por el tono de piel, el color de ojos o la reacción al sol. La comparación de telas junto al rostro aporta más contexto que una característica aislada.</p>
+        </header>
+        <section class="mb-12" aria-labelledby="colores">
+            <h2 id="colores" class="text-3xl font-serif text-primary mb-4">Colores para empezar a explorar</h2>
+            <p class="mb-6 text-muted-foreground">Estas muestras son referencias digitales, no una carta exacta para comprar. La pantalla, la iluminación y el acabado de la tela modifican la percepción del color.</p>
+            <ul class="grid grid-cols-2 md:grid-cols-5 gap-5">
+                {season.palette.best_colors.map((color, index) => <li class="flex flex-col items-center text-center"><span aria-hidden="true" class="w-20 h-20 rounded-full border border-border mb-3" style={{ backgroundColor: color }} /><span class="font-medium">{guide.names[index]}</span><span class="text-xs text-muted-foreground mt-1">{color}</span></li>)}
+            </ul>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-3xl font-serif text-primary mb-4">Neutros y combinaciones de ropa</h2>
+            <p class="leading-relaxed mb-6">{guide.outfit}</p>
+            <ul class="flex flex-wrap gap-6">
+                {season.palette.neutrals.map(color => <li class="flex items-center gap-3"><span aria-hidden="true" class="w-10 h-10 rounded-full border border-border" style={{ backgroundColor: color }} /><span>{colorNames[color] || color}<span class="block text-xs text-muted-foreground">{color}</span></span></li>)}
+            </ul>
+            <p class="mt-6 leading-relaxed">Comienza con prendas que ya tienes. Prueba el color cerca del rostro y después en accesorios o prendas inferiores. Un tono fuera de la paleta puede seguir formando parte de tu estilo: la proporción, la distancia al rostro y la combinación permiten usarlo de distintas maneras.</p>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-3xl font-serif text-primary mb-4">Cómo distinguirla de paletas cercanas</h2>
+            <p class="leading-relaxed">{guide.compare}</p>
+            <p class="mt-4 leading-relaxed">Cambia una variable a la vez: temperatura, claridad o intensidad. Si comparas a la vez un beige claro y un azul oscuro, será difícil saber qué diferencia estás observando. Si no ves una respuesta clara, conserva la duda en lugar de forzar una etiqueta.</p>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-3xl font-serif text-primary mb-4">Maquillaje, cabello y accesorios</h2>
+            <p class="leading-relaxed">{guide.makeup}</p>
+            <p class="mt-4 leading-relaxed">El color complementa tus preferencias, tu rutina y el contexto; no determina autoridad, personalidad ni capacidades. Antes de una coloración, conversa con un profesional sobre el resultado posible y su mantenimiento.</p>
+            <a href="/servicios/peluqueria/" class="inline-block mt-4 text-accent hover:underline">Conocer el servicio de peluquería y color →</a>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-3xl font-serif text-primary mb-4">Una prueba en casa con menos variables</h2>
+            <ol class="list-decimal pl-6 space-y-3 leading-relaxed">
+                <li>Usa luz natural indirecta y evita luces de varios colores o filtros de cámara.</li>
+                <li>Compara telas de tamaño parecido junto al rostro y mantén la misma iluminación.</li>
+                <li>Observa el conjunto: si percibes primero la prenda o si la combinación te resulta equilibrada. No busques defectos que corregir.</li>
+                <li>Repite con más de una pareja de colores. Una foto, un metal o una prenda aislada no confirman una estación.</li>
+            </ol>
+            <p class="mt-4 leading-relaxed">El <a href="/herramientas/test-colorimetria-online/" class="text-accent hover:underline">test de colorimetría online</a> puede servir como exploración inicial. Sus resultados son orientativos y no sustituyen una comparación presencial.</p>
+        </section>
+        <section class="rounded-xl border border-border p-8 bg-muted/20">
+            <h2 class="text-2xl font-serif text-primary mb-4">Lleva la paleta a decisiones reales</h2>
+            <p class="leading-relaxed mb-6">Cuéntanos si buscas orientación para ropa, cabello o maquillaje y si prefieres atención en Bogotá o consultar las opciones disponibles. Te indicaremos qué servicio se ajusta a tu necesidad y sus condiciones antes de reservar.</p>
+            <a href="/contacto/?interes=colorimetria#form" class="inline-block rounded-md bg-primary text-primary-foreground px-6 py-3 font-medium">Consultar sobre colorimetría</a>
+        </section>
+    </article>
 </MainLayout>

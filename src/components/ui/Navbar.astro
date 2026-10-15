@@ -1,5 +1,6 @@
 ---
 import { ChevronDown } from "lucide-react";
+const { theme = 'dark' } = Astro.props;
 
 const navItems = [
     {
@@ -36,7 +37,7 @@ const cursos = [
 ---
 
 <!-- ─── HEADER ───────────────────────────────────────── -->
-<header id="main-header" class="fixed w-full top-0 z-50">
+<header id="main-header" class:list={["fixed w-full top-0 z-50", { scrolled: theme === 'light' }]} data-theme={theme}>
     <div class="nav-scrim absolute inset-0 pointer-events-none"
          style="background:linear-gradient(to bottom,rgba(0,0,0,0.42) 0%,rgba(0,0,0,0.14) 60%,transparent 100%);"></div>
 
@@ -782,7 +783,7 @@ const cursos = [
 
     // Scroll state
     const onScroll = () => {
-        header?.classList.toggle("scrolled", window.scrollY > 48);
+        header?.classList.toggle("scrolled", header.dataset.theme === 'light' || window.scrollY > 48);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();

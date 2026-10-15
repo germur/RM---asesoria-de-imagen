@@ -212,7 +212,7 @@ const bodyTypes = [
             <p class="text-gray-400 mb-4 text-lg font-light">¿Quieres que Roger y Adriana analicen tu morfología en persona?</p>
             <h3 class="font-serif text-3xl mb-8">El diagnóstico digital es el primer paso.<br /><span class="text-brand-primary">El presencial es la transformación.</span></h3>
             <a
-                href="/contacto/"
+                href="/contacto/?interes=integral#form"
                 class="inline-block bg-brand-primary text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all rounded-sm"
             >
                 Agendar Consultoría Presencial
@@ -226,6 +226,12 @@ const bodyTypes = [
     const resultDiv = document.getElementById('result');
     const resetBtn = document.getElementById('reset-btn');
 
+    let bodyStarted = false;
+    form?.addEventListener('input', () => {
+        if (bodyStarted) return;
+        bodyStarted = true;
+        if (typeof gtag === 'function') gtag('event', 'calculadora_cuerpo_inicio');
+    });
     const shapes = Object.fromEntries(bodyTypes.map(t => [t.id, t.svgPath]));
 
     form?.addEventListener('submit', (e) => {
@@ -234,7 +240,7 @@ const bodyTypes = [
         const c = parseFloat(document.getElementById('cintura').value);
         const ca = parseFloat(document.getElementById('caderas').value);
 
-        if (!h || !c || !ca) return;
+        if (!Number.isFinite(h) || !Number.isFinite(c) || !Number.isFinite(ca) || h <= 0 || c <= 0 || ca <= 0) return;
 
         const waistRatioH = c / h;
         const waistRatioCa = c / ca;
@@ -267,6 +273,7 @@ const bodyTypes = [
         document.getElementById('result-desc').textContent = found.description;
         document.getElementById('result-tip').textContent = found.tip;
 
+        if (typeof gtag === 'function') gtag('event', 'calculadora_cuerpo_completado');
         resultDiv?.classList.remove('hidden');
         resultDiv?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });

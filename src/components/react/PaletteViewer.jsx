@@ -13,7 +13,7 @@ export default function PaletteViewer({ colors, names, avoid }) {
                 <span className="absolute top-0 right-0 bg-brand-black text-white text-xs font-bold px-3 py-1 uppercase tracking-widest">Usar</span>
 
                 <h3 className="font-serif text-2xl text-brand-black mb-8 flex items-center gap-3">
-                    Tus Colores de Poder
+                    Colores para explorar
                 </h3>
 
                 <div className="grid grid-cols-2 gap-6">
@@ -36,7 +36,7 @@ export default function PaletteViewer({ colors, names, avoid }) {
                     ))}
                 </div>
                 <p className="text-sm text-neutral-400 mt-8 italic border-t border-neutral-100 pt-4">
-                    * Úsalos en reuniones de directorio, negociaciones y presentaciones clave para maximizar tu autoridad.
+                    Compara cómo te sientes con estos tonos en prendas que ya tienes, bajo una luz uniforme.
                 </p>
             </div>
 
@@ -45,7 +45,7 @@ export default function PaletteViewer({ colors, names, avoid }) {
                 <span className="absolute top-0 right-0 bg-brand-primary text-white text-xs font-bold px-3 py-1 uppercase tracking-widest">Evitar</span>
 
                 <h3 className="font-serif text-2xl text-brand-black/70 mb-8 flex items-center gap-3">
-                    Tu Kryptonita Visual
+                    Otros tonos para comparar
                 </h3>
 
                 <div className="grid grid-cols-2 gap-6 opacity-80">
@@ -64,7 +64,7 @@ export default function PaletteViewer({ colors, names, avoid }) {
                     ))}
                 </div>
                 <p className="text-sm text-brand-primary mt-8 font-medium">
-                    ⚠️ Precaución: Estos tonos cerca del rostro resaltan ojeras, líneas de expresión y proyectan falta de energía.
+                    Estos tonos pueden producir un contraste diferente. Tu preferencia, el tejido y la iluminación también cuentan; no son colores prohibidos.
                 </p>
             </div>
 

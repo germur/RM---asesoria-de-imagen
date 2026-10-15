@@ -1,6 +1,6 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { Button } from "@/components/ui/button";
+
 
 const seoData = {
     title: "Página no encontrada | Roger Murillo",
@@ -10,7 +10,7 @@ const seoData = {
 };
 ---
 
-<MainLayout title={seoData.title} description={seoData.description}>
+<MainLayout title={seoData.title} description={seoData.description} noindex navbarTheme="light">
     <section class="py-32 px-6 text-center bg-[#fafaf9]">
         <div class="max-w-2xl mx-auto">
             <h1 class="text-6xl md:text-8xl font-serif text-[#d4af37] mb-6">
@@ -26,17 +26,14 @@ const seoData = {
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="/">
-                    <Button variant="outline" size="lg">Volver al Inicio</Button
-                    >
-                </a>
-                <a href="/herramientas/test-colorimetria-online/">
-                    <Button
-                        className="bg-[#0c0a09] text-white hover:bg-[#d4af37]"
-                        >Hacer Test de Colorimetría</Button
-                    >
-                </a>
+                <a href="/servicios/" class="bg-brand-black text-white px-6 py-4">Explorar servicios</a>
+                <a href="/contacto/" class="border border-brand-black px-6 py-4">Consultar con el estudio</a>
+                <a href="/herramientas/" class="border border-brand-black px-6 py-4">Ver herramientas gratuitas</a>
             </div>
         </div>
     </section>
 </MainLayout>
+
+<script is:inline>
+if (typeof gtag === 'function') gtag('event', 'pagina_no_encontrada', {ruta: location.pathname});
+</script>
