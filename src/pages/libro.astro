@@ -10,11 +10,8 @@ const bookSchema = {
         {
             "@type": "Book",
             name: "Revoluciona tu Imagen",
-            author: {
-                "@type": "Person",
-                name: "Roger Murillo",
-            },
-            url: "https://rogermurillo.co/libro",
+            author: [{ "@type": "Person", name: "Roger Murillo" }, { "@type": "Person", name: "Adriana Garzón" }],
+            url: "https://rogermurillo.co/libro/",
             inLanguage: "es",
             bookFormat: "https://schema.org/EBook",
             numberOfPages: "150",
@@ -31,12 +28,7 @@ const bookSchema = {
                 price: "19.00",
                 priceCurrency: "USD",
                 availability: "https://schema.org/InStock",
-                url: "https://rogermurillo.co/libro",
-            },
-            aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.9",
-                reviewCount: "128",
+                url: "https://rogermurillo.co/libro/",
             },
         },
     ],
@@ -44,7 +36,7 @@ const bookSchema = {
 ---
 
 <MainLayout navbarTheme="light" breadcrumbsInFlow
-    title="Revoluciona tu Imagen · Libro de Imagen Personal · Visagismo y Estilo | Roger Murillo"
+    title="Revoluciona tu Imagen: libro de estilo | Roger Murillo"
     description="El manual definitivo de imagen personal, visagismo y estilo ejecutivo. Aprende a proyectar autoridad, liderazgo y confianza desde la primera página. Descarga inmediata."
     schema={JSON.stringify(bookSchema)}
 >
@@ -80,19 +72,19 @@ const bookSchema = {
 
                     <div class="space-y-10">
                         <div>
-                            <h4 class="font-serif text-lg text-brand-black mb-2">La Ciencia del Visagismo</h4>
+                            <h3 class="font-serif text-lg text-brand-black mb-2">La Ciencia del Visagismo</h3>
                             <p class="text-neutral-500 font-light leading-relaxed">
                                 Entiende la geometria de tu rostro para elegir cortes y accesorios con precision matematica.
                             </p>
                         </div>
                         <div>
-                            <h4 class="font-serif text-lg text-brand-black mb-2">Los 5 Errores de Autoridad</h4>
+                            <h3 class="font-serif text-lg text-brand-black mb-2">Los 5 Errores de Autoridad</h3>
                             <p class="text-neutral-500 font-light leading-relaxed">
                                 Descubre que detalles de tu vestimenta estan gritando "inseguridad" en la sala de juntas.
                             </p>
                         </div>
                         <div>
-                            <h4 class="font-serif text-lg text-brand-black mb-2">Tu Paleta de Poder</h4>
+                            <h3 class="font-serif text-lg text-brand-black mb-2">Tu Paleta de Poder</h3>
                             <p class="text-neutral-500 font-light leading-relaxed">
                                 Como elegir los colores que te hacen ver saludable y dominante sin ser un experto en moda.
                             </p>

@@ -10,6 +10,11 @@ const routeNames: Record<string, string> = {
     servicios: "Servicios",
     academia: "Academia",
     contacto: "Contacto",
+    nosotros: "La Firma",
+    "casos-de-exito": "Casos de éxito",
+    blog: "Journal",
+    colorimetria: "Colorimetría",
+    visagismo: "Visagismo",
     libro: "Libro",
     "test-colorimetria": "Test de Color",
     "colorimetria-bogota": "Colorimetría personal",
@@ -46,17 +51,17 @@ const breadcrumbSchema = {
     "@type": "BreadcrumbList",
     itemListElement: [
         { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
-        ...segments.map((segment, index) => {
-            const route = `/${segments.slice(0, index + 1).join("/")}/`;
-            const isLast = index === segments.length - 1;
-            return {
-                "@type": "ListItem",
-                position: index + 2,
-                name: (routeNames[segment] || segment.replace(/-/g, " ")).replace(/\b\w/g, (c) => c.toUpperCase()),
-                // Solo declaramos `item` cuando la URL existe de verdad
-                ...(isLast || HUB_ROUTES.has(route) ? { item: `${SITE}${route}` } : {}),
-            };
-        }),
+        ...segments.map((segment, index) => ({
+            name: routeNames[segment] || segment.replace(/-/g, " "),
+            route: `/${segments.slice(0, index + 1).join("/")}/`,
+            isLast: index === segments.length - 1,
+        })).filter(({ route, isLast }) => isLast || HUB_ROUTES.has(route))
+        .map(({ name, route }, index) => ({
+            "@type": "ListItem",
+            position: index + 2,
+            name,
+            item: `${SITE}${route}`,
+        })),
     ],
 };
 ---

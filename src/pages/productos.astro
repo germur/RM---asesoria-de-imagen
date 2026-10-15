@@ -97,7 +97,8 @@ const fmt = (n) => "$ " + n.toLocaleString("es-CO");
 </div>
 
 <!-- ─── GRID ───────────────────────────── -->
-<main class="container mx-auto px-6 max-w-[1400px] py-12 md:py-16">
+<section aria-labelledby="catalog-title" class="container mx-auto px-6 max-w-[1400px] py-12 md:py-16">
+<h2 id="catalog-title" class="font-serif text-3xl mb-8">Productos para el cuidado del cabello</h2>
   <div id="grid" class="grid grid-density-3 gap-6">
     {PRODUCTS.map((p) => (
       <article class="prod-card" data-id={p.id} data-cat={p.cat} data-brand={p.brand} data-hair={p.hair.join(",")}
@@ -134,7 +135,7 @@ const fmt = (n) => "$ " + n.toLocaleString("es-CO");
     <p class="font-serif italic text-3xl text-neutral-400 mb-3">Sin resultados.</p>
     <p class="text-sm text-neutral-500">Prueba con otra combinación de filtros o <button class="underline" id="reset-filters">limpiar filtros</button>.</p>
   </div>
-</main>
+</section>
 
 <!-- ─── BUNDLE ─────────────────────────── -->
 <section class="bundle py-20 md:py-24">

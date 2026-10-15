@@ -80,8 +80,8 @@ const courseSchema = {
 ---
 
 <MainLayout
-    title={`${title} | Roger Murillo Academy`}
-    description={description}
+    title={frontmatter.seoTitle || `${title} | Roger Murillo Academy`}
+    description={frontmatter.seoDescription || description}
     schema={JSON.stringify(courseSchema)}
 >
     <!-- STICKY CTA MÓVIL -->
