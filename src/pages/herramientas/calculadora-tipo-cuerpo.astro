@@ -1,4 +1,5 @@
 ---
+import ToolServiceCTA from "@/components/tools/ToolServiceCTA";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { ArrowRight } from "lucide-react";
 
@@ -156,13 +157,8 @@ const bodyTypes = [
                         <p id="result-tip" class="text-sm text-slate-700 leading-relaxed"></p>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a
-                            href="/servicios/asesoria-imagen-hombres-bogota/"
-                            class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:underline"
-                        >
-                            Explorar fondo de armario para hombres <ArrowRight size={12} />
-                        </a>
+                    <div class="space-y-4">
+<ToolServiceCTA tool="cuerpo" />
                         <button
                             id="reset-btn"
                             class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-brand-black transition-colors text-left sm:text-right"
@@ -212,7 +208,7 @@ const bodyTypes = [
             <p class="text-gray-400 mb-4 text-lg font-light">¿Quieres ayuda para revisar tu ropa y preparar tus compras?</p>
             <h3 class="font-serif text-3xl mb-8">La calculadora orienta.<br /><span class="text-brand-primary">Tu armario necesita contexto.</span></h3>
             <a
-                href="/contacto/?interes=fondo-armario#form"
+                href="/contacto/?interes=fondo-armario&herramienta=cuerpo#form" data-tool-funnel="cuerpo" data-tool-service="fondo-armario"
                 class="inline-block bg-brand-primary text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all rounded-sm"
             >
                 Consultar fondo de armario

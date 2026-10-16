@@ -1,3 +1,5 @@
+import { trackEvent } from '@/utils/analytics';
+import ToolServiceCTA from './ToolServiceCTA';
 import React, { useState } from 'react';
 
 // ── Types ─────────────────────────────────────────────────────────────────
@@ -356,6 +358,7 @@ export default function ImpactTest() {
     const progress = step === 0 ? 0 : Math.round((step / TOTAL_QS) * 100);
 
     const handleAnswer = (value: number) => {
+        if (step === TOTAL_QS) trackEvent('impacto_ejecutivo_completado');
         const newAnswers = [...answers, value];
         setAnswers(newAnswers);
         setStep(s => s + 1);
@@ -419,7 +422,7 @@ export default function ImpactTest() {
                 </div>
 
                 <button
-                    onClick={() => setStep(1)}
+                    onClick={() => { trackEvent('impacto_ejecutivo_inicio'); setStep(1); }}
                     className="w-full bg-brand-primary text-white py-4 text-xs font-medium uppercase tracking-[0.2em]
                                hover:bg-brand-black transition-colors duration-300"
                 >
@@ -476,17 +479,7 @@ export default function ImpactTest() {
                     <p className="text-sm text-neutral-600 font-light leading-relaxed">{level.description}</p>
                 </div>
 
-                {/* CTA */}
-                <a
-                    href="/contacto/"
-                    className="flex items-center justify-between px-6 py-4 bg-brand-primary text-white
-                               text-xs uppercase tracking-[0.18em] hover:bg-brand-black transition-colors duration-300"
-                >
-                    <span>{level.cta}</span>
-                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </a>
+<ToolServiceCTA tool="impacto" />
 
                 <button
                     onClick={handleReset}
