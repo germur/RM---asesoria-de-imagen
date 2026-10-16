@@ -1,3 +1,4 @@
+import ToolServiceCTA from './ToolServiceCTA';
 import React, { useRef, useState } from 'react';
 import { trackEvent } from '@/utils/analytics';
 
@@ -290,17 +291,7 @@ function Result({ shapeKey, shape, onReset }: { shapeKey: string; shape: ShapeDa
                 <RecoBlock title="Gafas ideales" items={shape.gafas} accent="border-neutral-400" />
             </div>
 
-            {/* CTA */}
-            <a
-                href="/servicios/peluqueria/"
-                className="flex items-center justify-between px-6 py-4 bg-brand-black text-white
-                           text-xs uppercase tracking-[0.18em] hover:bg-brand-primary transition-colors duration-300"
-            >
-                <span>Sesión profesional de visagismo</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
+<ToolServiceCTA tool="rostro" />
 
             {/* Reset */}
             <button

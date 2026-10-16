@@ -63,32 +63,13 @@ const formattedName = slug.split('-').map((word: string) => word.charAt(0).toUpp
                 En desarrollo
             </p>
 
-            <p class="text-neutral-400 font-light leading-relaxed max-w-xl mx-auto mb-16">
-                Actualmente estamos calibrando el algoritmo de esta herramienta con clientes presenciales
-                para asegurar una <strong class="text-brand-black font-medium">precision del 98%</strong>.
-                No liberamos herramientas basadas en "tendencias".
-            </p>
-
+            <p class="text-neutral-500 leading-relaxed mb-8">Esta herramienta todavía no ofrece un resultado. Puedes usar las herramientas disponibles o consultar directamente por un servicio.</p>
             <div class="max-w-md mx-auto mb-16">
                 <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
                     Acceso anticipado
                 </p>
 
-                <form action="/contacto" method="GET" class="space-y-4">
-                    <input type="hidden" name="ref" value={`beta_${slug}`} />
-                    <input
-                        type="email"
-                        placeholder="Tu correo electronico"
-                        class="w-full border border-neutral-200 bg-white px-4 py-3 text-sm text-brand-black focus:outline-none focus:border-brand-black transition-colors duration-500"
-                        required
-                    />
-                    <button
-                        type="submit"
-                        class="w-full bg-brand-primary text-white px-10 py-4 text-xs font-medium uppercase tracking-[0.2em] hover:bg-brand-black transition-colors duration-500 flex items-center justify-center gap-2"
-                    >
-                        Solicitar Invitacion <ArrowRight size={14} />
-                    </button>
-                </form>
+                <a href="/herramientas/" class="inline-block bg-brand-primary text-white px-6 py-4">Ver herramientas disponibles</a><a href="/servicios/" class="block mt-5 underline">Comparar servicios de imagen y peluquería</a>
 
                 <p class="text-xs text-neutral-400 mt-4">
                     Cero spam. Notificacion de lanzamiento exclusivo.

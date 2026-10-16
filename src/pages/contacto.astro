@@ -101,7 +101,7 @@ const contactSchema = {
                         <input type="hidden" name="horario" id="f-slot-hidden" />
                         <input type="hidden" name="pagina_entrada" id="f-entry-hidden" />
                         <input type="hidden" name="referente" id="f-referrer-hidden" />
-                        <input type="hidden" name="interes_origen" id="f-interest-hidden" />
+                        <input type="hidden" name="interes_origen" id="f-interest-hidden" /><input type="hidden" name="herramienta_origen" id="f-tool-hidden" />
                         <!-- STEP 1 -->
                         <div class="form-step" data-step="1">
                             <p tabindex="-1" class="form-step-heading text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-8">Paso 01 &mdash; Sobre ti</p>
@@ -439,6 +439,10 @@ const contactSchema = {
     };
     const interest = new URLSearchParams(location.search).get('interes');
     const selectedInterest = Object.hasOwn(interests, interest) ? interests[interest] : null;
+    const toolNames = { colorimetria: 'Test de colorimetría', rostro: 'Calculadora de rostro', cuerpo: 'Calculadora de cuerpo', impacto: 'Test de impacto ejecutivo', reto: 'Reto Revoluciona tu imagen' };
+    const requestedTool = new URLSearchParams(location.search).get('herramienta');
+    const toolOrigin = Object.hasOwn(toolNames, requestedTool) ? requestedTool : '';
+    document.getElementById('f-tool-hidden').value = toolOrigin;
     const isCourseInquiry = selectedInterest?.startsWith('Curso ');
     const getRequestType = () => {
         const selected = Array.from(document.querySelectorAll('#goals input:checked')).map(input => input.value);
@@ -448,7 +452,7 @@ const contactSchema = {
     };
     const trackForm = (event, params = {}) => {
         if (typeof gtag === 'function') {
-            gtag('event', event, { form_id: 'rm-form', tipo_solicitud: getRequestType(), ...params });
+            gtag('event', event, { form_id: 'rm-form', tipo_solicitud: getRequestType(), herramienta: toolOrigin || 'sin_herramienta', ...params });
         }
     };
     const validateStep = (n) => {
@@ -495,6 +499,7 @@ const contactSchema = {
         })
     );
     goTo(1);
+    if (toolOrigin) trackForm('herramienta_consulta_abierta');
 
     document.querySelectorAll('.goal-chip').forEach(chip => {
         const inp = chip.querySelector('input');
@@ -511,7 +516,7 @@ const contactSchema = {
     });
     if (selectedInterest) {
         const notice = document.getElementById('course-inquiry');
-        notice.textContent = `Tu consulta: ${selectedInterest}. Puedes cambiarla en el paso 2.`;
+        notice.textContent = `${toolOrigin ? "Vienes de: " + toolNames[toolOrigin] + ". " : ""}Tu consulta: ${selectedInterest}. Puedes cambiarla en el paso 2.`;
         notice.classList.remove('hidden');
     }
     document.getElementById('f-interest-hidden').value = selectedInterest || '';

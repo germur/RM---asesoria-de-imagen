@@ -1,4 +1,5 @@
 ---
+import ToolServiceCTA from "@/components/tools/ToolServiceCTA";
 import MainLayout from "../../layouts/MainLayout.astro";
 import PaletteViewer from "../../components/react/PaletteViewer";
 import seasons from "../../data/seasons.json";
@@ -22,11 +23,8 @@ const schema = { '@context': 'https://schema.org', '@type': 'WebPage', name: tit
         <h2 class="font-serif text-3xl mb-6 text-brand-black">Colores para empezar a comparar</h2>
         <p class="text-neutral-600 mb-10">Observa estos colores cerca del rostro con luz uniforme. Las pantallas y la iluminación pueden cambiar su apariencia; no hace falta comprar prendas para hacer una primera comparación.</p>
         <PaletteViewer client:visible colors={season.palette} names={season.palette_names} avoid={season.avoid} />
-        <div class="grid md:grid-cols-2 gap-8 mt-12">
-            <article class="p-7 border border-neutral-200"><h2 class="font-serif text-2xl mb-4">Explora los matices de tu paleta</h2><p class="text-neutral-600 mb-6">Compara opciones cercanas, neutros y combinaciones antes de tomar una decisión sobre tu vestuario.</p><a href={`/herramientas/colorimetria/paleta-${paletteSlug}/`} class="underline text-brand-primary">Leer la guía de esta paleta</a></article>
-            <article class="p-7 border border-neutral-200"><h2 class="font-serif text-2xl mb-4">Consulta con el estudio</h2><p class="text-neutral-600 mb-6">Si buscas orientación personal sobre colorimetría, consulta el alcance, valor y disponibilidad antes de reservar.</p><a href="/contacto/?interes=colorimetria#form" data-cta-location="resultado-test" class="inline-block bg-brand-black text-white px-6 py-4">Consultar colorimetría en Bogotá</a></article>
-        </div>
-        <p class="mt-10 text-neutral-600">¿Tu pregunta es sobre cabello? Conoce la <a href="/servicios/peluqueria/" class="underline text-brand-primary">peluquería con visagismo</a>. Para un proceso de vestuario y armario, revisa la <a href="/servicios/asesoria-integral-imagen/" class="underline text-brand-primary">asesoría integral</a>.</p>
+        <ToolServiceCTA tool="colorimetria" />
+        <section class="mt-10"><h2 class="font-serif text-2xl mb-4">Sigue explorando tu paleta</h2><p class="text-neutral-600 mb-5">Compara opciones cercanas, neutros y combinaciones antes de decidir sobre tu vestuario.</p><a href={`/herramientas/colorimetria/paleta-${paletteSlug}/`} class="underline text-brand-primary">Leer la guía de esta paleta →</a></section>
         <a href="/herramientas/test-colorimetria-online/" class="inline-block mt-8 underline text-neutral-600">Volver al test</a>
     </section>
 </MainLayout>
