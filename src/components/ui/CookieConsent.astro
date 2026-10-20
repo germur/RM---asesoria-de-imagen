@@ -36,7 +36,9 @@
     const acceptBtn = document.getElementById("accept-cookies");
 
     // Solo mostrar si no ha aceptado antes
-    if (!localStorage.getItem("cookiesAccepted")) {
+    let accepted = false;
+    try { accepted = localStorage.getItem("cookiesAccepted") === "true"; } catch (error) {}
+    if (!accepted) {
         // Retraso de 2.5s para no agobiar al usuario apenas entra (UX Premium)
         setTimeout(() => {
             banner?.classList.remove("translate-y-full");
@@ -46,12 +48,11 @@
     }
 
     acceptBtn?.addEventListener("click", () => {
-        localStorage.setItem("cookiesAccepted", "true");
+        try { localStorage.setItem("cookiesAccepted", "true"); } catch (error) {}
+        window.dispatchEvent(new Event('rm:analytics-consent'));
         banner?.classList.add("translate-y-full");
         const dice = document.getElementById("dice-fab");
         if (dice) dice.style.bottom = "";
 
-        // Aquí se podrían disparar los eventos de consentimiento de GA4/Meta si fuera necesario
-        // window.gtag('consent', 'update', { ... });
     });
 </script>

@@ -44,7 +44,7 @@ const {
 
         <Breadcrumbs theme={navbarTheme} inFlow={breadcrumbsInFlow} />
 
-        <main id="contenido" class="flex-1 w-full relative">
+        <main id="contenido" class="flex-1 w-full relative" data-clarity-mask={/^\/(contacto|herramientas|resultados|reto)(\/|$)/.test(Astro.url.pathname) ? "true" : undefined}>
             <slot />
         </main>
 

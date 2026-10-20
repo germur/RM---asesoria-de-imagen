@@ -64,7 +64,7 @@ export default function QualificationForm() {
                 </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8" data-clarity-mask="true">
 
                 {/* Grid de Datos Personales */}
                 <div className="grid md:grid-cols-2 gap-8">

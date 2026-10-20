@@ -95,19 +95,45 @@ const globalSchema = {
 
 {noindex && <meta name="robots" content="noindex, follow" />}
 
-<!-- Google tag (gtag.js) · GA4 -->
+<!-- Google Tag Manager: GA4, eventos y Clarity se administran en el contenedor. -->
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  // Las vistas previas locales conservan los eventos para probarlos, sin enviarlos a GA4.
-  if (['rogermurillo.co', 'www.rogermurillo.co'].includes(location.hostname)) {
-    var analyticsScript = document.createElement('script');
-    analyticsScript.async = true;
-    analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-8FCTXLT7Y2';
-    document.head.appendChild(analyticsScript);
-    gtag('js', new Date());
-    gtag('config', 'G-8FCTXLT7Y2');
+  var productionTracking = ['rogermurillo.co', 'www.rogermurillo.co'].includes(location.hostname);
+  var trackingAccepted = false;
+  var trackingLoaded = false;
+  try { trackingAccepted = localStorage.getItem('cookiesAccepted') === 'true'; } catch (error) {}
+  // Compatibilidad con los formularios y herramientas existentes; el envío lo hace GTM.
+  function gtag(command, name, parameters) {
+    if (command === 'event') {
+      if (productionTracking && !trackingAccepted) return;
+      window.dataLayer.push({ rm_event: null });
+      window.dataLayer.push({ event: name, rm_event: parameters || {} });
+    } else {
+      window.dataLayer.push(arguments);
+    }
   }
+  gtag('consent', 'default', {
+    analytics_storage: 'denied', ad_storage: 'denied',
+    ad_user_data: 'denied', ad_personalization: 'denied'
+  });
+  // Clarity recibe la misma decisión antes de cargar su etiqueta oficial.
+  window.clarity = window.clarity || function () {
+    (window.clarity.q = window.clarity.q || []).push(arguments);
+  };
+  function enableTracking() {
+    trackingAccepted = true;
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    window.clarity('consentv2', { analytics_Storage: 'granted', ad_Storage: 'denied' });
+    if (!productionTracking || trackingLoaded) return;
+    trackingLoaded = true;
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var containerScript = document.createElement('script');
+    containerScript.async = true;
+    containerScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5RH99FDW';
+    document.head.appendChild(containerScript);
+  }
+  window.addEventListener('rm:analytics-consent', enableTracking);
+  if (trackingAccepted) enableTracking();
   try {
     if (!sessionStorage.getItem('rm_entry_context')) {
       var referrerHost = document.referrer ? new URL(document.referrer).hostname : '';
