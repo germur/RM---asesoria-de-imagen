@@ -1,0 +1,8 @@
+---
+interface Props { kind?: 'color'|'wardrobe'|'integral'|'hair'|'calendar'|'check'; }
+const {kind='color'}=Astro.props;
+---
+<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{kind==='color'?<><circle cx="25" cy="24" r="15"/><circle cx="39" cy="24" r="15"/><circle cx="32" cy="38" r="15"/></>:kind==='wardrobe'?<><path d="M27 16a6 6 0 1 1 9 5l-4 3v6L8 45v5h48v-5L32 30"/><path d="m23 34 9 8 9-8M16 50v6h32v-6"/></>:kind==='integral'?<><rect x="12" y="7" width="36" height="49" rx="2"/><path d="M21 21h18M21 28h13M21 45h7M34 45h7"/><circle cx="47" cy="43" r="12" fill="var(--symbol-fill,white)"/><path d="m42 43 4 4 7-8"/></>:kind==='hair'?<><circle cx="17" cy="44" r="7"/><circle cx="43" cy="44" r="7"/><path d="m21 38 26-27M39 38 17 11M29 29l7 7"/><circle cx="30" cy="28" r="2"/></>:kind==='calendar'?<><rect x="11" y="15" width="42" height="39" rx="3"/><path d="M11 26h42M21 9v12M43 9v12m-23 16 8 8 16-15"/></>:<><circle cx="32" cy="32" r="24"/><path d="m20 32 8 8 17-18"/></>}
+</svg>
+<style>svg{display:block;width:100%;height:100%}</style>
