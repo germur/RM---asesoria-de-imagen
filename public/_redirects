@@ -2,6 +2,15 @@
 /contact /contacto/ 301!
 /contact/ /contacto/ 301!
 
+# Rutas antiguas detectadas en Search Console (29-10-2026).
+/home/contact /contacto/ 301!
+/home/contact/ /contacto/ 301!
+/lp-term-conditions /legales/terminos/ 301!
+/lp-term-conditions/ /legales/terminos/ 301!
+
+# Compatibilidad con clientes que solicitan el icono en la ruta tradicional.
+/favicon.ico /favicon-32x32.png 301!
+
 # =============================================================
 # MAPA DE REDIRECCIONES 301 · WordPress (viejo) -> Astro (nuevo)
 # URLs viejas recuperadas de la navegacion real del sitio
