@@ -1,0 +1,97 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { ArrowRight } from "lucide-react";
+
+const title = "Corte de cabello en Bogotá con visagismo | Roger Murillo";
+const description = "Agenda tu corte de cabello en Bogotá con visagismo. Revisamos tu rostro, la textura de tu pelo y tu rutina para diseñar un corte que puedas mantener en casa.";
+const bookingUrl = "/contacto/?interes=peluqueria#form";
+const url = new URL(Astro.url.pathname, Astro.site).href;
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: "Corte de cabello con visagismo en Bogotá",
+    serviceType: "Corte de cabello personalizado",
+    provider: { "@id": "https://rogermurillo.co/#organization" },
+    areaServed: { "@type": "City", name: "Bogotá" },
+    url,
+};
+
+const steps = [
+    {
+        title: "Revisamos tu rostro y tu cabello",
+        description: "Observamos tus proporciones, la forma de tu cabeza, la textura del pelo y su caída natural. También hablamos de cuánto tiempo le dedicas a peinarlo.",
+    },
+    {
+        title: "Definimos el corte contigo",
+        description: "Acordamos qué largo conservar, dónde conviene dejar volumen y cómo enmarcar el rostro. Si traes fotos, las usamos para conversar sobre lo que se puede adaptar a tu cabello.",
+    },
+    {
+        title: "Hacemos el corte y revisamos cómo peinarlo",
+        description: "Realizamos el corte acordado y te mostramos cómo acomodarlo en casa según tu textura y tu rutina.",
+    },
+];
+---
+
+<MainLayout {title} {description} {schema} navbarTheme="light" breadcrumbsInFlow>
+    <header class="bg-[#faf7f2] py-16 md:py-24">
+        <div class="container mx-auto max-w-5xl px-6">
+            <p class="mb-5 text-xs font-medium uppercase tracking-[0.25em] text-brand-primary">
+                Arquitectura del corte · Atención con cita previa
+            </p>
+            <h1 class="max-w-3xl font-serif text-5xl leading-tight md:text-7xl">
+                Corte de cabello en Bogotá según tu rostro
+            </h1>
+            <p class="mt-7 max-w-2xl text-lg leading-relaxed text-neutral-700">
+                En Roger Murillo diseñamos cortes de cabello para hombres y mujeres en Bogotá.
+                Antes de cortar, revisamos las proporciones de tu rostro, la textura y la caída
+                de tu pelo, y cómo lo peinas a diario. Con eso acordamos un corte que puedas
+                mantener en casa y que se ajuste a tu estilo.
+            </p>
+            <a href={bookingUrl} class="mt-8 inline-flex items-center gap-3 bg-brand-primary px-7 py-4 text-sm font-medium text-white hover:bg-brand-black">
+                Solicitar una cita de corte
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+        </div>
+    </header>
+
+    <section class="container mx-auto max-w-5xl px-6 py-16 md:py-24" aria-labelledby="visagismo">
+        <h2 id="visagismo" class="font-serif text-4xl md:text-5xl">Cómo diseñamos tu corte con visagismo</h2>
+        <ol class="mt-10 grid gap-8 md:grid-cols-3">
+            {steps.map((step, index) => (
+                <li class="border-t border-neutral-300 pt-5">
+                    <span class="text-sm text-brand-primary" aria-hidden="true">0{index + 1}</span>
+                    <h3 class="mt-3 font-serif text-2xl">{step.title}</h3>
+                    <p class="mt-3 leading-relaxed text-neutral-700">{step.description}</p>
+                </li>
+            ))}
+        </ol>
+        <p class="mt-9 max-w-2xl leading-relaxed text-neutral-700">
+            Si quieres explorar tus proporciones antes de venir, puedes usar nuestra
+            <a href="/herramientas/calculadora-rostro/" class="text-brand-primary underline underline-offset-4">calculadora de forma del rostro</a>
+            como punto de partida para la conversación.
+        </p>
+    </section>
+
+    <section class="bg-neutral-50 py-16 md:py-24" aria-labelledby="cita">
+        <div class="container mx-auto max-w-5xl px-6">
+            <h2 id="cita" class="font-serif text-4xl md:text-5xl">Dónde atendemos y cómo reservar</h2>
+            <p class="mt-5 max-w-2xl leading-relaxed text-neutral-700">
+                Atendemos con cita previa en la Calle 163 B No. 48-80, Local 208, Edificio
+                Britalia Comercial y Empresarial, Bogotá. Al escribirnos, cuéntanos qué
+                cambio tienes en mente. El equipo confirma el valor y la disponibilidad
+                antes de reservar.
+            </p>
+            <div class="mt-7 flex flex-wrap items-center gap-6">
+                <a href={bookingUrl} class="inline-flex items-center gap-3 bg-brand-primary px-7 py-4 text-sm font-medium text-white hover:bg-brand-black">
+                    Consultar disponibilidad
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+                <a href="/servicios/peluqueria/" class="text-sm text-brand-primary underline underline-offset-4">
+                    Ver todos los servicios de peluquería
+                </a>
+            </div>
+        </div>
+    </section>
+</MainLayout>

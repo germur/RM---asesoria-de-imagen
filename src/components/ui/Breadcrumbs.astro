@@ -20,6 +20,7 @@ const routeNames: Record<string, string> = {
     "colorimetria-bogota": "Colorimetría personal",
     "asesoria-imagen-hombres-bogota": "Fondo de armario para hombres",
     "peluqueria": "Peluquería y visagismo",
+    corte: "Corte de cabello",
     "asesoria-integral-imagen": "Asesoría de imagen integral",
     "imagen-ejecutiva-autoridad": "Imagen ejecutiva",
 };
@@ -32,6 +33,7 @@ if (pathname === "/") return null;
 // y se muestran como texto, no como enlace, para no apuntar a un 404.
 const HUB_ROUTES = new Set([
     "/servicios/",
+    "/servicios/peluqueria/",
     "/academia/",
     "/herramientas/",
     "/blog/",
