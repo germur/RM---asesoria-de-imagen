@@ -2,8 +2,8 @@
 import VisagismoDecisions from '@/components/VisagismoDecisions.astro';
 import { articleSchema } from "@/utils/articleSchema";
 import MainLayout from "@/layouts/MainLayout.astro";
-const title = "Visagismo: guía para elegir corte, barba y gafas | Bogotá";
-const description = "Cómo usar proporciones, textura y rutina para elegir corte de cabello, barba y gafas. Guía de visagismo y orientación profesional en Bogotá.";
+const title = "Guía de visagismo para elegir corte, barba y gafas";
+const description = "Descubre cómo elegir corte, barba y gafas con visagismo. Ten en cuenta las proporciones de tu rostro, la textura de tu cabello y tu rutina antes de decidir.";
 ---
 <MainLayout schema={articleSchema({path:Astro.url.pathname,headline:"Cómo elegir corte, barba y gafas con visagismo",description})} title={title} description={description} navbarTheme="light" breadcrumbsInFlow>
     <article class="standalone-reading">
@@ -40,7 +40,7 @@ const description = "Cómo usar proporciones, textura y rutina para elegir corte
                 <h2 class="text-3xl font-serif text-primary mb-4">Corte y barba: decidir el volumen en conjunto</h2>
                 <p>La barba modifica el contorno visible, pero su densidad y dirección de crecimiento limitan los diseños posibles. Si buscas alargar visualmente, puedes explorar más longitud en el mentón; si ya percibes mucho largo, quizá prefieras contenerla allí. Son opciones de estilo, no reglas obligatorias.</p>
                 <p class="mt-4">Valora corte y barba juntos: añadir altura arriba y longitud abajo puede producir un efecto distinto al que buscas. Pregunta cómo mantener el diseño en casa y cada cuánto sería conveniente ajustarlo según tu crecimiento.</p>
-                <a href="/academia/visagismo/tipos-rostro-hombre/" class="inline-block mt-4 text-accent hover:underline">Ampliar la guía de rostro, corte y barba →</a><p class="mt-4">Si llevas barba, explora también la <a href="/visagismo/barba-y-corte/" class="text-accent hover:underline">guía para combinar barba y corte según tus proporciones</a>.</p>
+                <a href="/academia/visagismo/tipos-rostro-hombre/#barba" class="inline-block mt-4 text-accent hover:underline">Ver cómo combinar corte y barba según tu rostro →</a>
             </section>
             <section id="gafas">
                 <h2 class="text-3xl font-serif text-primary mb-4">Gafas: proporción y comodidad además de forma</h2>
@@ -48,7 +48,7 @@ const description = "Cómo usar proporciones, textura y rutina para elegir corte
                 <p class="mt-4">Comprueba el apoyo en el puente, la presión de las varillas y que la montura no roce al sonreír. La adaptación y las necesidades de la lente deben revisarse en la óptica. El color puede explorarse con la <a href="/herramientas/test-colorimetria-online/" class="text-accent hover:underline">herramienta de colorimetría</a>, manteniendo su carácter orientativo.</p>
             </section>
             <section>
-                <h2 class="text-3xl font-serif text-primary mb-4">Qué preguntar en una asesoría de visagismo en Bogotá</h2>
+                <h2 class="text-3xl font-serif text-primary mb-4">Qué preguntar antes de tu cita de visagismo</h2>
                 <ul class="list-disc pl-6 space-y-2">
                     <li>¿Qué opciones funcionan con mi textura y mi tiempo de peinado?</li>
                     <li>¿Qué efecto producen el largo y el volumen que estamos proponiendo?</li>
@@ -59,7 +59,7 @@ const description = "Cómo usar proporciones, textura y rutina para elegir corte
             </section>
             <section class="p-8 rounded-xl border border-border bg-muted/20">
                 <h2 class="text-2xl font-serif text-primary mb-4">Consulta una opción para tu cabello y tu rutina</h2>
-                <p>Conoce el <a href="/servicios/peluqueria/" class="text-accent hover:underline">servicio de peluquería</a> o cuéntanos qué cambio buscas. Antes de reservar, confirma alcance, disponibilidad y valor del servicio. Si quieres trabajar también vestuario y color, revisa la <a href="/servicios/asesoria-integral-imagen/" class="text-accent hover:underline">asesoría integral de imagen</a>.</p>
+                <p>Si quieres llevar estas decisiones a una cita, conoce nuestro <a href="/servicios/peluqueria/corte/" class="text-accent hover:underline">corte de cabello con visagismo en Bogotá</a>. Antes de reservar, confirma alcance, disponibilidad y valor del servicio. Si quieres trabajar también vestuario y color, revisa la <a href="/servicios/asesoria-integral-imagen/" class="text-accent hover:underline">asesoría integral de imagen</a>.</p>
                 <a href="/contacto/?interes=peluqueria#form" class="inline-block mt-6 rounded-md bg-primary text-primary-foreground px-6 py-3 font-medium">Consultar sobre corte y visagismo</a>
             </section>
         </div>

@@ -98,6 +98,7 @@
 /privacy-policy/          /legales/privacidad/    301!
 
 # -- PAGINAS ELIMINADAS (guias vacias) -> articulo real de visagismo --
+/visagismo/barba-y-corte/   /academia/visagismo/tipos-rostro-hombre/   301!
 /guia-estilo/visagismo/*   /academia/visagismo/tipos-rostro-hombre/   301!
 /guia-estilo/*             /academia/visagismo/tipos-rostro-hombre/   301!
 

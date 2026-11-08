@@ -1,13 +1,12 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, AlertCircle } from "lucide-react";
 
 const seoData = {
-    title: "Visagismo para Hombres: Guía Definitiva de Tipos de Rostro",
+    title: "Visagismo para hombres: corte y barba según tu rostro",
     description:
-        "Descubre qué corte de pelo te queda bien según tu tipo de rostro. Guía técnica de visagismo: Rostro Redondo, Cuadrado, Diamante y Ovalado.",
-    h1: "Visagismo para Hombres: La Geometría del Corte Perfecto",
+        "Guía de visagismo masculino para combinar corte y barba según tu rostro. Explora opciones para caras redondas, cuadradas, ovaladas o en forma de diamante.",
+    h1: "Corte y barba según tu tipo de rostro: guía para hombres",
 };
 
 // Schema Article para Blog Posting
@@ -158,14 +157,25 @@ const schema = JSON.stringify({
                     </table>
                 </div>
 
-                <h2 class="font-serif text-3xl mt-12 mb-6">
-                    La importancia de la Barba
+                <h2 id="barba" class="font-serif text-3xl mt-12 mb-6 scroll-mt-32">
+                    Cómo combinar el corte y la barba según tu rostro
                 </h2>
                 <p>
-                    La barba es el maquillaje del hombre. Con el visagismo,
-                    usamos la barba para crear una mandíbula donde no la hay
-                    (rostros redondos) o para suavizar un mentón demasiado
-                    agresivo.
+                    El corte enmarca la frente y las sienes. La barba cambia el
+                    contorno de la mandíbula y el mentón. Valora ambos volúmenes
+                    juntos y ten en cuenta la densidad de la barba y su
+                    dirección de crecimiento.
+                </p>
+                <ul class="list-disc pl-6 space-y-3">
+                    <li><strong>Rostro redondo.</strong> Si buscas alargar el contorno, prueba un poco más de longitud en el mentón y menos volumen en las mejillas.</li>
+                    <li><strong>Rostro cuadrado.</strong> La mandíbula suele tener ángulos marcados. Un contorno de barba definido puede destacarlos. Una transición redondeada hacia el mentón suaviza el efecto.</li>
+                    <li><strong>Rostro diamante.</strong> Los pómulos suelen ser más anchos que la frente y la mandíbula. Una barba corta y algo más llena alrededor de la barbilla puede aportar anchura si tu densidad lo permite.</li>
+                    <li><strong>Rostro ovalado.</strong> Puedes empezar por una barba corta y uniforme. Si el corte ya aporta altura, compara el efecto de mantener el mentón corto con el de dejarlo crecer.</li>
+                </ul>
+                <p>
+                    Prueba cambios pequeños y mírate de frente y de perfil.
+                    El resultado depende tanto de tu pelo y del crecimiento de
+                    la barba como de la forma del rostro.
                 </p>
 
                 <div
@@ -202,8 +212,8 @@ const schema = JSON.stringify({
                         ¿No sabes cuál es tu rostro?
                     </h3>
                     <p class="text-stone-300 text-sm mb-6">
-                        No adivines. Usa nuestra IA para escanear tus
-                        proporciones y obtener un diagnóstico preciso.
+                        Introduce tus medidas en la calculadora para obtener
+                        una orientación sobre las proporciones de tu rostro.
                     </p>
                     <a href="/herramientas/calculadora-rostro/">
                         <Button
@@ -222,12 +232,12 @@ const schema = JSON.stringify({
                         La ejecución es el resto. Agenda tu diseño de corte
                         visagista en nuestro estudio privado.
                     </p>
-                    <a href="/servicios/peluqueria/">
+                    <a href="/servicios/peluqueria/corte/">
                         <Button
                             variant="outline"
                             className="w-full border-black hover:bg-black hover:text-white"
                         >
-                            Agendar Cita en Bogotá
+                            Ver el servicio de corte en Bogotá
                         </Button>
                     </a>
                 </div>
