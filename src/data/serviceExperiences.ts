@@ -11,6 +11,27 @@ export const serviceExperiences = {
  {label:'Mi corte',title:'Un corte que considere tu rostro.',desc:'Revisamos proporciones, textura, caída del cabello y preferencias para orientar el corte.',detail:'Para hombres y mujeres. Cuéntanos qué quieres conservar y qué te gustaría cambiar.',tag:'CORTE + VISAGISMO'},
  {label:'Mi color',title:'El color también enmarca.',desc:'Conversamos sobre el tono que buscas, tus colores personales y el estado del cabello antes de definir el proceso.',detail:'El equipo confirma técnica, viabilidad, precio y preparación para tu caso.',tag:'COLOR + ILUMINACIONES'},
  {label:'Una ocasión',title:'El conjunto cuenta.',desc:'Peinado y maquillaje en relación con la ocasión, tu vestuario y la imagen que quieres comunicar.',detail:'Al consultar, indica el evento, la fecha y el servicio que necesitas.',tag:'PEINADO + MAQUILLAJE'}]},
+ corte: {
+  eyebrow: 'PELUQUERÍA DE AUTOR / ARQUITECTURA DEL CORTE',
+  title: 'Corte de cabello',
+  emphasis: 'en Bogotá.',
+  intro: 'Diseñamos cortes para hombres y mujeres con visagismo. Antes de cortar, revisamos las proporciones de tu rostro, la textura y la caída natural del pelo, y cómo lo peinas a diario. A partir de eso, acordamos contigo qué conservar, qué cambiar y cómo mantener el resultado en casa.',
+  image: '/images/roger-portrait-bw.webp',
+  imageAlt: 'Roger Murillo, asesor de imagen del estudio en Bogotá',
+  caption: 'Roger Murillo / Estudio de imagen',
+  fact: 'Atención privada con cita previa',
+  scope: 'Para hombres y mujeres · Bogotá',
+  question: 'Así toma forma tu corte.',
+  lead: 'Desde la primera conversación hasta el peinado final. Explora las tres etapas de la cita.',
+  art: 'hair',
+  interest: 'peluqueria',
+  cta: 'Consultar mi cita de corte',
+  items: [
+   {label:'Observar',title:'Leemos la forma y la caída.',desc:'Observamos tus proporciones, la forma de tu cabeza, la textura del pelo y su caída natural. También hablamos de cuánto tiempo tienes para peinarlo.',detail:'Cuéntanos qué te funciona de tu corte actual y qué quieres cambiar.',tag:'01 / ROSTRO Y CABELLO'},
+   {label:'Diseñar',title:'Acordamos el largo y el volumen.',desc:'Definimos contigo qué largo conservar, dónde dejar volumen y cómo enmarcar el rostro. Si traes fotos, revisamos qué elementos podemos adaptar a tu cabello.',detail:'Una referencia ayuda a precisar el cambio que buscas.',tag:'02 / DISEÑO DEL CORTE'},
+   {label:'Cortar',title:'Un corte para llevar todos los días.',desc:'Realizamos el corte acordado y revisamos contigo cómo acomodarlo en casa según tu textura y tu rutina.',detail:'Al terminar, puedes aclarar tus dudas sobre el peinado y el mantenimiento.',tag:'03 / CORTE Y PEINADO'}
+  ]
+ },
  integral:{eyebrow:'ASESORÍA DE IMAGEN / PROGRAMA INTEGRAL',title:'Asesoría de imagen personal',emphasis:'en Bogotá.',intro:'Un proceso para trabajar tu imagen con profundidad: identidad, cabello, color, vestuario y armario, con Roger Murillo y Adriana Garzón.',image:'/images/roger-portrait-bw.webp',imageAlt:'Roger Murillo, asesor de imagen',caption:'Programa con Roger Murillo & Adriana Garzón',fact:'USD 1.650',scope:'Acompañamiento de aproximadamente un año',question:'Una imagen. Un proceso completo.',lead:'Once fases con un ritmo adaptado a tus objetivos. Estas son las áreas que conectamos durante el acompañamiento.',art:'integral',interest:'integral',cta:'Consultar el programa integral',items:[
  {label:'Identidad',title:'Antes de vestir, comprender.',desc:'El diagnóstico de identidad y objetivos orienta las decisiones del programa.',detail:'El punto de partida es tu contexto y lo que quieres trabajar.',tag:'IDENTIDAD + OBJETIVOS'},
  {label:'Color y forma',title:'Entender tus proporciones.',desc:'Visagismo, colorimetría y morfología corporal se relacionan con tu estilo personal.',detail:'Estas áreas forman parte del proceso integral de once fases.',tag:'VISAGISMO + COLORIMETRÍA'},
