@@ -50,13 +50,16 @@
 /rmai-academia/shampoo-kirkland-con-minoxidil/         /productos/             301!
 /rmai-academia/wc-donation-bono-servicios-de-peluqueria/  /servicios/peluqueria/   301!
 /rmai-academia/los-cuatro-pilares-de-la-imagen/        /academia/   301!
+/rmai-academia/cita/                                  /contacto/   301!
+/rmai-academia/crea-tu-iconologia/                     /academia/crea-tu-iconologia/   301!
 /rmai-academia/*                                       /academia/   301!
 /rmai-academia/              /academia/   301!
 /curso-revoluciona-tu-imagen/   /academia/   301!
 /acceder/                    /academia/   301!
 /registrarse/                /academia/   301!
 
-# -- 3. PELUQUERIA (servicios tecnicos -> pagina unica) --
+# -- 3. PELUQUERIA (destinos especificos antes del comodin) --
+/peluqueria/arquitectura-de-corte/   /servicios/peluqueria/corte/   301!
 /peluqueria/*    /servicios/peluqueria/   301!
 /peluqueria/     /servicios/peluqueria/   301!
 /blog/balayage-tendencias/   /servicios/peluqueria/   301!

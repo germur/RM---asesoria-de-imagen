@@ -21,6 +21,7 @@ const servicios = [
         title: "Arquitectura del Corte",
         desc: "Un corte va mucho más allá de pasar la tijera. Realizamos un análisis morfológico detallado para entender la forma de tu cabeza, tus facciones y la calidad de tu fibra capilar. Construimos una arquitectura capilar exacta que armoniza con tu edad, profesión y estilo personal. Le \"ponemos la cabeza a tu cuerpo\".",
         sub: "Hombre & Mujer",
+        href: "/servicios/peluqueria/corte/",
     },
     {
         n: "02",
@@ -85,7 +86,7 @@ const hairSchema = {"@context":"https://schema.org","@type":"Service","@id":"htt
             </div>
 
             <div class="hair-menu">
-                {servicios.map((service,i)=><details open={i===0}><summary><span class="hair-menu-number">{service.n}</span><span>{service.title}<small>{service.sub}</small></span><span class="hair-menu-plus" aria-hidden="true">+</span></summary><div class="hair-menu-detail"><p>{service.desc}</p><a href="/contacto/?interes=peluqueria#form">Consultar este servicio <span aria-hidden="true">↗</span></a></div></details>)}
+                {servicios.map((service,i)=><details open={i===0}><summary><span class="hair-menu-number">{service.n}</span><span>{service.title}<small>{service.sub}</small></span><span class="hair-menu-plus" aria-hidden="true">+</span></summary><div class="hair-menu-detail"><p>{service.desc}</p><a href={service.href ?? "/contacto/?interes=peluqueria#form"}>{service.href ? "Ver el servicio de corte de cabello" : "Consultar este servicio"} <span aria-hidden="true">↗</span></a></div></details>)}
             </div>
             <style>
                 .hair-menu{border-top:1px solid #d3d3d3}.hair-menu details{border-bottom:1px solid #d3d3d3}.hair-menu summary{display:flex;align-items:center;gap:30px;padding:28px 0;cursor:pointer;list-style:none;color:#111111}.hair-menu summary::-webkit-details-marker{display:none}.hair-menu-number{font:15px Georgia,serif;color:#777777;align-self:start;margin-top:6px}.hair-menu summary>span:nth-child(2){flex:1;font:clamp(26px,3vw,38px) 'Playfair Display',Georgia,serif;letter-spacing:-.025em}.hair-menu small{display:block;font:9px/1.6 Arial,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:#626262;margin-top:9px}.hair-menu-plus{font-size:28px;color:#C41230;border:1px solid #d3d3d3;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:transform .2s}.hair-menu details[open] .hair-menu-plus{transform:rotate(45deg)}.hair-menu-detail{padding:0 50px 30px;display:grid;grid-template-columns:1fr auto;gap:35px;align-items:end}.hair-menu-detail p{max-width:700px;font-size:14px;line-height:1.9;color:#555555}.hair-menu-detail a{display:flex;align-items:center;gap:20px;font-size:11px;color:#C41230;border-bottom:1px solid #C41230;padding:12px 0;white-space:nowrap}.hair-menu-detail a>span{font-size:20px}@media(max-width:700px){.hair-menu summary{gap:15px;padding:23px 0}.hair-menu-detail{padding:0 0 25px 30px;grid-template-columns:1fr;gap:12px}.hair-menu-detail a{justify-self:start}}
