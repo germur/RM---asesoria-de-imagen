@@ -2,6 +2,7 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import ColorQuiz from "@/components/tools/ColorQuiz";
 import ColorStudyOptions from "@/components/ColorStudyOptions.astro";
+import { CameraOff, Info, ListChecks, Sun, SwatchBook, UserRound } from "lucide-react";
 
 const description = "Haz el test de colorimetría online gratis. Responde tres preguntas y obtén una orientación sobre tu estación de color y qué tonos probar. Sin fotos ni registro.";
 const schema = {
@@ -14,10 +15,13 @@ const schema = {
     description,
 };
 const sample = ['#552f45', '#9d5261', '#c58772', '#dcb98a', '#9b9a69', '#527a75', '#354c65', '#303141'];
-const signals = [
-    { title: "Subtono", copy: "Usamos lo que cuentas sobre la reacción habitual de tu piel al sol como pista inicial. La respuesta, por sí sola, no determina tu subtono." },
-    { title: "Contraste", copy: "Observa la diferencia de claridad entre piel, ojos y cabello. Una imagen en blanco y negro con luz uniforme puede ayudarte a comparar." },
-    { title: "Cabello natural", copy: "Si lo llevas teñido, piensa en tu tono natural para responder. Esa referencia ayuda a interpretar el contraste de tus rasgos." },
+const facts = [
+    { icon: ListChecks, title: "Cómo funciona", copy: "Responde tres preguntas sobre tu piel, el contraste de tu rostro y tu color natural de cabello." },
+    { icon: Sun, title: "Qué tener a mano", copy: "Usa un espejo con luz natural indirecta. Si llevas el pelo teñido, toma como referencia tu tono natural." },
+    { icon: SwatchBook, title: "Qué recibes", copy: "Una paleta orientativa con tonos que puedes probar cerca del rostro antes de elegir ropa o maquillaje." },
+    { icon: CameraOff, title: "Fotos y registro", copy: "Puedes hacer el test y consultar el resultado sin subir fotos, crear una cuenta ni dejar tu correo." },
+    { icon: Info, title: "Cómo leer el resultado", copy: "El test agrupa las respuestas en cuatro orientaciones. El subtono y otros matices se pueden explorar con más detalle en un estudio personal." },
+    { icon: UserRound, title: "Si quieres ayuda profesional", copy: "Puedes pedir un informe digital o una sesión con textiles en Bogotá.", link: { href: "#estudio-personal", label: "Comparar modalidades" } },
 ];
 ---
 
@@ -47,22 +51,21 @@ const signals = [
         </div>
     </section>
 
-    <section class="bg-[#faf7f2] px-6 md:px-12 py-12 md:py-20" aria-labelledby="leer-color">
+    <section class="bg-white px-6 md:px-12 py-12 md:py-16" aria-labelledby="leer-color">
         <div class="max-w-7xl mx-auto">
-            <p class="text-xs uppercase tracking-[.18em] text-brand-primary mb-4">01 / Antes de interpretar tu resultado</p>
-            <div class="grid md:grid-cols-2 gap-5 md:gap-12 mb-8">
-                <h2 id="leer-color" class="font-serif text-4xl md:text-5xl leading-tight">¿Qué observa el test <em class="text-brand-primary">en tus respuestas?</em></h2>
-                <p class="text-neutral-700 leading-relaxed">La colorimetría personal estudia cómo se ven los colores cerca del rostro. El cuestionario combina tres pistas y ofrece cuatro resultados orientativos. Un análisis personalizado puede distinguir matices que el test agrupa.</p>
-            </div>
-            <dl class="grid md:grid-cols-3 gap-6">
-                {signals.map((signal, index) => (
-                    <div class="border-t border-neutral-300 pt-4">
-                        <span class="text-xs text-brand-primary" aria-hidden="true">0{index + 1}</span>
-                        <dt class="font-serif text-2xl my-2">{signal.title}</dt>
-                        <dd class="text-neutral-700 leading-relaxed">{signal.copy}</dd>
+            <h2 id="leer-color" class="scroll-mt-24 md:scroll-mt-36 font-serif text-3xl md:text-4xl leading-tight mb-8 md:mb-10">Lo que debes saber</h2>
+            <div class="grid gap-x-12 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-9">
+                {facts.map(({ icon: Icon, title, copy, link }) => (
+                    <div class="grid grid-cols-[1.5rem_minmax(0,1fr)] items-start gap-x-3 sm:block">
+                        <Icon className="w-6 h-6 text-brand-black sm:mb-3" strokeWidth={1.65} aria-hidden="true" />
+                        <div>
+                            <h3 class="font-semibold text-base leading-snug mb-1">{title}</h3>
+                            <p class="text-sm leading-relaxed text-neutral-700 max-w-xs">{copy}</p>
+                            {link && <a href={link.href} class="inline-flex items-center min-h-11 text-sm text-brand-primary underline underline-offset-4">{link.label}</a>}
+                        </div>
                     </div>
                 ))}
-            </dl>
+            </div>
         </div>
     </section>
 
