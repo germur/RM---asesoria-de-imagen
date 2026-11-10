@@ -1,80 +1,85 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import ColorQuiz from "@/components/tools/ColorQuiz";
+import ColorStudyOptions from "@/components/ColorStudyOptions.astro";
 
 const description = "Haz el test de colorimetría online gratis. Responde tres preguntas y obtén una orientación sobre tu estación de color y qué tonos probar. Sin fotos ni registro.";
-const toolSchema = {
+const schema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Test de colorimetría online gratis",
     applicationCategory: "LifestyleApplication",
     operatingSystem: "Web",
-    offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-    },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description,
 };
+const sample = ['#552f45', '#9d5261', '#c58772', '#dcb98a', '#9b9a69', '#527a75', '#354c65', '#303141'];
+const signals = [
+    { title: "Subtono", copy: "Usamos lo que cuentas sobre la reacción habitual de tu piel al sol como pista inicial. La respuesta, por sí sola, no determina tu subtono." },
+    { title: "Contraste", copy: "Observa la diferencia de claridad entre piel, ojos y cabello. Una imagen en blanco y negro con luz uniforme puede ayudarte a comparar." },
+    { title: "Cabello natural", copy: "Si lo llevas teñido, piensa en tu tono natural para responder. Esa referencia ayuda a interpretar el contraste de tus rasgos." },
+];
 ---
 
 <MainLayout navbarTheme="light" breadcrumbsInFlow
     title="Test de Colorimetría Online Gratis · Orienta tu Paleta | Roger Murillo"
-    {description}
-    schema={JSON.stringify(toolSchema)}
->
-    <section class="py-8 md:py-16 bg-white">
-        <div class="container mx-auto px-6 max-w-3xl text-center">
-            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-3 md:mb-5">
-                Herramienta gratuita
-            </p>
-
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.1] text-brand-black mb-4 md:mb-6">
-                Test de colorimetría <br />
-                <span class="italic text-brand-primary">online gratis</span>
-            </h1>
-
-            <p class="text-base md:text-lg text-neutral-700 leading-relaxed max-w-xl mx-auto mb-5 md:mb-8">
-                Responde tres preguntas y obtén una orientación sobre tu estación de color y qué tonos explorar.
-            </p>
-
-            <div class="relative">
+    {description} {schema}>
+    <section class="bg-[#151515] text-white border-b-4 border-brand-primary" aria-labelledby="test-color-title">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-16 grid lg:grid-cols-[1fr_1fr] gap-6 lg:gap-14 items-center">
+            <div>
+                <p class="text-[11px] text-[#ff9aac] tracking-[.2em] uppercase mb-4 md:mb-6">Laboratorio de imagen / 01</p>
+                <h1 id="test-color-title" class="font-serif text-[clamp(2.35rem,5.2vw,4.65rem)] leading-[1.02] tracking-tight mb-4 md:mb-6">
+                    Test de colorimetría <em class="block text-[#ff9aac]">online gratis</em>
+                </h1>
+                <p class="text-neutral-200 leading-relaxed max-w-md">Responde tres preguntas y descubre qué paleta puedes empezar a probar cerca de tu rostro.</p>
+                <div class="mt-6 hidden lg:block" aria-hidden="true">
+                    <div class="grid grid-cols-8 max-w-sm h-14 overflow-hidden rounded-tl-2xl">
+                        {sample.map((tone) => <span style={`background:${tone}`} />)}
+                    </div>
+                    <p class="text-[10px] tracking-[.16em] uppercase text-neutral-400 mt-2">Muestras ilustrativas de color</p>
+                </div>
+                <a href="#estudio-personal" class="hidden lg:inline-flex items-center min-h-11 mt-4 text-sm text-white underline underline-offset-4">Ver opciones de estudio personalizado <span aria-hidden="true" class="ml-2">↓</span></a>
+            </div>
+            <div class="min-w-0 text-brand-black" id="cuestionario">
                 <ColorQuiz client:load />
             </div>
+            <a href="#estudio-personal" class="lg:hidden text-sm text-white underline underline-offset-4 min-h-11 inline-flex items-center">Ver opciones de estudio personalizado <span aria-hidden="true" class="ml-2">↓</span></a>
         </div>
     </section>
 
-    <section class="bg-neutral-50 py-14 md:py-24">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-4">
-                El método
-            </p>
-            <h2 class="font-serif text-3xl md:text-5xl leading-tight text-brand-black mb-6">
-                ¿Cómo funciona el test de colorimetría?
-            </h2>
-            <p class="text-neutral-700 leading-relaxed mb-8">
-                La colorimetría personal estudia cómo se ven distintos colores cerca de tu rostro.
-                El cuestionario cruza tres respuestas para sugerirte una paleta que puedas explorar.
-            </p>
-            <dl class="divide-y divide-neutral-300 border-y border-neutral-300">
-                <div class="py-4">
-                    <dt class="font-serif text-xl text-brand-black">Subtono orientativo</dt>
-                    <dd class="text-neutral-700 mt-1">Partimos de cómo sueles describir la reacción de tu piel al sol.</dd>
-                </div>
-                <div class="py-4">
-                    <dt class="font-serif text-xl text-brand-black">Contraste</dt>
-                    <dd class="text-neutral-700 mt-1">Compara qué tan claros u oscuros se ven tu piel, tus ojos y tu cabello entre sí.</dd>
-                </div>
-                <div class="py-4">
-                    <dt class="font-serif text-xl text-brand-black">Color natural del cabello</dt>
-                    <dd class="text-neutral-700 mt-1">Indica si tu tono natural es claro u oscuro.</dd>
-                </div>
+    <section class="bg-[#faf7f2] px-6 md:px-12 py-12 md:py-20" aria-labelledby="leer-color">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-xs uppercase tracking-[.18em] text-brand-primary mb-4">01 / Antes de interpretar tu resultado</p>
+            <div class="grid md:grid-cols-2 gap-5 md:gap-12 mb-8">
+                <h2 id="leer-color" class="font-serif text-4xl md:text-5xl leading-tight">¿Qué observa el test <em class="text-brand-primary">en tus respuestas?</em></h2>
+                <p class="text-neutral-700 leading-relaxed">La colorimetría personal estudia cómo se ven los colores cerca del rostro. El cuestionario combina tres pistas y ofrece cuatro resultados orientativos. Un análisis personalizado puede distinguir matices que el test agrupa.</p>
+            </div>
+            <dl class="grid md:grid-cols-3 gap-6">
+                {signals.map((signal, index) => (
+                    <div class="border-t border-neutral-300 pt-4">
+                        <span class="text-xs text-brand-primary" aria-hidden="true">0{index + 1}</span>
+                        <dt class="font-serif text-2xl my-2">{signal.title}</dt>
+                        <dd class="text-neutral-700 leading-relaxed">{signal.copy}</dd>
+                    </div>
+                ))}
             </dl>
-            <p class="mt-8 border-l-2 border-brand-primary pl-5 text-neutral-700 leading-relaxed">
-                El resultado es un punto de partida para probar colores. Si quieres un informe personalizado
-                o comparar textiles durante una sesión, consulta el
-                <a href="/servicios/colorimetria-bogota/" class="text-brand-primary underline underline-offset-4">estudio de colorimetría personal</a>.
-            </p>
+        </div>
+    </section>
+
+    <ColorStudyOptions />
+
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 grid md:grid-cols-[.85fr_1.15fr] gap-8 md:gap-16" aria-labelledby="prueba-palette">
+        <div>
+            <p class="text-xs uppercase tracking-[.18em] text-brand-primary mb-4">02 / Del resultado al vestuario</p>
+            <h2 id="prueba-palette" class="font-serif text-4xl md:text-5xl leading-tight">Prueba tu paleta <em class="text-brand-primary">con lo que ya tienes.</em></h2>
+        </div>
+        <div class="text-neutral-700 leading-relaxed">
+            <ol class="space-y-4 list-decimal pl-5">
+                <li><strong>Escoge dos prendas.</strong> Busca tonos de una misma familia, como dos rosas, que se vean distintos entre sí.</li>
+                <li><strong>Compáralas cerca del rostro.</strong> Usa la misma luz natural indirecta y fíjate en cómo cambia el aspecto de tu piel al alternarlas.</li>
+                <li><strong>Aplica lo que observaste.</strong> Empieza por una camisa, un pañuelo o un labial. Los colores más alejados de la cara te dan margen para seguir usando prendas que te gustan.</li>
+            </ol>
+            <p class="mt-6">Si quieres ver ejemplos de paletas y estaciones cercanas, explora el <a href="/colorimetria/estaciones/" class="text-brand-primary underline underline-offset-4">atlas de las 12 estaciones</a>.</p>
         </div>
     </section>
 </MainLayout>
