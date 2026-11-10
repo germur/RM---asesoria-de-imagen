@@ -62,7 +62,7 @@ export default function ColorQuiz() {
     };
 
     return (
-        <div className="w-full max-w-2xl mx-auto bg-white/50 backdrop-blur-sm border border-neutral-200 rounded-2xl shadow-xl overflow-hidden min-h-[500px] flex flex-col relative">
+        <div className="w-full max-w-2xl mx-auto bg-white/50 backdrop-blur-sm border border-neutral-200 rounded-2xl shadow-xl overflow-hidden min-h-[320px] md:min-h-[500px] flex flex-col relative">
 
             {/* Barra de Progreso Superior */}
             <div className="w-full h-1 bg-neutral-100">
@@ -73,22 +73,22 @@ export default function ColorQuiz() {
                 />
             </div>
 
-            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center">
+            <div className="flex-1 p-5 md:p-12 flex flex-col justify-center">
                 <AnimatePresence mode="wait">
 
                     {/* STEP 0: INTRO */}
                     {state.step === 0 && (
                         <motion.div key="intro" variants={slideIn} initial="hidden" animate="visible" exit="exit" className="text-center">
-                            <div className="mx-auto w-16 h-16 bg-brand-black text-white rounded-full flex items-center justify-center mb-6">
-                                <Sparkles size={32} />
+                            <div className="mx-auto w-12 h-12 md:w-16 md:h-16 bg-brand-black text-white rounded-full flex items-center justify-center mb-4 md:mb-6">
+                                <Sparkles className="w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
                             </div>
-                            <h2 className="text-3xl font-serif font-bold mb-4 text-brand-black">Descubre tu Estación Cromática</h2>
-                            <p className="text-neutral-600 mb-8 text-lg">En menos de 2 minutos analizaremos tu piel, ojos y contraste para revelarte la paleta de colores que te hace brillar.</p>
+                            <h2 className="text-2xl md:text-3xl font-serif font-bold mb-3 text-brand-black">Descubre tu estación de color</h2>
+                            <p className="text-neutral-700 mb-5 md:mb-8">Sin fotos ni registro. Puedes ver el resultado al terminar.</p>
                             <Button size="lg" onClick={() => {
                                 trackEvent('test_colorimetria_inicio');
                                 setState(s => ({ ...s, step: 1 }));
                             }} className="px-8 text-lg">
-                                Iniciar Análisis
+                                Empezar el test
                             </Button>
                         </motion.div>
                     )}

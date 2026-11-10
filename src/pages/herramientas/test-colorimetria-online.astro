@@ -2,11 +2,11 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import ColorQuiz from "@/components/tools/ColorQuiz";
 
-// SEO y Schema para una "SoftwareApplication" (GEO Friendly)
+const description = "Haz el test de colorimetría online gratis. Responde tres preguntas y obtén una orientación sobre tu estación de color y qué tonos probar. Sin fotos ni registro.";
 const toolSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Test de Colorimetría Ejecutiva",
+    name: "Test de colorimetría online gratis",
     applicationCategory: "LifestyleApplication",
     operatingSystem: "Web",
     offers: {
@@ -14,94 +14,66 @@ const toolSchema = {
         price: "0",
         priceCurrency: "USD",
     },
-    description:
-        "Herramienta de diagnóstico de imagen personal basada en las 12 estaciones de color. Descubre qué colores proyectan autoridad.",
+    description,
 };
 ---
 
-<MainLayout navbarTheme="light"
+<MainLayout navbarTheme="light" breadcrumbsInFlow
     title="Test de Colorimetría Online Gratis · Orienta tu Paleta | Roger Murillo"
-    description="Descubre qué colores potencian tu imagen en 2 minutos. Diagnóstico de colorimetría online con IA: tu estación cromática, paleta de poder y cambio de look estratégico. Sin registro."
+    {description}
     schema={JSON.stringify(toolSchema)}
 >
-    <section class="pt-40 pb-32 md:pt-48 md:pb-40 bg-white">
+    <section class="py-8 md:py-16 bg-white">
         <div class="container mx-auto px-6 max-w-3xl text-center">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
-                Herramienta de Diagnostico Gratuita
+            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-3 md:mb-5">
+                Herramienta gratuita
             </p>
 
-            <h1 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
-                Tu cambio de look <br />
-                <span class="italic text-neutral-400">empieza por el color.</span>
+            <h1 class="font-serif text-4xl md:text-6xl leading-[1.1] text-brand-black mb-4 md:mb-6">
+                Test de colorimetría <br />
+                <span class="italic text-brand-primary">online gratis</span>
             </h1>
 
-            <p class="text-lg text-neutral-500 font-light leading-relaxed max-w-2xl mx-auto mb-16">
-                El 80% de las personas visten colores que "apagan" su
-                presencia. Usa este cuestionario gratuito para descubrir tu <strong
-                    class="text-brand-black font-medium">Estacion Cromatica</strong
-                > y proyectar la imagen que realmente quieres dar.
+            <p class="text-base md:text-lg text-neutral-700 leading-relaxed max-w-xl mx-auto mb-5 md:mb-8">
+                Responde tres preguntas y obtén una orientación sobre tu estación de color y qué tonos explorar.
             </p>
 
-            <div class="relative z-20 -mb-48">
+            <div class="relative">
                 <ColorQuiz client:load />
             </div>
         </div>
     </section>
 
-    <section class="py-32 md:py-40 bg-neutral-50">
-        <div class="container mx-auto px-6 max-w-3xl pt-32">
-            <p class="text-xs tracking-[0.3em] uppercase text-neutral-400 mb-6">
-                Metodo
+    <section class="bg-neutral-50 py-14 md:py-24">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <p class="text-xs tracking-[0.3em] uppercase text-brand-primary mb-4">
+                El método
             </p>
-
-            <h2 class="font-serif text-4xl md:text-5xl leading-[1.1] text-brand-black mb-8">
-                Por que la Colorimetria es Estrategia
+            <h2 class="font-serif text-3xl md:text-5xl leading-tight text-brand-black mb-6">
+                ¿Cómo funciona el test de colorimetría?
             </h2>
-
-            <p class="text-lg text-neutral-500 font-light leading-relaxed mb-16">
-                No se trata de moda, se trata de <strong class="text-brand-black font-medium">psicologia visual</strong>.
-                En el metodo Roger Murillo, analizamos tres factores biologicos para determinar tu "ADN estetico":
+            <p class="text-neutral-700 leading-relaxed mb-8">
+                La colorimetría personal estudia cómo se ven distintos colores cerca de tu rostro.
+                El cuestionario cruza tres respuestas para sugerirte una paleta que puedas explorar.
             </p>
-
-            <div class="space-y-12 mb-16">
-                <div class="flex items-start gap-6">
-                    <span class="text-xs tracking-[0.3em] text-neutral-400 pt-1 shrink-0">01</span>
-                    <div>
-                        <h3 class="font-serif text-xl text-brand-black mb-2">Temperatura (Subtono)</h3>
-                        <p class="text-neutral-500 font-light leading-relaxed">
-                            Define si tu piel reacciona mejor a gamas frias (azules) o calidas (amarillos).
-                            Esto es clave para elegir camisas y accesorios.
-                        </p>
-                    </div>
+            <dl class="divide-y divide-neutral-300 border-y border-neutral-300">
+                <div class="py-4">
+                    <dt class="font-serif text-xl text-brand-black">Subtono orientativo</dt>
+                    <dd class="text-neutral-700 mt-1">Partimos de cómo sueles describir la reacción de tu piel al sol.</dd>
                 </div>
-
-                <div class="flex items-start gap-6">
-                    <span class="text-xs tracking-[0.3em] text-neutral-400 pt-1 shrink-0">02</span>
-                    <div>
-                        <h3 class="font-serif text-xl text-brand-black mb-2">Valor (Luminosidad)</h3>
-                        <p class="text-neutral-500 font-light leading-relaxed">
-                            Mide cuan oscuros o claros deben ser tus trajes para no "borrar" tu rostro.
-                            Un traje negro puede ser fatal para un perfil de valor claro.
-                        </p>
-                    </div>
+                <div class="py-4">
+                    <dt class="font-serif text-xl text-brand-black">Contraste</dt>
+                    <dd class="text-neutral-700 mt-1">Compara qué tan claros u oscuros se ven tu piel, tus ojos y tu cabello entre sí.</dd>
                 </div>
-
-                <div class="flex items-start gap-6">
-                    <span class="text-xs tracking-[0.3em] text-neutral-400 pt-1 shrink-0">03</span>
-                    <div>
-                        <h3 class="font-serif text-xl text-brand-black mb-2">Chroma (Intensidad)</h3>
-                        <p class="text-neutral-500 font-light leading-relaxed">
-                            Determina si necesitas colores puros y brillantes (Saturados) o tonos suaves
-                            y opacos (Desaturados) para armonizar.
-                        </p>
-                    </div>
+                <div class="py-4">
+                    <dt class="font-serif text-xl text-brand-black">Color natural del cabello</dt>
+                    <dd class="text-neutral-700 mt-1">Indica si tu tono natural es claro u oscuro.</dd>
                 </div>
-            </div>
-
-            <p class="text-neutral-400 font-light leading-relaxed border-l border-neutral-300 pl-6">
-                Nota: Este test simplificado te dara una aproximacion a tu estacion (Invierno, Verano, Otono, Primavera).
-                Para un analisis de precision quirurgica con telas fisicas (Draping), recomendamos la
-                <a href="/servicios/colorimetria-bogota/" class="text-brand-black font-medium hover:text-brand-primary transition-colors duration-500">estudio de colorimetría personal</a>.
+            </dl>
+            <p class="mt-8 border-l-2 border-brand-primary pl-5 text-neutral-700 leading-relaxed">
+                El resultado es un punto de partida para probar colores. Si quieres un informe personalizado
+                o comparar textiles durante una sesión, consulta el
+                <a href="/servicios/colorimetria-bogota/" class="text-brand-primary underline underline-offset-4">estudio de colorimetría personal</a>.
             </p>
         </div>
     </section>
