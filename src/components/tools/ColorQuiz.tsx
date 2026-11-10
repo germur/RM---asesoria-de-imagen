@@ -62,33 +62,33 @@ export default function ColorQuiz() {
     };
 
     return (
-        <div className="w-full max-w-2xl mx-auto bg-white/50 backdrop-blur-sm border border-neutral-200 rounded-2xl shadow-xl overflow-hidden min-h-[500px] flex flex-col relative">
+        <div className="w-full max-w-2xl mx-auto bg-white border border-neutral-200 rounded-tl-[3rem] rounded-sm shadow-xl overflow-hidden min-h-[250px] md:min-h-[345px] flex flex-col relative">
 
             {/* Barra de Progreso Superior */}
             <div className="w-full h-1 bg-neutral-100">
                 <motion.div
-                    className="h-full bg-brand-black"
+                    className="h-full bg-brand-primary"
                     initial={{ width: 0 }}
                     animate={{ width: `${(state.step / 4) * 100}%` }}
                 />
             </div>
 
-            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center">
+            <div className="flex-1 p-5 md:p-12 flex flex-col justify-center">
                 <AnimatePresence mode="wait">
 
                     {/* STEP 0: INTRO */}
                     {state.step === 0 && (
                         <motion.div key="intro" variants={slideIn} initial="hidden" animate="visible" exit="exit" className="text-center">
-                            <div className="mx-auto w-16 h-16 bg-brand-black text-white rounded-full flex items-center justify-center mb-6">
-                                <Sparkles size={32} />
+                            <div className="mx-auto w-12 h-12 md:w-16 md:h-16 bg-brand-primary text-white rounded-full flex items-center justify-center mb-4 md:mb-6">
+                                <Sparkles className="w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
                             </div>
-                            <h2 className="text-3xl font-serif font-bold mb-4 text-brand-black">Descubre tu Estación Cromática</h2>
-                            <p className="text-neutral-600 mb-8 text-lg">En menos de 2 minutos analizaremos tu piel, ojos y contraste para revelarte la paleta de colores que te hace brillar.</p>
+                            <h2 className="text-2xl md:text-3xl font-serif font-bold mb-3 text-brand-black">Descubre tu estación de color</h2>
+                            <p className="text-neutral-700 mb-5 md:mb-8">Sin fotos ni registro. Puedes ver el resultado al terminar.</p>
                             <Button size="lg" onClick={() => {
                                 trackEvent('test_colorimetria_inicio');
                                 setState(s => ({ ...s, step: 1 }));
-                            }} className="px-8 text-lg">
-                                Iniciar Análisis
+                            }} className="px-8 text-base bg-brand-primary text-white hover:bg-brand-black">
+                                Empezar el test
                             </Button>
                         </motion.div>
                     )}
@@ -146,19 +146,9 @@ export default function ColorQuiz() {
                     {state.step === 3 && (
                         <motion.div key="step3" variants={slideIn} initial="hidden" animate="visible" exit="exit">
                             <h3 className="text-2xl font-serif mb-8 text-center">¿Cuál es tu color de cabello natural?</h3>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div
-                                    className="cursor-pointer hover:scale-105 transition-transform p-6 bg-brand-black text-white rounded-xl text-center"
-                                    onClick={() => handleSelect('hairColor', 'dark')}
-                                >
-                                    Oscuro / Negro / Castaño Profundo
-                                </div>
-                                <div
-                                    className="cursor-pointer hover:scale-105 transition-transform p-6 bg-[#eec591] text-brand-black rounded-xl text-center border border-neutral-300"
-                                    onClick={() => handleSelect('hairColor', 'light')}
-                                >
-                                    Rubio / Castaño Claro / Pelirrojo
-                                </div>
+                            <div className="grid gap-3 sm:grid-cols-2">
+                                <OptionCard title="Oscuro" desc="Negro o castaño profundo" onClick={() => handleSelect('hairColor', 'dark')} />
+                                <OptionCard title="Claro" desc="Rubio, castaño claro o pelirrojo" onClick={() => handleSelect('hairColor', 'light')} />
                             </div>
                         </motion.div>
                     )}
@@ -193,15 +183,16 @@ export default function ColorQuiz() {
 // Subcomponente de Tarjeta de Opción (Reutilizable)
 function OptionCard({ title, desc, onClick }: { title: string, desc: string, onClick: () => void }) {
     return (
-        <div
+        <button
+            type="button"
             onClick={onClick}
-            className="group p-6 border border-neutral-200 rounded-xl hover:border-brand-black hover:bg-neutral-50 cursor-pointer transition-all flex items-center justify-between text-left"
+            className="group p-4 border border-neutral-300 rounded-xl hover:border-brand-primary focus-visible:outline-2 focus-visible:outline-brand-primary hover:bg-neutral-50 cursor-pointer transition-all flex items-center justify-between text-left"
         >
-            <div>
-                <h4 className="font-semibold text-lg text-brand-black">{title}</h4>
-                <p className="text-sm text-neutral-500">{desc}</p>
-            </div>
-            <div className="h-6 w-6 rounded-full border border-neutral-300 group-hover:border-brand-black group-hover:bg-brand-black transition-colors" />
-        </div>
+            <span>
+                <span className="block font-semibold text-lg text-brand-black">{title}</span>
+                <span className="block text-sm text-neutral-600">{desc}</span>
+            </span>
+            <span aria-hidden="true" className="h-5 w-5 shrink-0 ml-3 rounded-full border border-neutral-400 group-hover:border-brand-primary group-hover:bg-brand-primary transition-colors" />
+        </button>
     );
 }

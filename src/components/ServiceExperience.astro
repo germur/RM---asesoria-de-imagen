@@ -4,7 +4,11 @@ interface Props {service:keyof typeof serviceExperiences; part?:'hero'|'journey'
 const {service,part='hero'}=Astro.props;const d=serviceExperiences[service];
 ---
 {part==='hero'?<section class={`sx-hero sx-${service}`} id={service==='integral'?'umbral':undefined}>
- <div class="sx-hero-inner"><div class="sx-copy"><span class="sx-eyebrow"><i aria-hidden="true"></i>{d.eyebrow}</span><h1>{d.title}{" "}<br/><em>{d.emphasis}</em></h1><p>{d.intro}</p><a class="sx-primary" href="#experiencia">Explorar el servicio <span aria-hidden="true">↘︎</span></a><div class="sx-hero-facts"><strong>{d.fact}</strong><span>{d.scope}</span></div></div>
+ <div class="sx-hero-inner"><div class="sx-copy"><span class="sx-eyebrow"><i aria-hidden="true"></i>{d.eyebrow}</span><h1>{d.title}{" "}<br/><em>{d.emphasis}</em></h1><p>{d.intro}</p>{service === "peluqueria" ? (
+     <a class="sx-primary" href="/contacto/?interes=peluqueria#form">Consultar disponibilidad <span aria-hidden="true">↗</span></a>
+ ) : (
+     <a class="sx-primary" href="#experiencia">Explorar el servicio <span aria-hidden="true">↘︎</span></a>
+ )}<div class="sx-hero-facts"><strong>{d.fact}</strong><span>{d.scope}</span></div></div>
  <figure class="sx-portrait"><span class="sx-portrait-ring" aria-hidden="true"></span><img src={d.image} alt={d.imageAlt} width="800" height="1000" fetchpriority="high"/><figcaption><span>ATENCIÓN PERSONAL / BOGOTÁ</span>{d.caption}<a href="/nosotros/">Conoce al equipo ↗</a></figcaption><span class="sx-side-note" aria-hidden="true">ROGER MURILLO / IMAGE ADVISORS</span></figure></div>
  <nav class="sx-breadcrumb-links" aria-label="Explorar el servicio"><a href="#experiencia">01 La experiencia ↓</a><a href="#alcance-servicio">02 Alcance y condiciones ↓</a><a href="/servicios/">03 Comparar servicios ↗</a></nav>
 </section>:<section id="experiencia" class={`sx-journey sx-${service}`} data-service-experience aria-labelledby="sx-experience-title">
